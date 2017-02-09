@@ -23,7 +23,7 @@ namespace PhotoAward.Platform
         public static void ConfigureApp(IAppBuilder appBuilder)
         {
             var config = new HttpConfiguration();
-
+            UnityConfig.RegisterComponents(config);
             config.MapHttpAttributeRoutes();
             ConfigureFormatters(config.Formatters);
             appBuilder.UseWebApi(config);

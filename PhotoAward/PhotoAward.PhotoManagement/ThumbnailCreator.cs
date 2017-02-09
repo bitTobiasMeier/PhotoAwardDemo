@@ -8,11 +8,26 @@ using System.Threading.Tasks;
 
 namespace PhotoAward.PhotoManagement
 {
-    public static class ThumbnailCreator 
+    public interface IThumbnailCreator
     {
-        
+        Task<byte[]> GetThumbnail(byte[] data);
+        Task<byte[]> GetThumbnail(Image img);
+    }
 
-        public  static async Task<byte[]> GetThumbnail(Image img)
+    public class ThumbnailCreator : IThumbnailCreator
+    {
+
+        public  async Task<byte[]> GetThumbnail(byte[] data)
+        {
+            using (var ms = new MemoryStream(data))
+            {
+                var bmp = new Bitmap(ms);
+                var thumbnailTask = await GetThumbnail(bmp);
+                return thumbnailTask;
+            }
+        }
+
+        public   async Task<byte[]> GetThumbnail(Image img)
         {
             return await Task.Run(() =>
             {
@@ -54,7 +69,7 @@ namespace PhotoAward.PhotoManagement
         }
 
 
-        private static byte[] ImageToByteArray(Image imageIn)
+        private byte[] ImageToByteArray(Image imageIn)
         {
             using (var ms = new MemoryStream())
             {

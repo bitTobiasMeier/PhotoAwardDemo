@@ -20,5 +20,16 @@ namespace PhotoAward.ConsoleClient.Commands
             Console.WriteLine("StatusCode:" + result.StatusCode);
             Console.WriteLine(await result.Content.ReadAsStringAsync());
         }
+        
+
+        public virtual string GetArguments()
+        {
+            return "";
+        }
+
+        public virtual string GetDescription()
+        {
+            return "";
+        }
     }
 }

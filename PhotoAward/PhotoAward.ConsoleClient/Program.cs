@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading;
 using System.Windows.Input;
@@ -28,9 +29,20 @@ namespace PhotoAward.ConsoleClient
         {
             if (args.Length == 0)
             {
-                Console.WriteLine("Commands: ....");
-                Console.WriteLine("Press Enter to quit!");
-                Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("PhotoAward Client");
+                foreach (var entry in Commands)
+                {
+                    var cmd = entry.Value;
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.WriteLine (entry.Key+" " + cmd.GetArguments());
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine(cmd.GetDescription());
+                    Console.WriteLine();
+                }
+                Environment.Exit(0);
 
                 return;
             }
@@ -51,9 +63,7 @@ namespace PhotoAward.ConsoleClient
             if (!Commands.ContainsKey(cmdName))
             {
                 Console.WriteLine("Invalid command");
-                Console.WriteLine("Press Enter to quit!");
-                Console.ReadLine();
-                return;
+                Environment.Exit(0);
             }
             var cmd = Commands[cmdName];
             var parameters = args.ToList();
@@ -63,7 +73,7 @@ namespace PhotoAward.ConsoleClient
 
             Console.WriteLine("Bitte drücken Sie die ENTER-Taste!");
             Console.ReadLine();
-            Environment.Exit(0);            
+            Environment.Exit(0);
         }
     }
 }

@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Fabric;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Services.Runtime;
+using PhotoAward.MemberManagement.Interfaces;
+using PhotoAward.PhotoActor.Interfaces;
 
 namespace PhotoAward.PhotoManagement
 {
@@ -20,8 +24,16 @@ namespace PhotoAward.PhotoManagement
                 // When Service Fabric creates an instance of this service type,
                 // an instance of the class is created in this host process.
 
+                //
                 ServiceRuntime.RegisterServiceAsync("PhotoManagementType",
-                    context => new PhotoManagement(context)).GetAwaiter().GetResult();
+                    delegate(StatefulServiceContext context)
+                    {
+                        var stateMngr = new ReliableStateManager(context);
+                        return new PhotoManagement(context, new PhotoManagementStates(stateMngr), stateMngr,
+                            new MemberManagementClientFactory(), 
+                            new PhotoActorClientFactory(), 
+                            new ThumbnailCreator());
+                    }).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(PhotoManagement).Name);
 

@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace PhotoAward.ConsoleClient.Commands
@@ -19,6 +20,18 @@ namespace PhotoAward.ConsoleClient.Commands
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public override string GetArguments()
+        {
+            var sb = new StringBuilder();
+            sb.Append("email");
+            return sb.ToString();
+        }
+
+        public override string GetDescription()
+        {
+            return "Gibt die Detaildaten des Mitglieds mit der übergebenen Emailadresse aus.";
         }
     }
 }

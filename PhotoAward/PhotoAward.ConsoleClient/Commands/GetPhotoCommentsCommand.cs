@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Converters;
 using PhotoAward.PhotoManagement.Interfaces;
@@ -28,6 +29,18 @@ namespace PhotoAward.ConsoleClient.Commands
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        public override string GetArguments()
+        {
+            var sb = new StringBuilder();
+            sb.Append("idOfPhoto");
+            return sb.ToString();
+        }
+
+        public override string GetDescription()
+        {
+            return "Zeigt alle Kommentare zum Photo mit der angegebenen Id an.";
         }
     }
 }

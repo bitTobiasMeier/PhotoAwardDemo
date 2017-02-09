@@ -19,17 +19,42 @@ using PhotoAward.PhotoManagement.Interfaces;
 
 namespace PhotoAward.PhotoManagement
 {
+    public class TestableStatefullService : StatefulService
+    {
+        public TestableStatefullService(StatefulServiceContext serviceContext) : base(serviceContext)
+        {
+        }
+
+        public TestableStatefullService(StatefulServiceContext serviceContext, IReliableStateManagerReplica reliableStateManagerReplica) : base(serviceContext, reliableStateManagerReplica)
+        {
+            
+        }
+
+        //StateManager verstecken, so dass immer der Wrapper verwendet wird.
+        protected new object StateManager => null;
+    }
+
     /// <summary>
     /// An instance of this class is created for each service replica by the Service Fabric runtime.
     /// </summary>
-    internal sealed class PhotoManagement : StatefulService,IPhotoComments, IPhotoManagement
+    public sealed class PhotoManagement : TestableStatefullService, IPhotoComments, IPhotoManagement
     {
-        private const string PhotoactorsDictName = "photoActors";
+        private readonly IPhotoManagementStates _photoManagementStates;
+        private readonly IMemberManagementClientFactory _memberManagementClientFactory;
+        private readonly IPhotoActorClientFactory _photoActorClientFactory;
+        private readonly IThumbnailCreator _thumbnailCreator;
+        
         private const string PhotoActorMemberDictName = "photoActorMemberDictionary";
 
-        public PhotoManagement(StatefulServiceContext context)
-            : base(context)
-        { }
+        public PhotoManagement(StatefulServiceContext context, IPhotoManagementStates photoManagementStates, IReliableStateManagerReplica stateManager, 
+            IMemberManagementClientFactory memberManagementClientFactory, IPhotoActorClientFactory photoActorClientFactory, IThumbnailCreator thumbnailCreator)
+            : base(context, stateManager)
+        {
+            _photoManagementStates = photoManagementStates;
+            _memberManagementClientFactory = memberManagementClientFactory;
+            _photoActorClientFactory = photoActorClientFactory;
+            _thumbnailCreator = thumbnailCreator;
+        }
 
         /// <summary>
         /// Optional override to create listeners (e.g., HTTP, Service Remoting, WCF, etc.) for this service replica to handle client or user requests.
@@ -58,12 +83,13 @@ namespace PhotoAward.PhotoManagement
             // TODO: Replace the following sample code with your own logic 
             //       or remove this RunAsync override if it's not needed in your service.
 
-            var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
+            
 
             while (true)
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
+                /*
                 using (var tx = this.StateManager.CreateTransaction())
                 {
                     var result = await myDictionary.TryGetValueAsync(tx, "Counter");
@@ -76,7 +102,7 @@ namespace PhotoAward.PhotoManagement
                     // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are 
                     // discarded, and nothing is saved to the secondary replicas.
                     await tx.CommitAsync();
-                }
+                }*/
 
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
             }
@@ -86,27 +112,19 @@ namespace PhotoAward.PhotoManagement
         {
             try
             {
-                using (var tx = StateManager.CreateTransaction())
+                using (var tx = this._photoManagementStates.CreateTransaction())
                 {
-                    var ms = new MemoryStream(photo.Data);
-                    var bmp = new Bitmap(ms);
-                    var thumbnailTask =  ThumbnailCreator.GetThumbnail(bmp);
+                    var thumbnailTask = this._thumbnailCreator.GetThumbnail(photo.Data);
                     //Member mit dieser Emailadresse ermitteln
-                    var member = MemberManagementClientFactory.CreateMemberManagementClient().GetMember(photo.Email);
+                    var member = this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(photo.Email);
                     if (member?.Result == null) throw new Exception("Member not found");
 
-
-                    //Gibt es bereits einen Actor für dieses Photo. Wenn ja, Exception ...
-                    var photoActorState = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>
-                        (PhotoactorsDictName);
-                    
-                    //PhotoActorMemberDictName
-                
                     var photoId= Guid.NewGuid();
                     var photoActorId = ActorId.CreateRandom();
-                    await photoActorState.AddAsync(tx, photoId.ToString(), photoActorId);
+                    //await photoActorState.AddAsync(tx, photoId.ToString(), photoActorId);
+                    await this._photoManagementStates.AddPhotoIdActorMapping(tx,photoId,photoActorId);
 
-                    //Pfad herausschreiben
+                    //Dateiname ermitteln
                     var filename = photo.FileName;
                     filename = System.IO.Path.GetFileName(filename);
                     var thumbnail = await thumbnailTask;
@@ -119,18 +137,22 @@ namespace PhotoAward.PhotoManagement
                         Title = photo.Title,
                         Id = photoId
                     };
-                    var client = PhotoActorClientFactory.CreateClient(photoActorId);
+                    var client = this._photoActorClientFactory.CreateClient(photoActorId);
                     var result = await client.SetPhoto(data, CancellationToken.None);
-                  
+
 
                     //Photo einem Member zuordnen
-                    
-                    var photoMemberActorDictionary = await StateManager.GetOrAddAsync<IReliableDictionary<string, List<ActorId>>>(
+
+                    /*var photoMemberActorDictionary = await StateManager.GetOrAddAsync<IReliableDictionary<string, List<ActorId>>>(
                         PhotoActorMemberDictName);
                     var conditionalActorList = await photoMemberActorDictionary.TryGetValueAsync(tx, member.Result.Id.ToString());
                     var actorList = !conditionalActorList.HasValue ? new List<ActorId>() : conditionalActorList.Value;
                     actorList.Add(photoActorId);
-                    await photoMemberActorDictionary.SetAsync(tx, member.Result.Id.ToString(), actorList);
+                    await photoMemberActorDictionary.SetAsync(tx, member.Result.Id.ToString(), actorList);*/
+
+
+                    await this._photoManagementStates.AddPhotoToMember(tx, member.Result.Id, photoActorId);
+
                     await tx.CommitAsync();
 
                     return new PhotoManagementData()
@@ -154,10 +176,10 @@ namespace PhotoAward.PhotoManagement
         {
             try
             {
-                using (var tx = StateManager.CreateTransaction())
+                using (var tx = _photoManagementStates.CreateTransaction())
                 {
                     var actorId = await GetPhotoActorId(id, tx);
-                    var client = PhotoActorClientFactory.CreateClient(actorId.Value);
+                    var client = _photoActorClientFactory.CreateClient(actorId.Value);
                     var result = await client.GetPhoto(CancellationToken.None);
                     return new PhotoManagementData()
                     {
@@ -177,12 +199,8 @@ namespace PhotoAward.PhotoManagement
 
         private async Task<ConditionalValue<ActorId>> GetPhotoActorId(Guid id, ITransaction tx)
         {
-//Actor für dieses Photo
-            var photoActorState = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>
-                (PhotoactorsDictName);
-
-            //PhotoActorMemberDictName
-            var actorId = await photoActorState.TryGetValueAsync(tx, id.ToString());
+            //Actor für dieses Photo
+            var actorId = await this._photoManagementStates.GetPhotoActorId(tx, id);
             if (!actorId.HasValue)
             {
                 throw new Exception("Actor for image not found!");
@@ -192,22 +210,18 @@ namespace PhotoAward.PhotoManagement
 
         public async Task<List<PhotoManagementData>> GetPhotos(string email)
         {
-            using (var tx = StateManager.CreateTransaction())
+            using (var tx = _photoManagementStates.CreateTransaction())
             {
                 //Member mit dieser Emailadresse ermitteln
-                var member = MemberManagementClientFactory.CreateMemberManagementClient().GetMember(email);
+                var member = this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(email);
                 if (member?.Result == null) throw new Exception("Member not found");
 
-                var photoMemberActorDictionary = await StateManager
-                    .GetOrAddAsync<IReliableDictionary<string, List<ActorId>>>(
-                        PhotoActorMemberDictName);
-                var conditionalActorList = await photoMemberActorDictionary.TryGetValueAsync(tx, member.Result.Id.ToString());
-                var actorList = !conditionalActorList.HasValue ? new List<ActorId>() : conditionalActorList.Value;
+                var actorList =  await this._photoManagementStates.GetPhotoActorIdListOfMember(tx, member.Result.Id);
                 var photoList = new List<PhotoManagementData>();
                 //Gibt es bereits einen Actor für dieses Photo. Wenn ja, Exception ...
                 foreach (ActorId imageActorId in actorList.AsParallel())
                 {
-                    var client = PhotoActorClientFactory.CreateClient(imageActorId);
+                    var client = _photoActorClientFactory.CreateClient(imageActorId);
                     var result = await client.GetPhoto(CancellationToken.None);
                     photoList.Add(new PhotoManagementData()
                     {
@@ -226,11 +240,11 @@ namespace PhotoAward.PhotoManagement
         {
             try
             {
-                using (var tx = StateManager.CreateTransaction())
+                using (var tx = _photoManagementStates.CreateTransaction())
                 {
                     //photoActor ermitteln
                     var actorId = await GetPhotoActorId(photoId, tx);
-                    var client = PhotoActorClientFactory.CreateClient(actorId.Value);
+                    var client = _photoActorClientFactory.CreateClient(actorId.Value);
                     var infos = await client.GetComments( CancellationToken.None);
                     return infos.Select(i => new CommentData()
                     {
@@ -255,17 +269,17 @@ namespace PhotoAward.PhotoManagement
         {
             try
             {
-                using (var tx = StateManager.CreateTransaction())
+                using (var tx = _photoManagementStates.CreateTransaction())
                 {
                     
                     //Member mit dieser Emailadresse ermitteln
-                    var memberdto = MemberManagementClientFactory.CreateMemberManagementClient().GetMember(comment.Email);
+                    var memberdto = this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(comment.Email);
                     if (memberdto?.Result == null) throw new Exception("Member not found");
                     var member = memberdto.Result;
 
                     //photoActor ermitteln
                     var actorId = await GetPhotoActorId(comment.PhotoId, tx);
-                    var client = PhotoActorClientFactory.CreateClient(actorId.Value);
+                    var client = _photoActorClientFactory.CreateClient(actorId.Value);
                     var ci = await client.AddComment(new CommentInfo()
                     {
                         AuthorId = member.Id,

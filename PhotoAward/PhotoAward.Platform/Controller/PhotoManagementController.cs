@@ -9,11 +9,18 @@ namespace PhotoAward.Platform.Controller
     [RoutePrefix("api/Photo")]
     public class PhotoManagementController : ApiController
     {
+        private readonly IPhotoManagementClientFactory _photoManagementClientFactory;
+
+        public PhotoManagementController(IPhotoManagementClientFactory photoManagementClientFactory)
+        {
+            _photoManagementClientFactory = photoManagementClientFactory;
+        }
+
         [HttpPost]
         [Route("Add")]
         public async Task<PhotoManagementData> Add(PhotoUploadData uploadData)
         {
-            var client = PhotoManagementClientFactory.CreatePhotoClient();
+            var client = this._photoManagementClientFactory.CreatePhotoClient();
             var result = await client.AddPhoto(uploadData);
             return result;
         }
@@ -22,7 +29,7 @@ namespace PhotoAward.Platform.Controller
         [Route("Get/{id}")]
         public async Task<PhotoManagementData> Get(Guid id)
         {
-            var client = PhotoManagementClientFactory.CreatePhotoClient();
+            var client = this._photoManagementClientFactory.CreatePhotoClient();
             var result = await client.GetPhoto(id);
             return result;
         }
@@ -31,7 +38,7 @@ namespace PhotoAward.Platform.Controller
         [Route("GetThumbnailsOfMember/{email}")]
         public async Task<List<PhotoManagementData>> GetImagesOfMember(string email)
         {
-            var client = PhotoManagementClientFactory.CreatePhotoClient();
+            var client = this._photoManagementClientFactory.CreatePhotoClient();
             var result = await client.GetPhotos(email);
             return result;
         }
@@ -40,7 +47,7 @@ namespace PhotoAward.Platform.Controller
         [Route("GetComments/{photoId}")]
         public async Task<List<CommentData>> GetComments(Guid photoId)
         {
-            var client = PhotoManagementClientFactory.CreateCommentsClient();
+            var client = this._photoManagementClientFactory.CreateCommentsClient();
             var result = await client.GetComments(photoId);
             return result;
         }
@@ -49,7 +56,7 @@ namespace PhotoAward.Platform.Controller
         [Route("AddComment")]
         public async Task<CommentData> AddComment(CommentUploadData uploadData)
         {
-            var client = PhotoManagementClientFactory.CreateCommentsClient();
+            var client = this._photoManagementClientFactory.CreateCommentsClient();
             var result = await client.AddComment(uploadData);
             return result;
         }

@@ -4,11 +4,11 @@ using Microsoft.ServiceFabric.Services.Remoting.Client;
 
 namespace PhotoAward.MemberManagement.Interfaces
 {
-    public static class MemberManagementClientFactory
+    public class MemberManagementClientFactory : IMemberManagementClientFactory
     {
         private static readonly Uri ServiceUrl = new Uri("fabric:/PhotoAward/MemberManagement");
 
-        public static IMemberManagement CreateMemberManagementClient()
+        public IMemberManagement CreateMemberManagementClient()
         {
             return ServiceProxy.Create<IMemberManagement>(ServiceUrl, new ServicePartitionKey(0));
         }

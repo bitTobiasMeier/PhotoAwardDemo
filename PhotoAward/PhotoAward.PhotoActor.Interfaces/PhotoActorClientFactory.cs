@@ -4,11 +4,16 @@ using Microsoft.ServiceFabric.Actors.Client;
 
 namespace PhotoAward.PhotoActor.Interfaces
 {
-    public static class PhotoActorClientFactory
+    public interface IPhotoActorClientFactory
+    {
+        IPhotoActor CreateClient(ActorId photoActorId);
+    }
+
+    public  class PhotoActorClientFactory : IPhotoActorClientFactory
     {
         private static readonly Uri ServiceUrl = new Uri("fabric:/PhotoAward/PhotoActorService");
 
-        public static IPhotoActor CreateClient(ActorId photoActorId)
+        public  IPhotoActor CreateClient(ActorId photoActorId)
         {
             var actor = ActorProxy.Create<IPhotoActor>(photoActorId, ServiceUrl);
             return actor;

@@ -7,11 +7,18 @@ namespace PhotoAward.Platform.Controller
     [RoutePrefix("api/Member")]
     public class MemberManagementController : ApiController
     {
+        private readonly IMemberManagementClientFactory _memberManagementClientFactory;
+
+        public MemberManagementController(IMemberManagementClientFactory memberManagementClientFactory)
+        {
+            _memberManagementClientFactory = memberManagementClientFactory;
+        }
+
         [HttpPost]
         [Route("Add")]
         public async Task<MemberDto> Add(MemberDto member)
         {
-            var client = MemberManagementClientFactory.CreateMemberManagementClient();
+            var client = this._memberManagementClientFactory.CreateMemberManagementClient();
             var result = await client.AddMember(member);
             return result;
         }
@@ -20,7 +27,7 @@ namespace PhotoAward.Platform.Controller
         [Route("Get/{email}")]
         public async Task<MemberDto> Get(string email)
         {
-            var client = MemberManagementClientFactory.CreateMemberManagementClient();
+            var client = this._memberManagementClientFactory.CreateMemberManagementClient();
             var result = await client.GetMember(email);
             return result;
         }

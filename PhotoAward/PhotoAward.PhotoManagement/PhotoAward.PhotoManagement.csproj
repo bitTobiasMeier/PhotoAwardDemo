@@ -77,6 +77,8 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPhotoManagementStates.cs" />
+    <Compile Include="PhotoManagementStates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PhotoManagement.cs" />
     <Compile Include="Program.cs" />
