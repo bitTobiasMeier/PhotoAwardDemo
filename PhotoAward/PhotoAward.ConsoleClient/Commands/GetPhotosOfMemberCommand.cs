@@ -24,7 +24,7 @@ namespace PhotoAward.ConsoleClient.Commands
                     var name = Path.Combine(targetDir, row.FileName);
                     File.WriteAllBytes(name,row.ThumbnailBytes);
                 }
-                await WriteResultAsync(result);
+                Console.WriteLine("Vorschauen wurden erfolgreich ins Verzeichnis exportiert!");
             }
             catch (Exception ex)
             {

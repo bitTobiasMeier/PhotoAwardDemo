@@ -51,8 +51,10 @@
   <ItemGroup>
     <Compile Include="Commands\AddMemberCommand.cs" />
     <Compile Include="Commands\AddPhotoCommand.cs" />
+    <Compile Include="Commands\AddPhotoCommentCommand.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\GetMemberCommand.cs" />
+    <Compile Include="Commands\GetPhotoCommentsCommand.cs" />
     <Compile Include="Commands\GetPhotosOfMemberCommand.cs" />
     <Compile Include="Commands\PingCommand.cs" />
     <Compile Include="Program.cs" />

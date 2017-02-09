@@ -5,21 +5,19 @@ using PhotoAward.PhotoManagement.Interfaces;
 
 namespace PhotoAward.ConsoleClient.Commands
 {
-    public class AddPhotoCommand : Command
+    public class AddPhotoCommentCommand : Command
     {
         public override async Task ExecuteAsync(string[] args)
         {
             try
             {
-                var email = args[0];
-                var filename = args[1];
-                var title = args[2];
-
-                var data = System.IO.File.ReadAllBytes(filename);
-
-                var photoUploadData = new PhotoUploadData() {Email = email, FileName  = filename, Title = title, Data = data };
+                var photoId = new Guid(args[0]);
+                var email = args[1];
+                var comment = args[2];
+                
+                var commentUploadData = new CommentUploadData() { Email = email, PhotoId = photoId, Comment = comment, CreateDate = DateTime.Now};
                 var client = new HttpClient();
-                var result = await client.PostAsJsonAsync(BaseUrl + "/Photo/Add", photoUploadData);
+                var result = await client.PostAsJsonAsync(BaseUrl + "/Photo/AddComment", commentUploadData);
                 await WriteResultAsync(result);
             }
             catch (Exception ex)

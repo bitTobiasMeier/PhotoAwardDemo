@@ -251,7 +251,7 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
-        public async Task<CommentData> AddComment(CommentUplodateData comment)
+        public async Task<CommentData> AddComment(CommentUploadData comment)
         {
             try
             {

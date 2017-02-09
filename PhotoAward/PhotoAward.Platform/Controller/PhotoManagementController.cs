@@ -36,6 +36,23 @@ namespace PhotoAward.Platform.Controller
             return result;
         }
 
+        [HttpGet]
+        [Route("GetComments/{photoId}")]
+        public async Task<List<CommentData>> GetComments(Guid photoId)
+        {
+            var client = PhotoManagementClientFactory.CreateCommentsClient();
+            var result = await client.GetComments(photoId);
+            return result;
+        }
+
+        [HttpPost]
+        [Route("AddComment")]
+        public async Task<CommentData> AddComment(CommentUploadData uploadData)
+        {
+            var client = PhotoManagementClientFactory.CreateCommentsClient();
+            var result = await client.AddComment(uploadData);
+            return result;
+        }
 
     }
 

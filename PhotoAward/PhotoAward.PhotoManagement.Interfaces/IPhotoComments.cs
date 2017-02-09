@@ -8,6 +8,6 @@ namespace PhotoAward.PhotoManagement.Interfaces
     public interface IPhotoComments : IService
     {
         Task<List<CommentData>> GetComments(Guid photoId);
-        Task<CommentData> AddComment(CommentUplodateData comment);
+        Task<CommentData> AddComment(CommentUploadData comment);
     }
 }

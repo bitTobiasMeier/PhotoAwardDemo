@@ -69,7 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommentData.cs" />
-    <Compile Include="CommentUplodateData.cs" />
+    <Compile Include="CommentUploadData.cs" />
     <Compile Include="IPhotoComments.cs" />
     <Compile Include="IPhotoManagement.cs" />
     <Compile Include="PhotoManagementClientFactory.cs" />

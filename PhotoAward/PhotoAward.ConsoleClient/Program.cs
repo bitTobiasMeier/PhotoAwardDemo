@@ -16,7 +16,11 @@ namespace PhotoAward.ConsoleClient
             {"getMember",new GetMemberCommand() },
             {"addMember",new AddMemberCommand() },
             { "addPhoto",new AddPhotoCommand() },
-            {"getPhotosOfMember",new GetPhotosOfMemberCommand() }
+            {
+                "getPhotosOfMember",new GetPhotosOfMemberCommand() 
+            },
+            { "addPhotoComment",new AddPhotoCommentCommand() },
+            { "getComments",new GetPhotoCommentsCommand() },
 
         };
 

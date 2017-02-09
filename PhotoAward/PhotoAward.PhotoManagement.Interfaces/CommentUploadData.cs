@@ -2,7 +2,7 @@
 
 namespace PhotoAward.PhotoManagement.Interfaces
 {
-    public class CommentUplodateData
+    public class CommentUploadData
     {
         public string Comment { get; set; }
         public string Email { get; set; }
