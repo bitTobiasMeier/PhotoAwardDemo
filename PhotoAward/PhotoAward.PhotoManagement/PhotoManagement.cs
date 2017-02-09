@@ -266,11 +266,10 @@ namespace PhotoAward.PhotoManagement
                     //photoActor ermitteln
                     var actorId = await GetPhotoActorId(comment.PhotoId, tx);
                     var client = PhotoActorClientFactory.CreateClient(actorId.Value);
-                    var ci = client.AddComment(new CommentInfo()
+                    var ci = await client.AddComment(new CommentInfo()
                     {
                         AuthorId = member.Id,
                         PhotoId = comment.PhotoId,
-                        Id = Guid.NewGuid(),
                         Comment = comment.Comment,
                         CommentDate = comment.CreateDate
                     }, CancellationToken.None);
@@ -282,8 +281,8 @@ namespace PhotoAward.PhotoManagement
                          AuthorId = member.Id,
                          PhotoId = comment.PhotoId,
                          CommentDate = comment.CreateDate,
-                         Comment = ci.Result.Comment,
-                         Id = ci.Result.Id
+                         Comment = ci.Comment,
+                         Id = ci.Id
                      };
                   
                 }

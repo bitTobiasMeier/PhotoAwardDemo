@@ -16,7 +16,7 @@ namespace PhotoAward.PhotoActor
         }
 
         [DataMember]
-        private List<PhotoComment> _comments;
+        private List<PhotoComment> _comments = new List<PhotoComment>();
 
         public DateTime UploadDate { get; set; }
         public string Title { get; set; }
