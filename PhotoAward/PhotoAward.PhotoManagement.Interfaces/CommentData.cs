@@ -1,12 +1,11 @@
-using System;
-using Microsoft.ServiceFabric.Actors;
+﻿using System;
 
-namespace PhotoAward.PhotoActor.Interfaces
+namespace PhotoAward.PhotoManagement.Interfaces
 {
-    public class CommentInfo
+    public class CommentData
     {
         public string Comment { get; set; }
-        public Guid AuthorId { get; set; }
+        public Guid ? AuthorId { get; set; }
         public Guid PhotoId { get; set; }
         public DateTime CommentDate { get; set; }
         public Guid? Id { get; set; }

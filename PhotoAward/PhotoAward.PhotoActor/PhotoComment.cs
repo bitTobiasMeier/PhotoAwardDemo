@@ -8,7 +8,7 @@ namespace PhotoAward.PhotoActor
     internal class PhotoComment
     {
         public Guid ? Id { get; set; }
-        public ActorId ActorId { get; set; }
+        public Guid AuthorId { get; set; }
         public DateTime CommentDate { get; set; }
         public string Comment { get; set; }
 

@@ -14,25 +14,4 @@ namespace PhotoAward.PhotoManagement.Interfaces
         Task<PhotoManagementData> GetPhoto(Guid id);
         Task<List<PhotoManagementData>> GetPhotos(string email);
     }
-
-    public interface IPhotoComments : IService
-    {
-    }
-
-    public class PhotoUploadData
-    {
-        public byte[] Data { get; set; }
-        public string FileName { get; set; }
-        public string Title { get; set; }
-        public string Email { get; set; }
-    }
-
-    public class PhotoManagementData
-    {
-        public string FileName { get; set; }
-        public byte [] ThumbnailBytes { get; set; }
-        public string Title { get; set; }
-
-        public Guid ? Id { get; set; }
-    }
 }

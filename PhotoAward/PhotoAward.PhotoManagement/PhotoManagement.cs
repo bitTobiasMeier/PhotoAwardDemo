@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors;
+using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting;
@@ -155,16 +156,7 @@ namespace PhotoAward.PhotoManagement
             {
                 using (var tx = StateManager.CreateTransaction())
                 {
-                    //Gibt es bereits einen Actor für dieses Photo. Wenn ja, Exception ...
-                    var photoActorState = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>
-                        (PhotoactorsDictName);
-            
-                    //PhotoActorMemberDictName
-                    var actorId = await photoActorState.TryGetValueAsync(tx, id.ToString());
-                    if (!actorId.HasValue)
-                    {
-                        throw  new Exception("Actor for image not found!");
-                    }
+                    var actorId = await GetPhotoActorId(id, tx);
                     var client = PhotoActorClientFactory.CreateClient(actorId.Value);
                     var result = await client.GetPhoto(CancellationToken.None);
                     return new PhotoManagementData()
@@ -181,6 +173,21 @@ namespace PhotoAward.PhotoManagement
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 throw;
             }
+        }
+
+        private async Task<ConditionalValue<ActorId>> GetPhotoActorId(Guid id, ITransaction tx)
+        {
+//Actor für dieses Photo
+            var photoActorState = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>
+                (PhotoactorsDictName);
+
+            //PhotoActorMemberDictName
+            var actorId = await photoActorState.TryGetValueAsync(tx, id.ToString());
+            if (!actorId.HasValue)
+            {
+                throw new Exception("Actor for image not found!");
+            }
+            return actorId;
         }
 
         public async Task<List<PhotoManagementData>> GetPhotos(string email)
@@ -212,6 +219,79 @@ namespace PhotoAward.PhotoManagement
                 }
                 return photoList;
 
+            }
+        }
+
+        public async Task<List<CommentData>> GetComments(Guid photoId)
+        {
+            try
+            {
+                using (var tx = StateManager.CreateTransaction())
+                {
+                    //photoActor ermitteln
+                    var actorId = await GetPhotoActorId(photoId, tx);
+                    var client = PhotoActorClientFactory.CreateClient(actorId.Value);
+                    var infos = await client.GetComments( CancellationToken.None);
+                    return infos.Select(i => new CommentData()
+                    {
+                        AuthorId = i.AuthorId,
+                        Id = i.Id,
+                        PhotoId = i.PhotoId,
+                        Comment = i.Comment,
+                        CommentDate = i.CommentDate
+                    }).ToList();
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public async Task<CommentData> AddComment(CommentUplodateData comment)
+        {
+            try
+            {
+                using (var tx = StateManager.CreateTransaction())
+                {
+                    
+                    //Member mit dieser Emailadresse ermitteln
+                    var memberdto = MemberManagementClientFactory.CreateMemberManagementClient().GetMember(comment.Email);
+                    if (memberdto?.Result == null) throw new Exception("Member not found");
+                    var member = memberdto.Result;
+
+                    //photoActor ermitteln
+                    var actorId = await GetPhotoActorId(comment.PhotoId, tx);
+                    var client = PhotoActorClientFactory.CreateClient(actorId.Value);
+                    var ci = client.AddComment(new CommentInfo()
+                    {
+                        AuthorId = member.Id,
+                        PhotoId = comment.PhotoId,
+                        Id = Guid.NewGuid(),
+                        Comment = comment.Comment,
+                        CommentDate = comment.CreateDate
+                    }, CancellationToken.None);
+
+                    await tx.CommitAsync();
+
+                    return new CommentData()
+                     {
+                         AuthorId = member.Id,
+                         PhotoId = comment.PhotoId,
+                         CommentDate = comment.CreateDate,
+                         Comment = ci.Result.Comment,
+                         Id = ci.Result.Id
+                     };
+                  
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                throw;
             }
         }
     }

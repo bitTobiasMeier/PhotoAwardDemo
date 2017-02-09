@@ -75,7 +75,7 @@ namespace PhotoAward.PhotoActor
 
         public async Task<PhotoInfo> GetPhoto(CancellationToken cancellationToken)
         {
-            var data = await this.StateManager.GetStateAsync<PhotoData>(DataKey, cancellationToken);
+            var data = await GetPhotoData(cancellationToken);
             return new PhotoInfo()
             {
                 Id = data.Id,
@@ -86,13 +86,19 @@ namespace PhotoAward.PhotoActor
             };
         }
 
+        private async Task<PhotoData> GetPhotoData(CancellationToken cancellationToken)
+        {
+            var data = await this.StateManager.GetStateAsync<PhotoData>(DataKey, cancellationToken);
+            return data;
+        }
+
         public async Task<CommentInfo> AddComment(CommentInfo comment, CancellationToken cancellationToken)
         {
             var data = await this.StateManager.GetStateAsync<PhotoData>(DataKey, cancellationToken);
             if (comment.Id != null) throw new Exception("Kommentar exisitiert bereits");
             var photoComment = new PhotoComment()
             {
-                ActorId = comment.ActorId,
+                AuthorId = comment.AuthorId,
                 Comment = comment.Comment,
                 CommentDate = comment.CommentDate,
                 Id = Guid.NewGuid()
@@ -104,15 +110,17 @@ namespace PhotoAward.PhotoActor
 
         public async Task<List<CommentInfo>> GetComments(CancellationToken cancellationToken)
         {
-            var data = await this.StateManager.GetStateAsync<PhotoData>(DataKey, cancellationToken);
+            var photo = await this.GetPhotoData(cancellationToken);
+            
             return
-                data.Comments.OrderByDescending(c=>c.CommentDate).Select(
+                photo.Comments.OrderByDescending(c=>c.CommentDate).Select(
                     c =>
                         new CommentInfo()
                         {
-                            ActorId = c.ActorId,
+                            AuthorId = c.AuthorId,
                             Comment = c.Comment,
                             Id = c.Id,
+                            PhotoId = photo.Id,
                             CommentDate = c.CommentDate
                         }).ToList();
         }
