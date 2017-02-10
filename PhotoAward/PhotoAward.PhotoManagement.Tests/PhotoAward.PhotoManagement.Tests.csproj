@@ -43,8 +43,7 @@
       <HintPath>..\packages\Castle.Core.4.0.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceFabric.Actors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.ServiceFabric.Actors.2.4.145\lib\net45\Microsoft.ServiceFabric.Actors.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.Actors.2.4.164\lib\net45\Microsoft.ServiceFabric.Actors.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceFabric.Data, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
       <HintPath>..\packages\Microsoft.ServiceFabric.Data.2.4.164\lib\net45\Microsoft.ServiceFabric.Data.dll</HintPath>
@@ -72,7 +71,7 @@
       <HintPath>..\packages\Moq.4.5.30\lib\net45\Moq.dll</HintPath>
     </Reference>
     <Reference Include="ServiceFabricServiceModel, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.Services.2.4.164\lib\net45\ServiceFabricServiceModel.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.Actors.2.4.164\lib\net45\ServiceFabricServiceModel.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -122,6 +121,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.1.8-rc2\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.1.8-rc2\build\net45\MSTest.TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\MSTest.TestAdapter.1.1.8-rc2\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MSTest.TestAdapter.1.1.8-rc2\build\net45\MSTest.TestAdapter.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ServiceFabric.Actors.2.4.164\build\Microsoft.ServiceFabric.Actors.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ServiceFabric.Actors.2.4.164\build\Microsoft.ServiceFabric.Actors.targets'))" />
   </Target>
   <Import Project="..\packages\MSTest.TestAdapter.1.1.8-rc2\build\net45\MSTest.TestAdapter.targets" Condition="Exists('..\packages\MSTest.TestAdapter.1.1.8-rc2\build\net45\MSTest.TestAdapter.targets')" />
+  <Import Project="..\packages\Microsoft.ServiceFabric.Actors.2.4.164\build\Microsoft.ServiceFabric.Actors.targets" Condition="Exists('..\packages\Microsoft.ServiceFabric.Actors.2.4.164\build\Microsoft.ServiceFabric.Actors.targets')" />
 </Project>

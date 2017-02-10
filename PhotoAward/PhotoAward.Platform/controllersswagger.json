@@ -1,0 +1,354 @@
+﻿{
+  "swagger": "2.0",
+  "info": {
+    "title": "Web API Swagger specification",
+    "version": "1.0.0"
+  },
+  "schemes": [],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/Member/Add": {
+      "post": {
+        "tags": [
+          "MemberManagement"
+        ],
+        "operationId": "MemberManagement_Add",
+        "parameters": [
+          {
+            "name": "member",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/MemberDto"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MemberDto"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Member/Get/{email}": {
+      "get": {
+        "tags": [
+          "MemberManagement"
+        ],
+        "operationId": "MemberManagement_Get",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MemberDto"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Photo/Add": {
+      "post": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_Add",
+        "parameters": [
+          {
+            "name": "uploadData",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/PhotoUploadData"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PhotoManagementData"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Photo/Get/{id}": {
+      "get": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_Get",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "format": "guid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PhotoManagementData"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Photo/GetThumbnailsOfMember/{email}": {
+      "get": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_GetImagesOfMember",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PhotoManagementData"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Photo/GetComments/{photoId}": {
+      "get": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_GetComments",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "photoId",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "format": "guid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/CommentData"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Photo/AddComment": {
+      "post": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_AddComment",
+        "parameters": [
+          {
+            "name": "uploadData",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CommentUploadData"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CommentData"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Test/Ping": {
+      "get": {
+        "tags": [
+          "Test"
+        ],
+        "operationId": "Test_Ping",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "MemberDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Id"
+      ],
+      "properties": {
+        "FirstName": {
+          "type": "string"
+        },
+        "Surname": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "EntryDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "LastUpdate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "PhotoUploadData": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Data": {
+          "type": "string",
+          "format": "byte"
+        },
+        "FileName": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        }
+      }
+    },
+    "PhotoManagementData": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "FileName": {
+          "type": "string"
+        },
+        "ThumbnailBytes": {
+          "type": "string",
+          "format": "byte"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "CommentData": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "PhotoId",
+        "CommentDate"
+      ],
+      "properties": {
+        "Comment": {
+          "type": "string"
+        },
+        "AuthorId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "PhotoId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "CommentDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Id": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "CommentUploadData": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "PhotoId",
+        "CreateDate"
+      ],
+      "properties": {
+        "Comment": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
+        },
+        "PhotoId": {
+          "type": "string",
+          "format": "guid"
+        },
+        "CreateDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {}
+}

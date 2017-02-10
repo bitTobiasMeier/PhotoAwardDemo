@@ -17,7 +17,7 @@ namespace PhotoAward.PhotoManagement.Tests
     public class PhotoMamangementTests
     {
         [TestMethod]
-        public async Task Test1()
+        public async Task AddPhotoAndGetPhoto()
         {
             //Arrange
             var email = "info@bridging-it.de";

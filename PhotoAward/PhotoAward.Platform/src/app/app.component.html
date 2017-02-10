@@ -1,0 +1,48 @@
+<h1>
+{{title}}
+</h1>
+
+<div class="ui input">
+
+  <div class="ui two column doubling stackable grid container">
+  <div class="column">
+   <form #form="ngForm" (ngSubmit)="login(form.value)">
+  Email: <input type="text" name="email" ngModel [(ngModel)]="email" >
+  <button type="submit" class="ui primary button">Anmelden</button>
+  </form>
+  </div>
+
+  <div class="column">
+    <form #form="ngForm" (ngSubmit)="register(form.value)">
+
+      <div class="ui two column grid">
+  <div class="row">
+    <div class="column">Email:</div>
+    <div class="column"><input type="text" name="email" ngModel [(ngModel)]="email" ></div>
+  </div>
+  <div class="row">
+    <div class="column">Vorname:</div>
+    <div class="column"><input type="text" name="firstname" ngModel [(ngModel)]="firstname" ></div>
+  </div>
+  <div class="row">
+    <div class="column">Nachname</div>
+    <div class="column"><input type="text" name="surname" ngModel [(ngModel)]="surname" ></div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <button type="submit" class="ui primary button">Registrieren</button>
+      </div>
+    </div>
+</div>
+
+  </form>
+  </div>
+
+</div>
+
+
+
+
+
+</div>
+<h3>{{firstname}} {{surname}}<h3>
