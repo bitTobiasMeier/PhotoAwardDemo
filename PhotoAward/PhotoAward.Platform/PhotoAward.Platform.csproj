@@ -112,6 +112,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
     </Reference>
@@ -173,6 +174,7 @@
     <None Include="PackageRoot\ServiceManifest.xml" />
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="photoclub.nswag" />
     <None Include="README.md" />
     <None Include="src\assets\.gitkeep" />
     <None Include="src\tsconfig.json" />
@@ -256,8 +258,8 @@
   </Target>
   -->
   <Target Name="AfterBuild">
-    <Exec Command="$(NSwagExe) webapi2swagger /assembly:$(OutDir)PhotoAward.Platform.exe  /output:controllersswagger.json" />
-    <Exec Command="$(NSwagExe) swagger2tsclient /input:controllersswagger.json /output:PhotoAwardClient\src\App\Shared\Controllers.generated.ts /template:angular2" />
+    <!--  <Exec Command="$(NSwagExe) webapi2swagger /assembly:$(OutDir)PhotoAward.Platform.exe  /output:controllersswagger.json" />
+    <Exec Command="$(NSwagExe) swagger2tsclient /input:controllersswagger.json /output:PhotoAwardClient\src\App\Shared\Controllers.generated.ts /template:angular2" /> -->
   </Target>
   <Import Project="..\packages\NSwag.MSBuild.8.8.0\build\NSwag.MSBuild.targets" Condition="Exists('..\packages\NSwag.MSBuild.8.8.0\build\NSwag.MSBuild.targets')" />
 </Project>
