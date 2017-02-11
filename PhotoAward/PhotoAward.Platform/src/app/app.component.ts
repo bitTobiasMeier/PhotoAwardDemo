@@ -34,7 +34,7 @@ constructor(private _memberManagementClient: MemberManagementClient,
          that.surname = result.surname;
          that.id = result.id;
          that.notMember = false;
-         that.showImagesOfMember();
+         that.showImagesOfMember(that.email);
       },
       (error)=> {
         that.notMember = true;
@@ -46,12 +46,13 @@ constructor(private _memberManagementClient: MemberManagementClient,
 
   }
 
-  async showImagesOfMember (){
-      console.log("Loading images ...");
-         this._photoManagementClient.getImagesOfMember (this.email).subscribe (
+  showImagesOfMember (email: string){
+      const that = this;
+      console.log("Loading images for user " + email);
+         this._photoManagementClient.getImagesOfMember (email).subscribe (
       images => {
         console.log ("Bilder ermittelt");
-        this.photos = images;
+        that.photos = images;
       }, (error)=> {
         console.log(error);
 
@@ -85,7 +86,7 @@ constructor(private _memberManagementClient: MemberManagementClient,
       const files =  this._filesToUpload;
            const filename = files[0].name;
            const result = await this._uploadService.uploadFile(this.email, this.filetitle, filename,  [], files);
-           await this.showImagesOfMember();
+           await this.showImagesOfMember(this.email);
 
     }
   }

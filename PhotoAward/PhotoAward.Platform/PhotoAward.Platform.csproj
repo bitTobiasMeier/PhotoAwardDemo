@@ -248,7 +248,6 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\NSwag.MSBuild.9.2.0\build\NSwag.MSBuild.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NSwag.MSBuild.9.2.0\build\NSwag.MSBuild.props'))" />
-    <Error Condition="!Exists('..\packages\NSwag.MSBuild.8.8.0\build\NSwag.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NSwag.MSBuild.8.8.0\build\NSwag.MSBuild.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -261,5 +260,4 @@
     <!--  <Exec Command="$(NSwagExe) webapi2swagger /assembly:$(OutDir)PhotoAward.Platform.exe  /output:controllersswagger.json" />
     <Exec Command="$(NSwagExe) swagger2tsclient /input:controllersswagger.json /output:PhotoAwardClient\src\App\Shared\Controllers.generated.ts /template:angular2" /> -->
   </Target>
-  <Import Project="..\packages\NSwag.MSBuild.8.8.0\build\NSwag.MSBuild.targets" Condition="Exists('..\packages\NSwag.MSBuild.8.8.0\build\NSwag.MSBuild.targets')" />
 </Project>
