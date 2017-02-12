@@ -30,6 +30,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAward.PhotoManagement.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAward.PhotoManagement.Tests", "PhotoAward.PhotoManagement.Tests\PhotoAward.PhotoManagement.Tests.csproj", "{C99485E0-1914-4994-8907-21B20AF95281}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{163D5579-CDBE-45D2-B239-43C3C3CEAC59}"
+	ProjectSection(SolutionItems) = preProject
+		tests.runsettings = tests.runsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

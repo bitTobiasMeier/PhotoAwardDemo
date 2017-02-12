@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RunSettings >
+<Runconfiguration>
+  <ResultsDirectory>.\TestResults</ResultsDirectory>
+  <TargetPlatform>x64</TargetPlatform>
+  <TargetFrameworkVersion>Framework45</TargetFrameworkVersion>
+</Runconfiguration>
+</RunSettings>
