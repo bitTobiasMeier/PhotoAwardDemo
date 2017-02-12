@@ -66,9 +66,7 @@ namespace PhotoAward.PhotoActor
             data.FileName = photo.Filename;
             data.Title = photo.Title;
             
-
-            //var data = new MemberData();
-            await this.StateManager.AddOrUpdateStateAsync(DataKey, data, (key, value) => data, cancellationToken);
+            await this.StateManager.SetStateAsync(DataKey, data, cancellationToken);
             photo.UploadDate = data.UploadDate;
             return photo;
         }
@@ -105,6 +103,7 @@ namespace PhotoAward.PhotoActor
             };
             data.Comments.Add(photoComment);
             comment.Id = photoComment.Id;
+            await this.StateManager.SetStateAsync(DataKey, data, cancellationToken);
             return comment;
         }
 

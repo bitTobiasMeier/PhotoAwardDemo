@@ -11,7 +11,6 @@ using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting;
-using Microsoft.ServiceFabric.Services.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using PhotoAward.MemberManagement.Interfaces;
 using PhotoAward.PhotoActor.Interfaces;
@@ -19,21 +18,6 @@ using PhotoAward.PhotoManagement.Interfaces;
 
 namespace PhotoAward.PhotoManagement
 {
-    public class TestableStatefullService : StatefulService
-    {
-        public TestableStatefullService(StatefulServiceContext serviceContext) : base(serviceContext)
-        {
-        }
-
-        public TestableStatefullService(StatefulServiceContext serviceContext, IReliableStateManagerReplica reliableStateManagerReplica) : base(serviceContext, reliableStateManagerReplica)
-        {
-            
-        }
-
-        //StateManager verstecken, so dass immer der Wrapper verwendet wird.
-        protected new object StateManager => null;
-    }
-
     /// <summary>
     /// An instance of this class is created for each service replica by the Service Fabric runtime.
     /// </summary>
@@ -143,17 +127,11 @@ namespace PhotoAward.PhotoManagement
 
                     //Photo einem Member zuordnen
 
-                    /*var photoMemberActorDictionary = await StateManager.GetOrAddAsync<IReliableDictionary<string, List<ActorId>>>(
-                        PhotoActorMemberDictName);
-                    var conditionalActorList = await photoMemberActorDictionary.TryGetValueAsync(tx, member.Result.Id.ToString());
-                    var actorList = !conditionalActorList.HasValue ? new List<ActorId>() : conditionalActorList.Value;
-                    actorList.Add(photoActorId);
-                    await photoMemberActorDictionary.SetAsync(tx, member.Result.Id.ToString(), actorList);*/
-
-
-                    await this._photoManagementStates.AddPhotoToMember(tx, member.Result.Id, photoActorId);
-
+                    await this._photoManagementStates.AddPhotoActorToMemberId(tx, member.Result.Id, photoActorId);
                     await tx.CommitAsync();
+
+                    ServiceEventSource.Current.ServiceMessage(this.Context,
+                                "Photo hinzugefügt von {0}, Photo Id: {1} ", photo.Email, result.Id);
 
                     return new PhotoManagementData()
                     {
@@ -305,6 +283,51 @@ namespace PhotoAward.PhotoManagement
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 throw;
+            }
+        }
+
+        public async Task<List<PhotoMemberInfo>> GetListOfPhotos()
+        {
+            using (var tx = _photoManagementStates.CreateTransaction())
+            {
+                var memberManagementClient = this._memberManagementClientFactory.CreateMemberManagementClient();
+                var tuples = await this._photoManagementStates.GetPhotos(tx);
+                var photoList = new List<PhotoMemberInfo>();
+                foreach (var tuple in tuples)
+                {
+                    try
+                    {
+                        var memberId = tuple.Item1;
+                        var imageActorId = tuple.Item2;
+                        var member = await memberManagementClient.GetMemberOnMemberId(memberId);
+                        if (member == null) throw new Exception("Member not found");
+
+
+                        try
+                        {
+                            var client = _photoActorClientFactory.CreateClient(imageActorId);
+                            var photo = await client.GetPhoto(CancellationToken.None);
+                            photoList.Add(new PhotoMemberInfo()
+                            {
+                                FileName = photo.Filename,
+                                PhotoId = photo.Id,
+                                Title = photo.Title,
+                                Email = member.Email
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            ServiceEventSource.Current.ServiceMessage(this.Context,
+                                "GetListOfPhotos: Actor: {0}: Error: {1}", imageActorId, ex.Message);
+                        }
+                    }
+                    catch (Exception ex2)
+                    {
+                        ServiceEventSource.Current.ServiceMessage(this.Context,
+                                "GetListOfPhotos: Error: {1}", ex2.Message);
+                    }
+                }
+                return photoList;
             }
         }
     }

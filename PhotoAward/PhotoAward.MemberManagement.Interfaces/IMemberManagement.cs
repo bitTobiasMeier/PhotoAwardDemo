@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,5 +12,6 @@ namespace PhotoAward.MemberManagement.Interfaces
         Task<MemberDto> AddMember(MemberDto member);
 
         Task<MemberDto> GetMember(string email);
+        Task<MemberDto> GetMemberOnMemberId(Guid memberId);
     }
 }

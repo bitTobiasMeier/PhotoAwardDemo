@@ -49,9 +49,14 @@ constructor(private _memberManagementClient: MemberManagementClient,
   showImagesOfMember (email: string){
       const that = this;
       console.log("Loading images for user " + email);
-         this._photoManagementClient.getImagesOfMember (email).subscribe (
+      this._photoManagementClient.getImagesOfMember (email).subscribe (
       images => {
-        console.log ("Bilder ermittelt");
+        console.log ("Bilder ermittelt: " );
+        if (images == null) {
+          console.log ("Keine bilder!");
+        } else {
+          console.log ("Bilder Anzahl: " + images.length);
+        }
         that.photos = images;
       }, (error)=> {
         console.log(error);
@@ -87,6 +92,7 @@ constructor(private _memberManagementClient: MemberManagementClient,
            const filename = files[0].name;
            const result = await this._uploadService.uploadFile(this.email, this.filetitle, filename,  [], files);
            await this.showImagesOfMember(this.email);
+           console.log("Upload beendet!");
 
     }
   }

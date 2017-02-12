@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
@@ -36,7 +35,7 @@ namespace PhotoAward.Platform
             {
                 EnableDefaultFiles = true,
                 RequestPath = PathString.Empty,
-                FileSystem = physicalFileSystem
+                FileSystem = physicalFileSystem,
             };
 
             fileOptions.DefaultFilesOptions.DefaultFileNames = new[] {"index.html"};
@@ -45,6 +44,7 @@ namespace PhotoAward.Platform
             fileOptions.EnableDirectoryBrowsing = true;
 
             appBuilder.UseWebApi(config);
+            appBuilder.Use(typeof(DoNotCacheMiddleWare));
             appBuilder.UseFileServer(fileOptions);
 
         }

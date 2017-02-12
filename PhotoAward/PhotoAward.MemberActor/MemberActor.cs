@@ -26,12 +26,17 @@ namespace PhotoAward.MemberActor
         [DataContract]
         private class MemberData
         {
+            [DataMember]
             public string FirstName { get; set; }
+            [DataMember]
             public string Surname { get; set; }
-
+            [DataMember]
             public string Email { get; set; }
+            [DataMember]
             public DateTime? EntryDate { get; set; }
+            [DataMember]
             public DateTime? LastUpdate { get; set; }
+            [DataMember]
             public Guid Id { get; set; }
         }
 
@@ -97,9 +102,8 @@ namespace PhotoAward.MemberActor
             data.Surname = member.Surname;
             data.FirstName = member.FirstName;
             data.Id = member.Id;
-
-            //var data = new MemberData();
-            await this.StateManager.AddOrUpdateStateAsync(DataKey, data, (key, value) => data, cancellationToken);
+            
+            await this.StateManager.SetStateAsync<MemberData>(DataKey, data, cancellationToken);
             member.EntryDate = data.EntryDate;
             member.LastUpdate = data.LastUpdate;
             return member;

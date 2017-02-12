@@ -9,7 +9,7 @@ using Microsoft.ServiceFabric.Actors.Runtime;
 
 namespace PhotoAward.MemberActor
 {
-    [EventSource(Name = "MyCompany-PhotoAward-PhotoAward.MemberActor")]
+    [EventSource(Name = "BridgingIT-PhotoAward-PhotoAward.MemberActor")]
     internal sealed class ActorEventSource : EventSource
     {
         public static readonly ActorEventSource Current = new ActorEventSource();

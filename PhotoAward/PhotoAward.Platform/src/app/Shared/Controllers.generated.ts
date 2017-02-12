@@ -5,7 +5,7 @@
 // </auto-generated>
 //----------------------
 
-import 'rxjs/Rx'; 
+import 'rxjs/Rx';
 import {Observable} from 'rxjs/Observable';
 import {Injectable, Inject, Optional, OpaqueToken} from '@angular/core';
 import {Http, Headers, Response, RequestOptionsArgs} from '@angular/http';
@@ -19,25 +19,25 @@ export interface IMemberManagementClient {
 
 @Injectable()
 export class MemberManagementClient implements IMemberManagementClient {
-    private http: Http = null; 
-    private baseUrl: string = undefined; 
+    private http: Http = null;
+    private baseUrl: string = undefined;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
     constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http; 
-        this.baseUrl = baseUrl ? baseUrl : ""; 
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
     }
 
     add(member: MemberDto): Observable<MemberDto> {
         let url_ = this.baseUrl + "/api/Member/Add";
 
         const content_ = JSON.stringify(member ? member.toJS() : null);
-        
+
         let options_ = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8", 
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
         };
@@ -58,7 +58,7 @@ export class MemberManagementClient implements IMemberManagementClient {
 
     protected processAdd(response: Response): MemberDto {
         const responseText = response.text();
-        const status = response.status; 
+        const status = response.status;
 
         if (status === 200) {
             let result200: MemberDto = null;
@@ -78,12 +78,12 @@ export class MemberManagementClient implements IMemberManagementClient {
         url_ = url_.replace("{email}", encodeURIComponent("" + email));
 
         const content_ = "";
-        
+
         let options_ = {
             body: content_,
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8", 
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
         };
@@ -104,7 +104,7 @@ export class MemberManagementClient implements IMemberManagementClient {
 
     protected processGet(response: Response): MemberDto {
         const responseText = response.text();
-        const status = response.status; 
+        const status = response.status;
 
         if (status === 200) {
             let result200: MemberDto = null;
@@ -133,25 +133,25 @@ export interface IPhotoManagementClient {
 
 @Injectable()
 export class PhotoManagementClient implements IPhotoManagementClient {
-    private http: Http = null; 
-    private baseUrl: string = undefined; 
+    private http: Http = null;
+    private baseUrl: string = undefined;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
 
     constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-        this.http = http; 
-        this.baseUrl = baseUrl ? baseUrl : ""; 
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
     }
 
     add(uploadData: PhotoUploadData): Observable<PhotoManagementData> {
         let url_ = this.baseUrl + "/api/Photo/Add";
 
         const content_ = JSON.stringify(uploadData ? uploadData.toJS() : null);
-        
+
         let options_ = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8", 
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
         };
@@ -172,7 +172,7 @@ export class PhotoManagementClient implements IPhotoManagementClient {
 
     protected processAdd(response: Response): PhotoManagementData {
         const responseText = response.text();
-        const status = response.status; 
+        const status = response.status;
 
         if (status === 200) {
             let result200: PhotoManagementData = null;
@@ -192,12 +192,12 @@ export class PhotoManagementClient implements IPhotoManagementClient {
         url_ = url_.replace("{id}", encodeURIComponent("" + id));
 
         const content_ = "";
-        
+
         let options_ = {
             body: content_,
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8", 
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
         };
@@ -218,7 +218,7 @@ export class PhotoManagementClient implements IPhotoManagementClient {
 
     protected processGet(response: Response): PhotoManagementData {
         const responseText = response.text();
-        const status = response.status; 
+        const status = response.status;
 
         if (status === 200) {
             let result200: PhotoManagementData = null;
@@ -237,13 +237,14 @@ export class PhotoManagementClient implements IPhotoManagementClient {
             throw new Error("The parameter 'email' must be defined.");
         url_ = url_.replace("{email}", encodeURIComponent("" + email));
 
+console.log("get images of user: url: " + url_);
         const content_ = "";
-        
+
         let options_ = {
             body: content_,
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8", 
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
         };
@@ -264,7 +265,7 @@ export class PhotoManagementClient implements IPhotoManagementClient {
 
     protected processGetImagesOfMember(response: Response): PhotoManagementData[] {
         const responseText = response.text();
-        const status = response.status; 
+        const status = response.status;
 
         if (status === 200) {
             let result200: PhotoManagementData[] = null;
@@ -288,12 +289,12 @@ export class PhotoManagementClient implements IPhotoManagementClient {
         url_ = url_.replace("{photoId}", encodeURIComponent("" + photoId));
 
         const content_ = "";
-        
+
         let options_ = {
             body: content_,
             method: "get",
             headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8", 
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
         };
@@ -314,7 +315,7 @@ export class PhotoManagementClient implements IPhotoManagementClient {
 
     protected processGetComments(response: Response): CommentData[] {
         const responseText = response.text();
-        const status = response.status; 
+        const status = response.status;
 
         if (status === 200) {
             let result200: CommentData[] = null;
@@ -335,12 +336,12 @@ export class PhotoManagementClient implements IPhotoManagementClient {
         let url_ = this.baseUrl + "/api/Photo/AddComment";
 
         const content_ = JSON.stringify(uploadData ? uploadData.toJS() : null);
-        
+
         let options_ = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8", 
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
         };
@@ -361,7 +362,7 @@ export class PhotoManagementClient implements IPhotoManagementClient {
 
     protected processAddComment(response: Response): CommentData {
         const responseText = response.text();
-        const status = response.status; 
+        const status = response.status;
 
         if (status === 200) {
             let result200: CommentData = null;
@@ -378,12 +379,12 @@ export class PhotoManagementClient implements IPhotoManagementClient {
         let url_ = this.baseUrl + "/api/Photo/UploadPhoto";
 
         const content_ = "";
-        
+
         let options_ = {
             body: content_,
             method: "post",
             headers: new Headers({
-                "Content-Type": "application/json; charset=UTF-8", 
+                "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
         };
@@ -404,7 +405,7 @@ export class PhotoManagementClient implements IPhotoManagementClient {
 
     protected processUploadPhoto(response: Response): any {
         const responseText = response.text();
-        const status = response.status; 
+        const status = response.status;
 
         if (status === 200) {
             let result200: any = null;
@@ -422,12 +423,12 @@ export class PhotoManagementClient implements IPhotoManagementClient {
     }
 }
 
-export class MemberDto { 
-    firstName?: string; 
-    surname?: string; 
-    email?: string; 
-    entryDate?: Date; 
-    lastUpdate?: Date; 
+export class MemberDto {
+    firstName?: string;
+    surname?: string;
+    email?: string;
+    entryDate?: Date;
+    lastUpdate?: Date;
     id: string;
     constructor(data?: any) {
         if (data !== undefined) {
@@ -452,7 +453,7 @@ export class MemberDto {
         data["EntryDate"] = this.entryDate ? this.entryDate.toISOString() : undefined;
         data["LastUpdate"] = this.lastUpdate ? this.lastUpdate.toISOString() : undefined;
         data["Id"] = this.id !== undefined ? this.id : undefined;
-        return data; 
+        return data;
     }
 
     toJSON() {
@@ -465,10 +466,10 @@ export class MemberDto {
     }
 }
 
-export class PhotoUploadData { 
-    data?: string; 
-    fileName?: string; 
-    title?: string; 
+export class PhotoUploadData {
+    data?: string;
+    fileName?: string;
+    title?: string;
     email?: string;
     constructor(data?: any) {
         if (data !== undefined) {
@@ -489,7 +490,7 @@ export class PhotoUploadData {
         data["FileName"] = this.fileName !== undefined ? this.fileName : undefined;
         data["Title"] = this.title !== undefined ? this.title : undefined;
         data["Email"] = this.email !== undefined ? this.email : undefined;
-        return data; 
+        return data;
     }
 
     toJSON() {
@@ -502,10 +503,10 @@ export class PhotoUploadData {
     }
 }
 
-export class PhotoManagementData { 
-    fileName?: string; 
-    thumbnailBytes?: string; 
-    title?: string; 
+export class PhotoManagementData {
+    fileName?: string;
+    thumbnailBytes?: string;
+    title?: string;
     id?: string;
     constructor(data?: any) {
         if (data !== undefined) {
@@ -526,7 +527,7 @@ export class PhotoManagementData {
         data["ThumbnailBytes"] = this.thumbnailBytes !== undefined ? this.thumbnailBytes : undefined;
         data["Title"] = this.title !== undefined ? this.title : undefined;
         data["Id"] = this.id !== undefined ? this.id : undefined;
-        return data; 
+        return data;
     }
 
     toJSON() {
@@ -539,11 +540,11 @@ export class PhotoManagementData {
     }
 }
 
-export class CommentData { 
-    comment?: string; 
-    authorId?: string; 
-    photoId: string; 
-    commentDate: Date; 
+export class CommentData {
+    comment?: string;
+    authorId?: string;
+    photoId: string;
+    commentDate: Date;
     id?: string;
     constructor(data?: any) {
         if (data !== undefined) {
@@ -566,7 +567,7 @@ export class CommentData {
         data["PhotoId"] = this.photoId !== undefined ? this.photoId : undefined;
         data["CommentDate"] = this.commentDate ? this.commentDate.toISOString() : undefined;
         data["Id"] = this.id !== undefined ? this.id : undefined;
-        return data; 
+        return data;
     }
 
     toJSON() {
@@ -579,10 +580,10 @@ export class CommentData {
     }
 }
 
-export class CommentUploadData { 
-    comment?: string; 
-    email?: string; 
-    photoId: string; 
+export class CommentUploadData {
+    comment?: string;
+    email?: string;
+    photoId: string;
     createDate: Date;
     constructor(data?: any) {
         if (data !== undefined) {
@@ -603,7 +604,7 @@ export class CommentUploadData {
         data["Email"] = this.email !== undefined ? this.email : undefined;
         data["PhotoId"] = this.photoId !== undefined ? this.photoId : undefined;
         data["CreateDate"] = this.createDate ? this.createDate.toISOString() : undefined;
-        return data; 
+        return data;
     }
 
     toJSON() {
@@ -618,9 +619,9 @@ export class CommentUploadData {
 
 export class SwaggerException extends Error {
     message: string;
-    status: number; 
-    response: string; 
-    result: any; 
+    status: number;
+    response: string;
+    result: any;
 
     constructor(message: string, status: number, response: string, result: any) {
         super();

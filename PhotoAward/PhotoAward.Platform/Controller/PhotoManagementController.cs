@@ -45,12 +45,23 @@ namespace PhotoAward.Platform.Controller
 
         [HttpGet]
         [Route("GetThumbnailsOfMember/{email}")]
-        public async Task<List<PhotoManagementData>> GetImagesOfMember(string email)
+        public async Task<List<PhotoManagementData>> GetThumbnailsOfMember(string email)
         {
             var client = this._photoManagementClientFactory.CreatePhotoClient();
             var result = await client.GetPhotos(email);
             return result;
         }
+
+        [HttpGet]
+        [Route("GetImagesOfMember")]
+        public async Task<IList<PhotoMemberInfo>> GetImagesOfMember()
+        {
+            var client = this._photoManagementClientFactory.CreatePhotoClient();
+            var result = await client.GetListOfPhotos();
+            return result;
+        }
+
+        
 
         [HttpGet]
         [Route("GetComments/{photoId}")]

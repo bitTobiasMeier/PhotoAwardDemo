@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Data.Collections;
 using Microsoft.ServiceFabric.Services.Communication.Runtime;
 using Microsoft.ServiceFabric.Actors;
+using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Services.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting;
@@ -53,26 +54,11 @@ namespace PhotoAward.MemberManagement
         {
             // TODO: Replace the following sample code with your own logic 
             //       or remove this RunAsync override if it's not needed in your service.
-
-            var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
-
+            
             while (true)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-
-                using (var tx = this.StateManager.CreateTransaction())
-                {
-                    var result = await myDictionary.TryGetValueAsync(tx, "Counter");
-
-                    ServiceEventSource.Current.ServiceMessage(this.Context, "Current Counter Value: {0}",
-                        result.HasValue ? result.Value.ToString() : "Value does not exist.");
-
-                    await myDictionary.AddOrUpdateAsync(tx, "Counter", 0, (key, value) => ++value);
-
-                    // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are 
-                    // discarded, and nothing is saved to the secondary replicas.
-                    await tx.CommitAsync();
-                }
+                
 
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
             }
@@ -89,21 +75,23 @@ namespace PhotoAward.MemberManagement
                     var existendMemberActorId = members.TryGetValueAsync(tx, member.Email);
                     if (existendMemberActorId.Result.HasValue)
                     {
-                        throw new Exception("Mitglied mit dieser Emailadresse exisitiert bereits.");
+                        throw new Exception("Mitglied mit dieser Emailadresse existiert bereits.");
                     }
                     member.Id = Guid.NewGuid();
                     var memberActorId = ActorId.CreateRandom();
                     await members.AddAsync(tx, member.Email, memberActorId);
-                    //await SheepConnectionFactory.GetMember(sheepActorId).SetLocation(timestamp, location.Latitude, location.Longitude);
+                    
+                    var memberActor = MemberClientFactory.GetMember(memberActorId);
 
-                    var result = await MemberClientFactory.GetMember(memberActorId)
-                        .SetMemberAsync(member, CancellationToken.None);
+                    var result = await memberActor.SetMemberAsync(member, CancellationToken.None);
                     member.EntryDate = result.EntryDate;
                     member.LastUpdate = result.LastUpdate;
 
                     // Update service with new Actor
                     await members.AddOrUpdateAsync(tx, member.Email, memberActorId, (key, actorId) => memberActorId);
                     await tx.CommitAsync();
+                    ServiceEventSource.Current.ServiceMessage(this.Context,
+                                "Mitglied hinzugefügt: {0}, Id: {1} ", member.Email, result.Id);
                     return member;
                 }
             }
@@ -133,6 +121,36 @@ namespace PhotoAward.MemberManagement
             }
         }
 
+        public async Task<MemberDto> GetMemberOnMemberId(Guid memberId)
+        {
+            using (var tx = StateManager.CreateTransaction())
+            {
+                var members = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>("members");
+
+                var asyncEnumerable = await members.CreateEnumerableAsync(tx);
+                using (var asyncEnumerator = asyncEnumerable.GetAsyncEnumerator())
+                {
+                    while (await asyncEnumerator.MoveNextAsync(CancellationToken.None))
+                    {
+                        /*var current = asyncEnumerator.Current;
+                        var keystr = current.Key;
+                        var key = new Guid(keystr);*/
+                        var actorId = asyncEnumerator.Current.Value;
+                        var member = await MemberClientFactory.GetMember(actorId).GetMember(CancellationToken.None);
+                        if (member !=null && member.Id == memberId) return new MemberDto()
+                        {
+                            Id = member.Id,
+                            Email = member.Email,
+                            EntryDate = member.EntryDate,
+                            FirstName = member.FirstName,
+                            LastUpdate = member.LastUpdate,
+                            Surname = member.Surname
+                        };
+                    }
+                }
+                return null;
+            }
+        }
     }
 }
 

@@ -9,7 +9,7 @@ using Microsoft.ServiceFabric.Services.Runtime;
 
 namespace PhotoAward.MemberManagement
 {
-    [EventSource(Name = "MyCompany-PhotoAward-MemberManagement")]
+    [EventSource(Name = "BridgingIT-PhotoAward-MemberManagement")]
     internal sealed class ServiceEventSource : EventSource
     {
         public static readonly ServiceEventSource Current = new ServiceEventSource();

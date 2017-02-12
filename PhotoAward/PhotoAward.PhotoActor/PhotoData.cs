@@ -7,7 +7,9 @@ namespace PhotoAward.PhotoActor
     [DataContract]
     internal class PhotoData
     {
+        [DataMember]
         public byte[] ThumbnailAsByte { get; set; }
+        [DataMember]
         public string FileName { get; set; }
 
         public List<PhotoComment> Comments
@@ -17,9 +19,11 @@ namespace PhotoAward.PhotoActor
 
         [DataMember]
         private List<PhotoComment> _comments = new List<PhotoComment>();
-
+        [DataMember]
         public DateTime UploadDate { get; set; }
+        [DataMember]
         public string Title { get; set; }
+        [DataMember]
         public Guid Id { get; set; }
     }
 }

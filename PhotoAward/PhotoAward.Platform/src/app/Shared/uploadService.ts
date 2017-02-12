@@ -12,9 +12,6 @@ export class UploadService {
 
   constructor( @Optional() @Inject(API_BASE_URL) baseUrl?: string ) {
     this._baseUrl = baseUrl ? baseUrl : "";
-    this.progress$ = Observable.create(observer => {
-        this.progressObserver = observer;
-    }).share();
    }
 
  uploadFile(email:string, title:string, filename:string, params: string[], files: File[])  {
@@ -46,9 +43,6 @@ export class UploadService {
 
 
         xhr.upload.onprogress = (event) => {
-            this.progress = Math.round(event.loaded / event.total * 100);
-
-            this.progressObserver.next(this.progress);
         };
 
         xhr.open('POST', url, true);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -7,6 +8,15 @@ namespace PhotoAward.ConsoleClient.Commands
     public class Command
     {
         public string BaseUrl { get; } = "http://localhost:8200/api";
+
+        public Command()
+        {
+            var url = ConfigurationManager.AppSettings["url"];
+            if (!string.IsNullOrEmpty(url))
+            {
+                this.BaseUrl = url;
+            }
+        }
 
 #pragma warning disable 1998
         public virtual async Task ExecuteAsync(string[] args)

@@ -76,6 +76,7 @@
     <Compile Include="IPhotoManagementClientFactory.cs" />
     <Compile Include="PhotoManagementClientFactory.cs" />
     <Compile Include="PhotoManagementData.cs" />
+    <Compile Include="PhotoMemberInfo.cs" />
     <Compile Include="PhotoUploadData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

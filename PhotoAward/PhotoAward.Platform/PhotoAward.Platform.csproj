@@ -131,6 +131,7 @@
     <Compile Include="Controller\MemberManagementController.cs" />
     <Compile Include="Controller\PhotoManagementController.cs" />
     <Compile Include="Controller\TestController.cs" />
+    <Compile Include="DoNotCacheMiddleWare.cs" />
     <Compile Include="OwinCommunicationListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Platform.cs" />
@@ -171,7 +172,9 @@
     <None Include="e2e\tsconfig.json" />
     <None Include="package.json" />
     <None Include="PackageRoot\Config\Settings.xml" />
-    <None Include="PackageRoot\ServiceManifest.xml" />
+    <None Include="PackageRoot\ServiceManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="photoclub.nswag" />

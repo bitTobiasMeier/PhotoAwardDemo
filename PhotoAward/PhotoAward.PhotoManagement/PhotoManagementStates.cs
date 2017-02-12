@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Data;
@@ -10,7 +11,7 @@ namespace PhotoAward.PhotoManagement
     public class PhotoManagementStates : IPhotoManagementStates
     {
         private readonly IReliableStateManagerReplica _stateManager;
-        private const string PhotoactorsDictName = "photoActors";
+        private const string PhotoIdToPhotoActorDictionary = "photoActors";
         private const string PhotoActorMemberDictName = "photoActorMemberDictionary";
 
         public PhotoManagementStates(IReliableStateManagerReplica stateManager)
@@ -26,24 +27,24 @@ namespace PhotoAward.PhotoManagement
         public async Task AddPhotoIdActorMapping(ITransaction tx,Guid photoId, ActorId photoActorId)
         {
             var photoActorDictionary = await this._stateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>
-                (PhotoactorsDictName);
+                (PhotoIdToPhotoActorDictionary);
             await photoActorDictionary.AddAsync(tx, photoId.ToString(), photoActorId);
         }
 
-        public async Task AddPhotoToMember(ITransaction tx, Guid memberId, ActorId photoActorId)
+        public async Task AddPhotoActorToMemberId(ITransaction tx, Guid memberId, ActorId photoActorId)
         {
-            var photoMemberActorDictionary = await _stateManager.GetOrAddAsync<IReliableDictionary<string, List<ActorId>>>(
+            var memberIdPhotoActorDictionary = await _stateManager.GetOrAddAsync<IReliableDictionary<string, List<ActorId>>>(
                 PhotoActorMemberDictName);
-            var conditionalActorList = await photoMemberActorDictionary.TryGetValueAsync(tx, memberId.ToString());
+            var conditionalActorList = await memberIdPhotoActorDictionary.TryGetValueAsync(tx, memberId.ToString());
             var actorList = !conditionalActorList.HasValue ? new List<ActorId>() : conditionalActorList.Value;
             actorList.Add(photoActorId);
-            await photoMemberActorDictionary.SetAsync(tx, memberId.ToString(), actorList);
+            await memberIdPhotoActorDictionary.SetAsync(tx, memberId.ToString(), actorList);
         }
 
         public async Task<ConditionalValue<ActorId>> GetPhotoActorId(ITransaction tx,Guid photoId)
         {
             var photoActorState = await _stateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>
-                (PhotoactorsDictName);
+                (PhotoIdToPhotoActorDictionary);
             
             var actorId = await photoActorState.TryGetValueAsync(tx, photoId.ToString());
             return actorId;
@@ -57,6 +58,29 @@ namespace PhotoAward.PhotoManagement
             var conditionalActorList = await photoMemberActorDictionary.TryGetValueAsync(tx, memberId.ToString());
             var actorList = !conditionalActorList.HasValue ? new List<ActorId>() : conditionalActorList.Value;
             return actorList;
+        }
+
+        public async Task<IList<Tuple<Guid,ActorId>>> GetPhotos(ITransaction tx)
+        {
+            var list = new List<Tuple<Guid, ActorId>>();
+            var photoMemberActorDictionary = await this._stateManager
+                    .GetOrAddAsync<IReliableDictionary<string, List<ActorId>>>(
+                        PhotoActorMemberDictName);
+            var asyncEnumerable = await photoMemberActorDictionary.CreateEnumerableAsync(tx);
+            using (IAsyncEnumerator<KeyValuePair<string, List<ActorId>>> asyncEnumerator = asyncEnumerable.GetAsyncEnumerator())
+            {
+                while (await asyncEnumerator.MoveNextAsync(CancellationToken.None))
+                {
+                    var key = new Guid( asyncEnumerator.Current.Key);
+                    var actorlist = asyncEnumerator.Current.Value;
+                    foreach (var actorId in actorlist)
+                    {
+                        list.Add(new Tuple<Guid, ActorId>(key, actorId));
+                    }
+                    
+                }
+            }
+            return list;
         }
     }
 }
