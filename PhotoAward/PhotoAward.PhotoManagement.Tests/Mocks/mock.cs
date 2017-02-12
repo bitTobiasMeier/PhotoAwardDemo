@@ -582,7 +582,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
 
         public Task RemoveAsync(ITransaction tx, Uri name)
         {
-            store.TryRemove(name, out IReliableState result);
+            IReliableState result;
+            store.TryRemove(name, out  result);
 
             return Task.FromResult(true);
         }
