@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
-namespace PhotoAward.PhotoActor
+namespace PhotoAward.PhotoActors
 {
     internal static class Program
     {

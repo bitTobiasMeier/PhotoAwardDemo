@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using PhotoAward.PhotoManagement.Tests.Mocks;
 using PhotoAward.MemberManagement.Interfaces;
-using PhotoAward.PhotoActor.Interfaces;
+using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoManagement.Interfaces;
 
 namespace PhotoAward.PhotoManagement.Tests
@@ -19,7 +19,6 @@ namespace PhotoAward.PhotoManagement.Tests
         [TestMethod]
         public async Task AddPhotoAndGetPhoto()
         {
-            PhotoActor.PhotoActor actor;
             //Arrange
             var email = "info@bridging-it.de";
             var clientMock = new Mock<IMemberManagement>();

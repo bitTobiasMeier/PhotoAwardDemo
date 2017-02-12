@@ -1,7 +1,7 @@
 using System;
 using Microsoft.ServiceFabric.Actors;
 
-namespace PhotoAward.PhotoActor.Interfaces
+namespace PhotoAward.PhotoActors.Interfaces
 {
     public class CommentInfo
     {

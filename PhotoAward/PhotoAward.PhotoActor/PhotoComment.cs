@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using Microsoft.ServiceFabric.Actors;
 
-namespace PhotoAward.PhotoActor
+namespace PhotoAward.PhotoActors
 {
     [DataContract]
     internal class PhotoComment

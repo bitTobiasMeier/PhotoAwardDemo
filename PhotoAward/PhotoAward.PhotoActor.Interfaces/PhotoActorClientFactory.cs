@@ -2,7 +2,7 @@
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Actors.Client;
 
-namespace PhotoAward.PhotoActor.Interfaces
+namespace PhotoAward.PhotoActors.Interfaces
 {
     public interface IPhotoActorClientFactory
     {

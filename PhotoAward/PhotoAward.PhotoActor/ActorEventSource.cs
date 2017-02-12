@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
-namespace PhotoAward.PhotoActor
+namespace PhotoAward.PhotoActors
 {
     [EventSource(Name = "BridgingIT-PhotoAward-PhotoAward.PhotoActor")]
     internal sealed class ActorEventSource : EventSource

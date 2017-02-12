@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace PhotoAward.PhotoActor
+namespace PhotoAward.PhotoActors
 {
     [DataContract]
     internal class PhotoData

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Actors.Runtime;
 using Microsoft.ServiceFabric.Actors.Client;
-using PhotoAward.PhotoActor.Interfaces;
+using PhotoAward.PhotoActors.Interfaces;
 
-namespace PhotoAward.PhotoActor
+namespace PhotoAward.PhotoActors
 {
     /// <remarks>
     /// This class represents an actor.

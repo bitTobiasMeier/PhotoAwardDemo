@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PhotoAward.PhotoActor.Interfaces
+namespace PhotoAward.PhotoActors.Interfaces
 {
     public class PhotoInfo
     {

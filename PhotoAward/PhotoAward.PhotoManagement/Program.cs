@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Services.Runtime;
 using PhotoAward.MemberManagement.Interfaces;
-using PhotoAward.PhotoActor.Interfaces;
+using PhotoAward.PhotoActors.Interfaces;
 
 namespace PhotoAward.PhotoManagement
 {
