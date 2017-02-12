@@ -2,7 +2,7 @@
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
                      ApplicationTypeName="PhotoAwardType" 
-                     ApplicationTypeVersioin="1.0.9" 
+                     ApplicationTypeVersion="1.0.9" 
                      xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="PhotoManagement_MinReplicaSetSize" DefaultValue="3" />
