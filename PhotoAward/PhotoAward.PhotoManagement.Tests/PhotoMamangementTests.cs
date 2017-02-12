@@ -30,6 +30,7 @@ namespace PhotoAward.PhotoManagement.Tests
             var stateMngrMock = new Mock<IPhotoManagementStates>();
             stateMngrMock.Setup(s => s.GetPhotoActorId(It.IsAny<ITransaction>(), It.IsAny<Guid>()))
                 .Returns(Task.FromResult(new ConditionalValue<ActorId> (true,ActorId.CreateRandom())));
+            stateMngrMock.Setup(s => s.CreateTransaction()).Returns(new Mock<ITransaction>().Object);
             var thumbnailCreatorMock = new Mock<IThumbnailCreator>();
             var photoActorClientFactoryMock = new Mock<IPhotoActorClientFactory>();
             var photoActorClientMock = new Mock<IPhotoActor>();
