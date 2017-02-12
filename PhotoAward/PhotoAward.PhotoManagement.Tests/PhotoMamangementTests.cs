@@ -19,6 +19,7 @@ namespace PhotoAward.PhotoManagement.Tests
         [TestMethod]
         public async Task AddPhotoAndGetPhoto()
         {
+            PhotoActor.PhotoActor actor;
             //Arrange
             var email = "info@bridging-it.de";
             var clientMock = new Mock<IMemberManagement>();
