@@ -262,14 +262,16 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
 
         public Task<ConditionalValue<TValue>> TryGetValueAsync(ITransaction tx, TKey key)
         {
-            var result = _dictionary.TryGetValue(key, out TValue value);
+            TValue value;
+            var result = _dictionary.TryGetValue(key,  out value);
 
             return Task.FromResult(new ConditionalValue<TValue>(result, value));
         }
 
         public Task<ConditionalValue<TValue>> TryGetValueAsync(ITransaction tx, TKey key, LockMode lockMode)
         {
-            var result = _dictionary.TryGetValue(key, out TValue value);
+            TValue value;
+            var result = _dictionary.TryGetValue(key, out value);
 
             return Task.FromResult(new ConditionalValue<TValue>(result, value));
         }
@@ -277,7 +279,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
         public Task<ConditionalValue<TValue>> TryGetValueAsync(ITransaction tx, TKey key, TimeSpan timeout,
             CancellationToken cancellationToken)
         {
-            var result = _dictionary.TryGetValue(key, out TValue value);
+            TValue value;
+            var result = _dictionary.TryGetValue(key, out  value);
 
             return Task.FromResult(new ConditionalValue<TValue>(result, value));
         }
@@ -285,7 +288,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
         public Task<ConditionalValue<TValue>> TryGetValueAsync(
             ITransaction tx, TKey key, LockMode lockMode, TimeSpan timeout, CancellationToken cancellationToken)
         {
-            var result = _dictionary.TryGetValue(key, out TValue value);
+            TValue value;
+            var result = _dictionary.TryGetValue(key, out  value);
 
             return Task.FromResult(new ConditionalValue<TValue>(result, value));
         }
@@ -340,7 +344,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
 
         public Task<ConditionalValue<TValue>> TryRemoveAsync(ITransaction tx, TKey key)
         {
-            return Task.FromResult(new ConditionalValue<TValue>(_dictionary.TryRemove(key, out TValue outValue), outValue));
+            TValue outValue;
+            return Task.FromResult(new ConditionalValue<TValue>(_dictionary.TryRemove(key, out outValue), outValue));
         }
 
         public Task<ConditionalValue<TValue>> TryRemoveAsync(ITransaction tx, TKey key, TimeSpan timeout,
