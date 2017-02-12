@@ -96,13 +96,29 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PhotoAward.MemberActor.Interfaces\PhotoAward.MemberActor.Interfaces.csproj">
+      <Project>{d37a1870-d3e2-4e4c-af4f-8ff20578d175}</Project>
+      <Name>PhotoAward.MemberActor.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.MemberActor\PhotoAward.MemberActor.csproj">
+      <Project>{059edaec-535b-425b-be4f-518fe919b7ca}</Project>
+      <Name>PhotoAward.MemberActor</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhotoAward.MemberManagement.Interfaces\PhotoAward.MemberManagement.Interfaces.csproj">
       <Project>{89CCB99D-C3B4-4065-A0A5-8FAD77D038CE}</Project>
       <Name>PhotoAward.MemberManagement.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.MemberManagement\PhotoAward.MemberManagement.csproj">
+      <Project>{f475a965-4609-4906-bfe4-513d0f565c3f}</Project>
+      <Name>PhotoAward.MemberManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhotoAward.PhotoActor.Interfaces\PhotoAward.PhotoActor.Interfaces.csproj">
       <Project>{76BE757D-2477-4037-AC34-4527E036312E}</Project>
       <Name>PhotoAward.PhotoActor.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.PhotoActor\PhotoAward.PhotoActor.csproj">
+      <Project>{7070dad2-9c56-4832-8078-41a361368b90}</Project>
+      <Name>PhotoAward.PhotoActor</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhotoAward.PhotoManagement.Interfaces\PhotoAward.PhotoManagement.Interfaces.csproj">
       <Project>{01a6d906-9d97-4c34-9449-223839ed5d7e}</Project>
