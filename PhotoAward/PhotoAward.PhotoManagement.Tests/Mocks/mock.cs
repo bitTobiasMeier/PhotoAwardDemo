@@ -425,7 +425,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
         public Task<ConditionalValue<T>> TryDequeueAsync(ITransaction tx, TimeSpan timeout,
             CancellationToken cancellationToken)
         {
-            var result = queue.TryDequeue(out T item);
+            T item;
+            var result = queue.TryDequeue(out item);
 
             return
                 Task.FromResult(
@@ -434,7 +435,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
 
         public Task<ConditionalValue<T>> TryDequeueAsync(ITransaction tx)
         {
-            var result = queue.TryDequeue(out T item);
+            T item;
+            var result = queue.TryDequeue(out  item);
 
             return
                 Task.FromResult(
@@ -444,7 +446,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
         public Task<ConditionalValue<T>> TryPeekAsync(ITransaction tx, LockMode lockMode, TimeSpan timeout,
             CancellationToken cancellationToken)
         {
-            var result = queue.TryPeek(out T item);
+            T item;
+            var result = queue.TryPeek(out  item);
 
             return
                 Task.FromResult(
@@ -453,7 +456,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
 
         public Task<ConditionalValue<T>> TryPeekAsync(ITransaction tx, LockMode lockMode)
         {
-            var result = queue.TryPeek(out T item);
+            T item;
+            var result = queue.TryPeek(out  item);
 
             return
                 Task.FromResult(
@@ -463,7 +467,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
         public Task<ConditionalValue<T>> TryPeekAsync(ITransaction tx, TimeSpan timeout,
             CancellationToken cancellationToken)
         {
-            var result = queue.TryPeek(out T item);
+            T item;
+            var result = queue.TryPeek(out  item);
 
             return
                 Task.FromResult(
@@ -472,7 +477,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
 
         public Task<ConditionalValue<T>> TryPeekAsync(ITransaction tx)
         {
-            var result = queue.TryPeek(out T item);
+            T item;
+            var result = queue.TryPeek(out item);
 
             return
                 Task.FromResult(
@@ -483,7 +489,8 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
         {
             while (!queue.IsEmpty)
             {
-                queue.TryDequeue(out T result);
+                T result;
+                queue.TryDequeue(out  result);
             }
 
             return Task.FromResult(true);
@@ -527,42 +534,48 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
 
         public Task RemoveAsync(string name)
         {
-            store.TryRemove(ToUri(name), out IReliableState result);
+            IReliableState result;
+            store.TryRemove(ToUri(name), out  result);
 
             return Task.FromResult(true);
         }
 
         public Task RemoveAsync(ITransaction tx, string name)
         {
-            store.TryRemove(ToUri(name), out IReliableState result);
+            IReliableState result;
+            store.TryRemove(ToUri(name), out  result);
 
             return Task.FromResult(true);
         }
 
         public Task RemoveAsync(string name, TimeSpan timeout)
         {
-            store.TryRemove(ToUri(name), out IReliableState result);
+            IReliableState result;
+            store.TryRemove(ToUri(name), out  result);
 
             return Task.FromResult(true);
         }
 
         public Task RemoveAsync(ITransaction tx, string name, TimeSpan timeout)
         {
-            store.TryRemove(ToUri(name), out IReliableState result);
+            IReliableState result;
+            store.TryRemove(ToUri(name), out  result);
 
             return Task.FromResult(true);
         }
 
         public Task RemoveAsync(Uri name)
         {
-            store.TryRemove(name, out IReliableState result);
+            IReliableState result;
+            store.TryRemove(name, out  result);
 
             return Task.FromResult(true);
         }
 
         public Task RemoveAsync(Uri name, TimeSpan timeout)
         {
-            store.TryRemove(name, out IReliableState result);
+            IReliableState result;
+            store.TryRemove(name, out  result);
 
             return Task.FromResult(true);
         }
@@ -576,21 +589,24 @@ namespace PhotoAward.PhotoManagement.Tests.Mocks
 
         public Task RemoveAsync(ITransaction tx, Uri name, TimeSpan timeout)
         {
-            store.TryRemove(name, out IReliableState result);
+            IReliableState result;
+            store.TryRemove(name, out  result);
 
             return Task.FromResult(true);
         }
 
         public Task<ConditionalValue<T>> TryGetAsync<T>(string name) where T : IReliableState
         {
-            var result = store.TryGetValue(ToUri(name), out IReliableState item);
+            IReliableState item;
+            var result = store.TryGetValue(ToUri(name), out  item);
 
             return Task.FromResult(new ConditionalValue<T>(result, (T) item));
         }
 
         public Task<ConditionalValue<T>> TryGetAsync<T>(Uri name) where T : IReliableState
         {
-            var result = store.TryGetValue(name, out IReliableState item);
+            IReliableState item;
+            var result = store.TryGetValue(name, out  item);
 
             return Task.FromResult(new ConditionalValue<T>(result, (T) item));
         }
