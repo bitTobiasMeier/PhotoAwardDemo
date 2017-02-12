@@ -19,7 +19,7 @@ namespace PhotoAward.PhotoActor
     ///  - None: State is kept in memory only and not replicated.
     /// </remarks>
     [StatePersistence(StatePersistence.Persisted)]
-    internal class PhotoActor : Actor, IPhotoActor
+    public class PhotoActor : Actor, IPhotoActor
     {
         private const string DataKey = "memberData";
 
