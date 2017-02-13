@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-                     ApplicationTypeName="PhotoAwardType" 
-                     ApplicationTypeVersion="1.0.9" 
-                     xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="PhotoAwardType" ApplicationTypeVersion="1.0.10" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="PhotoManagement_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="PhotoManagement_PartitionCount" DefaultValue="1" />
@@ -23,22 +19,25 @@
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoManagementPkg" ServiceManifestVersion="1.0.8" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoManagementPkg" ServiceManifestVersion="1.0.9" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoActorPkg" ServiceManifestVersion="1.0.8" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoActorPkg" ServiceManifestVersion="1.0.9" />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.MemberActorPkg" ServiceManifestVersion="1.0.8" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.MemberActorPkg" ServiceManifestVersion="1.0.9" />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.MemberManagementPkg" ServiceManifestVersion="1.0.8" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.MemberManagementPkg" ServiceManifestVersion="1.0.9" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.PlatformPkg" ServiceManifestVersion="1.0.9" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.PlatformPkg" ServiceManifestVersion="1.0.10" />
     <ConfigOverrides />
+    <Policies>
+      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />
+    </Policies>
   </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 
@@ -72,4 +71,7 @@
       </StatefulService>
     </Service>
   </DefaultServices>
+  <Certificates>
+    <EndpointCertificate X509StoreName="MY" X509FindValue="88 5B E4 B2 E6 F8 0F D3 2A 02 2E 50 87 B2 EA E5 31 1F DE B8" Name="TestCert1" />
+  </Certificates>
 </ApplicationManifest>

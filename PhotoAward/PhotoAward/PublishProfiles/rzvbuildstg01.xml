@@ -6,10 +6,10 @@
        For a local cluster, you would typically not use any parameters.
          For example: <ClusterConnectionParameters />
   -->
-  <ClusterConnectionParameters ConnectionEndpoint="rzbuildstg01.bit.intern:19000" />
+  <ClusterConnectionParameters ConnectionEndpoint="bitdemophotoawardapp.westeurope.cloudapp.azure.com:19000" X509Credential="true" ServerCertThumbprint="885BE4B2E6F80FD32A022E5087B2EAE5311FDEB8" FindType="FindByThumbprint" FindValue="885BE4B2E6F80FD32A022E5087B2EAE5311FDEB8" StoreLocation="CurrentUser" StoreName="My" />
 
-  <ApplicationParameterFile Path="..\ApplicationParameters\rzbuildstg01.xml" />
-  <UpgradeDeployment Mode="Monitored" Enabled="false">
+  <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
+  <UpgradeDeployment Mode="Monitored" Enabled="true">
     <Parameters FailureAction="Rollback" Force="True" />
   </UpgradeDeployment>
 </PublishProfile>

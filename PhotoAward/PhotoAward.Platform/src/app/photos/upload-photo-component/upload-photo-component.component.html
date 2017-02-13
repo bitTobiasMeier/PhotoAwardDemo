@@ -1,0 +1,28 @@
+<form #form="ngForm" >
+<div  class = "ui input">
+
+  <div class="ui two column doubling stackable grid container">
+    <div class="row">
+      <h3>Upload Image</h3>
+    </div>
+
+  <div class="row">
+    <div class="one wide column">Titel:</div>
+    <div class="column"><div class="ui input"><input type="text" name="filetitle" ngModel [(ngModel)]="filetitle" ></div></div>
+  </div>
+  <div class="row">
+    <div class="ten wide column">
+        <input type="file" (change)="fileChangeEvent($event)" placeholder="Bild auswählen..."  class="ui button"/>
+    </div>
+
+
+  </div>
+  <div class="row">
+    <div class="ten wide column">
+        <button type="button" (click)="upload()" class="ui button">Bild hinzufügen</button>
+    </div>
+
+  </div>
+</div>
+</div>
+</form>

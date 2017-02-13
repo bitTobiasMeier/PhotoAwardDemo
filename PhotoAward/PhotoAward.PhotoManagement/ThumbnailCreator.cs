@@ -11,7 +11,7 @@ namespace PhotoAward.PhotoManagement
     public interface IThumbnailCreator
     {
         Task<byte[]> GetThumbnail(byte[] data);
-        Task<byte[]> GetThumbnail(Image img);
+        Task<byte[]> GetThumbnail(Bitmap img);
     }
 
     public class ThumbnailCreator : IThumbnailCreator
@@ -21,29 +21,33 @@ namespace PhotoAward.PhotoManagement
         {
             using (var ms = new MemoryStream(data))
             {
-                var bmp = new Bitmap(ms);
-                var thumbnailTask = await GetThumbnail(bmp);
-                return thumbnailTask;
+                using (var bmp = new Bitmap(ms))
+                {
+                    var thumbnailTask = await GetThumbnail(bmp);
+                    return thumbnailTask;
+                }
             }
         }
 
-        public   async Task<byte[]> GetThumbnail(Image img)
+        public   async Task<byte[]> GetThumbnail(Bitmap srcBmp)
         {
             return await Task.Run(() =>
             {
-                using (Bitmap srcBmp = new Bitmap(img))
-                {
-                    float ratio = srcBmp.Width / srcBmp.Height;
-                    float ratio2 = srcBmp.Height / srcBmp.Width;
+                
+                    var ratio = Convert.ToDecimal(srcBmp.Width) / Convert.ToDecimal(srcBmp.Height);
+                    var ratio2 = Convert.ToDecimal(srcBmp.Height) /  Convert.ToDecimal(srcBmp.Width);
                     var width = 500;
                     var height = 500;
-                    if (srcBmp.Width > srcBmp.Height)
+                    if (srcBmp.Width > width || srcBmp.Height > height)
                     {
-                        height = Convert.ToInt32(width * ratio);
-                    }
-                    else
-                    {
-                        width = Convert.ToInt32(height * ratio2);
+                        if (srcBmp.Width > srcBmp.Height)
+                        {
+                            height = Convert.ToInt32(width * ratio2);
+                        }
+                        else
+                        {
+                            width = Convert.ToInt32(height * ratio);
+                        }
                     }
 
                     SizeF newSize = new SizeF(width, height);
@@ -63,7 +67,6 @@ namespace PhotoAward.PhotoManagement
                         }
                         return ImageToByteArray(target);
                     }
-                }
             });
 
         }

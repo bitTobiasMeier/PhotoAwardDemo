@@ -1,0 +1,25 @@
+<div class="ui input">
+
+  <div class="ui two column doubling stackable grid container">
+  <div class="column">
+
+  Email: <input type="text" name="email" ngModel [(ngModel)]="email" >
+  </div>
+  <div class="column">
+  <button type="button" class="ui primary button" (click)="loadImages()">Bilder anzeigen</button>
+  </div>
+  </div>
+</div>
+
+<div [hidden] = 'photos.length == 0'>
+<div>Anzahl Bilder von {{email}} : {{photos.length}}</div>
+<div class="ui grid container">
+   <div class="doubling  four column row">
+  <div class="column" *ngFor="let photo of photos">
+    <h4>{{photo.title}}</h4>
+    Filename: {{photo.fileName}}
+    <img [src]="'data:image/jpeg;base64,'+photo.thumbnailBytes" width="150px"/>
+    </div>
+    </div>
+</div>
+</div>

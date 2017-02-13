@@ -1,7 +1,6 @@
 <h1>
 {{title}}
 </h1>
-
 <div class="ui input">
 
   <div class="ui two column doubling stackable grid container">
@@ -11,78 +10,26 @@
   <button type="submit" class="ui primary button">Anmelden</button>
   </form>
   </div>
-
   <div class="column">
-    <form #form="ngForm" (ngSubmit)="register(form.value)">
-
-      <div class="ui two column grid">
-  <div class="row">
-    <div class="column">Email:</div>
-    <div class="column"><input type="text" name="email" ngModel [(ngModel)]="email" ></div>
-  </div>
-  <div class="row">
-    <div class="column">Vorname:</div>
-    <div class="column"><input type="text" name="firstname" ngModel [(ngModel)]="firstname" ></div>
-  </div>
-  <div class="row">
-    <div class="column">Nachname</div>
-    <div class="column"><input type="text" name="surname" ngModel [(ngModel)]="surname" ></div>
-  </div>
-  <div class="row">
-    <div class="column">
-      <button type="submit" class="ui primary button">Registrieren</button>
-      </div>
+    <pac-register-member></pac-register-member>
     </div>
-</div>
-
-  </form>
-  </div>
 
 </div>
-
 </div>
+
 
 <div [hidden] = 'notMember'>
 
-<form #form="ngForm" >
-<div  class = "ui input">
+<h3>Willkommen
+  {{firstname}}
+  {{surname}} </h3>
 
-  <div class="ui two column doubling stackable grid container">
-    <div class="row">
-      <h3>Upload Image</h3>
-    </div>
+<pac-upload-photo-component [email]="email"></pac-upload-photo-component>
+<p> &nbsp;</p>
+<hr/>
 
-  <div class="row">
-    <div class="one wide column">Titel:</div>
-    <div class="column"><div class="ui input"><input type="text" name="filetitle" ngModel [(ngModel)]="filetitle" ></div></div>
-  </div>
-  <div class="row">
-    <div class="ten wide column">
-        <input type="file" (change)="fileChangeEvent($event)" placeholder="Bild auswählen..."  class="ui button"/>
-    </div>
+<pac-show-photos-component [email]="email"></pac-show-photos-component>
 
-
-  </div>
-  <div class="row">
-    <div class="ten wide column">
-        <button type="button" (click)="upload()" class="ui button">Bild hinzufügen</button>
-    </div>
-
-  </div>
-</div>
-</div>
-</form>
-
-<h3>Bilder von  {{firstname}} {{surname}}</h3>
-<div class="ui grid container">
-   <div class="doubling  four column row">
-  <div class="column" *ngFor="let photo of photos">
-    <h4>{{photo.title}}</h4>
-    Filename: {{photo.fileName}}
-    <img [src]="'data:image/jpeg;base64,'+photo.thumbnailBytes" width="150px"/>
-    </div>
-    </div>
-</div>
 
 
 </div>

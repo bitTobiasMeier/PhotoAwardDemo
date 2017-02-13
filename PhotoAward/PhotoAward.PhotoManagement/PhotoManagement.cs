@@ -99,9 +99,10 @@ namespace PhotoAward.PhotoManagement
                 using (var tx = this._photoManagementStates.CreateTransaction())
                 {
                     var thumbnailTask = this._thumbnailCreator.GetThumbnail(photo.Data);
+                    var thumbnail = await thumbnailTask;
                     //Member mit dieser Emailadresse ermitteln
-                    var member = this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(photo.Email);
-                    if (member?.Result == null) throw new Exception("Member not found");
+                    var member = await this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(photo.Email);
+                    if (member == null) throw new Exception("Member not found");
 
                     var photoId= Guid.NewGuid();
                     var photoActorId = ActorId.CreateRandom();
@@ -111,7 +112,7 @@ namespace PhotoAward.PhotoManagement
                     //Dateiname ermitteln
                     var filename = photo.FileName;
                     filename = System.IO.Path.GetFileName(filename);
-                    var thumbnail = await thumbnailTask;
+                    
                     //Bild hochladen
                     var data = new PhotoInfo()
                     {
@@ -127,7 +128,7 @@ namespace PhotoAward.PhotoManagement
 
                     //Photo einem Member zuordnen
 
-                    await this._photoManagementStates.AddPhotoActorToMemberId(tx, member.Result.Id, photoActorId);
+                    await this._photoManagementStates.AddPhotoActorToMemberId(tx, member.Id, photoActorId);
                     await tx.CommitAsync();
 
                     ServiceEventSource.Current.ServiceMessage(this.Context,

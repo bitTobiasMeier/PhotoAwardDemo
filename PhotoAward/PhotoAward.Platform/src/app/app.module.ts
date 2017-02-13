@@ -1,3 +1,6 @@
+import { ShowPhotosComponentComponent } from './photos/show-photos-component/show-photos-component.component';
+import { UploadPhotoComponentComponent } from './photos/upload-photo-component/upload-photo-component.component';
+import { RegisterMemberComponent } from './login/register-member/register-member.component';
 import { PhotoManagementClient } from './Shared/Controllers.generated';
 import { MemberManagementClient, API_BASE_URL} from './Shared/Controllers.generated';
 import { UploadService } from './Shared/uploadService';
@@ -27,7 +30,10 @@ if (window != null && window.location != null) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegisterMemberComponent,
+    UploadPhotoComponentComponent,
+    ShowPhotosComponentComponent
   ],
   imports: [
     BrowserModule,
