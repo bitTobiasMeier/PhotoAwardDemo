@@ -11,6 +11,8 @@ namespace PhotoAward.PhotoManagement.Interfaces
     {
         Task<PhotoManagementData> AddPhoto(PhotoUploadData photo);
 
+        Task DeletePhoto(Guid photoId);
+
         Task<PhotoManagementData> GetPhoto(Guid id);
         Task<List<PhotoManagementData>> GetPhotos(string email);
         Task<List<PhotoMemberInfo>> GetListOfPhotos();

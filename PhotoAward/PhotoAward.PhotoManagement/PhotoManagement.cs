@@ -331,5 +331,19 @@ namespace PhotoAward.PhotoManagement
                 return photoList;
             }
         }
+
+        public async Task DeletePhoto(Guid photoId)
+        {
+            using (var tx = _photoManagementStates.CreateTransaction())
+            {
+                var imageActorId = await this.GetPhotoActorId(photoId, tx);
+                if (imageActorId.HasValue)
+                {
+                    var client = _photoActorClientFactory.CreateClient(imageActorId.Value);
+                    await client.Delete(CancellationToken.None);
+                    await this._photoManagementStates.RemoveActor(photoId, imageActorId.Value, tx);
+                }
+            }
+        }
     }
 }

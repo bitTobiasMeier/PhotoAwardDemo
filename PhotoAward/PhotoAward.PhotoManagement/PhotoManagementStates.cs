@@ -82,5 +82,44 @@ namespace PhotoAward.PhotoManagement
             }
             return list;
         }
+
+        public async Task RemoveActor(Guid photoId, ActorId imageActorId, ITransaction tx)
+        {
+            var photoActorDictionary = await this._stateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>
+                (PhotoIdToPhotoActorDictionary);
+
+            
+            var photoMemberActorDictionary = await this._stateManager
+                    .GetOrAddAsync<IReliableDictionary<string, List<ActorId>>>(
+                        PhotoActorMemberDictName);
+            var asyncEnumerable = await photoMemberActorDictionary.CreateEnumerableAsync(tx);
+            using (IAsyncEnumerator<KeyValuePair<string, List<ActorId>>> asyncEnumerator = asyncEnumerable.GetAsyncEnumerator())
+            {
+                while (await asyncEnumerator.MoveNextAsync(CancellationToken.None))
+                {
+                    var key = new Guid(asyncEnumerator.Current.Key);
+                    var actorlist = asyncEnumerator.Current.Value;
+                    var found = false;
+                    foreach (var actorId in actorlist)
+                    {
+                        if (actorId == imageActorId)
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (found)
+                    {
+                        actorlist.Remove(imageActorId);
+                        await photoMemberActorDictionary.AddAsync(tx, key.ToString(), actorlist);
+                    }
+                }
+            }
+
+            
+            
+
+            await photoActorDictionary.TryRemoveAsync(tx, photoId.ToString());
+        }
     }
 }

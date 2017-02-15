@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Actors.Runtime;
 using Microsoft.ServiceFabric.Actors.Client;
+using Newtonsoft.Json.Bson;
 using PhotoAward.PhotoActors.Interfaces;
 
 namespace PhotoAward.PhotoActors
@@ -122,6 +123,12 @@ namespace PhotoAward.PhotoActors
                             PhotoId = photo.Id,
                             CommentDate = c.CommentDate
                         }).ToList();
+        }
+
+        public async Task Delete(CancellationToken cancellationToken)
+        {
+            var svc = (IActorService) this.ActorService;
+            await svc.DeleteActorAsync(this.Id, cancellationToken);
         }
     }
 }

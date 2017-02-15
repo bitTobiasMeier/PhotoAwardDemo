@@ -48,23 +48,10 @@ constructor(private _memberManagementClient: MemberManagementClient,
 
   }
 
-  showImagesOfMember (email: string){
-      const that = this;
-      console.log("Loading images for user " + email);
-      this._photoManagementClient.getImagesOfMember (email).subscribe (
-      images => {
-        console.log ("Bilder ermittelt: " );
-        if (images == null) {
-          console.log ("Keine bilder!");
-        } else {
-          console.log ("Bilder Anzahl: " + images.length);
-        }
-        that.photos = images;
-      }, (error)=> {
-        console.log(error);
-
-      }
-    );
+  imageUploaded (message:string ){
+    const e= this.email;
+    this.email = "";
+    this.email = e;
   }
 
 

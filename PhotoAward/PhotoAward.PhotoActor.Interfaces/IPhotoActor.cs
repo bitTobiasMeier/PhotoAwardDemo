@@ -21,5 +21,7 @@ namespace PhotoAward.PhotoActors.Interfaces
 
         Task<List<CommentInfo>> GetComments(CancellationToken cancellationToken);
 
+        Task Delete(CancellationToken cancellationToken);
+
     }
 }

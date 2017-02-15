@@ -14,5 +14,6 @@ namespace PhotoAward.PhotoManagement
         ITransaction CreateTransaction();
         Task<List<ActorId>> GetPhotoActorIdListOfMember(ITransaction tx, Guid memberId);
         Task<IList<Tuple<Guid, ActorId>>> GetPhotos(ITransaction tx);
+        Task RemoveActor(Guid photoId, ActorId imageActorId, ITransaction tx);
     }
 }

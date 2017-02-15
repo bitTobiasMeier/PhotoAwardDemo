@@ -34,6 +34,14 @@ namespace PhotoAward.Platform.Controller
             return result;
         }
 
+        [HttpPost]
+        [Route("Delete")]
+        public async Task Delete(Guid photoId)
+        {
+            var client = this._photoManagementClientFactory.CreatePhotoClient();
+            await client.DeletePhoto(photoId);
+        }
+
         [HttpGet]
         [Route("Get/{id}")]
         public async Task<PhotoManagementData> Get(Guid id)

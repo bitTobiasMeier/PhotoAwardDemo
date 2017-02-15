@@ -7,7 +7,7 @@
     <ProjectGuid>{7070DAD2-9C56-4832-8078-41A361368B90}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PhotoAward.PhotoActor</RootNamespace>
+    <RootNamespace>PhotoAward.PhotoActors</RootNamespace>
     <AssemblyName>PhotoAward.PhotoActor</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
