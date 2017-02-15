@@ -36,7 +36,7 @@ constructor(private _memberManagementClient: MemberManagementClient,
          that.surname = result.surname;
          that.id = result.id;
          that.notMember = false;
-         that.showImagesOfMember(that.email);
+         //that.showImagesOfMember(that.email);
       },
       (error)=> {
         that.notMember = true;
