@@ -28,7 +28,7 @@ namespace PhotoAward.Platform
             var config = new HttpConfiguration();
             UnityConfig.RegisterComponents(config);
             config.MapHttpAttributeRoutes();
-            config.Filters.Add(new NoCacheHeaderFilter());
+            //config.Filters.Add(new NoCacheHeaderFilter());
             ConfigureFormatters(config.Formatters);
 
             var physicalFileSystem = new PhysicalFileSystem(@".\dist");

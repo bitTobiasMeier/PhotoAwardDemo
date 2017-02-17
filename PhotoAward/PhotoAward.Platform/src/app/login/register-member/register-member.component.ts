@@ -11,7 +11,7 @@ import { Component, OnInit, Injectable, OpaqueToken} from '@angular/core';
 })
 export class RegisterMemberComponent implements OnInit {
 
-  email: string;
+  email : string ;
   firstname:string;
   surname:string;
   id: string;
@@ -19,6 +19,7 @@ export class RegisterMemberComponent implements OnInit {
   constructor(private _memberManagementClient: MemberManagementClient) { }
 
   ngOnInit() {
+    this.email = "tobias.meier@bridging-it.de";
   }
 
      async register(value: any) {

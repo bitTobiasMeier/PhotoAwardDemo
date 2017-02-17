@@ -24,7 +24,7 @@
   {{firstname}}
   {{surname}} </h3>
 
-<pac-upload-photo-component [email]="email" imageUploaded()='imageUploaded'></pac-upload-photo-component>
+<pac-upload-photo-component [email]="email" (imageUploaded)='imageUploaded'></pac-upload-photo-component>
 <p> &nbsp;</p>
 <hr/>
 
@@ -34,4 +34,4 @@
 
 </div>
 
-<footer><a href="http://www.bridging-it.de/content/impressum.html">Impressum</footer>
+<footer><a href="http://www.bridging-it.de/content/impressum.html">Impressum</a></footer>

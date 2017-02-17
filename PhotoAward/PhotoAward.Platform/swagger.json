@@ -92,6 +92,29 @@
         }
       }
     },
+    "/api/Photo/Delete": {
+      "post": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_Delete",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "photoId",
+            "in": "query",
+            "required": true,
+            "x-nullable": false,
+            "format": "guid"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/Photo/Get/{id}": {
       "get": {
         "tags": [
@@ -124,7 +147,7 @@
         "tags": [
           "PhotoManagement"
         ],
-        "operationId": "PhotoManagement_GetImagesOfMember",
+        "operationId": "PhotoManagement_GetThumbnailsOfMember",
         "parameters": [
           {
             "type": "string",
@@ -141,6 +164,27 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/PhotoManagementData"
+              }
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Photo/GetImagesOfMember": {
+      "get": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_GetImagesOfMember",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PhotoMemberInfo"
               }
             },
             "x-nullable": true
@@ -289,6 +333,25 @@
           "type": "string"
         },
         "Id": {
+          "type": "string",
+          "format": "guid"
+        }
+      }
+    },
+    "PhotoMemberInfo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Email": {
+          "type": "string"
+        },
+        "FileName": {
+          "type": "string"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "PhotoId": {
           "type": "string",
           "format": "guid"
         }

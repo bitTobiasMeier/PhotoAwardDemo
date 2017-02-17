@@ -1,4 +1,4 @@
-import { PhotoManagementData , PhotoManagementClient} from './../../Shared/Controllers.generated';
+﻿import { PhotoManagementData , PhotoManagementClient} from './../../Shared/Controllers.generated';
 import { Component, OnInit, Input  } from '@angular/core';
 
 @Component({
@@ -16,14 +16,14 @@ export class ShowPhotosComponentComponent implements OnInit {
   ngOnInit() {
   }
 
-  loadImages (){
+  loadThumbnails (){
     this.showImagesOfMember(this.email);
   }
 
   showImagesOfMember (email: string){
       const that = this;
       console.log("Loading images for user " + email);
-      this._photoManagementClient.getImagesOfMember (email).subscribe (
+      this._photoManagementClient.getThumbnailsOfMember (email).subscribe (
       images => {
         console.log ("Bilder ermittelt: " );
         if (images == null) {
