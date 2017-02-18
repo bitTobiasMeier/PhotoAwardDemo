@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Fabric;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -132,6 +133,22 @@ namespace PhotoAward.Platform.Controller
             return task;
         }
 
-
+    [HttpGet]
+    [Route("Backup")]
+    public async Task<string> Backup()
+    {
+        await this._photoManagementClientFactory.CreatePhotoClient().BackupPhotos();
+        return "Backup erfolgt";
     }
+
+        public async Task Restore()
+        {
+            var id = Guid.NewGuid();
+      /*new FabricClient.TestManagementClient ()
+            new FabricClient.TestManagementClient().StartPartitionDataLossAsync(id, null, DataLossMode.FullDataLoss);*/
+       
+        }
+
+
+  }
 }

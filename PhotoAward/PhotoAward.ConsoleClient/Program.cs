@@ -23,6 +23,7 @@ namespace PhotoAward.ConsoleClient
             { "addPhotoComment",new AddPhotoCommentCommand() },
             { "getComments",new GetPhotoCommentsCommand() },
             { "getInfos",new GetInfosAboutAllPhotos() },
+            { "backup", new BackupPhotosCommand() }
 
         };
 

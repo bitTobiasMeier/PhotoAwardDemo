@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Fabric;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
 
 namespace PhotoAward.PhotoActors
@@ -22,7 +20,7 @@ namespace PhotoAward.PhotoActors
                 // For more information, see https://aka.ms/servicefabricactorsplatform
 
                 ActorRuntime.RegisterActorAsync<PhotoActor>(
-                   (context, actorType) => new ActorService(context, actorType)).GetAwaiter().GetResult();
+                   (context, actorType) => new BackupPhotoActorService(context, actorType)).GetAwaiter().GetResult();
 
                 Thread.Sleep(Timeout.Infinite);
             }

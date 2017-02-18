@@ -31,7 +31,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -71,6 +71,7 @@
     <Compile Include="Commands\AddMemberCommand.cs" />
     <Compile Include="Commands\AddPhotoCommand.cs" />
     <Compile Include="Commands\AddPhotoCommentCommand.cs" />
+    <Compile Include="Commands\BackupPhotosCommand.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\GetInfosAboutAllPhotos.cs" />
     <Compile Include="Commands\GetMemberCommand.cs" />

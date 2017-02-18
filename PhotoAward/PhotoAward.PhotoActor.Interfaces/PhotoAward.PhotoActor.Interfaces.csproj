@@ -7,7 +7,7 @@
     <ProjectGuid>{76BE757D-2477-4037-AC34-4527E036312E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PhotoAward.PhotoActor.Interfaces</RootNamespace>
+    <RootNamespace>PhotoAward.PhotoActors.Interfaces</RootNamespace>
     <AssemblyName>PhotoAward.PhotoActor.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -70,7 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommentInfo.cs" />
+    <Compile Include="IBackupPhotoActorService.cs" />
     <Compile Include="PhotoActorClientFactory.cs" />
+    <Compile Include="PhotoActorServiceProxy.cs" />
     <Compile Include="PhotoInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IPhotoActor.cs" />

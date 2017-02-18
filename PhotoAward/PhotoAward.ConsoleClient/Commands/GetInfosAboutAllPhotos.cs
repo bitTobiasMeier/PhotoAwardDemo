@@ -10,7 +10,6 @@ namespace PhotoAward.ConsoleClient.Commands
 {
     public class GetInfosAboutAllPhotos : Command
     {
-        //IList<PhotoMemberInfo>> GetImagesOfMember(string email)
         public override async Task ExecuteAsync(string[] args)
         {
             try

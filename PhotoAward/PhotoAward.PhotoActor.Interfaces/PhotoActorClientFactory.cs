@@ -11,7 +11,7 @@ namespace PhotoAward.PhotoActors.Interfaces
 
     public  class PhotoActorClientFactory : IPhotoActorClientFactory
     {
-        private static readonly Uri ServiceUrl = new Uri("fabric:/PhotoAward/PhotoActorService");
+        internal static readonly Uri ServiceUrl = new Uri("fabric:/PhotoAward/PhotoActorService");
 
         public  IPhotoActor CreateClient(ActorId photoActorId)
         {

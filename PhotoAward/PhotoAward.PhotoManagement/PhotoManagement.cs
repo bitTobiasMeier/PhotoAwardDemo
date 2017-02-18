@@ -345,5 +345,11 @@ namespace PhotoAward.PhotoManagement
                 }
             }
         }
+
+        public async Task BackupPhotos()
+        {
+            var proxy = new PhotoActorServiceProxy().Create(0);
+            await proxy.BackupActorsAsync();
+        }
     }
 }

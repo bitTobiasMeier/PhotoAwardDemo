@@ -90,6 +90,7 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupPhotoActorService.cs" />
     <Compile Include="PhotoComment.cs" />
     <Compile Include="PhotoData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

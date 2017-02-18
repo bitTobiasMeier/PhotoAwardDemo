@@ -16,5 +16,7 @@ namespace PhotoAward.PhotoManagement.Interfaces
         Task<PhotoManagementData> GetPhoto(Guid id);
         Task<List<PhotoManagementData>> GetPhotos(string email);
         Task<List<PhotoMemberInfo>> GetListOfPhotos();
+
+        Task BackupPhotos ();
     }
 }
