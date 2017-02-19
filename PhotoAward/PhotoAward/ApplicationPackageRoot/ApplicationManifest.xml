@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="PhotoAwardType" ApplicationTypeVersion="1.0.16" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="PhotoAwardType" ApplicationTypeVersion="1.0.17" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="PhotoManagement_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="PhotoManagement_PartitionCount" DefaultValue="1" />
@@ -8,10 +8,10 @@
     <Parameter Name="MemberManagement_PartitionCount" DefaultValue="1" />
     <Parameter Name="MemberManagement_TargetReplicaSetSize" DefaultValue="3" />
     <Parameter Name="Platform_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="MemberActorService_PartitionCount" DefaultValue="10" />
+    <Parameter Name="MemberActorService_PartitionCount" DefaultValue="1" />
     <Parameter Name="MemberActorService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="MemberActorService_TargetReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="PhotoActorService_PartitionCount" DefaultValue="10" />
+    <Parameter Name="PhotoActorService_PartitionCount" DefaultValue="1" />
     <Parameter Name="PhotoActorService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="PhotoActorService_TargetReplicaSetSize" DefaultValue="3" />
   </Parameters>
@@ -19,24 +19,24 @@
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoManagementPkg" ServiceManifestVersion="1.0.16" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoManagementPkg" ServiceManifestVersion="1.0.17" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoActorPkg" ServiceManifestVersion="1.0.16" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoActorPkg" ServiceManifestVersion="1.0.17" />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.MemberActorPkg" ServiceManifestVersion="1.0.16" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.MemberActorPkg" ServiceManifestVersion="1.0.17" />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.MemberManagementPkg" ServiceManifestVersion="1.0.16" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.MemberManagementPkg" ServiceManifestVersion="1.0.17" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="PhotoAward.PlatformPkg" ServiceManifestVersion="1.0.16" />
+    <ServiceManifestRef ServiceManifestName="PhotoAward.PlatformPkg" ServiceManifestVersion="1.0.17" />
     <ConfigOverrides />
     <Policies>
-      <!--   <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" /> -->
+      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
@@ -72,6 +72,6 @@
     </Service>
   </DefaultServices>
   <Certificates>
-    <EndpointCertificate X509StoreName="MY" X509FindValue="88 5B E4 B2 E6 F8 0F D3 2A 02 2E 50 87 B2 EA E5 31 1F DE B8" Name="TestCert1" />
+    <EndpointCertificate X509StoreName="MY" X509FindValue="2BE5E7ABA4B84A9B55186DAE2A39A328F99E88E3" Name="TestCert1" />
   </Certificates>
 </ApplicationManifest>

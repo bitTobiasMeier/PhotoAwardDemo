@@ -4,5 +4,6 @@
     {
         IPhotoManagement CreatePhotoClient();
         IPhotoComments CreateCommentsClient();
+        
     }
 }

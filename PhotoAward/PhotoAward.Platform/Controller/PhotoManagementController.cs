@@ -70,7 +70,7 @@ namespace PhotoAward.Platform.Controller
             return result;
         }
 
-        
+
 
         [HttpGet]
         [Route("GetComments/{photoId}")]
@@ -133,22 +133,19 @@ namespace PhotoAward.Platform.Controller
             return task;
         }
 
-    [HttpGet]
-    [Route("Backup")]
-    public async Task<string> Backup()
-    {
-        await this._photoManagementClientFactory.CreatePhotoClient().BackupPhotos();
-        return "Backup erfolgt";
-    }
-
-        public async Task Restore()
+        [HttpGet]
+        [Route("Backup")]
+        public async Task<string> Backup()
         {
-            var id = Guid.NewGuid();
-      /*new FabricClient.TestManagementClient ()
-            new FabricClient.TestManagementClient().StartPartitionDataLossAsync(id, null, DataLossMode.FullDataLoss);*/
-       
+            await this._photoManagementClientFactory.CreatePhotoClient().BackupPhotos();
+            return "Backup erfolgt";
         }
 
-
-  }
+        [HttpGet]
+        [Route("Restore")]
+        public async Task Restore()
+        {
+            await this._photoManagementClientFactory.CreatePhotoClient().Restore();
+        }
+    }
 }

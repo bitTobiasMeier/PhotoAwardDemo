@@ -73,11 +73,13 @@
     <Compile Include="Commands\AddPhotoCommentCommand.cs" />
     <Compile Include="Commands\BackupPhotosCommand.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\DeletePhotoCommand.cs" />
     <Compile Include="Commands\GetInfosAboutAllPhotos.cs" />
     <Compile Include="Commands\GetMemberCommand.cs" />
     <Compile Include="Commands\GetPhotoCommentsCommand.cs" />
     <Compile Include="Commands\GetPhotosOfMemberCommand.cs" />
     <Compile Include="Commands\PingCommand.cs" />
+    <Compile Include="Commands\RestorePhotosCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

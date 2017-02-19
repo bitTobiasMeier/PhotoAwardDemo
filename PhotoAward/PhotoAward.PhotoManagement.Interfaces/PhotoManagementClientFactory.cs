@@ -19,4 +19,5 @@ namespace PhotoAward.PhotoManagement.Interfaces
         }
 
     }
+    
 }

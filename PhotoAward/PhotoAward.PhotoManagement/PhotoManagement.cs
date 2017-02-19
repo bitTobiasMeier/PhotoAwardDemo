@@ -351,5 +351,99 @@ namespace PhotoAward.PhotoManagement
             var proxy = new PhotoActorServiceProxy().Create(0);
             await proxy.BackupActorsAsync();
         }
+
+        public async Task Restore()
+        {
+            try
+            {
+                // Create a unique operation id for the command below
+                Guid operationId = Guid.NewGuid();
+
+                // Note: Use the appropriate overload for your configuration
+                FabricClient fabricClient = new FabricClient();
+
+                // The name of the target service
+                Uri targetServiceName = new Uri("fabric:/PhotoAward/PhotoActorService");
+
+                // The id of the target partition inside the target service
+                /*Guid targetPartitionId = this.Partition.PartitionInfo.Id;
+
+                PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(targetServiceName,
+                    targetPartitionId);*/
+                PartitionSelector partitionSelector = PartitionSelector.RandomOf(targetServiceName);
+
+                // Start the command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes
+                // successfully it only means the Fault Injection and Analysis Service has saved the intent to perform this work.  It does not say anything about the progress
+                // of the command.
+                while (true)
+                {
+                    try
+                    {
+                        await fabricClient.TestManager.StartPartitionDataLossAsync(operationId, partitionSelector,
+                            DataLossMode.FullDataLoss).ConfigureAwait(false);
+                        break;
+                    }
+                    catch (OperationCanceledException)
+                    {
+                    }
+                    catch (FabricTransientException)
+                    {
+                    }
+
+                    await Task.Delay(TimeSpan.FromSeconds(1.0d)).ConfigureAwait(false);
+                }
+
+                PartitionDataLossProgress progress = null;
+
+                // Poll the progress using GetPartitionDataLossProgressAsync until it is either Completed or Faulted.  In this example, we're assuming
+                // the command won't be cancelled.        
+
+                while (true)
+                {
+                    try
+                    {
+                        progress =
+                            await fabricClient.TestManager.GetPartitionDataLossProgressAsync(operationId)
+                                .ConfigureAwait(false);
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        continue;
+                    }
+                    catch (FabricTransientException)
+                    {
+                        continue;
+                    }
+
+                    if (progress.State == TestCommandProgressState.Completed)
+                    {
+                        Console.WriteLine("Command '{0}' completed successfully", operationId);
+
+                        // In a terminal state .Result.SelectedPartition.PartitionId will have the chosen partition
+                        Console.WriteLine("  Printing selected partition='{0}'",
+                            progress.Result.SelectedPartition.PartitionId);
+                        break;
+                    }
+                    else if (progress.State == TestCommandProgressState.Faulted)
+                    {
+                        // If State is Faulted, the progress object's Result property's Exception property will have the reason why.
+                        Console.WriteLine("Command '{0}' failed with '{1}'", operationId, progress.Result.Exception);
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Command '{0}' is currently Running", operationId);
+                    }
+
+                    await Task.Delay(TimeSpan.FromSeconds(5.0d)).ConfigureAwait(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw ;
+            }
+        }
+
     }
 }

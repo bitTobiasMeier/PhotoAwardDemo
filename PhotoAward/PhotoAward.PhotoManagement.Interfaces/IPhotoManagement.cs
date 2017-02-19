@@ -18,5 +18,6 @@ namespace PhotoAward.PhotoManagement.Interfaces
         Task<List<PhotoMemberInfo>> GetListOfPhotos();
 
         Task BackupPhotos ();
+        Task Restore();
     }
 }
