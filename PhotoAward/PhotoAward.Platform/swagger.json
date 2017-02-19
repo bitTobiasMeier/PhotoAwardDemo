@@ -266,6 +266,38 @@
           }
         }
       }
+    },
+    "/api/Photo/Backup": {
+      "get": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_Backup",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/PhotoManagement": {
+      "post": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_Restore",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "definitions": {

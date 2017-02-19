@@ -131,6 +131,8 @@ export interface IPhotoManagementClient {
     getComments(photoId: string): Observable<CommentData[]>;
     addComment(uploadData: CommentUploadData): Observable<CommentData>;
     uploadPhoto(): Observable<any>;
+    backup(): Observable<string>;
+    restore(): Observable<void>;
 }
 
 @Injectable()
@@ -504,6 +506,89 @@ export class PhotoManagementClient implements IPhotoManagementClient {
             let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
             result200 = resultData200 !== undefined ? resultData200 : null;
             return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    backup(): Observable<string> {
+        let url_ = this.baseUrl + "/api/Photo/Backup";
+
+        const content_ = "";
+        
+        let options_ = {
+            body: content_,
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+                "Accept": "application/json; charset=UTF-8"
+            })
+        };
+
+        return this.http.request(url_, options_).map((response) => {
+            return this.processBackup(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processBackup(response));
+                } catch (e) {
+                    return <Observable<string>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<string>><any>Observable.throw(response);
+        });
+    }
+
+    protected processBackup(response: Response): string {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: string = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : null;
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    restore(): Observable<void> {
+        let url_ = this.baseUrl + "/api/PhotoManagement";
+
+        const content_ = "";
+        
+        let options_ = {
+            body: content_,
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+                "Accept": "application/json; charset=UTF-8"
+            })
+        };
+
+        return this.http.request(url_, options_).map((response) => {
+            return this.processRestore(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processRestore(response));
+                } catch (e) {
+                    return <Observable<void>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<void>><any>Observable.throw(response);
+        });
+    }
+
+    protected processRestore(response: Response): void {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 204) {
+            return null;
         } else if (status !== 200 && status !== 204) {
             this.throwException("An unexpected server error occurred.", status, responseText);
         }

@@ -1,4 +1,4 @@
-import { ShowPhotosComponentComponent } from './photos/show-photos-component/show-photos-component.component';
+﻿import { ShowPhotosComponentComponent } from './photos/show-photos-component/show-photos-component.component';
 import { UploadPhotoComponentComponent } from './photos/upload-photo-component/upload-photo-component.component';
 import { RegisterMemberComponent } from './login/register-member/register-member.component';
 import { PhotoManagementClient } from './Shared/Controllers.generated';
