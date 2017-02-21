@@ -15,6 +15,7 @@ using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using PhotoAward.MemberManagement.Interfaces;
 using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoManagement.Interfaces;
+using PhotoAward.ThumbnailService.Interfaces;
 
 namespace PhotoAward.PhotoManagement
 {
@@ -26,18 +27,18 @@ namespace PhotoAward.PhotoManagement
         private readonly IPhotoManagementStates _photoManagementStates;
         private readonly IMemberManagementClientFactory _memberManagementClientFactory;
         private readonly IPhotoActorClientFactory _photoActorClientFactory;
-        private readonly IThumbnailCreator _thumbnailCreator;
-        
+        private readonly IThumbnailClientFactory _thumbnailClientFactory;
+
         private const string PhotoActorMemberDictName = "photoActorMemberDictionary";
 
         public PhotoManagement(StatefulServiceContext context, IPhotoManagementStates photoManagementStates, IReliableStateManagerReplica stateManager, 
-            IMemberManagementClientFactory memberManagementClientFactory, IPhotoActorClientFactory photoActorClientFactory, IThumbnailCreator thumbnailCreator)
+            IMemberManagementClientFactory memberManagementClientFactory, IPhotoActorClientFactory photoActorClientFactory, IThumbnailClientFactory thumbnailClientFactory)
             : base(context, stateManager)
         {
             _photoManagementStates = photoManagementStates;
             _memberManagementClientFactory = memberManagementClientFactory;
             _photoActorClientFactory = photoActorClientFactory;
-            _thumbnailCreator = thumbnailCreator;
+            _thumbnailClientFactory = thumbnailClientFactory;
         }
 
         /// <summary>
@@ -98,7 +99,8 @@ namespace PhotoAward.PhotoManagement
             {
                 using (var tx = this._photoManagementStates.CreateTransaction())
                 {
-                    var thumbnailTask = this._thumbnailCreator.GetThumbnail(photo.Data);
+                    var thumbnailClient = this._thumbnailClientFactory.CreateThumbnailClient();
+                    var thumbnailTask = thumbnailClient.GetThumbnail(photo.Data);
                     var thumbnail = await thumbnailTask;
                     //Member mit dieser Emailadresse ermitteln
                     var member = await this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(photo.Email);
@@ -106,7 +108,6 @@ namespace PhotoAward.PhotoManagement
 
                     var photoId= Guid.NewGuid();
                     var photoActorId = ActorId.CreateRandom();
-                    //await photoActorState.AddAsync(tx, photoId.ToString(), photoActorId);
                     await this._photoManagementStates.AddPhotoIdActorMapping(tx,photoId,photoActorId);
 
                     //Dateiname ermitteln
@@ -117,7 +118,6 @@ namespace PhotoAward.PhotoManagement
                     var data = new PhotoInfo()
                     {
                         Filename = filename,
-                        //ToDo: Create Thumbnail asynchron
                         ThumbnailBytes = thumbnail,
                         Title = photo.Title,
                         Id = photoId

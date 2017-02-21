@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors;
@@ -8,6 +10,7 @@ using Microsoft.ServiceFabric.Actors.Runtime;
 using Microsoft.ServiceFabric.Actors.Client;
 using Newtonsoft.Json.Bson;
 using PhotoAward.PhotoActors.Interfaces;
+using PhotoAward.ThumbnailService.Interfaces;
 
 namespace PhotoAward.PhotoActors
 {
@@ -20,9 +23,10 @@ namespace PhotoAward.PhotoActors
     ///  - None: State is kept in memory only and not replicated.
     /// </remarks>
     [StatePersistence(StatePersistence.Persisted)]
-    public class PhotoActor : Actor, IPhotoActor
+    public class PhotoActor : Actor, IPhotoActor, IRemindable
     {
         private const string DataKey = "memberData";
+        private const string checkMemberReminderName = "keinMitglied";
 
         /// <summary>
         /// Initializes a new instance of PhotoActor
@@ -38,7 +42,7 @@ namespace PhotoAward.PhotoActors
         /// This method is called whenever an actor is activated.
         /// An actor is activated the first time any of its methods are invoked.
         /// </summary>
-        protected override Task OnActivateAsync()
+        protected override async Task OnActivateAsync()
         {
             ActorEventSource.Current.ActorMessage(this, "Actor activated.");
 
@@ -47,7 +51,32 @@ namespace PhotoAward.PhotoActors
             // Any serializable object can be saved in the StateManager.
             // For more information, see https://aka.ms/servicefabricactorsstateserialization
 
-            return this.StateManager.TryAddStateAsync("count", 0);
+            IActorReminder reminderRegistration = await this.RegisterReminderAsync(
+                checkMemberReminderName,
+                null,
+                TimeSpan.FromMinutes(5),
+                TimeSpan.FromMinutes(15));
+            
+        }
+
+        public async Task ReceiveReminderAsync(string reminderName, byte[] context, TimeSpan dueTime, TimeSpan period)
+        {
+            if (reminderName.Equals(checkMemberReminderName))
+            {
+                var thumbnailClient = new ThumbnailClientFactory().CreateThumbnailClient();
+                var dir =  System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location);
+                var filename = System.IO.Path.Combine(dir,"PackageRoot","Data", "bitLogo.gif");
+                var imgdata = System.IO.File.ReadAllBytes(filename);
+                var thumbnail = await thumbnailClient.GetThumbnail(imgdata);
+                var photo = await GetPhoto(CancellationToken.None);
+                photo.ThumbnailBytes = thumbnail;
+                photo.Title = "War nur 5 Minuten sichtbar";
+                photo.Filename = "Logo";
+                await this.SetPhoto(photo, CancellationToken.None);
+                System.Console.WriteLine("Bild wurde ersetzt!");
+                var reminder = this.GetReminder(checkMemberReminderName);
+                await this.UnregisterReminderAsync(reminder);
+            }
         }
 
         public async Task<PhotoInfo> SetPhoto(PhotoInfo photo, CancellationToken cancellationToken)
@@ -130,5 +159,12 @@ namespace PhotoAward.PhotoActors
             var svc = (IActorService) this.ActorService;
             await svc.DeleteActorAsync(this.Id, cancellationToken);
         }
+
+        
+
     }
+
+
+
+    
 }

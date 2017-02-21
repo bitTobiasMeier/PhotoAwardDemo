@@ -37,6 +37,7 @@
     <ProjectReference Include="..\PhotoAward.PhotoActor\PhotoAward.PhotoActor.csproj" />
     <ProjectReference Include="..\PhotoAward.PhotoManagement\PhotoAward.PhotoManagement.csproj" />
     <ProjectReference Include="..\PhotoAward.Platform\PhotoAward.Platform.csproj" />
+    <ProjectReference Include="..\PhotoAward.ThumbnailService\PhotoAward.ThumbnailService.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>

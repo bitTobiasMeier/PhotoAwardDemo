@@ -24,6 +24,7 @@
     </EntryPoint>
   </CodePackage>
   <ConfigPackage Name="Config" Version="1.0.17" />
+  <DataPackage Name="Data" Version="1.0.17" />
   <Resources>
     <Endpoints>
       <Endpoint Name="PhotoActorServiceEndpoint" />

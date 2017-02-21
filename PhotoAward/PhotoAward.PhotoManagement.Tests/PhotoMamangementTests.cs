@@ -10,6 +10,7 @@ using PhotoAward.PhotoManagement.Tests.Mocks;
 using PhotoAward.MemberManagement.Interfaces;
 using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoManagement.Interfaces;
+using PhotoAward.ThumbnailService.Interfaces;
 
 namespace PhotoAward.PhotoManagement.Tests
 {
@@ -31,7 +32,9 @@ namespace PhotoAward.PhotoManagement.Tests
             stateMngrMock.Setup(s => s.GetPhotoActorId(It.IsAny<ITransaction>(), It.IsAny<Guid>()))
                 .Returns(Task.FromResult(new ConditionalValue<ActorId> (true,ActorId.CreateRandom())));
             stateMngrMock.Setup(s => s.CreateTransaction()).Returns(new Mock<ITransaction>().Object);
-            var thumbnailCreatorMock = new Mock<IThumbnailCreator>();
+            var thumbnailServiceMock = new Mock<IThumbnailService>();
+            var thumbnailClientFactoryMock = new Mock<IThumbnailClientFactory>();
+            thumbnailClientFactoryMock.Setup(cm => cm.CreateThumbnailClient()).Returns(thumbnailServiceMock.Object);
             var photoActorClientFactoryMock = new Mock<IPhotoActorClientFactory>();
             var photoActorClientMock = new Mock<IPhotoActor>();
             var photoId = Guid.NewGuid();
@@ -50,7 +53,7 @@ namespace PhotoAward.PhotoManagement.Tests
             var pm = new PhotoManagement(CreateServiceContext(), stateMngrMock.Object, reliableStateManager, 
                 clientFactoryMock.Object,
                 photoActorClientFactoryMock.Object,
-                thumbnailCreatorMock.Object);
+                thumbnailClientFactoryMock.Object);
             var uploadData = new PhotoUploadData()
             {
                 Email = email,

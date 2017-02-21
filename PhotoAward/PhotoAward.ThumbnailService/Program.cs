@@ -3,13 +3,9 @@ using System.Diagnostics;
 using System.Fabric;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Services.Runtime;
-using PhotoAward.MemberManagement.Interfaces;
-using PhotoAward.PhotoActors.Interfaces;
-using PhotoAward.ThumbnailService.Interfaces;
 
-namespace PhotoAward.PhotoManagement
+namespace PhotoAward.ThumbnailService
 {
     internal static class Program
     {
@@ -25,18 +21,10 @@ namespace PhotoAward.PhotoManagement
                 // When Service Fabric creates an instance of this service type,
                 // an instance of the class is created in this host process.
 
-                //
-                ServiceRuntime.RegisterServiceAsync("PhotoManagementType",
-                    delegate(StatefulServiceContext context)
-                    {
-                        var stateMngr = new ReliableStateManager(context);
-                        return new PhotoManagement(context, new PhotoManagementStates(stateMngr), stateMngr,
-                            new MemberManagementClientFactory(), 
-                            new PhotoActorClientFactory(), 
-                            new ThumbnailClientFactory());
-                    }).GetAwaiter().GetResult();
+                ServiceRuntime.RegisterServiceAsync("ThumbnailServiceType",
+                    context => new ThumbnailService(context, new ThumbnailCreator())).GetAwaiter().GetResult();
 
-                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(PhotoManagement).Name);
+                ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(ThumbnailService).Name);
 
                 // Prevents this host process from terminating so services keep running.
                 Thread.Sleep(Timeout.Infinite);

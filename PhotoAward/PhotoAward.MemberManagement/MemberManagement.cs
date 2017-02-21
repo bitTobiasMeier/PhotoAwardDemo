@@ -112,7 +112,7 @@ namespace PhotoAward.MemberManagement
                 var existendMemberActorId = members.TryGetValueAsync(tx, email);
                 if (!existendMemberActorId.Result.HasValue)
                 {
-                    throw new Exception("Mitglied mit dieser Emailadresse exisitiert nicht.");
+                    throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
 
                 var result = await MemberClientFactory.GetMember(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);

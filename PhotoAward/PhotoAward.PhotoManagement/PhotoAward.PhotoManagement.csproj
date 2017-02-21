@@ -84,7 +84,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="ServiceEventSource.cs" />
     <Compile Include="TestableStatefullService.cs" />
-    <Compile Include="ThumbnailCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PackageRoot\Config\Settings.xml" />
@@ -106,6 +105,10 @@
     <ProjectReference Include="..\PhotoAward.PhotoManagement.Interfaces\PhotoAward.PhotoManagement.Interfaces.csproj">
       <Project>{01a6d906-9d97-4c34-9449-223839ed5d7e}</Project>
       <Name>PhotoAward.PhotoManagement.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.ThumbnailService.Interfaces\PhotoAward.ThumbnailService.Interfaces.csproj">
+      <Project>{b415d8ad-f448-4e97-a7a9-9f7f86ae4ab6}</Project>
+      <Name>PhotoAward.ThumbnailService.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
