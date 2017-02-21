@@ -1,3 +1,20 @@
 {
-    "typescript.check.workspaceVersion": false
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "files.exclude": {
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/*.js.map": {
+      "when": "$(basename)"
+    },
+    "node_modules": {},
+    "e2e": {},
+    "app.config": {},
+    "bin": {},
+    "App_Start": {},
+    "obj": {},
+    "Controller": {},
+    "**/*.cs": {},
+    "**/*.csproj": {}
+  }
 }
