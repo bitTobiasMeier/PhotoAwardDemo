@@ -16,7 +16,7 @@ namespace PhotoAward.Platform
         {
             context.Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
             context.Response.Headers["Pragma"] = "no-cache";
-            context.Response.Headers["Expires"] = "0";
+            context.Response.Headers["Expires"] = "-1";
             await Next.Invoke(context);
     }
   }
@@ -40,7 +40,7 @@ namespace PhotoAward.Platform
       };
       response.Headers.Pragma.Add(new NameValueHeaderValue("no-cache"));
       if (response.Content != null)
-        response.Content.Headers.Expires = DateTimeOffset.UtcNow;
+        response.Content.Headers.Expires = DateTimeOffset.UtcNow.AddDays(-1);
     }
   }
 }
