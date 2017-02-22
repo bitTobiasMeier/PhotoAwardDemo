@@ -1,20 +1,19 @@
+Photo Award Demo
+================
 #Introduction
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Demo Anwendung für die Service Fabric. Gezeigt werden folgende Punkte:
+1. Web API-Projekt mit Angular2-Frontend-Anwendung
+2. Stateless Service zur Thumbnail Generierung
+3. Zwei Statefull-Services 
+4. Zwei Actor-Services
+
 
 #Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
 1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+
 
 #Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Hinweis: Die Angular2-Unittests sind NICHT lauffähig. Out of Scope für diese Demo 
 
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+#Hinweis
+Dieses Projekt demonstriert die verschiedenen Möglichkeiten der Service Fabric und sollte nicht produktiv eingesetzt werden. 
