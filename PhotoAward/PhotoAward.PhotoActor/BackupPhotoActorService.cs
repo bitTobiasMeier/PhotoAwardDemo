@@ -25,6 +25,7 @@ namespace PhotoAward.PhotoActors
         {
             try
             {
+                //TODo: Backup/Restore vervollständigen. Aktuell nicht vollständig
                 var dir = @"c:\temp\BackupDir";
                 if (!System.IO.Directory.Exists(""))
                 {
@@ -53,6 +54,7 @@ namespace PhotoAward.PhotoActors
 
         protected override async Task<bool> OnDataLossAsync(RestoreContext restoreCtx, CancellationToken cancellationToken)
         {
+            //ToDo: Restore-Logik korrigieren
             //var backupFolder = await this.externalBackupStore.DownloadLastBackupAsync(cancellationToken);
             var backupFolder = @"c:\temp\BackupDir\";
 
@@ -61,7 +63,7 @@ namespace PhotoAward.PhotoActors
             try
             {
                 await restoreCtx.RestoreAsync(restoreDescription, cancellationToken);
-            //}
+            }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
