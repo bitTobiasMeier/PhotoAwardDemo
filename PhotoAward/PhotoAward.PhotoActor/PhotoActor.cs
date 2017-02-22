@@ -54,8 +54,8 @@ namespace PhotoAward.PhotoActors
             IActorReminder reminderRegistration = await this.RegisterReminderAsync(
                 CheckMemberReminderName,
                 null,
-                TimeSpan.FromMinutes(5),
-                TimeSpan.FromMinutes(15));
+                TimeSpan.FromMinutes(2),
+                TimeSpan.FromMinutes(5));
             
         }
 
