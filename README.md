@@ -1,20 +1,32 @@
+Photo Award Demo
+================
 #Introduction
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Demo Anwendung für die Service Fabric. Gezeigt werden folgende Punkte:
+1. Web API-Projekt mit Angular2-Frontend-Anwendung
+2. Stateless Service zur Thumbnail Generierung
+3. Zwei Statefull-Services 
+4. Zwei Actor-Services
+
+#Hinweis
+Dieses Projekt demonstriert die verschiedenen Möglichkeiten der Service Fabric. Für einen produktiven Einsatz ist es nicht geeignet.
 
 #Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+1. Voraussetzungen
+Vorraussetzung für das Projekt ist dass Sie das Service Fabric auf dem Entwicklungsrechner installiert ist. Eine ausführliche Anleitung finden Sie unter https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started
+2.	Build
+Um die Anwendung kompilieren zu können müssen zuerst alle NPM-Pakete installiert sein. Normalerweise geschieht dies direkt beim Öffnen von Visual Studio. 
+Damit das WebAPI-Projekt kompiliert werden kann muss die Angular-Anwendung gebaut sein. Die Demo ist so eingerichtet dass der NPM-Build-Task "Build" von Visual Studio
+vor jedem Compile-Vorgang aufgerufen wird. Allerdings kann es vorkommen dass dies beim ersten Öffnen des Projekts nicht direkt geschieht. Rufen Sie in diesem Fall bitte 
+manuell den Task "build" im Task Runner Explorer auf.
+Um das Projekt unter Azure zu testen muss ihr Cluster mit einem SSL-Zertifikat gesichert sein. Bitte ändern Sie den in der Datei ApplicationManifest aufgeführten 
+Thumbprint auf den Thumbprint ihres SSL-Zertifikats
+
+
 
 #Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+Hinweis: Die Angular2-Unittests sind NICHT lauffähig. Out of Scope für diese Demo 
 
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+#Test der Anwendung unter Azure
+Die Anwendung ist aktuell (22.02.2017) unter folgender Adresse deployt: https://bitdemoappphotoaward.westeurope.cloudapp.azure.com:8443/ 
+Eine Tage nach der BASTA! Spring wird der Cluster offline genommen.
