@@ -58,7 +58,15 @@ namespace PhotoAward.PhotoActors
 
             var restoreDescription = new RestoreDescription(backupFolder);
 
-            await restoreCtx.RestoreAsync(restoreDescription, cancellationToken);
+            try
+            {
+                await restoreCtx.RestoreAsync(restoreDescription, cancellationToken);
+            //}
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            
 
             return true;
 

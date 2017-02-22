@@ -26,7 +26,7 @@ namespace PhotoAward.PhotoActors
     public class PhotoActor : Actor, IPhotoActor, IRemindable
     {
         private const string DataKey = "memberData";
-        private const string checkMemberReminderName = "keinMitglied";
+        private const string CheckMemberReminderName = "keinMitglied";
 
         /// <summary>
         /// Initializes a new instance of PhotoActor
@@ -52,7 +52,7 @@ namespace PhotoAward.PhotoActors
             // For more information, see https://aka.ms/servicefabricactorsstateserialization
 
             IActorReminder reminderRegistration = await this.RegisterReminderAsync(
-                checkMemberReminderName,
+                CheckMemberReminderName,
                 null,
                 TimeSpan.FromMinutes(5),
                 TimeSpan.FromMinutes(15));
@@ -61,7 +61,7 @@ namespace PhotoAward.PhotoActors
 
         public async Task ReceiveReminderAsync(string reminderName, byte[] context, TimeSpan dueTime, TimeSpan period)
         {
-            if (reminderName.Equals(checkMemberReminderName))
+            if (reminderName.Equals(CheckMemberReminderName))
             {
                 var thumbnailClient = new ThumbnailClientFactory().CreateThumbnailClient();
                 var dir =  System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location);
@@ -74,7 +74,7 @@ namespace PhotoAward.PhotoActors
                 photo.Filename = "Logo";
                 await this.SetPhoto(photo, CancellationToken.None);
                 System.Console.WriteLine("Bild wurde ersetzt!");
-                var reminder = this.GetReminder(checkMemberReminderName);
+                var reminder = this.GetReminder(CheckMemberReminderName);
                 await this.UnregisterReminderAsync(reminder);
             }
         }

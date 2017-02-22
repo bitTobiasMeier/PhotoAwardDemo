@@ -11,7 +11,7 @@ import { Component, Injectable, OpaqueToken} from '@angular/core';
 })
 export class AppComponent {
   title = 'PhotoAward Client';
-  email = 'tobias.meier@bridging-it.de';
+  email = '';
   firstname: string;
   surname: string;
   id: string;

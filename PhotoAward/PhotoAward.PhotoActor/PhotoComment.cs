@@ -7,6 +7,7 @@ namespace PhotoAward.PhotoActors
     [DataContract]
     internal class PhotoComment
     {
+        //ToDO: objekte immutable machen
         [DataMember]
         public Guid ? Id { get; set; }
         [DataMember]

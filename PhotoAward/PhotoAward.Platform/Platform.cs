@@ -45,13 +45,13 @@ namespace PhotoAward.Platform
             // TODO: Replace the following sample code with your own logic 
             //       or remove this RunAsync override if it's not needed in your service.
 
-            long iterations = 0;
+            //long iterations = 0;
 
             while (true)
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                ServiceEventSource.Current.ServiceMessage(this.Context, "Working Platform -{0}", ++iterations);
+         //       ServiceEventSource.Current.ServiceMessage(this.Context, "PhotoAward Platform is working -{0}", ++iterations);
 
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
             }

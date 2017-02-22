@@ -26,6 +26,7 @@ namespace PhotoAward.MemberActor
         [DataContract]
         private class MemberData
         {
+            //ToDO: objekte immutable machen
             [DataMember]
             public string FirstName { get; set; }
             [DataMember]

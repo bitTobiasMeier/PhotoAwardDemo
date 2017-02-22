@@ -7,6 +7,7 @@ namespace PhotoAward.PhotoActors
     [DataContract]
     internal class PhotoData
     {
+        //ToDO: objekte immutable machen
         [DataMember]
         public byte[] ThumbnailAsByte { get; set; }
         [DataMember]
