@@ -26,3 +26,7 @@ Thumbprint auf den Thumbprint ihres SSL-Zertifikats
 #Build and Test
 Hinweis: Die Angular2-Unittests sind NICHT lauffähig. Out of Scope für diese Demo 
 
+
+#Test der Anwendung unter Azure
+Die Anwendung ist aktuell (22.02.2017) unter folgender Adresse deployt: https://bitdemoappphotoaward.westeurope.cloudapp.azure.com:8443/ 
+Eine Tage nach der BASTA! Spring wird der Cluster offline genommen.
