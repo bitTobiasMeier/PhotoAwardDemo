@@ -105,6 +105,7 @@ namespace PhotoAward.MemberActor
             data.Id = member.Id;
             
             await this.StateManager.SetStateAsync<MemberData>(DataKey, data, cancellationToken);
+            //Fehler: Diese Daten werden nicht übernommen
             member.EntryDate = data.EntryDate;
             member.LastUpdate = data.LastUpdate;
             return member;
