@@ -10,7 +10,7 @@ import { Component, Injectable, OpaqueToken} from '@angular/core';
   styles: []
 })
 export class AppComponent {
-  title = 'PhotoAward Client';
+  title = 'Photo Award Client';
   email = '';
   firstname: string;
   surname: string;

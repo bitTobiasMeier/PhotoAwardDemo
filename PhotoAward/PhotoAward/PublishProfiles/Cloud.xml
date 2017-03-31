@@ -20,8 +20,8 @@
                                     AzureActiveDirectory="true"
                                     ServerCertThumbprint="0123456789012345678901234567890123456789" />
   -->
-  <ClusterConnectionParameters />
-  <ApplicationParameterFile Path="..\ApplicationParameters\Local.5Node.xml" />
+  <ClusterConnectionParameters ConnectionEndpoint="sfdemodotnetrn.westeurope.cloudapp.azure.com:19000" X509Credential="true" ServerCertThumbprint="6E003E0BD4D89D264CD2DABBFA5DC0A08122D4CD" FindType="FindByThumbprint" FindValue="6E003E0BD4D89D264CD2DABBFA5DC0A08122D4CD" StoreLocation="CurrentUser" StoreName="My" />
+  <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
   <UpgradeDeployment Mode="Monitored" Enabled="false">
     <Parameters FailureAction="Rollback" Force="True" />
   </UpgradeDeployment>

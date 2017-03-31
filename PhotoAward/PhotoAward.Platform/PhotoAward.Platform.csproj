@@ -176,59 +176,26 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Content Include="dist\faviconbit.ico">
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\flags.png" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\icons.eot" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\icons.svg" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\icons.ttf" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\icons.woff" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\icons.woff2" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\index.html" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\inline.bundle.js" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\inline.bundle.map" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\main.bundle.js" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\main.bundle.map" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\polyfills.bundle.js" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\polyfills.bundle.map" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\styles.bundle.js" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\styles.bundle.map" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\vendor.bundle.js" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
-    <Content Include="dist\vendor.bundle.map" >
-	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dist\index.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dist\inline.bundle.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dist\main.bundle.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dist\polyfills.bundle.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dist\styles.bundle.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dist\vendor.bundle.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
     <Content Include="src\app\app.component.html" />
@@ -240,8 +207,8 @@
     <Content Include="src\styles.css" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
-    <TypeScriptCompile Include="e2e\app.po.ts" />
+    <None Include="e2e\app.e2e-spec.ts" />
+    <None Include="e2e\app.po.ts" />
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />

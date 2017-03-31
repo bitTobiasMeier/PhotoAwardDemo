@@ -1,6 +1,4 @@
 # PhotoAwardClient
-Dieses Projekt ist Teil der Service Fabric Demo für die Basta 2017 Spring.
-Der Code hat Beispielcharacter und ist nicht für einen produktiven Einsatz geeignet.
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
