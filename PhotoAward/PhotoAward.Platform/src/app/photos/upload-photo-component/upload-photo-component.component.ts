@@ -1,3 +1,4 @@
+import { UserService } from 'app/Shared/user.service';
 import { UploadService } from './../../Shared/uploadService';
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
@@ -7,13 +8,12 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
   styles: []
 })
 export class UploadPhotoComponentComponent implements OnInit {
-    @Input() email:string;
     @Output() imageUploaded = new EventEmitter<string>();
     private  _filesToUpload : any;
     filetitle: string;
     message ="";
 
-  constructor(private _uploadService: UploadService) { }
+  constructor(private _uploadService: UploadService, private _userService: UserService) { }
 
   ngOnInit() {
   }
@@ -29,10 +29,12 @@ export class UploadPhotoComponentComponent implements OnInit {
       const files =  this._filesToUpload;
            const filename = files[0].name;
            that.message ="Uploading image " + filename;
-           const result = await this._uploadService.uploadFile(this.email, this.filetitle, filename,  [], files).then(
+           const result = await this._uploadService.uploadFile(this._userService.user.email, this.filetitle, filename,  [], files).then(
              e=> {
                that.message="Bild wurde hochgeladen";
                that.imageUploaded.emit("");
+               that.filetitle = "";
+               that._filesToUpload =[];
              }
            ).catch(
              (error=> {

@@ -1,4 +1,5 @@
-﻿import { PhotoManagementData , PhotoManagementClient} from './../../Shared/Controllers.generated';
+﻿import { UserService } from './../../Shared/user.service';
+import { PhotoManagementData , PhotoManagementClient} from './../../Shared/Controllers.generated';
 import { Component, OnInit, Input  } from '@angular/core';
 
 @Component({
@@ -11,9 +12,15 @@ export class ShowPhotosComponentComponent implements OnInit {
   @Input() email:string;
   photos: PhotoManagementData[] = [];
 
-  constructor(private _photoManagementClient: PhotoManagementClient) { }
+  constructor(private _photoManagementClient: PhotoManagementClient, private _userService: UserService) { }
 
   ngOnInit() {
+    if (this._userService  && this._userService.user) {
+      this.email =this._userService.user.email;
+      if (this.email) {
+        this.loadThumbnails();
+      }
+    }
   }
 
   loadThumbnails (){

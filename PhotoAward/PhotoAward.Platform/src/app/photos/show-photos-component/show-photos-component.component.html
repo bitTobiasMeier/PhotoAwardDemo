@@ -1,25 +1,35 @@
-<div class="ui input">
-
-  <div class="ui two column doubling stackable grid container">
-  <div class="column">
-
-  Email: <input type="text" name="email" ngModel [(ngModel)]="email" >
-  </div>
-  <div class="column">
-  <button type="button" class="ui primary button" (click)="loadThumbnails()">Bilder anzeigen</button>
-  </div>
-  </div>
-</div>
-
-<div [hidden] = 'photos.length == 0'>
-<div>Anzahl Bilder von {{email}} : {{photos.length}}</div>
-<div class="ui grid container">
-   <div class="doubling  four column row">
-  <div class="column" *ngFor="let photo of photos">
-    <h4>{{photo.title}}</h4>
-    Filename: {{photo.fileName}}
-    <img [src]="'data:image/jpeg;base64,'+photo.thumbnailBytes" width="150px"/>
+<div class="panel panel-default">
+  <h2>Benutzer auswählen</h2>
+  <form #form="ngForm" (ngSubmit)="loadThumbnails()" class="form-horizontal">
+    <div class="form-group">
+      <label for="email" class="control-label col-xs-1">Email</label>
+      <div class="col-xs-3">
+      <input type="text" name="email" ngModel [(ngModel)]="email" class="form-control">
+      </div>
     </div>
+    <div class="form-group">
+      <label class="control-label col-xs-1">&nbsp;</label>
+      <div class="col-xs-3">
+      <button type="button" class="btn btn-default" (click)="loadThumbnails()">Bilder anzeigen  </button>
+      </div>
     </div>
+  </form>
 </div>
-</div>
+
+<div class="panel panel-default">
+  <div [hidden]='photos.length == 0'>
+    <div>Anzahl Bilder von {{email}} : {{photos.length}}</div>
+
+    <div class="row">
+      <div class="col-sm-4 col-md-3" *ngFor="let photo of photos">
+        <div class="thumbnail" >
+          <div class="caption">
+            <h4>{{photo.title}}</h4>
+            <img [src]="'data:image/jpeg;base64,'+photo.thumbnailBytes" width="150px" /> Filename: {{photo.fileName}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>

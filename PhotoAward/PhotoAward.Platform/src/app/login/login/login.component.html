@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+  <h2>Anmelden</h2>
+ <form #form="ngForm" (ngSubmit)="login(form.value)">
+          Email: <input type="text" name="email" ngModel [(ngModel)]="email">
+          <button type="submit" class="btn btn-default" >Anmelden</button>
+          <br />
+          <p>&nbsp;</p>
+          <span>{{message}}</span>
+        </form>
+        <a [routerLink]="['/registerMember']">Als neuer Benutzer registrieren</a>
+</div>

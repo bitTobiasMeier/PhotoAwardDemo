@@ -1,33 +1,34 @@
-<form #form="ngForm" >
-<div  class = "ui input">
-
-  <div class="ui two column doubling stackable grid container">
-    <div class="row">
+<div class="panel panel-default">
+<form #form="ngForm" class="form-horizontal" >
       <h3>Upload Image</h3>
+
+   <div class="form-group">
+    <label for="filetitle" class="control-label col-xs-1">Titel</label>
+     <div class="col-xs-3">
+      <input type="text" name="filetitle" ngModel [(ngModel)]="filetitle" class="form-control" >
+      </div>
+    </div>
+    <div class="form-group">
+    <label  class="control-label col-xs-1">Datei</label>
+     <div class="col-xs-3">
+      <input type="file" (change)="fileChangeEvent($event)" placeholder="Bild auswählen..."  class="form-control btn"/>
+      </div>
     </div>
 
-  <div class="row">
-    <div class="one wide column">Titel:</div>
-    <div class="column"><div class="ui input"><input type="text" name="filetitle" ngModel [(ngModel)]="filetitle" ></div></div>
-  </div>
-  <div class="row">
-    <div class="ten wide column">
-        <input type="file" (change)="fileChangeEvent($event)" placeholder="Bild auswählen..."  class="ui button"/>
+
+  <div class="form-group">
+    <label  class="control-label col-xs-1">&nbsp;</label>
+     <div class="col-xs-3">
+      <button type="button" (click)="upload()" class="btn btn-default">Bild hinzufügen</button>
+      </div>
     </div>
 
-
-  </div>
-  <div class="row">
-    <div class="ten wide column">
-        <button type="button" (click)="upload()" class="ui button">Bild hinzufügen</button>
+     <div class="form-group">
+    <label  class="control-label col-xs-1">&nbsp;</label>
+     <div class="col-xs-3">
+{{message}}
+      </div>
     </div>
 
-  </div>
-  <div class="row">
-     <div class="ten wide column">
-        {{message}}
-    </div>
-    </div>
-</div>
-</div>
 </form>
+</div>

@@ -1,37 +1,31 @@
-﻿<div class="ui three column doubling stackable grid container">
+﻿<div class="jumbatron" style="background:white">
   <div class="row">
-    <div class="ten wide column">
-      <h1>
-        Microservices für .Net Entwickler: {{title}}
-      </h1>
-    </div>
-    <div class="one wide column">
-      <a href="http://www.bridging-it.de/">
-        <img src="assets/bitlogo.gif" width="200px" />
+     <div class="col-xs-10">
+       <h1> Microservices für .Net Entwickler:<br>{{title}}</h1>
+     </div>
+     <div class="col-xs-2 ">
+       <a href="http://www.bridging-it.de/" class="pull-right">
+        <img src="assets/bitlogo.gif" width="200px"/>
       </a>
-    </div>
-  </div>
-
-  <div class="ui input">
-
-    <div class="ui two column doubling stackable grid container">
-      <div class="column">
-        <form #form="ngForm" (ngSubmit)="login(form.value)">
-          Email: <input type="text" name="email" ngModel [(ngModel)]="email">
-          <button type="submit" class="ui primary button">Anmelden</button>
-          <br />
-          <p>&nbsp;</p>
-          <span>{{message}}</span>
-        </form>
-      </div>
-      <div class="column">
-        <pac-register-member></pac-register-member>
-      </div>
-
-    </div>
-  </div>
+     </div>
+   </div>
 </div>
 
+<div style="background:white">
+<ul class="nav nav-pills">
+  <li role="presentation" ><a [routerLink]="['/gallery']" *ngIf="userservice.user.notMember == false">Gallerie</a></li>
+  <li role="presentation" ><a [routerLink]="['/upload']" *ngIf="userservice.user.notMember == false">Bild hochladen</a></li>
+  <li role="presentation"><a [routerLink]="['/']" *ngIf="userservice.user.notMember == true">Login</a></li>
+  <li role="presentation"><a [routerLink]="['/']" *ngIf="userservice.user.notMember == false">Logout</a></li>
+  <li role="presentation"><a [routerLink]="['/registerMember']">Registrieren</a></li>
+</ul>
+</div>
+
+<div *ngIf="userservice.user.notMember == false">
+  Willkommen {{userservice.user.firstname}} {{userservice.user.surname }}
+</div>
+
+<router-outlet></router-outlet>
 
 <div [hidden] = 'notMember'>
 
@@ -39,11 +33,9 @@
   {{firstname}}
   {{surname}} </h3>
 
-<pac-upload-photo-component [email]="email" (imageUploaded)='imageUploaded'></pac-upload-photo-component>
-<p> &nbsp;</p>
-<hr/>
-
-<pac-show-photos-component [email]="email"></pac-show-photos-component>
+  <div class="ui divider">
+        Upload
+  </div>
 
 
 
