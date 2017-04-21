@@ -16,7 +16,7 @@
   <li role="presentation" ><a [routerLink]="['/gallery']" *ngIf="userservice.user.notMember == false">Gallerie</a></li>
   <li role="presentation" ><a [routerLink]="['/upload']" *ngIf="userservice.user.notMember == false">Bild hochladen</a></li>
   <li role="presentation"><a [routerLink]="['/']" *ngIf="userservice.user.notMember == true">Login</a></li>
-  <li role="presentation"><a [routerLink]="['/']" *ngIf="userservice.user.notMember == false">Logout</a></li>
+  <li role="presentation" (click)='userservice.logout()'><a (click)='userservice.logout()' *ngIf="userservice.user.notMember == false">Logout</a></li>
   <li role="presentation"><a [routerLink]="['/registerMember']">Registrieren</a></li>
 </ul>
 </div>

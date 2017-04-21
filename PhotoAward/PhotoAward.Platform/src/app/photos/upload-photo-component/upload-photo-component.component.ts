@@ -1,6 +1,7 @@
 import { UserService } from 'app/Shared/user.service';
 import { UploadService } from './../../Shared/uploadService';
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Router } from "@angular/router/";
 
 @Component({
   selector: 'pac-upload-photo-component',
@@ -13,9 +14,13 @@ export class UploadPhotoComponentComponent implements OnInit {
     filetitle: string;
     message ="";
 
-  constructor(private _uploadService: UploadService, private _userService: UserService) { }
+  constructor(private _uploadService: UploadService, private _userService: UserService, private router: Router) { }
 
   ngOnInit() {
+    if (this._userService  && this._userService.user && this._userService.user.notMember === false ) {
+      return;
+    }
+     this.router.navigateByUrl('/');
   }
 
 

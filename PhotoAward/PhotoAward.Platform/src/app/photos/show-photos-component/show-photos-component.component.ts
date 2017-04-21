@@ -1,6 +1,9 @@
-﻿import { UserService } from './../../Shared/user.service';
-import { PhotoManagementData , PhotoManagementClient} from './../../Shared/Controllers.generated';
-import { Component, OnInit, Input  } from '@angular/core';
+﻿
+import { UserService } from './../../Shared/user.service';
+import { PhotoManagementData, PhotoManagementClient } from './../../Shared/Controllers.generated';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from "@angular/router/";
+
 
 @Component({
   selector: 'pac-show-photos-component',
@@ -9,37 +12,41 @@ import { Component, OnInit, Input  } from '@angular/core';
 })
 
 export class ShowPhotosComponentComponent implements OnInit {
-  @Input() email:string;
+  @Input() email: string;
   photos: PhotoManagementData[] = [];
 
-  constructor(private _photoManagementClient: PhotoManagementClient, private _userService: UserService) { }
+  constructor(private _photoManagementClient: PhotoManagementClient, private _userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    if (this._userService  && this._userService.user) {
-      this.email =this._userService.user.email;
+    if (this._userService && this._userService.user && this._userService.user.notMember === false) {
+      this.email = this._userService.user.email;
       if (this.email) {
         this.loadThumbnails();
+        return;
       }
     }
+    this.router.navigateByUrl('/');
+
+
   }
 
-  loadThumbnails (){
+  loadThumbnails() {
     this.showImagesOfMember(this.email);
   }
 
-  showImagesOfMember (email: string){
-      const that = this;
-      console.log("Loading images for user " + email);
-      this._photoManagementClient.getThumbnailsOfMember (email).subscribe (
+  showImagesOfMember(email: string) {
+    const that = this;
+    console.log("Loading images for user " + email);
+    this._photoManagementClient.getThumbnailsOfMember(email).subscribe(
       images => {
-        console.log ("Bilder ermittelt: " );
+        console.log("Bilder ermittelt: ");
         if (images == null) {
-          console.log ("Keine bilder!");
+          console.log("Keine bilder!");
         } else {
-          console.log ("Bilder Anzahl: " + images.length);
+          console.log("Bilder Anzahl: " + images.length);
         }
         that.photos = images;
-      }, (error)=> {
+      }, (error) => {
         console.log(error);
 
       }
