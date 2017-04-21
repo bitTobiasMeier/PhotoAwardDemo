@@ -9,7 +9,6 @@
     "module": "es6",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es5",
-    "files": []
+    "target": "es5"
   }
 }
