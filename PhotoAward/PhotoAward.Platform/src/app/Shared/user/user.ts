@@ -4,8 +4,4 @@ export class User {
   email: string;
   notMember = false;
   id: string;
-
-
-
-
 }
