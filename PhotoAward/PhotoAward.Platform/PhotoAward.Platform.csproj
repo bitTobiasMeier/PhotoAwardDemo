@@ -72,20 +72,26 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceFabric.Data, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.Data.2.4.164\lib\net45\Microsoft.ServiceFabric.Data.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.Data.2.5.216\lib\net45\Microsoft.ServiceFabric.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceFabric.Data.Interfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.Data.2.4.164\lib\net45\Microsoft.ServiceFabric.Data.Interfaces.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.Data.2.5.216\lib\net45\Microsoft.ServiceFabric.Data.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ServiceFabric.FabricTransport, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\packages\Microsoft.ServiceFabric.FabricTransport.Internal.2.5.216\lib\net45\Microsoft.ServiceFabric.FabricTransport.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ServiceFabric.Internal, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.5.4.164\lib\net45\Microsoft.ServiceFabric.Internal.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.5.5.216\lib\net45\Microsoft.ServiceFabric.Internal.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceFabric.Internal.Strings, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.5.4.164\lib\net45\Microsoft.ServiceFabric.Internal.Strings.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.5.5.216\lib\net45\Microsoft.ServiceFabric.Internal.Strings.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ServiceFabric.Services, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.Services.2.4.164\lib\net45\Microsoft.ServiceFabric.Services.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.Services.2.5.216\lib\net45\Microsoft.ServiceFabric.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ServiceFabric.Services.Remoting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\packages\Microsoft.ServiceFabric.Services.Remoting.2.5.216\lib\net45\Microsoft.ServiceFabric.Services.Remoting.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -93,17 +99,20 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceFabricServiceModel, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.Services.2.4.164\lib\net45\ServiceFabricServiceModel.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Fabric, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.5.4.164\lib\net45\System.Fabric.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.5.5.216\lib\net45\System.Fabric.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Fabric.Management.ServiceModel, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
+      <HintPath>..\packages\Microsoft.ServiceFabric.5.5.216\lib\net45\System.Fabric.Management.ServiceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Fabric.Management.ServiceModel.XmlSerializers, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ServiceFabric.5.5.216\lib\net45\System.Fabric.Management.ServiceModel.XmlSerializers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Fabric.Strings, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
-      <HintPath>..\packages\Microsoft.ServiceFabric.5.4.164\lib\net45\System.Fabric.Strings.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ServiceFabric.5.5.216\lib\net45\System.Fabric.Strings.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http" />
@@ -111,6 +120,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Cors, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
@@ -210,6 +220,10 @@
     <Content Include="karma.conf.js" />
     <Content Include="protractor.conf.js" />
     <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\login\login\login.component.html" />
+    <Content Include="src\app\login\register-member\register-member.component.html" />
+    <Content Include="src\app\photos\show-photos-component\show-photos-component.component.html" />
+    <Content Include="src\app\photos\upload-photo-component\upload-photo-component.component.html" />
     <Content Include="src\assets\bitLogo.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -223,7 +237,20 @@
     <TypeScriptCompile Include="src\app\app.component.spec.ts" />
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\login\login\login.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\login\login\login.component.ts" />
+    <TypeScriptCompile Include="src\app\login\register-member\register-member.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\login\register-member\register-member.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\show-photos-component\show-photos-component.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\photos\show-photos-component\show-photos-component.component.ts" />
+    <TypeScriptCompile Include="src\app\photos\upload-photo-component\upload-photo-component.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\photos\upload-photo-component\upload-photo-component.component.ts" />
     <TypeScriptCompile Include="src\app\Shared\Controllers.generated.ts" />
+    <TypeScriptCompile Include="src\app\Shared\textmodule.d.ts" />
+    <TypeScriptCompile Include="src\app\Shared\uploadService.ts" />
+    <TypeScriptCompile Include="src\app\Shared\user.service.spec.ts" />
+    <TypeScriptCompile Include="src\app\Shared\user.service.ts" />
+    <TypeScriptCompile Include="src\app\Shared\user\user.ts" />
     <TypeScriptCompile Include="src\environments\environment.prod.ts" />
     <TypeScriptCompile Include="src\environments\environment.ts" />
     <TypeScriptCompile Include="src\main.ts" />
