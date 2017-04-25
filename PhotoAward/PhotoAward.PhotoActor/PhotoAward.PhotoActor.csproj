@@ -103,6 +103,7 @@
     <None Include="PackageRoot\ServiceManifest.xml" />
     <None Include="PackageRoot\Config\Settings.xml" />
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\packages.config" />
   </ItemGroup>
   <ItemGroup>
