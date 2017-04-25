@@ -285,8 +285,8 @@
         }
       }
     },
-    "/api/PhotoManagement": {
-      "post": {
+    "/api/Photo/Restore": {
+      "get": {
         "tags": [
           "PhotoManagement"
         ],

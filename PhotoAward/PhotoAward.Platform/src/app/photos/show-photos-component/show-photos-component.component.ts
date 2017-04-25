@@ -39,13 +39,13 @@ export class ShowPhotosComponentComponent implements OnInit {
     console.log("Loading images for user " + email);
     this._photoManagementClient.getThumbnailsOfMember(email).subscribe(
       images => {
-        console.log("Bilder ermittelt: ");
+        /*console.log("Bilder ermittelt: ");
         if (images == null) {
           console.log("Keine bilder!");
         } else {
           console.log("Bilder Anzahl: " + images.length);
-        }
-        that.photos = images;
+        }*/
+        that.photos = images != null ? images : [];
       }, (error) => {
         console.log(error);
 

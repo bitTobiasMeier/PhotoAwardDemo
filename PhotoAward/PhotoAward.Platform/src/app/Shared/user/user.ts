@@ -5,3 +5,6 @@ export class User {
   notMember = false;
   id: string;
 }
+
+const user =<Partial<User>> new User();
+user.id = "";

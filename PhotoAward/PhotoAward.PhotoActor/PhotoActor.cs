@@ -49,7 +49,7 @@ namespace PhotoAward.PhotoActors
             // The StateManager is this actor's private state store.
             // Data stored in the StateManager will be replicated for high-availability for actors that use volatile or persisted state storage.
             // Any serializable object can be saved in the StateManager.
-            // For more information, see https://aka.ms/servicefabricactorsstateserialization
+            // For more information, see https://aka.ms/servicefabricactorsstateserialization 
 
             IActorReminder reminderRegistration = await this.RegisterReminderAsync(
                 CheckMemberReminderName,

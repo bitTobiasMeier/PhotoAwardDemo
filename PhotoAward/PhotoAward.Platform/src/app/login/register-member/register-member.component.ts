@@ -33,8 +33,8 @@ export class RegisterMemberComponent implements OnInit {
 
     const dtoResult = await this._memberManagementClient.add(dto).subscribe(
       (result: MemberDto) => {
-        that.firstname = result.firstName;
-        that.surname = result.surname;
+        that.firstname = result.firstName ? result.firstName : "";
+        that.surname = result.surname ? result.surname : "";
         that.id = result.id;
         that.message = "Die Registrierung war erfolgreich. Bitte melden Sie sich nun an.";
       }, (e)=> {

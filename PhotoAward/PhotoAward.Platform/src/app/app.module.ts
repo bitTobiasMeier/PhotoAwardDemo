@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { DOCUMENT } from '@angular/platform-browser';
 import { LoginComponent } from './login/login/login.component';
 
+
 let API_BASE_URL2 = 'http://NB-000953:8200';
 
 

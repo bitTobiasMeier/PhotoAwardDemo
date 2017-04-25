@@ -24,7 +24,7 @@ export class UploadPhotoComponentComponent implements OnInit {
   }
 
 
-   fileChangeEvent (fileInput: any){
+  fileChangeEvent (fileInput: any){
     this._filesToUpload = <Array<File>> fileInput.target.files;
   }
 

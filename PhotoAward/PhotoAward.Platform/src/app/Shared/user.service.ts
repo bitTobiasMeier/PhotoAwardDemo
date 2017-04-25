@@ -2,24 +2,27 @@ import { Router } from '@angular/router';
 import { User } from 'app/Shared/user/user';
 import { Injectable } from '@angular/core';
 
+
 @Injectable()
 export class UserService {
-  user : Readonly<User>;
+  user: Readonly<User>;
+
   constructor(private router: Router) {
-    const user  = new User ();
+    const user = new User();
     user.notMember = true;
     this.user = user;
   }
 
-  logout () {
+  logout() {
     if (this.user == null) {
-        this.user = new User ();
+      this.user = new User();
     } else {
-      const user  = new User ();
+      const user = new User();
       user.notMember = true;
       this.user = user;
     }
-     this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/');
   }
 
 }
+

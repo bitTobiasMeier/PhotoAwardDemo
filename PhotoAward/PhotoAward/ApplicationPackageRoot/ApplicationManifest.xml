@@ -41,7 +41,7 @@
     <ServiceManifestRef ServiceManifestName="PhotoAward.PlatformPkg" ServiceManifestVersion="1.0.17" />
     <ConfigOverrides />
     <Policies>
-       <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />  
+      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />  
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
@@ -82,6 +82,6 @@
     </Service>
   </DefaultServices>
   <Certificates>
-    <EndpointCertificate X509StoreName="MY" X509FindValue="6E003E0BD4D89D264CD2DABBFA5DC0A08122D4CD" Name="TestCert1" />
+    <EndpointCertificate X509StoreName="MY" X509FindValue="2B5C7A6BDFCE84CC7559977375D384494CC3D2A5" Name="TestCert1" />
   </Certificates>
 </ApplicationManifest>

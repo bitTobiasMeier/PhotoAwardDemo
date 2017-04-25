@@ -15,7 +15,7 @@
     "obj": {},
     "Controller": {},
     "**/*.cs": {},
-    "**/*.csproj": {}
+    "**/*.csproj": {},
 },
 "vsicons.presets.angular": true
 }
