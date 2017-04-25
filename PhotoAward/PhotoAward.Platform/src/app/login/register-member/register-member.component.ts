@@ -12,6 +12,8 @@ import { Component, OnInit, Injectable, OpaqueToken } from '@angular/core';
 export class RegisterMemberComponent implements OnInit {
 
   email: string;
+  password: string;
+  password2: string;
   firstname: string;
   surname: string;
   id: string;
@@ -24,12 +26,17 @@ export class RegisterMemberComponent implements OnInit {
   }
 
   async register(value: any) {
+    if (this.password !== this.password2) {
+      this.message = "Passwörter sind unterschiedlich";
+      return;
+    }
     this.message = "Die Registrierung wird übermittelt ...";
     const that = this;
     const dto = new MemberDto();
     dto.firstName = this.firstname;
     dto.surname = this.surname;
     dto.email = this.email;
+    dto.password = this.password;
 
     const dtoResult = await this._memberManagementClient.add(dto).subscribe(
       (result: MemberDto) => {

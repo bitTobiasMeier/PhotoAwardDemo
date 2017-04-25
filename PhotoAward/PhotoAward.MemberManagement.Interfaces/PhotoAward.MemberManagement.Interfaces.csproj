@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangePasswordDto.cs" />
     <Compile Include="IMemberManagement.cs" />
     <Compile Include="IMemberManagementClientFactory.cs" />
     <Compile Include="MemberDto.cs" />

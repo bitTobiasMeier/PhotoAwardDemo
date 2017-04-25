@@ -15,6 +15,7 @@ import { User } from "app/Shared/user/user";
 export class LoginComponent implements OnInit {
   message: string;
   email:string;
+  password:string;
   user: User;
   constructor(private _memberManagementClient: MemberManagementClient, private _userService: UserService) { }
 
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
   async login(value: any) {
     this.message = "Anmeldung gestartet ....";
     const that = this;
-    const dto = await this._memberManagementClient.get(this.email).subscribe(
+    const dto = await this._memberManagementClient.login(this.email,this.password).subscribe(
       (result: MemberDto) => {
         that.user = new User();
         that.user.firstname = result.firstName ? result.firstName : "";

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors;
-using PhotoAward.MemberManagement.Interfaces;
+
 
 namespace PhotoAward.MemberActor.Interfaces
 {
@@ -13,8 +13,10 @@ namespace PhotoAward.MemberActor.Interfaces
     /// </summary>
     public interface IMemberActor : IActor
     {
-        Task<MemberDto> GetMember(CancellationToken cancellationToken);
+        Task<InternalMemberDto> GetMember(CancellationToken cancellationToken);
 
-        Task<MemberDto> SetMemberAsync(MemberDto member, CancellationToken cancellationToken);
+        Task<InternalMemberDto> SetMemberAsync(InternalMemberDto member, CancellationToken cancellationToken);
+
+        Task UpdatePassword(byte[] newPasswordHash, byte[] salt, CancellationToken cancellationToken);
     }
 }

@@ -82,8 +82,9 @@ namespace PhotoAward.MemberManagement
                     await members.AddAsync(tx, member.Email, memberActorId);
                     
                     var memberActor = MemberClientFactory.GetMember(memberActorId);
+                    var internalMember = CreateInternalMemberAndHash(member);
 
-                    var result = await memberActor.SetMemberAsync(member, CancellationToken.None);
+                    var result = await memberActor.SetMemberAsync(internalMember, CancellationToken.None);
                     member.EntryDate = result.EntryDate;
                     member.LastUpdate = result.LastUpdate;
 
@@ -102,6 +103,23 @@ namespace PhotoAward.MemberManagement
             }
         }
 
+        private static InternalMemberDto CreateInternalMemberAndHash(MemberDto member)
+        {
+            var internalMember = new InternalMemberDto()
+            {
+                Email = member.Email,
+                EntryDate = member.EntryDate,
+                FirstName = member.FirstName,
+                LastUpdate = member.LastUpdate,
+                Id = member.Id,
+                Surname = member.Surname
+            };
+            var passwordHash = PasswordHashCalculator.ComputeHash(member.Password);
+            internalMember.PasswordHash = passwordHash.Hash;
+            internalMember.PasswordSalt = passwordHash.Salt;
+            return internalMember;
+        }
+
 
         public async Task<MemberDto> GetMember(string email)
         {
@@ -118,6 +136,28 @@ namespace PhotoAward.MemberManagement
                 var result = await MemberClientFactory.GetMember(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);
 
                 return new MemberDto() {Email = result.Email, EntryDate = result.EntryDate,FirstName=result.FirstName, LastUpdate = result.LastUpdate,Surname = result.Surname, Id = result.Id};
+            }
+        }
+
+        public async Task<MemberDto> LoginMember(string email, string password)
+        {
+            using (var tx = StateManager.CreateTransaction())
+            {
+                var members = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>("members");
+                //Gibt es bereits ein Mitglied mit dieser Emailadresse ?
+                var existendMemberActorId = members.TryGetValueAsync(tx, email);
+                if (!existendMemberActorId.Result.HasValue)
+                {
+                    throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
+                }
+
+                var result = await MemberClientFactory.GetMember(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);
+
+                //Password-Validation
+                if (!PasswordHashCalculator.VerifyPassword(password, result.PasswordSalt, result.PasswordHash))
+                    throw new Exception("The combination of username and password is invalid");
+
+                return new MemberDto() { Email = result.Email, EntryDate = result.EntryDate, FirstName = result.FirstName, LastUpdate = result.LastUpdate, Surname = result.Surname, Id = result.Id };
             }
         }
 
@@ -149,6 +189,34 @@ namespace PhotoAward.MemberManagement
                     }
                 }
                 return null;
+            }
+        }
+
+        public async Task<MemberDto> ChangePassword(ChangePasswordDto dto)
+        {
+            using (var tx = StateManager.CreateTransaction())
+            {
+                var members = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>("members");
+                //Gibt es bereits ein Mitglied mit dieser Emailadresse ?
+                var existendMemberActorId = members.TryGetValueAsync(tx, dto.Email);
+                if (!existendMemberActorId.Result.HasValue)
+                {
+                    throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
+                }
+
+                var actorFactory = MemberClientFactory.GetMember(existendMemberActorId.Result.Value);
+
+                var result = await actorFactory.GetMember(CancellationToken.None);
+
+                //Password-Validation
+                if (!PasswordHashCalculator.VerifyPassword(dto.OldPassword, result.PasswordSalt, result.PasswordHash))
+                    throw new Exception("The combination of username and password is invalid");
+
+                var passwordHash = PasswordHashCalculator.ComputeHash(dto.NewPassword);
+
+                await actorFactory.UpdatePassword(passwordHash.Hash, passwordHash.Salt, CancellationToken.None);
+
+                return new MemberDto() { Email = result.Email, EntryDate = result.EntryDate, FirstName = result.FirstName, LastUpdate = result.LastUpdate, Surname = result.Surname, Id = result.Id };
             }
         }
     }

@@ -79,15 +79,10 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InternalMemberDto.cs" />
     <Compile Include="MemberClientFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IMemberActor.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PhotoAward.MemberManagement.Interfaces\PhotoAward.MemberManagement.Interfaces.csproj">
-      <Project>{89ccb99d-c3b4-4065-a0a5-8fad77d038ce}</Project>
-      <Name>PhotoAward.MemberManagement.Interfaces</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

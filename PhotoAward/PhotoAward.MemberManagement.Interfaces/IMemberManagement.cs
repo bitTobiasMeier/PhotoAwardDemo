@@ -12,6 +12,8 @@ namespace PhotoAward.MemberManagement.Interfaces
         Task<MemberDto> AddMember(MemberDto member);
 
         Task<MemberDto> GetMember(string email);
+        Task<MemberDto> LoginMember(string email, string password);
         Task<MemberDto> GetMemberOnMemberId(Guid memberId);
+        Task<MemberDto> ChangePassword(ChangePasswordDto dto);
     }
 }

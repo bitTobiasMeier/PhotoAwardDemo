@@ -39,6 +39,10 @@ namespace PhotoAward.MemberActor
             public DateTime? LastUpdate { get; set; }
             [DataMember]
             public Guid Id { get; set; }
+            [DataMember]
+            public byte[] PasswordSalt { get; set; }
+            [DataMember]
+            public byte[] PasswordHash { get; set; }
         }
 
         private const string DataKey = "memberData";
@@ -70,21 +74,42 @@ namespace PhotoAward.MemberActor
         }
 
         
-        public async Task<MemberDto> GetMember(CancellationToken cancellationToken)
+        public async Task<InternalMemberDto> GetMember(CancellationToken cancellationToken)
         {
             var data =  await this.StateManager.GetStateAsync<MemberData>(DataKey, cancellationToken);
-            return new MemberDto()
+            return new InternalMemberDto()
             {
               Email = data.Email,
               FirstName = data.FirstName,
               Surname = data.Surname,
               LastUpdate = data.LastUpdate,
               EntryDate = data.EntryDate,
-              Id = data.Id
+              Id = data.Id,
+              PasswordHash = data.PasswordHash,
+              PasswordSalt = data.PasswordSalt
             }; 
         }
 
-        public async Task<MemberDto> SetMemberAsync(MemberDto member, CancellationToken cancellationToken)
+        public async Task UpdatePassword(byte [] newPasswordHash, byte [] salt,  CancellationToken cancellationToken)
+        {
+            var datahelper = await this.StateManager.TryGetStateAsync<MemberData>(DataKey, cancellationToken);
+            MemberData data;
+            if (!datahelper.HasValue)
+            {
+                throw new Exception("Data of user not found!");
+            }
+            else
+            {
+                data = datahelper.Value;
+            }
+            data.LastUpdate = DateTime.Now;
+            data.PasswordHash = newPasswordHash;
+            data.PasswordSalt = salt;
+
+            await this.StateManager.SetStateAsync<MemberData>(DataKey, data, cancellationToken);
+        }
+
+        public async Task<InternalMemberDto> SetMemberAsync(InternalMemberDto member, CancellationToken cancellationToken)
         {
             //Gibt es bereits Daten dieses Actors
 
@@ -103,11 +128,16 @@ namespace PhotoAward.MemberActor
             data.Surname = member.Surname;
             data.FirstName = member.FirstName;
             data.Id = member.Id;
+            data.EntryDate = DateTime.Now;
+            data.LastUpdate = DateTime.Now;
+            data.PasswordHash = member.PasswordHash;
+            data.PasswordSalt = member.PasswordSalt;
             
             await this.StateManager.SetStateAsync<MemberData>(DataKey, data, cancellationToken);
             //Fehler: Diese Daten werden nicht übernommen
             member.EntryDate = data.EntryDate;
             member.LastUpdate = data.LastUpdate;
+            
             return member;
         }
     }

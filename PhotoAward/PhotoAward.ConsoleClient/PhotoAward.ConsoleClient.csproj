@@ -72,6 +72,7 @@
     <Compile Include="Commands\AddPhotoCommand.cs" />
     <Compile Include="Commands\AddPhotoCommentCommand.cs" />
     <Compile Include="Commands\BackupPhotosCommand.cs" />
+    <Compile Include="Commands\ChangePasswordCommand.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\DeletePhotoCommand.cs" />
     <Compile Include="Commands\GetInfosAboutAllPhotos.cs" />

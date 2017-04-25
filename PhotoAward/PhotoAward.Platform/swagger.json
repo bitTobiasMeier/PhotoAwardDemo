@@ -65,6 +65,66 @@
         }
       }
     },
+    "/api/Member/Login": {
+      "post": {
+        "tags": [
+          "MemberManagement"
+        ],
+        "operationId": "MemberManagement_Login",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MemberDto"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
+    "/api/Member/ChangePassword": {
+      "post": {
+        "tags": [
+          "MemberManagement"
+        ],
+        "operationId": "MemberManagement_ChangePassword",
+        "parameters": [
+          {
+            "name": "dto",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ChangePasswordDto"
+            },
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/MemberDto"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
     "/api/Photo/Add": {
       "post": {
         "tags": [
@@ -328,6 +388,24 @@
         "Id": {
           "type": "string",
           "format": "guid"
+        },
+        "Password": {
+          "type": "string"
+        }
+      }
+    },
+    "ChangePasswordDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "NewPassword": {
+          "type": "string"
+        },
+        "OldPassword": {
+          "type": "string"
+        },
+        "Email": {
+          "type": "string"
         }
       }
     },

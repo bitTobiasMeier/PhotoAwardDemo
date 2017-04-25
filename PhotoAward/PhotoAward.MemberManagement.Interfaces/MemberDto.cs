@@ -11,5 +11,6 @@ namespace PhotoAward.MemberManagement.Interfaces
         public DateTime ? EntryDate { get; set; }
         public DateTime ? LastUpdate { get; set; }
         public Guid Id { get; set; }
+        public string Password { get; set; }
     }
 }

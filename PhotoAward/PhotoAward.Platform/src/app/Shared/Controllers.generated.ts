@@ -22,6 +22,8 @@ export const API_BASE_URL = new OpaqueToken('API_BASE_URL');
 export interface IMemberManagementClient {
     add(member: MemberDto): Observable<MemberDto | null>;
     get(email: string): Observable<MemberDto | null>;
+    login(email: string, password: string): Observable<MemberDto | null>;
+    changePassword(dto: ChangePasswordDto): Observable<MemberDto | null>;
 }
 
 @Injectable()
@@ -113,6 +115,104 @@ export class MemberManagementClient implements IMemberManagementClient {
     }
 
     protected processGet(response: Response): Observable<MemberDto | null> {
+        const status = response.status; 
+
+        if (status === 200) {
+            const responseText = response.text();
+            let result200: MemberDto | null = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? MemberDto.fromJS(resultData200) : <any>null;
+            return Observable.of(result200);
+        } else if (status !== 200 && status !== 204) {
+            const responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return Observable.of<MemberDto | null>(<any>null);
+    }
+
+    login(email: string, password: string): Observable<MemberDto | null> {
+        let url_ = this.baseUrl + "/api/Member/Login?";
+        if (email === undefined)
+            throw new Error("The parameter 'email' must be defined.");
+        else
+            url_ += "email=" + encodeURIComponent("" + email) + "&"; 
+        if (password === undefined)
+            throw new Error("The parameter 'password' must be defined.");
+        else
+            url_ += "password=" + encodeURIComponent("" + password) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = "";
+        
+        let options_ = {
+            body: content_,
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+                "Accept": "application/json; charset=UTF-8"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_) => {
+            return this.processLogin(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processLogin(response_);
+                } catch (e) {
+                    return <Observable<MemberDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<MemberDto>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processLogin(response: Response): Observable<MemberDto | null> {
+        const status = response.status; 
+
+        if (status === 200) {
+            const responseText = response.text();
+            let result200: MemberDto | null = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? MemberDto.fromJS(resultData200) : <any>null;
+            return Observable.of(result200);
+        } else if (status !== 200 && status !== 204) {
+            const responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return Observable.of<MemberDto | null>(<any>null);
+    }
+
+    changePassword(dto: ChangePasswordDto): Observable<MemberDto | null> {
+        let url_ = this.baseUrl + "/api/Member/ChangePassword";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(dto ? dto.toJSON() : null);
+        
+        let options_ = {
+            body: content_,
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+                "Accept": "application/json; charset=UTF-8"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_) => {
+            return this.processChangePassword(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processChangePassword(response_);
+                } catch (e) {
+                    return <Observable<MemberDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<MemberDto>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processChangePassword(response: Response): Observable<MemberDto | null> {
         const status = response.status; 
 
         if (status === 200) {
@@ -627,6 +727,7 @@ export class MemberDto implements IMemberDto {
     entryDate?: Date | undefined;
     lastUpdate?: Date | undefined;
     id: string;
+    password?: string | undefined;
 
     constructor(data?: IMemberDto) {
         if (data) {
@@ -645,6 +746,7 @@ export class MemberDto implements IMemberDto {
             this.entryDate = data["EntryDate"] ? new Date(data["EntryDate"].toString()) : <any>undefined;
             this.lastUpdate = data["LastUpdate"] ? new Date(data["LastUpdate"].toString()) : <any>undefined;
             this.id = data["Id"];
+            this.password = data["Password"];
         }
     }
 
@@ -662,6 +764,7 @@ export class MemberDto implements IMemberDto {
         data["EntryDate"] = this.entryDate ? this.entryDate.toISOString() : <any>undefined;
         data["LastUpdate"] = this.lastUpdate ? this.lastUpdate.toISOString() : <any>undefined;
         data["Id"] = this.id;
+        data["Password"] = this.password;
         return data; 
     }
 }
@@ -673,6 +776,50 @@ export interface IMemberDto {
     entryDate?: Date | undefined;
     lastUpdate?: Date | undefined;
     id: string;
+    password?: string | undefined;
+}
+
+export class ChangePasswordDto implements IChangePasswordDto {
+    newPassword?: string | undefined;
+    oldPassword?: string | undefined;
+    email?: string | undefined;
+
+    constructor(data?: IChangePasswordDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.newPassword = data["NewPassword"];
+            this.oldPassword = data["OldPassword"];
+            this.email = data["Email"];
+        }
+    }
+
+    static fromJS(data: any): ChangePasswordDto {
+        let result = new ChangePasswordDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["NewPassword"] = this.newPassword;
+        data["OldPassword"] = this.oldPassword;
+        data["Email"] = this.email;
+        return data; 
+    }
+}
+
+export interface IChangePasswordDto {
+    newPassword?: string | undefined;
+    oldPassword?: string | undefined;
+    email?: string | undefined;
 }
 
 export class PhotoUploadData implements IPhotoUploadData {

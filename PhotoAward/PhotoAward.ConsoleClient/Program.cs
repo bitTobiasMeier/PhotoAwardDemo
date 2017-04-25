@@ -15,6 +15,7 @@ namespace PhotoAward.ConsoleClient
         {
             {"ping",new PingCommand() },
             {"getMember",new GetMemberCommand() },
+            {"changePassword", new ChangePasswordCommand() },
             {"addMember",new AddMemberCommand() },
             { "addPhoto",new AddPhotoCommand() },
             {

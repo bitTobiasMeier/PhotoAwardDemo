@@ -32,6 +32,27 @@ namespace PhotoAward.Platform.Controller
             return result;
         }
 
+        [HttpPost]
+        [Route("Login")]
+        public async Task<MemberDto> Login(string email, string password)
+        {
+            var client = this._memberManagementClientFactory.CreateMemberManagementClient();
+            var result = await client.LoginMember(email, password);
+            return result;
+        }
+
+        [HttpPost]
+        [Route("ChangePassword")]
+        public async Task<MemberDto> ChangePassword (ChangePasswordDto dto)
+
+        {
+            var client = this._memberManagementClientFactory.CreateMemberManagementClient();
+            var result = await client.ChangePassword(dto);
+            return result;
+        }
+
+
+
 
     }
 }
