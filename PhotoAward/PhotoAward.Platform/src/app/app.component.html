@@ -11,7 +11,7 @@
    </div>
 </div>
 
-<div style="background:white">
+<div id='menubar' >
 <ul class="nav nav-pills">
   <li role="presentation" ><a [routerLink]="['/gallery']" *ngIf="userservice.user.notMember == false">Gallerie</a></li>
   <li role="presentation" ><a [routerLink]="['/upload']" *ngIf="userservice.user.notMember == false">Bild hochladen</a></li>

@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+#menubar{
+  background:rgb(0,92,169);
+}
+#menubar > a {
+  color:white
+}
+
+#menubar a:link { color:white }
+#menubar a:visited { color:white }
+#menubar a:hover { color:black }
+
