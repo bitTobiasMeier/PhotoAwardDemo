@@ -22,21 +22,6 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-      type Person = Record<'firstname' | 'surname' | 'email', string>;
-
-      const P1 = <Person> {
-        firstname:"Tobias",
-        surname:"Meier",
-        email:"tobias.meier@bridging-it.de"
-      };
-
-      type OnlinePerson = Pick<Person, 'email'>;
-      const P2 = <OnlinePerson> P1;
-      console.log(P2.email);
-
-      const clone = {...P2};
-    console.log( clone === P2);
-    console.log (clone.email);
 
 
   }
