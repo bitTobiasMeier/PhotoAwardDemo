@@ -11,3 +11,29 @@
 #menubar a:visited { color:white }
 #menubar a:hover { color:black }
 
+.bitlogo {
+padding-top: 20px;
+padding-right:20px;
+}
+
+.jumbatron {
+  padding-left: 10px;
+}
+
+.titlebar {
+  background:rgb(138, 182, 214);
+}
+
+.panel {
+  padding-left: 10px;
+}
+
+.bitfooter {
+ padding: 10px;
+ background:rgb(0,92,169);
+ color:white;
+}
+
+.bitfooter a:link { color:white }
+.bitfooter a:visited { color:white }
+.bitfooter a:hover { color:black }
