@@ -149,34 +149,20 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".editorconfig" />
-    <None Include="angular-cli.json" />
-    <Content Include="assets\bitLogo.gif" />
     <Content Include="dist\assets\bitLogo.gif">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="dist\icons.674f50d287a8c48dc19b.eot" />
-    <None Include="dist\icons.af7ae505a9eed503f8b8.woff2" />
-    <None Include="dist\icons.b06871f281fee6b241d6.ttf" />
-    <None Include="dist\icons.fee66e712a8a08eef580.woff" />
     <None Include="dist\inline.bundle.js.map" />
     <None Include="dist\main.bundle.js.map" />
     <None Include="dist\polyfills.bundle.js.map" />
     <None Include="dist\styles.bundle.js.map" />
-    <None Include="e2e\tsconfig.json" />
-    <None Include="package.json" />
     <None Include="PackageRoot\Config\Settings.xml" />
     <None Include="PackageRoot\ServiceManifest.xml">
       <SubType>Designer</SubType>
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="photoclub.nswag" />
     <None Include="README.md" />
-    <None Include="src\assets\.gitkeep" />
-    <None Include="src\tsconfig.json" />
-    <None Include="tsconfig.json" />
-    <None Include="tslint.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhotoAward.MemberManagement.Interfaces\PhotoAward.MemberManagement.Interfaces.csproj">
@@ -193,12 +179,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
+    <Content Include="dist\assets\bitlogo.png" />
     <Content Include="dist\faviconbit.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="dist\flags.9c74e172f87984c48ddf.png" />
-    <Content Include="dist\icons.912ec66d7572ff821749.svg" />
     <Content Include="dist\index.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -218,47 +202,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="karma.conf.js" />
-    <Content Include="protractor.conf.js" />
-    <Content Include="src\app\app.component.html" />
-    <Content Include="src\app\login\login\login.component.html" />
-    <Content Include="src\app\login\register-member\register-member.component.html" />
-    <Content Include="src\app\photos\show-photos-component\show-photos-component.component.html" />
-    <Content Include="src\app\photos\upload-photo-component\upload-photo-component.component.html" />
-    <Content Include="src\assets\bitLogo.gif">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\favicon.ico" />
-    <Content Include="src\index.html" />
-    <Content Include="src\styles.css" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="e2e\app.e2e-spec.ts" />
-    <None Include="e2e\app.po.ts" />
-    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\app.component.ts" />
-    <TypeScriptCompile Include="src\app\app.module.ts" />
-    <TypeScriptCompile Include="src\app\login\login\login.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\login\login\login.component.ts" />
-    <TypeScriptCompile Include="src\app\login\register-member\register-member.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\login\register-member\register-member.component.ts" />
-    <TypeScriptCompile Include="src\app\photos\show-photos-component\show-photos-component.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\photos\show-photos-component\show-photos-component.component.ts" />
-    <TypeScriptCompile Include="src\app\photos\upload-photo-component\upload-photo-component.component.spec.ts" />
-    <TypeScriptCompile Include="src\app\photos\upload-photo-component\upload-photo-component.component.ts" />
-    <TypeScriptCompile Include="src\app\Shared\Controllers.generated.ts" />
-    <TypeScriptCompile Include="src\app\Shared\textmodule.d.ts" />
-    <TypeScriptCompile Include="src\app\Shared\uploadService.ts" />
-    <TypeScriptCompile Include="src\app\Shared\user.service.spec.ts" />
-    <TypeScriptCompile Include="src\app\Shared\user.service.ts" />
-    <TypeScriptCompile Include="src\app\Shared\user\user.ts" />
-    <TypeScriptCompile Include="src\environments\environment.prod.ts" />
-    <TypeScriptCompile Include="src\environments\environment.ts" />
-    <TypeScriptCompile Include="src\main.ts" />
-    <TypeScriptCompile Include="src\polyfills.ts" />
-    <TypeScriptCompile Include="src\test.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\app\member\" />
+    <Folder Include="assets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -266,6 +212,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
   </Target>
+  <PropertyGroup>
+    <PreBuildEvent>echo f | xcopy "$(SolutionDir)PhotoAward.AngularClient\dist\*.*"  $(ProjectDir)dist\  /s/Y</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -50,9 +50,6 @@ namespace PhotoAward.Platform.Controller
             var result = await client.ChangePassword(dto);
             return result;
         }
-
-
-
-
+        
     }
 }

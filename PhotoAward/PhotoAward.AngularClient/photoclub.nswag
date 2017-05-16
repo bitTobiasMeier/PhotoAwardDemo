@@ -2,9 +2,9 @@
   "swaggerGenerator": {
     "webApiToSwagger": {
       "assemblyPaths": [
-        "bin/x64/Debug/PhotoAward.Platform.exe"
+        "../PhotoAward.Platform/bin/x64/Debug/PhotoAward.Platform.exe"
       ],
-      "assemblyConfig": "bin/x64/Debug/PhotoAward.Platform.exe.config",
+      "assemblyConfig": "../PhotoAward.Platform/bin/x64/Debug/PhotoAward.Platform.exe.config",
       "referencePaths": [],
       "isAspNetCore": false,
       "controllerNames": [
