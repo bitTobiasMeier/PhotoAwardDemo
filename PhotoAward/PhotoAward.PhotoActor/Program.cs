@@ -19,8 +19,12 @@ namespace PhotoAward.PhotoActors
                 // are automatically populated when you build this project.
                 // For more information, see https://aka.ms/servicefabricactorsplatform
 
+                IAnalyzeRepository analyzeRepository = new AnalyzeRepository();
+                
+
                 ActorRuntime.RegisterActorAsync<PhotoActor>(
-                   (context, actorType) => new BackupPhotoActorService(context, actorType)).GetAwaiter().GetResult();
+                   (context, actorType) => new BackupPhotoActorService(context, actorType,
+                   (service, id) => new PhotoActor(service,id, analyzeRepository))).GetAwaiter().GetResult();
 
                 Thread.Sleep(Timeout.Infinite);
             }

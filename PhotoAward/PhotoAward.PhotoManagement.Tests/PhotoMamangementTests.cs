@@ -48,7 +48,7 @@ namespace PhotoAward.PhotoManagement.Tests
                 {
                     Id = photoId
                 }));
-            photoActorClientFactoryMock.Setup(r => r.CreateClient(It.IsAny<ActorId>())).Returns(photoActorClientMock.Object);
+            photoActorClientFactoryMock.Setup(r => r.CreateActorClient(It.IsAny<ActorId>())).Returns(photoActorClientMock.Object);
 
             var pm = new PhotoManagement(CreateServiceContext(), stateMngrMock.Object, reliableStateManager, 
                 clientFactoryMock.Object,

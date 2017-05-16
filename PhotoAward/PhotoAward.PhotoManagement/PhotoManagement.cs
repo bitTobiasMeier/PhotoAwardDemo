@@ -108,7 +108,7 @@ namespace PhotoAward.PhotoManagement
                         Title = photo.Title,
                         Id = photoId
                     };
-                    var client = this._photoActorClientFactory.CreateClient(photoActorId);
+                    var client = this._photoActorClientFactory.CreateActorClient(photoActorId);
                     var result = await client.SetPhoto(data, CancellationToken.None);
 
 
@@ -144,14 +144,15 @@ namespace PhotoAward.PhotoManagement
                 using (var tx = _photoManagementStates.CreateTransaction())
                 {
                     var actorId = await GetPhotoActorId(id, tx);
-                    var client = _photoActorClientFactory.CreateClient(actorId.Value);
+                    var client = _photoActorClientFactory.CreateActorClient(actorId.Value);
                     var result = await client.GetPhoto(CancellationToken.None);
                     return new PhotoManagementData()
                     {
                         FileName = result.Filename,
                         Id = result.Id,
                         Title = result.Title,
-                        ThumbnailBytes = result.ThumbnailBytes
+                        ThumbnailBytes = result.ThumbnailBytes,
+                        Description = result.Description
                     };
                 }
             }
@@ -186,14 +187,15 @@ namespace PhotoAward.PhotoManagement
                 //Gibt es bereits einen Actor für dieses Photo. Wenn ja, Exception ...
                 foreach (ActorId imageActorId in actorList.AsParallel())
                 {
-                    var client = _photoActorClientFactory.CreateClient(imageActorId);
+                    var client = _photoActorClientFactory.CreateActorClient(imageActorId);
                     var result = await client.GetPhoto(CancellationToken.None);
                     photoList.Add(new PhotoManagementData()
                     {
                         FileName = result.Filename,
                         Id = result.Id,
                         Title = result.Title,
-                        ThumbnailBytes = result.ThumbnailBytes
+                        ThumbnailBytes = result.ThumbnailBytes,
+                        Description = result.Description
                     });
                 }
                 return photoList;
@@ -209,7 +211,7 @@ namespace PhotoAward.PhotoManagement
                 {
                     //photoActor ermitteln
                     var actorId = await GetPhotoActorId(photoId, tx);
-                    var client = _photoActorClientFactory.CreateClient(actorId.Value);
+                    var client = _photoActorClientFactory.CreateActorClient(actorId.Value);
                     var infos = await client.GetComments( CancellationToken.None);
                     return infos.Select(i => new CommentData()
                     {
@@ -244,7 +246,7 @@ namespace PhotoAward.PhotoManagement
 
                     //photoActor ermitteln
                     var actorId = await GetPhotoActorId(comment.PhotoId, tx);
-                    var client = _photoActorClientFactory.CreateClient(actorId.Value);
+                    var client = _photoActorClientFactory.CreateActorClient(actorId.Value);
                     var ci = await client.AddComment(new CommentInfo()
                     {
                         AuthorId = member.Id,
@@ -292,7 +294,7 @@ namespace PhotoAward.PhotoManagement
 
                         try
                         {
-                            var client = _photoActorClientFactory.CreateClient(imageActorId);
+                            var client = _photoActorClientFactory.CreateActorClient(imageActorId);
                             var photo = await client.GetPhoto(CancellationToken.None);
                             photoList.Add(new PhotoMemberInfo()
                             {
@@ -325,7 +327,7 @@ namespace PhotoAward.PhotoManagement
                 var imageActorId = await this.GetPhotoActorId(photoId, tx);
                 if (imageActorId.HasValue)
                 {
-                    var client = _photoActorClientFactory.CreateClient(imageActorId.Value);
+                    var client = _photoActorClientFactory.CreateActorClient(imageActorId.Value);
                     await client.Delete(CancellationToken.None);
                     await this._photoManagementStates.RemoveActor(photoId, imageActorId.Value, tx);
                 }

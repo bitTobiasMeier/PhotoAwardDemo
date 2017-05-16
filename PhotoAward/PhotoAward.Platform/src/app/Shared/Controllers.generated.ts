@@ -874,6 +874,7 @@ export class PhotoManagementData implements IPhotoManagementData {
     thumbnailBytes?: string | undefined;
     title?: string | undefined;
     id?: string | undefined;
+    description?: string | undefined;
 
     constructor(data?: IPhotoManagementData) {
         if (data) {
@@ -890,6 +891,7 @@ export class PhotoManagementData implements IPhotoManagementData {
             this.thumbnailBytes = data["ThumbnailBytes"];
             this.title = data["Title"];
             this.id = data["Id"];
+            this.description = data["Description"];
         }
     }
 
@@ -905,6 +907,7 @@ export class PhotoManagementData implements IPhotoManagementData {
         data["ThumbnailBytes"] = this.thumbnailBytes;
         data["Title"] = this.title;
         data["Id"] = this.id;
+        data["Description"] = this.description;
         return data; 
     }
 }
@@ -914,6 +917,7 @@ export interface IPhotoManagementData {
     thumbnailBytes?: string | undefined;
     title?: string | undefined;
     id?: string | undefined;
+    description?: string | undefined;
 }
 
 export class PhotoMemberInfo implements IPhotoMemberInfo {

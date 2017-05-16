@@ -14,10 +14,9 @@ Anwendungsfälle:
 4. Aktuell nur Command-Line-Interface:
 - Benutzer wählt ein Foto aus und bewertet es..
 - Zusätzlich können auch Kommentare geschrieben werden.
-- Passwort ändern
 5. Angedacht: 
 - Wenn ein Foto im Detail aufgerufen wird, werden alle Kommentare angezeigt.
-- Fotos werden im Original in einer DocumentDb abgelegt werden
+- Fotos können gekauft werden
 
 
 #Hinweis
@@ -29,20 +28,20 @@ Vorraussetzung für das Projekt ist dass Sie das Service Fabric auf dem Entwickl
 2.	Build
 Um die Anwendung kompilieren zu können müssen zuerst alle NPM-Pakete installiert sein. Normalerweise geschieht dies direkt beim Öffnen von Visual Studio. 
 Damit das WebAPI-Projekt kompiliert werden kann muss die Angular-Anwendung gebaut sein. 
-Bitte ruft vor dem Build-Vorgang ng build auf. Außerdem muss Visual Studio auch die NuGet-Pakete per Restore einspielen.
+Bitte ruft vor dem Build-Vorgang ng build auf.
 3.  Azure
 Um das Projekt unter Azure zu testen muss Ihr Cluster mit einem SSL-Zertifikat gesichert sein. Bitte ändern Sie den in der Datei ApplicationManifest aufgeführten 
 Thumbprint auf den Thumbprint ihres SSL-Zertifikats und entfernt die Kommentare in
-ApplicationManifest.xml im Knoten , in dem Sie die Anfürungszeihcen entfernen.
+ApplicationManifest.xml im Knoten 
 <Policies>
       <!-- <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />  -->
 </Policies>
-Außerdem muss in der ApplicationManifest der Fingerprint des Zertifikats angepasst werden:
-<Certificates>
-    <EndpointCertificate X509StoreName="MY" X509FindValue="2B5C7A6BDFCE84CC7559977375D384494CC3D2A5" Name="TestCert1" />
-</Certificates>
+
 
 #4.Build and Test
-Hinweis: Die Angular4-Unittests sind NICHT lauffähig. Out of Scope für diese Demo 
+Hinweis: Die Angular2-Unittests sind NICHT lauffähig. Out of Scope für diese Demo 
 
 
+#Test der Anwendung unter Azure
+Die Anwendung ist aktuell (22.02.2017) unter folgender Adresse deployt: https://bitdemoappphotoaward.westeurope.cloudapp.azure.com:8443/ 
+Eine Tage nach der BASTA! Spring wird der Cluster offline genommen.

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ using PhotoAward.ThumbnailService.Interfaces;
 
 namespace PhotoAward.PhotoActors
 {
+    
     /// <remarks>
     /// This class represents an actor.
     /// Every ActorID maps to an instance of this class.
@@ -27,15 +30,19 @@ namespace PhotoAward.PhotoActors
     {
         private const string DataKey = "memberData";
         private const string CheckMemberReminderName = "keinMitglied";
+        private const string CheckPictureAnalysis = "CheckPictureAnalysis";
+        private IActorReminder _reminderPictureAnalysis;
+        private IAnalyzeRepository _analyzeRepository;
 
         /// <summary>
         /// Initializes a new instance of PhotoActor
         /// </summary>
         /// <param name="actorService">The Microsoft.ServiceFabric.Actors.Runtime.ActorService that will host this actor instance.</param>
         /// <param name="actorId">The Microsoft.ServiceFabric.Actors.ActorId for this actor instance.</param>
-        public PhotoActor(ActorService actorService, ActorId actorId)
-            : base(actorService, actorId)
+        /// <param name="analyzeRepository"></param>
+        public PhotoActor(ActorService actorService, ActorId actorId, IAnalyzeRepository analyzeRepository) : base(actorService, actorId)
         {
+            this._analyzeRepository = analyzeRepository;
         }
 
         /// <summary>
@@ -54,9 +61,15 @@ namespace PhotoAward.PhotoActors
             IActorReminder reminderRegistration = await this.RegisterReminderAsync(
                 CheckMemberReminderName,
                 null,
-                TimeSpan.FromMinutes(2),
-                TimeSpan.FromMinutes(5));
-            
+                TimeSpan.FromMinutes(5),
+                TimeSpan.FromMinutes(10));
+
+            this._reminderPictureAnalysis  = await this.RegisterReminderAsync(
+                CheckPictureAnalysis,
+                null,
+                TimeSpan.FromMinutes(0.1),
+                TimeSpan.FromMinutes(0.75));
+
         }
 
         public async Task ReceiveReminderAsync(string reminderName, byte[] context, TimeSpan dueTime, TimeSpan period)
@@ -77,7 +90,21 @@ namespace PhotoAward.PhotoActors
                 var reminder = this.GetReminder(CheckMemberReminderName);
                 await this.UnregisterReminderAsync(reminder);
             }
+            if (reminderName.Equals(CheckPictureAnalysis))
+            {
+                await AnalyzePicture();
+                await this.UnregisterReminderAsync(this._reminderPictureAnalysis);
+            }
         }
+
+        private async Task AnalyzePicture()
+        {
+            var photo = await this.GetPhotoData(CancellationToken.None);
+            var description = await this._analyzeRepository.AnalyzeImageAsync(photo.ThumbnailAsByte);
+            photo.Description = description;
+            await this.StateManager.SetStateAsync(DataKey, photo, CancellationToken.None);
+        }
+
 
         public async Task<PhotoInfo> SetPhoto(PhotoInfo photo, CancellationToken cancellationToken)
         {
@@ -110,7 +137,8 @@ namespace PhotoAward.PhotoActors
                 Filename= data.FileName,
                 ThumbnailBytes = data.ThumbnailAsByte,
                 UploadDate = data.UploadDate,
-                Title = data.Title
+                Title = data.Title,
+                Description = data.Description
             };
         }
 

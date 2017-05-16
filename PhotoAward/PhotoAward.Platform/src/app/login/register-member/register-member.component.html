@@ -1,47 +1,41 @@
 <div class="panel panel-default">
   <h2>Registrierung</h2>
-<form #form="ngForm" (ngSubmit)="register(form.value)" class="form-horizontal">
+  <form #form="ngForm" (ngSubmit)="register(form.value)" class="form-horizontal">
 
- <div class="form-group">
-    <label for="email" class="control-label col-xs-1">Email</label>
-    <div class="col-xs-3"><input type="email" name="email" ngModel [(ngModel)]="email" class="form-control" ></div>
-  </div>
-  <div class="form-group">
-    <label for="password" class="control-label col-xs-1">Passwort</label>
-    <div class="col-xs-3"><input type="password" name="password" ngModel [(ngModel)]="password" class="form-control" ></div>
-  </div>
-  <div class="form-group">
-    <label for="password2" class="control-label col-xs-1">Wiederholung</label>
-    <div class="col-xs-3"><input type="password" name="password2" ngModel [(ngModel)]="password2" class="form-control" ></div>
-  </div>
-   <div class="form-group">
-    <label for="firstname" class="control-label col-xs-1">Vorname</label>
-    <div class="col-xs-3">
-      <input type="text" name="firstname" ngModel [(ngModel)]="firstname" class="form-control" >
+    <div class="form-group">
+      <label for="email" class="control-label col-xs-1">Email</label>
+      <div class="col-xs-3"><input type="email" name="email" ngModel [(ngModel)]="email" class="form-control"></div>
+    </div>
+    <div class="form-group">
+      <label for="password" class="control-label col-xs-1">Passwort</label>
+      <div class="col-xs-3"><input type="password" name="password" ngModel [(ngModel)]="password" class="form-control"></div>
+    </div>
+    <div class="form-group">
+      <label for="password2" class="control-label col-xs-1">Wiederholung</label>
+      <div class="col-xs-3"><input type="password" name="password2" ngModel [(ngModel)]="password2" class="form-control"></div>
+    </div>
+    <div class="form-group">
+      <label for="firstname" class="control-label col-xs-1">Vorname</label>
+      <div class="col-xs-3">
+        <input type="text" name="firstname" ngModel [(ngModel)]="firstname" class="form-control">
       </div>
-  </div>
-  <div class="form-group">
-    <label for="surname" class="control-label col-xs-1">Nachname</label>
-    <div class="col-xs-3">
-      <input type="text" name="surname" ngModel [(ngModel)]="surname" class="form-control" >
+    </div>
+    <div class="form-group">
+      <label for="surname" class="control-label col-xs-1">Nachname</label>
+      <div class="col-xs-3">
+        <input type="text" name="surname" ngModel [(ngModel)]="surname" class="form-control">
       </div>
-  </div>
+    </div>
 
-<div class="form-group">
-    <div class="col-xs-4">
-      <span>{{message}}</span>
+    <div class="form-group">
+      <div class="col-xs-4">
+        <span>{{message}}</span>
       </div>
-      </div>
-  <div class="form-group">
-<div class="col-xs-4">
-      <button type="submit" class="btn btn-default" >Registrieren</button>  </div>
-  </div>
-</form>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-4">
+        <button type="submit" class="btn btn-default">Registrieren</button> </div>
+    </div>
+  </form>
 </div>
 <a [routerLink]="['/']">Zurück zum Login</a>
-
-
-
-
-
-

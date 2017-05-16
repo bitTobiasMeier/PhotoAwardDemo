@@ -81,7 +81,7 @@ namespace PhotoAward.MemberManagement
                     var memberActorId = ActorId.CreateRandom();
                     await members.AddAsync(tx, member.Email, memberActorId);
                     
-                    var memberActor = MemberClientFactory.GetMember(memberActorId);
+                    var memberActor = MemberClientFactory.CreateMemberActorClient(memberActorId);
                     var internalMember = CreateInternalMemberAndHash(member);
 
                     var result = await memberActor.SetMemberAsync(internalMember, CancellationToken.None);
@@ -133,7 +133,7 @@ namespace PhotoAward.MemberManagement
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
 
-                var result = await MemberClientFactory.GetMember(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);
+                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);
 
                 return new MemberDto() {Email = result.Email, EntryDate = result.EntryDate,FirstName=result.FirstName, LastUpdate = result.LastUpdate,Surname = result.Surname, Id = result.Id};
             }
@@ -151,7 +151,7 @@ namespace PhotoAward.MemberManagement
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
 
-                var result = await MemberClientFactory.GetMember(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);
+                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);
 
                 //Password-Validation
                 if (!PasswordHashCalculator.VerifyPassword(password, result.PasswordSalt, result.PasswordHash))
@@ -176,7 +176,7 @@ namespace PhotoAward.MemberManagement
                         var keystr = current.Key;
                         var key = new Guid(keystr);*/
                         var actorId = asyncEnumerator.Current.Value;
-                        var member = await MemberClientFactory.GetMember(actorId).GetMember(CancellationToken.None);
+                        var member = await MemberClientFactory.CreateMemberActorClient(actorId).GetMember(CancellationToken.None);
                         if (member !=null && member.Id == memberId) return new MemberDto()
                         {
                             Id = member.Id,
@@ -204,7 +204,7 @@ namespace PhotoAward.MemberManagement
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
 
-                var actorFactory = MemberClientFactory.GetMember(existendMemberActorId.Result.Value);
+                var actorFactory = MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Result.Value);
 
                 var result = await actorFactory.GetMember(CancellationToken.None);
 

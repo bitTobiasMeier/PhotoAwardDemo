@@ -445,6 +445,9 @@
         "Id": {
           "type": "string",
           "format": "guid"
+        },
+        "Description": {
+          "type": "string"
         }
       }
     },

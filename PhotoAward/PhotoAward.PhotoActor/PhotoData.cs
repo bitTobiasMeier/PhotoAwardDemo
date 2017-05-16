@@ -26,5 +26,8 @@ namespace PhotoAward.PhotoActors
         public string Title { get; set; }
         [DataMember]
         public Guid Id { get; set; }
+
+        [DataMember]
+        public string Description { get; set; }
     }
 }

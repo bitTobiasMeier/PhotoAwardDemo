@@ -8,7 +8,7 @@ namespace PhotoAward.MemberActor.Interfaces
     {
         private static readonly Uri ServiceUrl = new Uri("fabric:/PhotoAward/MemberActorService");
 
-        public static IMemberActor GetMember(ActorId actorId)
+        public static IMemberActor CreateMemberActorClient(ActorId actorId)
         {
             var actor = ActorProxy.Create<IMemberActor>(actorId, ServiceUrl);
             return actor;
