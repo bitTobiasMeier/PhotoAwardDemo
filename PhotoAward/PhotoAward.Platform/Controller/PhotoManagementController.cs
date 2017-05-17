@@ -16,6 +16,7 @@ using PhotoAward.PhotoManagement.Interfaces;
 
 namespace PhotoAward.Platform.Controller
 {
+    [Authorize]
     [RoutePrefix("api/Photo")]
     public class PhotoManagementController : ApiController
     {

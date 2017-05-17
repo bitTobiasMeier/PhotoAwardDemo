@@ -1,6 +1,6 @@
 webpackJsonp([1,4],{
 
-/***/ 149:
+/***/ 157:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -9,20 +9,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 149;
+webpackEmptyContext.id = 157;
 
 
 /***/ }),
 
-/***/ 150:
+/***/ 158:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(167);
 
 
 
@@ -35,15 +35,15 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 157:
+/***/ 165:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__photos_show_photos_component_show_photos_component_component__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__photos_upload_photo_component_upload_photo_component_component__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login_login_component__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_register_member_register_member_component__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__photos_show_photos_component_show_photos_component_component__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__photos_upload_photo_component_upload_photo_component_component__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login_login_component__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_register_member_register_member_component__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -69,9 +69,9 @@ var AppRoutingModule = (function () {
     return AppRoutingModule;
 }());
 AppRoutingModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_core__["b" /* NgModule */])({
-        imports: [__WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* RouterModule */].forRoot(routes)],
-        exports: [__WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* RouterModule */]],
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__angular_core__["c" /* NgModule */])({
+        imports: [__WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(routes)],
+        exports: [__WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */]],
         providers: []
     })
 ], AppRoutingModule);
@@ -80,13 +80,13 @@ AppRoutingModule = __decorate([
 
 /***/ }),
 
-/***/ 158:
+/***/ 166:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_uploadService__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_uploadService__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Shared_user_service__ = __webpack_require__(38);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -123,7 +123,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_14" /* Component */])({
         selector: 'pac-root',
-        template: __webpack_require__(315),
+        template: __webpack_require__(323),
         providers: [],
         styles: []
     }),
@@ -135,30 +135,46 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 159:
+/***/ 167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__photos_show_photos_component_show_photos_component_component__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__photos_upload_photo_component_upload_photo_component_component__ = __webpack_require__(96);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_register_member_register_member_component__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__photos_show_photos_component_show_photos_component_component__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__photos_upload_photo_component_upload_photo_component_component__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_register_member_register_member_component__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Shared_Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Shared_uploadService__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_forms__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing_module__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_component__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__login_login_login_component__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Shared_tokenservice__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Shared_uploadService__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_forms__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_http__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_routing_module__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_login_login_component__ = __webpack_require__(94);
+/* unused harmony export DefaultRequestOptions */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 
 
@@ -183,42 +199,73 @@ if (window != null && window.location != null) {
     }
     API_BASE_URL2 = loc.protocol + '//' + server + ':' + port;
 }
+var DefaultRequestOptions = (function (_super) {
+    __extends(DefaultRequestOptions, _super);
+    function DefaultRequestOptions(_userService) {
+        var _this = _super.call(this) || this;
+        _this._userService = _userService;
+        _this.headers = new __WEBPACK_IMPORTED_MODULE_10__angular_http__["a" /* Headers */]({
+            'Author': 'BridgingIT GmbH',
+        });
+        return _this;
+    }
+    DefaultRequestOptions.prototype.merge = function (options) {
+        var newOptions = _super.prototype.merge.call(this, options);
+        if (this._userService.token) {
+            newOptions.headers.set('Authorization', 'Bearer ' + this._userService.token.access_token);
+        }
+        else {
+            newOptions.headers.delete('bearer');
+        }
+        return newOptions;
+    };
+    return DefaultRequestOptions;
+}(__WEBPACK_IMPORTED_MODULE_10__angular_http__["b" /* BaseRequestOptions */]));
+DefaultRequestOptions = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["b" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */]) === "function" && _a || Object])
+], DefaultRequestOptions);
+
 var AppModule = (function () {
     function AppModule() {
     }
     return AppModule;
 }());
 AppModule = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__angular_core__["b" /* NgModule */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["c" /* NgModule */])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */],
             __WEBPACK_IMPORTED_MODULE_3__login_register_member_register_member_component__["a" /* RegisterMemberComponent */],
             __WEBPACK_IMPORTED_MODULE_2__photos_upload_photo_component_upload_photo_component_component__["a" /* UploadPhotoComponentComponent */],
             __WEBPACK_IMPORTED_MODULE_1__photos_show_photos_component_show_photos_component_component__["a" /* ShowPhotosComponentComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__login_login_login_component__["a" /* LoginComponent */]
+            __WEBPACK_IMPORTED_MODULE_13__login_login_login_component__["a" /* LoginComponent */]
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_8__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_10__app_routing_module__["a" /* AppRoutingModule */]
+            __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_9__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_10__angular_http__["c" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_11__app_routing_module__["a" /* AppRoutingModule */]
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_4__Shared_Controllers_generated__["a" /* PhotoManagementClient */],
             __WEBPACK_IMPORTED_MODULE_4__Shared_Controllers_generated__["b" /* MemberManagementClient */],
-            __WEBPACK_IMPORTED_MODULE_5__Shared_uploadService__["a" /* UploadService */],
+            __WEBPACK_IMPORTED_MODULE_6__Shared_uploadService__["a" /* UploadService */],
+            __WEBPACK_IMPORTED_MODULE_5__Shared_tokenservice__["a" /* TokenService */],
             __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */],
             { provide: __WEBPACK_IMPORTED_MODULE_4__Shared_Controllers_generated__["c" /* API_BASE_URL */], useValue: API_BASE_URL2 },
+            { provide: __WEBPACK_IMPORTED_MODULE_5__Shared_tokenservice__["b" /* API_BASE_URL */], useValue: API_BASE_URL2 },
+            { provide: __WEBPACK_IMPORTED_MODULE_10__angular_http__["d" /* RequestOptions */], useClass: DefaultRequestOptions }
         ],
-        bootstrap: [__WEBPACK_IMPORTED_MODULE_11__app_component__["a" /* AppComponent */]]
+        bootstrap: [__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* AppComponent */]]
     })
 ], AppModule);
 
+var _a;
 //# sourceMappingURL=C:/Projekte/tmbit/photoaward/PhotoAward/PhotoAward.AngularClient/src/app.module.js.map
 
 /***/ }),
 
-/***/ 160:
+/***/ 168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -239,24 +286,24 @@ var environment = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_observable_fromPromise__ = __webpack_require__(324);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_observable_fromPromise__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_observable_fromPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of__ = __webpack_require__(325);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of__ = __webpack_require__(139);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__ = __webpack_require__(326);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__ = __webpack_require__(140);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(328);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(142);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise__ = __webpack_require__(330);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_mergeMap__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_mergeMap__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_mergeMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_mergeMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__ = __webpack_require__(327);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(61);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return API_BASE_URL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MemberManagementClient; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotoManagementClient; });
@@ -306,7 +353,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 
 
 
-var API_BASE_URL = new __WEBPACK_IMPORTED_MODULE_8__angular_core__["c" /* OpaqueToken */]('API_BASE_URL');
+var API_BASE_URL = new __WEBPACK_IMPORTED_MODULE_8__angular_core__["Y" /* OpaqueToken */]('API_BASE_URL');
 var MemberManagementClient = (function () {
     function MemberManagementClient(http, baseUrl) {
         this.jsonParseReviver = undefined;
@@ -321,7 +368,7 @@ var MemberManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "post",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -329,7 +376,7 @@ var MemberManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processAdd(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processAdd(response_);
                 }
@@ -367,7 +414,7 @@ var MemberManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "get",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -375,7 +422,7 @@ var MemberManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processGet(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processGet(response_);
                 }
@@ -418,7 +465,7 @@ var MemberManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "post",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -426,7 +473,7 @@ var MemberManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processLogin(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processLogin(response_);
                 }
@@ -461,7 +508,7 @@ var MemberManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "post",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -469,7 +516,7 @@ var MemberManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processChangePassword(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processChangePassword(response_);
                 }
@@ -499,9 +546,9 @@ var MemberManagementClient = (function () {
     return MemberManagementClient;
 }());
 MemberManagementClient = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["d" /* Injectable */])(),
-    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["e" /* Inject */])(__WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* Http */])), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["f" /* Optional */])()), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["e" /* Inject */])(API_BASE_URL)),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* Http */]) === "function" && _a || Object, String])
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["b" /* Injectable */])(),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["g" /* Inject */])(__WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */])), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["m" /* Optional */])()), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["g" /* Inject */])(API_BASE_URL)),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */]) === "function" && _a || Object, String])
 ], MemberManagementClient);
 
 var PhotoManagementClient = (function () {
@@ -518,7 +565,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "post",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -526,7 +573,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processAdd(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processAdd(response_);
                 }
@@ -565,7 +612,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "post",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -573,7 +620,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processDelete(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processDelete(response_);
                 }
@@ -608,7 +655,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "get",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -616,7 +663,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processGet(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processGet(response_);
                 }
@@ -654,7 +701,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "get",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -662,7 +709,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processGetThumbnailsOfMember(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processGetThumbnailsOfMember(response_);
                 }
@@ -703,7 +750,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "get",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -711,7 +758,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processGetImagesOfMember(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processGetImagesOfMember(response_);
                 }
@@ -755,7 +802,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "get",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -763,7 +810,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processGetComments(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processGetComments(response_);
                 }
@@ -804,7 +851,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "post",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -812,7 +859,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processAddComment(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processAddComment(response_);
                 }
@@ -847,15 +894,15 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "post",
-            responseType: __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* ResponseContentType */].Blob,
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            responseType: __WEBPACK_IMPORTED_MODULE_9__angular_http__["g" /* ResponseContentType */].Blob,
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
             })
         };
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processUploadPhoto(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processUploadPhoto(response_);
                 }
@@ -887,7 +934,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "get",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -895,7 +942,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processBackup(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processBackup(response_);
                 }
@@ -930,7 +977,7 @@ var PhotoManagementClient = (function () {
         var options_ = {
             body: content_,
             method: "get",
-            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* Headers */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
                 "Content-Type": "application/json; charset=UTF-8",
                 "Accept": "application/json; charset=UTF-8"
             })
@@ -938,7 +985,7 @@ var PhotoManagementClient = (function () {
         return this.http.request(url_, options_).flatMap(function (response_) {
             return _this.processRestore(response_);
         }).catch(function (response_) {
-            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["c" /* Response */]) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
                 try {
                     return _this.processRestore(response_);
                 }
@@ -965,9 +1012,9 @@ var PhotoManagementClient = (function () {
     return PhotoManagementClient;
 }());
 PhotoManagementClient = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["d" /* Injectable */])(),
-    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["e" /* Inject */])(__WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* Http */])), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["f" /* Optional */])()), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["e" /* Inject */])(API_BASE_URL)),
-    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__angular_http__["d" /* Http */]) === "function" && _b || Object, String])
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["b" /* Injectable */])(),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["g" /* Inject */])(__WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */])), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["m" /* Optional */])()), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["g" /* Inject */])(API_BASE_URL)),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */]) === "function" && _b || Object, String])
 ], PhotoManagementClient);
 
 var MemberDto = (function () {
@@ -1240,45 +1287,45 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 315:
+/***/ 323:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"jumbatron titlebar\">\r\n  <div class=\"row\">\r\n     <div class=\"col-xs-10\">\r\n       <h1>Microservices für .Net Entwickler:<br>{{title}}</h1>\r\n     </div>\r\n     <div class=\"col-xs-2 bitlogo\">\r\n       <a href=\"http://www.bridging-it.de/\" class=\"pull-right\">\r\n        <img src=\"assets/bitlogo.png\" width=\"200px\"/>\r\n      </a>\r\n     </div>\r\n   </div>\r\n</div>\r\n\r\n<div id='menubar' >\r\n<ul class=\"nav nav-pills\">\r\n  <li role=\"presentation\" ><a [routerLink]=\"['/gallery']\" *ngIf=\"userservice.user.notMember == false\">Gallerie</a></li>\r\n  <li role=\"presentation\" ><a [routerLink]=\"['/upload']\" *ngIf=\"userservice.user.notMember == false\">Bild hochladen</a></li>\r\n  <li role=\"presentation\"><a [routerLink]=\"['/']\" *ngIf=\"userservice.user.notMember == true\">Login</a></li>\r\n  <li role=\"presentation\" (click)='userservice.logout()'><a (click)='userservice.logout()' *ngIf=\"userservice.user.notMember == false\">Logout</a></li>\r\n  <li role=\"presentation\"><a [routerLink]=\"['/registerMember']\">Registrieren</a></li>\r\n</ul>\r\n</div>\r\n\r\n<div *ngIf=\"userservice.user.notMember == false\">\r\n  Willkommen {{userservice.user.firstname}} {{userservice.user.surname }}\r\n</div>\r\n\r\n<router-outlet></router-outlet>\r\n\r\n<div [hidden] = 'notMember'>\r\n\r\n<h3>Willkommen\r\n  {{firstname}}\r\n  {{surname}} </h3>\r\n\r\n  <div class=\"ui divider\">\r\n        Upload\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n\r\n<footer class=\"navbar navbar-fixed-bottom bitfooter\"><a href=\"http://www.bridging-it.de/content/impressum.html\">Impressum</a></footer>\r\n"
 
 /***/ }),
 
-/***/ 316:
+/***/ 324:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"panel panel-default\">\n  <h2>Anmelden</h2>\n  <form #form=\"ngForm\" (ngSubmit)=\"login(form.value)\">\n\n    <div class=\"form-group\">\n      <label for=\"email\" class=\"control-label col-xs-1\">Email</label>\n      <div class=\"col-xs-3\"><input type=\"email\" name=\"email\" ngModel [(ngModel)]=\"email\" class=\"form-control\"></div>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\" class=\"control-label col-xs-1\">Passwort</label>\n      <div class=\"col-xs-3\"><input type=\"password\" name=\"password\" ngModel [(ngModel)]=\"password\" class=\"form-control\"></div>\n    </div>\n\n    <button type=\"submit\" class=\"btn btn-default\">Anmelden</button>\n    <br />\n    <p>&nbsp;</p>\n    <span>{{message}}</span>\n  </form>\n  <a [routerLink]=\"['/registerMember']\">Als neuer Benutzer registrieren</a>\n</div>\n"
 
 /***/ }),
 
-/***/ 317:
+/***/ 325:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"panel panel-default\">\r\n  <h2>Registrierung</h2>\r\n  <form #form=\"ngForm\" (ngSubmit)=\"register(form.value)\" class=\"form-horizontal\">\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"email\" class=\"control-label col-xs-1\">Email</label>\r\n      <div class=\"col-xs-3\"><input type=\"email\" name=\"email\" ngModel [(ngModel)]=\"email\" class=\"form-control\"></div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"password\" class=\"control-label col-xs-1\">Passwort</label>\r\n      <div class=\"col-xs-3\"><input type=\"password\" name=\"password\" ngModel [(ngModel)]=\"password\" class=\"form-control\"></div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"password2\" class=\"control-label col-xs-1\">Wiederholung</label>\r\n      <div class=\"col-xs-3\"><input type=\"password\" name=\"password2\" ngModel [(ngModel)]=\"password2\" class=\"form-control\"></div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"firstname\" class=\"control-label col-xs-1\">Vorname</label>\r\n      <div class=\"col-xs-3\">\r\n        <input type=\"text\" name=\"firstname\" ngModel [(ngModel)]=\"firstname\" class=\"form-control\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"surname\" class=\"control-label col-xs-1\">Nachname</label>\r\n      <div class=\"col-xs-3\">\r\n        <input type=\"text\" name=\"surname\" ngModel [(ngModel)]=\"surname\" class=\"form-control\">\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <div class=\"col-xs-4\">\r\n        <span>{{message}}</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <div class=\"col-xs-4\">\r\n        <button type=\"submit\" class=\"btn btn-default\">Registrieren</button> </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n<a [routerLink]=\"['/']\">Zurück zum Login</a>\r\n"
 
 /***/ }),
 
-/***/ 318:
+/***/ 326:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"panel panel-default\">\r\n  <h2>Benutzer auswählen</h2>\r\n  <form #form=\"ngForm\" (ngSubmit)=\"loadThumbnails()\" class=\"form-horizontal\">\r\n    <div class=\"form-group\">\r\n      <label for=\"email\" class=\"control-label col-xs-1\">Email</label>\r\n      <div class=\"col-xs-3\">\r\n      <input type=\"text\" name=\"email\" ngModel [(ngModel)]=\"email\" class=\"form-control\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-xs-1\">&nbsp;</label>\r\n      <div class=\"col-xs-3\">\r\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"loadThumbnails()\">Bilder anzeigen  </button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n<div class=\"panel panel-default\">\r\n  <div [hidden]='photos.length == 0'>\r\n    <div>Anzahl Bilder von {{email}} : {{photos.length}}</div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-4 col-md-3\" *ngFor=\"let photo of photos\">\r\n        <div class=\"thumbnail\" >\r\n          <div class=\"caption\">\r\n            <h4>{{photo.title}}</h4>\r\n            <img [src]=\"'data:image/jpeg;base64,'+photo.thumbnailBytes\" width=\"150px\" /> Filename: {{photo.fileName}}\r\n            <br><span><i>{{photo.description}}</i></span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n"
 
 /***/ }),
 
-/***/ 319:
+/***/ 327:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"panel panel-default\">\r\n<form #form=\"ngForm\" class=\"form-horizontal\" >\r\n      <h3>Upload Image</h3>\r\n\r\n   <div class=\"form-group\">\r\n    <label for=\"filetitle\" class=\"control-label col-xs-1\">Titel</label>\r\n     <div class=\"col-xs-3\">\r\n      <input type=\"text\" name=\"filetitle\" ngModel [(ngModel)]=\"filetitle\" class=\"form-control\" >\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n    <label  class=\"control-label col-xs-1\">Datei</label>\r\n     <div class=\"col-xs-3\">\r\n      <input type=\"file\" (change)=\"fileChangeEvent($event)\" placeholder=\"Bild auswählen...\"  class=\"form-control btn\"/>\r\n      </div>\r\n    </div>\r\n\r\n\r\n  <div class=\"form-group\">\r\n    <label  class=\"control-label col-xs-1\">&nbsp;</label>\r\n     <div class=\"col-xs-3\">\r\n      <button type=\"button\" (click)=\"upload()\" class=\"btn btn-default\">Bild hinzufügen</button>\r\n      </div>\r\n    </div>\r\n\r\n     <div class=\"form-group\">\r\n    <label  class=\"control-label col-xs-1\">&nbsp;</label>\r\n     <div class=\"col-xs-3\">\r\n{{message}}\r\n      </div>\r\n    </div>\r\n\r\n</form>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 361:
+/***/ 362:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(150);
+module.exports = __webpack_require__(158);
 
 
 /***/ }),
@@ -1288,8 +1335,8 @@ module.exports = __webpack_require__(150);
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_Shared_user_user__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_Shared_user_user__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1324,8 +1371,8 @@ var UserService = (function () {
     return UserService;
 }());
 UserService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["d" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* Router */]) === "function" && _a || Object])
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["b" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Router */]) === "function" && _a || Object])
 ], UserService);
 
 var _a;
@@ -1333,12 +1380,12 @@ var _a;
 
 /***/ }),
 
-/***/ 61:
+/***/ 62:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UploadService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1391,8 +1438,8 @@ var UploadService = (function () {
     return UploadService;
 }());
 UploadService = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["d" /* Injectable */])(),
-    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["f" /* Optional */])()), __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["e" /* Inject */])(__WEBPACK_IMPORTED_MODULE_0__Controllers_generated__["c" /* API_BASE_URL */])),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["b" /* Injectable */])(),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["m" /* Optional */])()), __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["g" /* Inject */])(__WEBPACK_IMPORTED_MODULE_0__Controllers_generated__["c" /* API_BASE_URL */])),
     __metadata("design:paramtypes", [String])
 ], UploadService);
 
@@ -1401,6 +1448,167 @@ UploadService = __decorate([
 /***/ }),
 
 /***/ 92:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_observable_fromPromise__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_observable_fromPromise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of__ = __webpack_require__(139);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_observable_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_observable_throw__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_toPromise__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_mergeMap__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_mergeMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_mergeMap__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(61);
+/* unused harmony export BearerToken */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return API_BASE_URL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TokenService; });
+/* unused harmony export SwaggerException */
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+
+
+
+
+
+
+var BearerToken = (function () {
+    function BearerToken() {
+    }
+    BearerToken.fromJS = function (data) {
+        var result = new BearerToken();
+        result.init(data);
+        return result;
+    };
+    BearerToken.prototype.init = function (data) {
+        if (data) {
+            this.access_token = data["access_token"];
+            this.token_type = data["token_type"];
+            this.expires_in = data["expires_in"];
+        }
+    };
+    return BearerToken;
+}());
+
+var API_BASE_URL = new __WEBPACK_IMPORTED_MODULE_8__angular_core__["Y" /* OpaqueToken */]('API_BASE_URL');
+var TokenService = (function () {
+    function TokenService(http, baseUrl) {
+        this.jsonParseReviver = undefined;
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+    TokenService.prototype.login = function (email, password) {
+        var _this = this;
+        var url_ = this.baseUrl + "/token";
+        if (email === undefined) {
+            throw new Error("The parameter 'email' must be defined.");
+        }
+        if (password === undefined) {
+            throw new Error("The parameter 'password' must be defined.");
+        }
+        var content_ = "username=" + email + "&password=" + password + "&grant_type=password";
+        var options_ = {
+            body: content_,
+            method: "post",
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Accept": "application/json; charset=UTF-8"
+            })
+        };
+        return this.http.request(url_, options_).flatMap(function (response_) {
+            return _this.processLogin(response_);
+        }).catch(function (response_) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
+                try {
+                    return _this.processLogin(response_);
+                }
+                catch (e) {
+                    return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].throw(e);
+                }
+            }
+            else {
+                return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].throw(response_);
+            }
+        });
+    };
+    TokenService.prototype.processLogin = function (response) {
+        var status = response.status;
+        if (status === 200) {
+            var responseText = response.text();
+            var result200 = null;
+            var resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? BearerToken.fromJS(resultData200) : null;
+            return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].of(result200);
+        }
+        else if (status !== 200 && status !== 204) {
+            var responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].of(null);
+    };
+    return TokenService;
+}());
+TokenService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["b" /* Injectable */])(),
+    __param(0, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["g" /* Inject */])(__WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */])), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["m" /* Optional */])()), __param(1, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_8__angular_core__["g" /* Inject */])(API_BASE_URL)),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__angular_http__["f" /* Http */]) === "function" && _a || Object, String])
+], TokenService);
+
+function throwException(message, status, response, result) {
+    return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].throw(new SwaggerException(message, status, response, result));
+}
+var SwaggerException = (function (_super) {
+    __extends(SwaggerException, _super);
+    function SwaggerException(message, status, response, result) {
+        var _this = _super.call(this) || this;
+        _this.message = message;
+        _this.status = status;
+        _this.response = response;
+        _this.result = result;
+        return _this;
+    }
+    return SwaggerException;
+}(Error));
+
+var _a;
+//# sourceMappingURL=C:/Projekte/tmbit/photoaward/PhotoAward/PhotoAward.AngularClient/src/tokenservice.js.map
+
+/***/ }),
+
+/***/ 93:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1418,14 +1626,15 @@ user.id = "";
 
 /***/ }),
 
-/***/ 93:
+/***/ 94:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_app_Shared_Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_app_Shared_user_user__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_tokenservice__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_Shared_user_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Shared_Controllers_generated__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_Shared_user_user__ = __webpack_require__(93);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1475,40 +1684,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var LoginComponent = (function () {
-    function LoginComponent(_memberManagementClient, _userService) {
+    function LoginComponent(_memberManagementClient, _userService, tokenService) {
         this._memberManagementClient = _memberManagementClient;
         this._userService = _userService;
+        this.tokenService = tokenService;
     }
     LoginComponent.prototype.ngOnInit = function () {
     };
     LoginComponent.prototype.login = function (value) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
-            var that, dto;
+            var that;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         this.message = "Anmeldung gestartet ....";
                         that = this;
-                        return [4 /*yield*/, this._memberManagementClient.login(this.email, this.password).subscribe(function (result) {
-                                that.user = new __WEBPACK_IMPORTED_MODULE_3_app_Shared_user_user__["a" /* User */]();
-                                that.user.firstname = result.firstName ? result.firstName : "";
-                                that.user.surname = result.surname ? result.surname : "";
-                                that.user.id = result.id;
-                                that.user.notMember = false;
-                                that.user.email = result.email ? result.email : "";
-                                that.message = "Willkommen " + that.user.firstname + " " + that.user.surname;
-                                _this._userService.user = that.user;
-                            }, function (error) {
-                                that.user = new __WEBPACK_IMPORTED_MODULE_3_app_Shared_user_user__["a" /* User */]();
-                                that.user.notMember = true;
-                                that._userService.user = that.user;
-                                that.message = error.message;
-                                console.log(error);
+                        return [4 /*yield*/, this.tokenService.login(this.email, this.password).subscribe(function (token) {
+                                _this._userService.token = token;
+                                var dto = that._memberManagementClient.get(_this.email).subscribe(function (result) {
+                                    that.user = new __WEBPACK_IMPORTED_MODULE_4_app_Shared_user_user__["a" /* User */]();
+                                    that.user.firstname = result.firstName ? result.firstName : "";
+                                    that.user.surname = result.surname ? result.surname : "";
+                                    that.user.id = result.id;
+                                    that.user.notMember = false;
+                                    that.user.email = result.email ? result.email : "";
+                                    that.message = "Willkommen " + that.user.firstname + " " + that.user.surname;
+                                    _this._userService.user = that.user;
+                                }, function (error) {
+                                    that.user = new __WEBPACK_IMPORTED_MODULE_4_app_Shared_user_user__["a" /* User */]();
+                                    that.user.notMember = true;
+                                    that._userService.user = that.user;
+                                    that.message = error.message;
+                                    console.log(error);
+                                });
                             })];
                     case 1:
-                        dto = _a.sent();
+                        _a.sent();
                         return [2 /*return*/];
                 }
             });
@@ -1517,26 +1731,26 @@ var LoginComponent = (function () {
     return LoginComponent;
 }());
 LoginComponent = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* Component */])({
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_14" /* Component */])({
         selector: 'pac-login',
-        template: __webpack_require__(316),
+        template: __webpack_require__(324),
         providers: [],
-        styles: []
+        styles: [],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_app_Shared_Controllers_generated__["b" /* MemberManagementClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_app_Shared_Controllers_generated__["b" /* MemberManagementClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__Shared_Controllers_generated__["b" /* MemberManagementClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__Shared_Controllers_generated__["b" /* MemberManagementClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_app_Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_app_Shared_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__Shared_tokenservice__["a" /* TokenService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__Shared_tokenservice__["a" /* TokenService */]) === "function" && _c || Object])
 ], LoginComponent);
 
-var _a, _b;
+var _a, _b, _c;
 //# sourceMappingURL=C:/Projekte/tmbit/photoaward/PhotoAward/PhotoAward.AngularClient/src/login.component.js.map
 
 /***/ }),
 
-/***/ 94:
+/***/ 95:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterMemberComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1628,7 +1842,7 @@ var RegisterMemberComponent = (function () {
 RegisterMemberComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* Component */])({
         selector: 'pac-register-member',
-        template: __webpack_require__(317),
+        template: __webpack_require__(325),
         styles: []
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["b" /* MemberManagementClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["b" /* MemberManagementClient */]) === "function" && _a || Object])
@@ -1639,13 +1853,13 @@ var _a;
 
 /***/ }),
 
-/***/ 95:
+/***/ 96:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_user_service__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router___ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowPhotosComponentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1699,16 +1913,16 @@ var ShowPhotosComponentComponent = (function () {
     return ShowPhotosComponentComponent;
 }());
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["N" /* Input */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["M" /* Input */])(),
     __metadata("design:type", String)
 ], ShowPhotosComponentComponent.prototype, "email", void 0);
 ShowPhotosComponentComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_14" /* Component */])({
         selector: 'pac-show-photos-component',
-        template: __webpack_require__(318),
+        template: __webpack_require__(326),
         styles: []
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__["a" /* PhotoManagementClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__["a" /* PhotoManagementClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__Shared_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router___["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router___["a" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__["a" /* PhotoManagementClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__["a" /* PhotoManagementClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__Shared_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router___["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router___["b" /* Router */]) === "function" && _c || Object])
 ], ShowPhotosComponentComponent);
 
 var _a, _b, _c;
@@ -1716,13 +1930,13 @@ var _a, _b, _c;
 
 /***/ }),
 
-/***/ 96:
+/***/ 97:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router___ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UploadPhotoComponentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1778,7 +1992,7 @@ var UploadPhotoComponentComponent = (function () {
         this._uploadService = _uploadService;
         this._userService = _userService;
         this.router = router;
-        this.imageUploaded = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["E" /* EventEmitter */]();
+        this.imageUploaded = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["D" /* EventEmitter */]();
         this.message = "";
     }
     UploadPhotoComponentComponent.prototype.ngOnInit = function () {
@@ -1829,10 +2043,10 @@ __decorate([
 UploadPhotoComponentComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_14" /* Component */])({
         selector: 'pac-upload-photo-component',
-        template: __webpack_require__(319),
+        template: __webpack_require__(327),
         styles: []
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__["a" /* UploadService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__["a" /* UploadService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router___["a" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router___["a" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__["a" /* UploadService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__["a" /* UploadService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router___["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router___["b" /* Router */]) === "function" && _c || Object])
 ], UploadPhotoComponentComponent);
 
 var _a, _b, _c;
@@ -1840,5 +2054,5 @@ var _a, _b, _c;
 
 /***/ })
 
-},[361]);
+},[362]);
 //# sourceMappingURL=main.bundle.js.map
