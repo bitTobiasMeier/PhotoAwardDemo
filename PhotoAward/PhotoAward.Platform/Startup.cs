@@ -7,9 +7,12 @@ using System.Text;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
+using Microsoft.Owin.Security.OAuth;
 using Microsoft.Owin.StaticFiles;
 using Newtonsoft.Json.Converters;
 using Owin;
+using PhotoAward.MemberManagement.Interfaces;
+using PhotoAward.Platform.Security;
 
 namespace PhotoAward.Platform
 {
@@ -44,10 +47,23 @@ namespace PhotoAward.Platform
             fileOptions.StaticFileOptions.ServeUnknownFileTypes = true;
             fileOptions.EnableDirectoryBrowsing = true;
 
+            var myProvider = new MemberAuthorizationServerProvider(new MemberManagementClientFactory());
+            OAuthAuthorizationServerOptions options = new OAuthAuthorizationServerOptions
+            {
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString("/token"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                Provider = myProvider
+            };
+            appBuilder.UseOAuthAuthorizationServer(options);
+            appBuilder.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
             appBuilder.UseWebApi(config);
             appBuilder.Use(typeof(DoNotCacheMiddleWare));
             appBuilder.UseFileServer(fileOptions);
 
         }
+
+      
     }
 }

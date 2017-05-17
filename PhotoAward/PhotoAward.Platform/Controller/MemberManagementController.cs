@@ -4,6 +4,7 @@ using PhotoAward.MemberManagement.Interfaces;
 
 namespace PhotoAward.Platform.Controller
 {
+    [Authorize]
     [RoutePrefix("api/Member")]
     public class MemberManagementController : ApiController
     {
@@ -14,6 +15,7 @@ namespace PhotoAward.Platform.Controller
             _memberManagementClientFactory = memberManagementClientFactory;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("Add")]
         public async Task<MemberDto> Add(MemberDto member)
@@ -41,6 +43,7 @@ namespace PhotoAward.Platform.Controller
             return result;
         }
 
+        [Authorize]
         [HttpPost]
         [Route("ChangePassword")]
         public async Task<MemberDto> ChangePassword (ChangePasswordDto dto)

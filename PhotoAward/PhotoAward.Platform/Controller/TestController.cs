@@ -10,6 +10,7 @@ namespace PhotoAward.Platform.Controller
     [RoutePrefix("api/Test")]
     public class TestController : ApiController
     {
+        [AllowAnonymous]
         [HttpGet]
         [Route("Ping")]
         public string Ping()

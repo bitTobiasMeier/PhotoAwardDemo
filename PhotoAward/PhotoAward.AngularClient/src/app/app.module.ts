@@ -4,11 +4,12 @@ import { UploadPhotoComponentComponent } from './photos/upload-photo-component/u
 import { RegisterMemberComponent } from './login/register-member/register-member.component';
 import { PhotoManagementClient } from './Shared/Controllers.generated';
 import { MemberManagementClient, API_BASE_URL} from './Shared/Controllers.generated';
+import { TokenService, API_BASE_URL as TokenServiceAPI} from './Shared/tokenservice';
 import { UploadService } from './Shared/uploadService';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BaseRequestOptions, RequestOptionsArgs, RequestOptions, Headers } from '@angular/http';
 import { OpaqueToken } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,6 +32,26 @@ if (window != null && window.location != null) {
       API_BASE_URL2 = loc.protocol + '//' +  server + ':' + port;
 }
 
+@Injectable()
+export class DefaultRequestOptions extends BaseRequestOptions {
+  headers = new Headers({
+     'Author':'BridgingIT GmbH',
+  });
+
+  constructor (private _userService: UserService) {
+      super();
+  }
+
+  merge(options?: RequestOptionsArgs): RequestOptions {
+    const newOptions = super.merge(options);
+    if (this._userService.token)    {
+        newOptions.headers.set('Authorization','Bearer ' +this._userService.token.access_token);
+    }else {
+        newOptions.headers.delete('bearer');
+    }
+    return newOptions;
+  }
+}
 
 
 @NgModule({
@@ -51,8 +72,11 @@ if (window != null && window.location != null) {
     PhotoManagementClient,
     MemberManagementClient,
     UploadService,
+    TokenService,
     UserService,
     {provide: API_BASE_URL, useValue: API_BASE_URL2},
+    {provide: TokenServiceAPI, useValue: API_BASE_URL2},
+     {provide: RequestOptions, useClass: DefaultRequestOptions }
   ],
   bootstrap: [AppComponent]
 })
