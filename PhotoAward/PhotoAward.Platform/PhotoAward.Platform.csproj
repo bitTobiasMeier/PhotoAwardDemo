@@ -170,7 +170,9 @@
     <None Include="PackageRoot\ServiceManifest.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
@@ -223,7 +225,7 @@
     </PropertyGroup>
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>echo f | xcopy "$(SolutionDir)PhotoAward.AngularClient\dist\*.*"  $(ProjectDir)dist\  /s/Y</PreBuildEvent>
+    <PreBuildEvent>IF EXIST "$(SolutionDir)PhotoAward.AngularClient\dist\"   echo f | xcopy "$(SolutionDir)PhotoAward.AngularClient\dist\*.*"  $(ProjectDir)dist\  /s/Y</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
