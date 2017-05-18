@@ -18,8 +18,10 @@
   <li role="presentation"><a [routerLink]="['/']" *ngIf="userservice.user.notMember == true">Login</a></li>
   <li role="presentation" (click)='userservice.logout()'><a (click)='userservice.logout()' *ngIf="userservice.user.notMember == false">Logout</a></li>
   <li role="presentation"><a [routerLink]="['/registerMember']">Registrieren</a></li>
+  <li role="presentation"><a href="http://blog.bridging-it.de/author/Tobias.Meier">Weitere Infos: http://blog.bridging-it.de/author/Tobias.Meier</a> </li>
 </ul>
-</div>
+
+
 
 <div *ngIf="userservice.user.notMember == false">
   Willkommen {{userservice.user.firstname}} {{userservice.user.surname }}
@@ -41,4 +43,4 @@
 
 </div>
 
-<footer class="navbar navbar-fixed-bottom bitfooter"><a href="http://www.bridging-it.de/content/impressum.html">Impressum</a></footer>
+<footer class="navbar navbar-fixed-bottom bitfooter"><a href="http://www.bridging-it.de/content/impressum.html">Impressum</a>  </footer>
