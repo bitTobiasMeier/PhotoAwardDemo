@@ -14,6 +14,7 @@ namespace PhotoAward.ConsoleClient
         private static readonly Dictionary<string, Command> Commands  = new Dictionary<string, Command>()
         {
             {"ping",new PingCommand() },
+            {"login",new LoginCommand() },
             {"getMember",new GetMemberCommand() },
             {"changePassword", new ChangePasswordCommand() },
             {"addMember",new AddMemberCommand() },

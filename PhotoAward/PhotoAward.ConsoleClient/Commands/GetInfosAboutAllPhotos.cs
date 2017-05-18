@@ -14,7 +14,7 @@ namespace PhotoAward.ConsoleClient.Commands
         {
             try
             {
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.GetAsync(BaseUrl + "/Photo/GetImagesOfMember/" );
                 var json = await result.Content.ReadAsStringAsync();
                 try

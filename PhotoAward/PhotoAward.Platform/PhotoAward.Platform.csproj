@@ -149,7 +149,8 @@
     <Compile Include="Controller\MemberManagementController.cs" />
     <Compile Include="Controller\PhotoManagementController.cs" />
     <Compile Include="Controller\TestController.cs" />
-    <Compile Include="DoNotCacheMiddleWare.cs" />
+    <Compile Include="Security\DoNotCacheMiddleWare.cs" />
+    <Compile Include="Security\NoCacheHeaderFilter.cs" />
     <Compile Include="OwinCommunicationListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Platform.cs" />
@@ -174,7 +175,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhotoAward.MemberManagement.Interfaces\PhotoAward.MemberManagement.Interfaces.csproj">
@@ -191,7 +191,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="dist\assets\bitlogo.png" />
+    <Content Include="dist\assets\bitlogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="dist\faviconbit.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -213,7 +215,6 @@
     <Content Include="dist\vendor.bundle.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="karma.conf.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\" />

@@ -41,5 +41,12 @@ namespace PhotoAward.ConsoleClient.Commands
         {
             return "";
         }
+
+        protected static HttpClient CreateClientWithAuthorizationHeader()
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", "Bearer " + System.IO.File.ReadAllText("Bearer.token"));
+            return client;
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace PhotoAward.ConsoleClient.Commands
                 var data = System.IO.File.ReadAllBytes(filename);
 
                 var photoUploadData = new PhotoUploadData() {Email = email, FileName  = filename, Title = title, Data = data };
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.PostAsJsonAsync(BaseUrl + "/Photo/Add", photoUploadData);
                 var datetimeconverter = new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-ddHH:mm:ss" };
                 var mngmntdata = Newtonsoft.Json.JsonConvert.DeserializeObject<PhotoManagementData>(await result.Content.ReadAsStringAsync(), datetimeconverter);

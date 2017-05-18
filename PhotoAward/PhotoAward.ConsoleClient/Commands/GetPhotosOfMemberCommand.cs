@@ -17,7 +17,7 @@ namespace PhotoAward.ConsoleClient.Commands
             {
                 var email = args[0];
                 var targetDir = args[1];
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.GetAsync(BaseUrl + "/Photo/GetThumbnailsOfMember/" + email);
                 var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<PhotoManagementData>>(await result.Content.ReadAsStringAsync());
                 foreach (var row in list)

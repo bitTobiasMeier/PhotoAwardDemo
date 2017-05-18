@@ -22,6 +22,7 @@ export class UserService {
       const user = new User();
       user.notMember = true;
       this.user = user;
+      this.token = null;
     }
     this.router.navigateByUrl('/');
   }

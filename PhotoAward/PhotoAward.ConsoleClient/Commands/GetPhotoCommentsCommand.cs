@@ -16,7 +16,7 @@ namespace PhotoAward.ConsoleClient.Commands
             try
             {
                 var photoId = new Guid(args[0]);
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.GetAsync(BaseUrl + "/Photo/GetComments/" + photoId.ToString());
                 var datetimeconverter = new IsoDateTimeConverter() {DateTimeFormat = "yyyy-MM-ddHH:mm:ss"};
                 var list = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CommentData>>(await result.Content.ReadAsStringAsync(), datetimeconverter);

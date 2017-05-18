@@ -12,7 +12,7 @@ namespace PhotoAward.ConsoleClient.Commands
             try
             {
                 var email = args[0];
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.GetAsync(BaseUrl + "/Member/Get/" + email);
                 await WriteResultAsync(result);
             }
@@ -21,6 +21,8 @@ namespace PhotoAward.ConsoleClient.Commands
                 Console.WriteLine(ex.Message);
             }
         }
+
+        
 
         public override string GetArguments()
         {
@@ -34,4 +36,7 @@ namespace PhotoAward.ConsoleClient.Commands
             return "Gibt die Detaildaten des Mitglieds mit der übergebenen Emailadresse aus.";
         }
     }
+
+
+   
 }

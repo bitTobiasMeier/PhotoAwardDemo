@@ -13,7 +13,7 @@ namespace PhotoAward.ConsoleClient.Commands
             try
             {
                 var member = new ChangePasswordDto() { Email = args[0], OldPassword = args[1], NewPassword = args[2] };
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.PostAsJsonAsync(BaseUrl + "/Member/ChangePassword", member);
                 await WriteResultAsync(result);
             }
@@ -32,7 +32,7 @@ namespace PhotoAward.ConsoleClient.Commands
 
         public override string GetDescription()
         {
-            return "Legt ein neues Mitglied an.";
+            return "Ändert das Passwort eines Benutzers";
         }
     }
 }

@@ -79,6 +79,7 @@
     <Compile Include="Commands\GetMemberCommand.cs" />
     <Compile Include="Commands\GetPhotoCommentsCommand.cs" />
     <Compile Include="Commands\GetPhotosOfMemberCommand.cs" />
+    <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\PingCommand.cs" />
     <Compile Include="Commands\RestorePhotosCommand.cs" />
     <Compile Include="Program.cs" />

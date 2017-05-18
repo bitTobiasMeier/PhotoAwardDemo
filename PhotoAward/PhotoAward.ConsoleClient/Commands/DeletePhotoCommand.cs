@@ -13,7 +13,7 @@ namespace PhotoAward.ConsoleClient.Commands
             try
             {
                 var photoId = args[0];
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.PostAsJsonAsync(BaseUrl + "/Photo/Delete", photoId);
                 var datetimeconverter = new IsoDateTimeConverter() { DateTimeFormat = "yyyy-MM-ddHH:mm:ss" };
                 Console.WriteLine(await result.Content.ReadAsStringAsync());

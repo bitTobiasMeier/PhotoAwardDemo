@@ -17,7 +17,7 @@ namespace PhotoAward.ConsoleClient.Commands
                 var comment = args[2];
                 
                 var commentUploadData = new CommentUploadData() { Email = email, PhotoId = photoId, Comment = comment, CreateDate = DateTime.Now};
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.PostAsJsonAsync(BaseUrl + "/Photo/AddComment", commentUploadData);
                 await WriteResultAsync(result);
             }

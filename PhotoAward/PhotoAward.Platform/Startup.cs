@@ -34,6 +34,16 @@ namespace PhotoAward.Platform
             config.Filters.Add(new NoCacheHeaderFilter());
             ConfigureFormatters(config.Formatters);
 
+            AddAuthenticationProvider(appBuilder);
+
+            appBuilder.UseWebApi(config);
+            appBuilder.Use(typeof(DoNotCacheMiddleWare));
+            appBuilder.UseFileServer(GetFileServerOptions());
+
+        }
+
+        private static FileServerOptions GetFileServerOptions()
+        {
             var physicalFileSystem = new PhysicalFileSystem(@".\dist");
             var fileOptions = new FileServerOptions
             {
@@ -46,7 +56,12 @@ namespace PhotoAward.Platform
             fileOptions.StaticFileOptions.FileSystem = fileOptions.FileSystem = physicalFileSystem;
             fileOptions.StaticFileOptions.ServeUnknownFileTypes = true;
             fileOptions.EnableDirectoryBrowsing = true;
+            return fileOptions;
+        }
 
+        private static void AddAuthenticationProvider(IAppBuilder appBuilder)
+        {
+            //Authorization-Provider festlegen und konfigurieren, dass eine Bearer-Authentication verwendet wird.
             var myProvider = new MemberAuthorizationServerProvider(new MemberManagementClientFactory());
             OAuthAuthorizationServerOptions options = new OAuthAuthorizationServerOptions
             {
@@ -57,13 +72,6 @@ namespace PhotoAward.Platform
             };
             appBuilder.UseOAuthAuthorizationServer(options);
             appBuilder.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
-            appBuilder.UseWebApi(config);
-            appBuilder.Use(typeof(DoNotCacheMiddleWare));
-            appBuilder.UseFileServer(fileOptions);
-
         }
-
-      
     }
 }

@@ -11,7 +11,7 @@ namespace PhotoAward.ConsoleClient.Commands
         {
             try
             {
-                var client = new HttpClient();
+                var client = CreateClientWithAuthorizationHeader();
                 var result = await client.GetAsync(BaseUrl + "/Photo/Restore/");
                 var json = await result.Content.ReadAsStringAsync();
                 Console.WriteLine(json);
