@@ -148,6 +148,14 @@
       <Project>{7070dad2-9c56-4832-8078-41a361368b90}</Project>
       <Name>PhotoAward.PhotoActor</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.PhotoDb.Interfaces\PhotoAward.PhotoDb.Interfaces.csproj">
+      <Project>{826ebf33-ef58-4414-a956-9fcc1abf960b}</Project>
+      <Name>PhotoAward.PhotoDb.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.PhotoDb\PhotoAward.PhotoDb.csproj">
+      <Project>{7081dded-4854-42ed-bc49-4c10763d8f99}</Project>
+      <Name>PhotoAward.PhotoDb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhotoAward.PhotoManagement.Interfaces\PhotoAward.PhotoManagement.Interfaces.csproj">
       <Project>{01a6d906-9d97-4c34-9449-223839ed5d7e}</Project>
       <Name>PhotoAward.PhotoManagement.Interfaces</Name>

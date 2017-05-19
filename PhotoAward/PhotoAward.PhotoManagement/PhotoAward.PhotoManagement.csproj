@@ -112,6 +112,10 @@
       <Project>{76be757d-2477-4037-ac34-4527e036312e}</Project>
       <Name>PhotoAward.PhotoActor.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.PhotoDb.Interfaces\PhotoAward.PhotoDb.Interfaces.csproj">
+      <Project>{826ebf33-ef58-4414-a956-9fcc1abf960b}</Project>
+      <Name>PhotoAward.PhotoDb.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhotoAward.PhotoManagement.Interfaces\PhotoAward.PhotoManagement.Interfaces.csproj">
       <Project>{01a6d906-9d97-4c34-9449-223839ed5d7e}</Project>
       <Name>PhotoAward.PhotoManagement.Interfaces</Name>

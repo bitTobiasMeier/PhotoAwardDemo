@@ -7,6 +7,7 @@ using Microsoft.ServiceFabric.Data;
 using Microsoft.ServiceFabric.Services.Runtime;
 using PhotoAward.MemberManagement.Interfaces;
 using PhotoAward.PhotoActors.Interfaces;
+using PhotoAward.PhotoDb.Interfaces;
 using PhotoAward.ThumbnailService.Interfaces;
 
 namespace PhotoAward.PhotoManagement
@@ -33,7 +34,8 @@ namespace PhotoAward.PhotoManagement
                         return new PhotoManagement(context, new PhotoManagementStates(stateMngr), stateMngr,
                             new MemberManagementClientFactory(), 
                             new PhotoActorClientFactory(), 
-                            new ThumbnailClientFactory());
+                            new ThumbnailClientFactory(),
+                            new PhotoDbClientFactory());
                     }).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(PhotoManagement).Name);

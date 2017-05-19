@@ -54,6 +54,15 @@ namespace PhotoAward.Platform.Controller
         }
 
         [HttpGet]
+        [Route("GetImage/{id}")]
+        public async Task<byte[]> GetImage(Guid id)
+        {
+            var client = this._photoManagementClientFactory.CreatePhotoClient();
+            var result = await client.GetPhotoDetail(id);
+            return result;
+        }
+
+        [HttpGet]
         [Route("GetThumbnailsOfMember/{email}")]
         public async Task<List<PhotoManagementData>> GetThumbnailsOfMember(string email)
         {

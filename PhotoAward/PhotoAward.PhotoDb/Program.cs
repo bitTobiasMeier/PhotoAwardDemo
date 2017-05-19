@@ -4,6 +4,7 @@ using System.Fabric;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Runtime;
+using PhotoAward.PhotoDb.Interfaces;
 
 namespace PhotoAward.PhotoDb
 {
@@ -22,7 +23,7 @@ namespace PhotoAward.PhotoDb
                 // an instance of the class is created in this host process.
 
                 ServiceRuntime.RegisterServiceAsync("PhotoDbType",
-                    context => new PhotoDb(context)).GetAwaiter().GetResult();
+                    context => new PhotoDb(context,new PhotoDbRepository<PhotoDocument>())).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(PhotoDb).Name);
 

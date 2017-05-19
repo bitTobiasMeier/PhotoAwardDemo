@@ -233,6 +233,7 @@ export interface IPhotoManagementClient {
     add(uploadData: PhotoUploadData): Observable<PhotoManagementData | null>;
     delete(photoId: string): Observable<void>;
     get(id: string): Observable<PhotoManagementData | null>;
+    getImage(id: string): Observable<string | null>;
     getThumbnailsOfMember(email: string): Observable<PhotoManagementData[] | null>;
     getImagesOfMember(): Observable<PhotoMemberInfo[] | null>;
     getComments(photoId: string): Observable<CommentData[] | null>;
@@ -390,6 +391,54 @@ export class PhotoManagementClient implements IPhotoManagementClient {
             return throwException("An unexpected server error occurred.", status, responseText);
         }
         return Observable.of<PhotoManagementData | null>(<any>null);
+    }
+
+    getImage(id: string): Observable<string | null> {
+        let url_ = this.baseUrl + "/api/Photo/GetImage/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id)); 
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = "";
+        
+        let options_ = {
+            body: content_,
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+                "Accept": "application/json; charset=UTF-8"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_) => {
+            return this.processGetImage(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processGetImage(response_);
+                } catch (e) {
+                    return <Observable<string>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<string>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processGetImage(response: Response): Observable<string | null> {
+        const status = response.status; 
+
+        if (status === 200) {
+            const responseText = response.text();
+            let result200: string | null = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return Observable.of(result200);
+        } else if (status !== 200 && status !== 204) {
+            const responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return Observable.of<string | null>(<any>null);
     }
 
     getThumbnailsOfMember(email: string): Observable<PhotoManagementData[] | null> {

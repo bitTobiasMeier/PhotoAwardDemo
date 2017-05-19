@@ -16,6 +16,7 @@ using PhotoAward.MemberManagement.Interfaces;
 using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoManagement.Interfaces;
 using PhotoAward.ThumbnailService.Interfaces;
+using PhotoAward.PhotoDb.Interfaces;
 
 namespace PhotoAward.PhotoManagement
 {
@@ -28,17 +29,20 @@ namespace PhotoAward.PhotoManagement
         private readonly IMemberManagementClientFactory _memberManagementClientFactory;
         private readonly IPhotoActorClientFactory _photoActorClientFactory;
         private readonly IThumbnailClientFactory _thumbnailClientFactory;
+        private readonly IPhotoDbClientFactory _photoDbClientFactory;
 
         private const string PhotoActorMemberDictName = "photoActorMemberDictionary";
 
         public PhotoManagement(StatefulServiceContext context, IPhotoManagementStates photoManagementStates, IReliableStateManagerReplica stateManager, 
-            IMemberManagementClientFactory memberManagementClientFactory, IPhotoActorClientFactory photoActorClientFactory, IThumbnailClientFactory thumbnailClientFactory)
+            IMemberManagementClientFactory memberManagementClientFactory, IPhotoActorClientFactory photoActorClientFactory, IThumbnailClientFactory thumbnailClientFactory,
+            IPhotoDbClientFactory photoDbClientFactory)
             : base(context, stateManager)
         {
             _photoManagementStates = photoManagementStates;
             _memberManagementClientFactory = memberManagementClientFactory;
             _photoActorClientFactory = photoActorClientFactory;
             _thumbnailClientFactory = thumbnailClientFactory;
+            _photoDbClientFactory = photoDbClientFactory;
         }
 
         /// <summary>
@@ -87,19 +91,27 @@ namespace PhotoAward.PhotoManagement
                 {
                     var thumbnailClient = this._thumbnailClientFactory.CreateThumbnailClient();
                     var thumbnailTask = thumbnailClient.GetThumbnail(photo.Data);
-                    var thumbnail = await thumbnailTask;
+                   
                     //Member mit dieser Emailadresse ermitteln
                     var member = await this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(photo.Email);
                     if (member == null) throw new Exception("Member not found");
+                    var photoId = Guid.NewGuid();
+                    var photoDbClient = this._photoDbClientFactory.CreatePhotoDbClient();
+                    var doc = new PhotoDocument()
+                    {
+                        Id = photoId.ToString(),
+                        Image = photo.Data
+                    };
+                    await photoDbClient.AddPhoto(doc);
 
-                    var photoId= Guid.NewGuid();
+                    
                     var photoActorId = ActorId.CreateRandom();
                     await this._photoManagementStates.AddPhotoIdActorMapping(tx,photoId,photoActorId);
 
                     //Dateiname ermitteln
                     var filename = photo.FileName;
                     filename = System.IO.Path.GetFileName(filename);
-                    
+                    var thumbnail = await thumbnailTask;
                     //Bild hochladen
                     var data = new PhotoInfo()
                     {
@@ -154,6 +166,24 @@ namespace PhotoAward.PhotoManagement
                         ThumbnailBytes = result.ThumbnailBytes,
                         Description = result.Description
                     };
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                throw;
+            }
+        }
+
+        public async Task<byte[]> GetPhotoDetail(Guid id)
+        {
+            try
+            {
+                using (var tx = _photoManagementStates.CreateTransaction())
+                {
+                    var client = this._photoDbClientFactory.CreatePhotoDbClient();
+                    var doc = await client.GetPhoto(id.ToString());
+                    return doc;
                 }
             }
             catch (Exception ex)

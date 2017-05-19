@@ -14,9 +14,10 @@ Anwendungsfälle:
 4. Aktuell nur Command-Line-Interface:
 - Benutzer wählt ein Foto aus und bewertet es..
 - Zusätzlich können auch Kommentare geschrieben werden.
+- Passwort ändern
 5. Angedacht: 
 - Wenn ein Foto im Detail aufgerufen wird, werden alle Kommentare angezeigt.
-- Fotos können gekauft werden
+- Fotos werden im Original in einer DocumentDb abgelegt werden
 
 
 #Hinweis
@@ -24,24 +25,27 @@ Dieses Projekt demonstriert die verschiedenen Möglichkeiten der Service Fabric.
 
 #Getting Started
 1. Voraussetzungen
-Vorraussetzung für das Projekt ist dass Sie das Service Fabric auf dem Entwicklungsrechner installiert ist. Eine ausführliche Anleitung finden Sie unter https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started
+Vorraussetzung für das Projekt ist dass Sie das Service Fabric SDK auf dem Entwicklungsrechner installiert haben. Eine ausführliche Anleitung finden Sie unter https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started .
+Damit aus der Anwendung der Cognitive Service zur Bildanalyse aufgerufen werden kann müssen Sie sich einen Zugriffstoken erzeugen lassen und diesen in der Klasse AnalyzeRepository im PhotoActor-Projekt eintragen.
+Weitere Informationen zu den Cognitiv Services erhalten Sie unter https://azure.microsoft.com/de-de/services/cognitive-services/computer-vision/ .
 2.	Build
-Um die Anwendung kompilieren zu können müssen zuerst alle NPM-Pakete installiert sein. Normalerweise geschieht dies direkt beim Öffnen von Visual Studio. 
-Damit das WebAPI-Projekt kompiliert werden kann muss die Angular-Anwendung gebaut sein. 
-Bitte ruft vor dem Build-Vorgang ng build auf.
+Um die Angular-Anwendung kompilieren zu können müssen zuerst alle NPM-Pakete installiert sein. Bitte rufen Sie hierzu  in der Console im Verzeichnis PhotoAward.AngularClient npm install auf. Außerdem benötigen Sie noch die Windows Build Tools und  das AngularCLI-Tool: 
+npm install -g windows-build-tools
+npm install -g @angular/cli 
+Nach erfolgter Installation können Sie über den Aufruf von "ng build" die Anwendung kompilieren.  
+Anschließend öffnen Sie bitte Visual Studio und können die Anwendung kompilieren.
 3.  Azure
 Um das Projekt unter Azure zu testen muss Ihr Cluster mit einem SSL-Zertifikat gesichert sein. Bitte ändern Sie den in der Datei ApplicationManifest aufgeführten 
-Thumbprint auf den Thumbprint ihres SSL-Zertifikats und entfernt die Kommentare in
-ApplicationManifest.xml im Knoten 
+Thumbprint auf den Thumbprint ihres SSL-Zertifikats und entfernen Sie die Kommentare in ApplicationManifest.xml im Knoten.
 <Policies>
       <!-- <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />  -->
 </Policies>
-
+Außerdem muss in der ApplicationManifest der Fingerprint des Zertifikats angepasst werden:
+<Certificates>
+    <EndpointCertificate X509StoreName="MY" X509FindValue="2B5C7A6BDFCE84CC7559977375D384494CC3D2A5" Name="TestCert1" />
+</Certificates>
 
 #4.Build and Test
-Hinweis: Die Angular2-Unittests sind NICHT lauffähig. Out of Scope für diese Demo 
+Hinweis: Die Angular4-Unittests sind NICHT lauffähig. Out of Scope für diese Demo 
 
 
-#Test der Anwendung unter Azure
-Die Anwendung ist aktuell (22.02.2017) unter folgender Adresse deployt: https://bitdemoappphotoaward.westeurope.cloudapp.azure.com:8443/ 
-Eine Tage nach der BASTA! Spring wird der Cluster offline genommen.

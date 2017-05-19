@@ -11,6 +11,7 @@ using PhotoAward.MemberManagement.Interfaces;
 using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoManagement.Interfaces;
 using PhotoAward.ThumbnailService.Interfaces;
+using PhotoAward.PhotoDb.Interfaces;
 
 namespace PhotoAward.PhotoManagement.Tests
 {
@@ -49,11 +50,12 @@ namespace PhotoAward.PhotoManagement.Tests
                     Id = photoId
                 }));
             photoActorClientFactoryMock.Setup(r => r.CreateActorClient(It.IsAny<ActorId>())).Returns(photoActorClientMock.Object);
+            var photoDbFactoryMock = new Mock<IPhotoDbClientFactory>();
 
             var pm = new PhotoManagement(CreateServiceContext(), stateMngrMock.Object, reliableStateManager, 
                 clientFactoryMock.Object,
                 photoActorClientFactoryMock.Object,
-                thumbnailClientFactoryMock.Object);
+                thumbnailClientFactoryMock.Object, photoDbFactoryMock.Object);
             var uploadData = new PhotoUploadData()
             {
                 Email = email,

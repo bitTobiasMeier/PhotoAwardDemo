@@ -64,6 +64,12 @@ namespace PhotoAward.MemberManagement
             }
         }
 
+        /// <summary>
+        /// Für jedes Mitglied wir ein Actor erzeugt. Als Identifier wird die Emailadresse verwendet. Um eine Möglichkeit zu schaffen
+        /// um alle Actors zu ermitteln, führen wir zusätzlich ein Dictionary mit allen Akteuren.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns></returns>
         public async Task<MemberDto> AddMember(MemberDto member)
         {
             try
@@ -78,7 +84,7 @@ namespace PhotoAward.MemberManagement
                         throw new Exception("Mitglied mit dieser Emailadresse existiert bereits.");
                     }
                     member.Id = Guid.NewGuid();
-                    var memberActorId = ActorId.CreateRandom();
+                    var memberActorId = new ActorId(member.Email);
                     await members.AddAsync(tx, member.Email, memberActorId);
                     
                     var memberActor = MemberClientFactory.CreateMemberActorClient(memberActorId);
@@ -127,13 +133,13 @@ namespace PhotoAward.MemberManagement
             {
                 var members = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>("members");
                 //Gibt es bereits ein Mitglied mit dieser Emailadresse ?
-                var existendMemberActorId = members.TryGetValueAsync(tx, email);
-                if (!existendMemberActorId.Result.HasValue)
+                var existendMemberActorId = await members.TryGetValueAsync(tx, email);
+                if (!existendMemberActorId.HasValue)
                 {
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
-
-                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);
+               
+                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMember(CancellationToken.None);
 
                 return new MemberDto() {Email = result.Email, EntryDate = result.EntryDate,FirstName=result.FirstName, LastUpdate = result.LastUpdate,Surname = result.Surname, Id = result.Id};
             }
@@ -145,13 +151,13 @@ namespace PhotoAward.MemberManagement
             {
                 var members = await StateManager.GetOrAddAsync<IReliableDictionary<string, ActorId>>("members");
                 //Gibt es bereits ein Mitglied mit dieser Emailadresse ?
-                var existendMemberActorId = members.TryGetValueAsync(tx, email);
-                if (!existendMemberActorId.Result.HasValue)
+                var existendMemberActorId = await members.TryGetValueAsync(tx, email);
+                if (!existendMemberActorId.HasValue)
                 {
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
-
-                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Result.Value).GetMember(CancellationToken.None);
+           
+                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMember(CancellationToken.None);
 
                 //Password-Validation
                 if (!PasswordHashCalculator.VerifyPassword(password, result.PasswordSalt, result.PasswordHash))
@@ -172,9 +178,6 @@ namespace PhotoAward.MemberManagement
                 {
                     while (await asyncEnumerator.MoveNextAsync(CancellationToken.None))
                     {
-                        /*var current = asyncEnumerator.Current;
-                        var keystr = current.Key;
-                        var key = new Guid(keystr);*/
                         var actorId = asyncEnumerator.Current.Value;
                         var member = await MemberClientFactory.CreateMemberActorClient(actorId).GetMember(CancellationToken.None);
                         if (member !=null && member.Id == memberId) return new MemberDto()

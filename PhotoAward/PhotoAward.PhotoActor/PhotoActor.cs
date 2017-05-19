@@ -112,7 +112,7 @@ namespace PhotoAward.PhotoActors
             PhotoData data;
             if (!datahelper.HasValue)
             {
-                data = new PhotoData() { Comments = { }, Id = Guid.NewGuid()};
+                data = new PhotoData() { Comments = { }, Id = photo.Id.Value};
             }
             else
             {

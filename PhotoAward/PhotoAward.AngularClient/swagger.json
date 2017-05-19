@@ -202,6 +202,34 @@
         }
       }
     },
+    "/api/Photo/GetImage/{id}": {
+      "get": {
+        "tags": [
+          "PhotoManagement"
+        ],
+        "operationId": "PhotoManagement_GetImage",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "format": "guid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "string",
+              "format": "byte"
+            },
+            "x-nullable": true
+          }
+        }
+      }
+    },
     "/api/Photo/GetThumbnailsOfMember/{email}": {
       "get": {
         "tags": [

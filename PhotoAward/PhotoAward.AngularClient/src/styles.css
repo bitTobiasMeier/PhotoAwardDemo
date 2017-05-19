@@ -37,3 +37,5 @@ padding-right:20px;
 .bitfooter a:link { color:white }
 .bitfooter a:visited { color:white }
 .bitfooter a:hover { color:black }
+
+.imageOverlay { height:100px; position:relative; }
