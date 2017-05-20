@@ -83,14 +83,14 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
-        public async Task<PhotoManagementData> AddPhoto(PhotoUploadData photo)
+        public async Task<PhotoManagementData> AddPhotoAsync(PhotoUploadData photo)
         {
             try
             {
                 using (var tx = this._photoManagementStates.CreateTransaction())
                 {
                     var thumbnailClient = this._thumbnailClientFactory.CreateThumbnailClient();
-                    var thumbnailTask = thumbnailClient.GetThumbnail(photo.Data);
+                    var thumbnailTask = thumbnailClient.GetThumbnailAsync(photo.Data);
                    
                     //Member mit dieser Emailadresse ermitteln
                     var member = await this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(photo.Email);
@@ -102,7 +102,7 @@ namespace PhotoAward.PhotoManagement
                         Id = photoId.ToString(),
                         Image = photo.Data
                     };
-                    await photoDbClient.AddPhoto(doc);
+                    await photoDbClient.AddPhotoAsync(doc);
 
                     
                     var photoActorId = ActorId.CreateRandom();
@@ -121,7 +121,7 @@ namespace PhotoAward.PhotoManagement
                         Id = photoId
                     };
                     var client = this._photoActorClientFactory.CreateActorClient(photoActorId);
-                    var result = await client.SetPhoto(data, CancellationToken.None);
+                    var result = await client.SetPhotoAsync(data, CancellationToken.None);
 
 
                     //Photo einem Member zuordnen
@@ -149,7 +149,7 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
-        public async Task<PhotoManagementData> GetPhoto(Guid id)
+        public async Task<PhotoManagementData> GetPhotoAsync(Guid id)
         {
             try
             {
@@ -157,7 +157,7 @@ namespace PhotoAward.PhotoManagement
                 {
                     var actorId = await GetPhotoActorId(id, tx);
                     var client = _photoActorClientFactory.CreateActorClient(actorId.Value);
-                    var result = await client.GetPhoto(CancellationToken.None);
+                    var result = await client.GetPhotoAsync(CancellationToken.None);
                     return new PhotoManagementData()
                     {
                         FileName = result.Filename,
@@ -175,14 +175,14 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
-        public async Task<byte[]> GetPhotoDetail(Guid id)
+        public async Task<byte[]> GetPhotoDetailAsync(Guid id)
         {
             try
             {
                 using (var tx = _photoManagementStates.CreateTransaction())
                 {
                     var client = this._photoDbClientFactory.CreatePhotoDbClient();
-                    var doc = await client.GetPhoto(id.ToString());
+                    var doc = await client.GetPhotoAsync(id.ToString());
                     return doc;
                 }
             }
@@ -204,7 +204,7 @@ namespace PhotoAward.PhotoManagement
             return actorId;
         }
 
-        public async Task<List<PhotoManagementData>> GetPhotos(string email)
+        public async Task<List<PhotoManagementData>> GetPhotosAsync(string email)
         {
             using (var tx = _photoManagementStates.CreateTransaction())
             {
@@ -218,7 +218,7 @@ namespace PhotoAward.PhotoManagement
                 foreach (ActorId imageActorId in actorList.AsParallel())
                 {
                     var client = _photoActorClientFactory.CreateActorClient(imageActorId);
-                    var result = await client.GetPhoto(CancellationToken.None);
+                    var result = await client.GetPhotoAsync(CancellationToken.None);
                     photoList.Add(new PhotoManagementData()
                     {
                         FileName = result.Filename,
@@ -233,7 +233,7 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
-        public async Task<List<CommentData>> GetComments(Guid photoId)
+        public async Task<List<CommentData>> GetCommentsAsync(Guid photoId)
         {
             try
             {
@@ -242,7 +242,7 @@ namespace PhotoAward.PhotoManagement
                     //photoActor ermitteln
                     var actorId = await GetPhotoActorId(photoId, tx);
                     var client = _photoActorClientFactory.CreateActorClient(actorId.Value);
-                    var infos = await client.GetComments( CancellationToken.None);
+                    var infos = await client.GetCommentsAsync( CancellationToken.None);
                     return infos.Select(i => new CommentData()
                     {
                         AuthorId = i.AuthorId,
@@ -262,7 +262,7 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
-        public async Task<CommentData> AddComment(CommentUploadData comment)
+        public async Task<CommentData> AddCommentAsync(CommentUploadData comment)
         {
             try
             {
@@ -277,7 +277,7 @@ namespace PhotoAward.PhotoManagement
                     //photoActor ermitteln
                     var actorId = await GetPhotoActorId(comment.PhotoId, tx);
                     var client = _photoActorClientFactory.CreateActorClient(actorId.Value);
-                    var ci = await client.AddComment(new CommentInfo()
+                    var ci = await client.AddCommentAsync(new CommentInfo()
                     {
                         AuthorId = member.Id,
                         PhotoId = comment.PhotoId,
@@ -305,7 +305,7 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
-        public async Task<List<PhotoMemberInfo>> GetListOfPhotos()
+        public async Task<List<PhotoMemberInfo>> GetListOfPhotosAsync()
         {
             using (var tx = _photoManagementStates.CreateTransaction())
             {
@@ -325,7 +325,7 @@ namespace PhotoAward.PhotoManagement
                         try
                         {
                             var client = _photoActorClientFactory.CreateActorClient(imageActorId);
-                            var photo = await client.GetPhoto(CancellationToken.None);
+                            var photo = await client.GetPhotoAsync(CancellationToken.None);
                             photoList.Add(new PhotoMemberInfo()
                             {
                                 FileName = photo.Filename,
@@ -350,7 +350,7 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
-        public async Task DeletePhoto(Guid photoId)
+        public async Task DeletePhotoAsync(Guid photoId)
         {
             using (var tx = _photoManagementStates.CreateTransaction())
             {
@@ -358,19 +358,19 @@ namespace PhotoAward.PhotoManagement
                 if (imageActorId.HasValue)
                 {
                     var client = _photoActorClientFactory.CreateActorClient(imageActorId.Value);
-                    await client.Delete(CancellationToken.None);
+                    await client.DeleteAsync(CancellationToken.None);
                     await this._photoManagementStates.RemoveActor(photoId, imageActorId.Value, tx);
                 }
             }
         }
 
-        public async Task BackupPhotos()
+        public async Task BackupPhotosAsync()
         {
             var proxy = new PhotoActorServiceProxy().Create(0);
             await proxy.BackupActorsAsync();
         }
 
-        public async Task Restore()
+        public async Task RestoreAsync()
         {
             try
             {

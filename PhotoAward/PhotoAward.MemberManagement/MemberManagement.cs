@@ -139,7 +139,7 @@ namespace PhotoAward.MemberManagement
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
                
-                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMember(CancellationToken.None);
+                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMemberAsync(CancellationToken.None);
 
                 return new MemberDto() {Email = result.Email, EntryDate = result.EntryDate,FirstName=result.FirstName, LastUpdate = result.LastUpdate,Surname = result.Surname, Id = result.Id};
             }
@@ -157,7 +157,7 @@ namespace PhotoAward.MemberManagement
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
            
-                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMember(CancellationToken.None);
+                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMemberAsync(CancellationToken.None);
 
                 //Password-Validation
                 if (!PasswordHashCalculator.VerifyPassword(password, result.PasswordSalt, result.PasswordHash))
@@ -179,7 +179,7 @@ namespace PhotoAward.MemberManagement
                     while (await asyncEnumerator.MoveNextAsync(CancellationToken.None))
                     {
                         var actorId = asyncEnumerator.Current.Value;
-                        var member = await MemberClientFactory.CreateMemberActorClient(actorId).GetMember(CancellationToken.None);
+                        var member = await MemberClientFactory.CreateMemberActorClient(actorId).GetMemberAsync(CancellationToken.None);
                         if (member !=null && member.Id == memberId) return new MemberDto()
                         {
                             Id = member.Id,
@@ -209,7 +209,7 @@ namespace PhotoAward.MemberManagement
 
                 var actorFactory = MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Result.Value);
 
-                var result = await actorFactory.GetMember(CancellationToken.None);
+                var result = await actorFactory.GetMemberAsync(CancellationToken.None);
 
                 //Password-Validation
                 if (!PasswordHashCalculator.VerifyPassword(dto.OldPassword, result.PasswordSalt, result.PasswordHash))
@@ -217,7 +217,7 @@ namespace PhotoAward.MemberManagement
 
                 var passwordHash = PasswordHashCalculator.ComputeHash(dto.NewPassword);
 
-                await actorFactory.UpdatePassword(passwordHash.Hash, passwordHash.Salt, CancellationToken.None);
+                await actorFactory.UpdatePasswordAsync(passwordHash.Hash, passwordHash.Salt, CancellationToken.None);
 
                 return new MemberDto() { Email = result.Email, EntryDate = result.EntryDate, FirstName = result.FirstName, LastUpdate = result.LastUpdate, Surname = result.Surname, Id = result.Id };
             }

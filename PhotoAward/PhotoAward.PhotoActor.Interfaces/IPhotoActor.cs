@@ -12,16 +12,16 @@ namespace PhotoAward.PhotoActors.Interfaces
     /// </summary>
     public interface IPhotoActor : IActor
     {
-        Task<PhotoInfo> SetPhoto(PhotoInfo photo, CancellationToken cancellationToken);
+        Task<PhotoInfo> SetPhotoAsync(PhotoInfo photo, CancellationToken cancellationToken);
 
         
-        Task<PhotoInfo> GetPhoto(CancellationToken cancellationToken);
+        Task<PhotoInfo> GetPhotoAsync(CancellationToken cancellationToken);
 
-        Task<CommentInfo> AddComment(CommentInfo comment,CancellationToken cancellationToken);
+        Task<CommentInfo> AddCommentAsync(CommentInfo comment,CancellationToken cancellationToken);
 
-        Task<List<CommentInfo>> GetComments(CancellationToken cancellationToken);
+        Task<List<CommentInfo>> GetCommentsAsync(CancellationToken cancellationToken);
 
-        Task Delete(CancellationToken cancellationToken);
+        Task DeleteAsync(CancellationToken cancellationToken);
 
     }
 }

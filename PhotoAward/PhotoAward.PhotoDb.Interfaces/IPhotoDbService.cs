@@ -8,8 +8,8 @@ namespace PhotoAward.PhotoDb.Interfaces
 {
     public interface IPhotoDbService : IService
     {
-        Task AddPhoto(PhotoDocument document);
-        Task<byte[]> GetPhoto(string id);
-        Task ReplacePhoto(string toString, byte[] photoThumbnailBytes);
+        Task AddPhotoAsync(PhotoDocument document);
+        Task<byte[]> GetPhotoAsync(string id);
+        Task ReplacePhotoAsync(string toString, byte[] photoThumbnailBytes);
     }
 }

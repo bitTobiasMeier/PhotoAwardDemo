@@ -30,18 +30,18 @@ namespace PhotoAward.PhotoDb
             _photoDbRepository.Initialize(databaseParameter, collectionParameter, endpointParameter, authParameter);
         }
 
-        public async Task AddPhoto(PhotoDocument document)
+        public async Task AddPhotoAsync(PhotoDocument document)
         {
             await this._photoDbRepository.CreateItemAsync(document);
         }
 
-        public async Task<byte[]> GetPhoto(string id)
+        public async Task<byte[]> GetPhotoAsync(string id)
         {
             var data  = await this._photoDbRepository.GetItemAsync(id);
             return data?.Image;
         }
 
-        public async Task ReplacePhoto(string id, byte[] photoThumbnailBytes)
+        public async Task ReplacePhotoAsync(string id, byte[] photoThumbnailBytes)
         {
             var doc = new PhotoDocument()
             {

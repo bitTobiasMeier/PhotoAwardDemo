@@ -39,12 +39,12 @@ namespace PhotoAward.PhotoManagement.Tests
             var photoActorClientFactoryMock = new Mock<IPhotoActorClientFactory>();
             var photoActorClientMock = new Mock<IPhotoActor>();
             var photoId = Guid.NewGuid();
-            photoActorClientMock.Setup(a => a.SetPhoto(It.IsAny<PhotoInfo>(), It.IsAny<CancellationToken>()))
+            photoActorClientMock.Setup(a => a.SetPhotoAsync(It.IsAny<PhotoInfo>(), It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new PhotoInfo()
                 {
                     Id = photoId
                 }));
-            photoActorClientMock.Setup(a => a.GetPhoto(It.IsAny<CancellationToken>()))
+            photoActorClientMock.Setup(a => a.GetPhotoAsync(It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new PhotoInfo()
                 {
                     Id = photoId
@@ -62,8 +62,8 @@ namespace PhotoAward.PhotoManagement.Tests
                 FileName = @"c:\temp\a1.jpg"
             };
             //Act
-            var result = await pm.AddPhoto(uploadData);
-            var result2 = await pm.GetPhoto(photoId);
+            var result = await pm.AddPhotoAsync(uploadData);
+            var result2 = await pm.GetPhotoAsync(photoId);
             //Assert
             Assert.IsNotNull(result);
         }

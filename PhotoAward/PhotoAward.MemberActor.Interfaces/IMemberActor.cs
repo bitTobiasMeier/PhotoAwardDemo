@@ -13,10 +13,10 @@ namespace PhotoAward.MemberActor.Interfaces
     /// </summary>
     public interface IMemberActor : IActor
     {
-        Task<InternalMemberDto> GetMember(CancellationToken cancellationToken);
+        Task<InternalMemberDto> GetMemberAsync(CancellationToken cancellationToken);
 
         Task<InternalMemberDto> SetMemberAsync(InternalMemberDto member, CancellationToken cancellationToken);
 
-        Task UpdatePassword(byte[] newPasswordHash, byte[] salt, CancellationToken cancellationToken);
+        Task UpdatePasswordAsync(byte[] newPasswordHash, byte[] salt, CancellationToken cancellationToken);
     }
 }

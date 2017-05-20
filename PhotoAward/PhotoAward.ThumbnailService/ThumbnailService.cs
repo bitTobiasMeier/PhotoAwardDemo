@@ -51,7 +51,7 @@ namespace PhotoAward.ThumbnailService
         }
 
 
-        public async Task<byte[]> GetThumbnail(byte[] data)
+        public async Task<byte[]> GetThumbnailAsync(byte[] data)
         {
             return await this._thumbnailCreator.GetThumbnail(data);
         }

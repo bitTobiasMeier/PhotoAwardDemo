@@ -18,7 +18,7 @@ namespace PhotoAward.ThumbnailService.Interfaces
 
     public interface IThumbnailService : IService
     {
-        Task<byte[]> GetThumbnail(byte[] data);
+        Task<byte[]> GetThumbnailAsync(byte[] data);
     }
 
     public class ThumbnailClientFactory : IThumbnailClientFactory

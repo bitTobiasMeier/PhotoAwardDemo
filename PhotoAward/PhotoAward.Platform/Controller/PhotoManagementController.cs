@@ -32,7 +32,7 @@ namespace PhotoAward.Platform.Controller
         public async Task<PhotoManagementData> Add(PhotoUploadData uploadData)
         {
             var client = this._photoManagementClientFactory.CreatePhotoClient();
-            var result = await client.AddPhoto(uploadData);
+            var result = await client.AddPhotoAsync(uploadData);
             return result;
         }
 
@@ -41,7 +41,7 @@ namespace PhotoAward.Platform.Controller
         public async Task Delete(Guid photoId)
         {
             var client = this._photoManagementClientFactory.CreatePhotoClient();
-            await client.DeletePhoto(photoId);
+            await client.DeletePhotoAsync(photoId);
         }
 
         [HttpGet]
@@ -49,7 +49,7 @@ namespace PhotoAward.Platform.Controller
         public async Task<PhotoManagementData> Get(Guid id)
         {
             var client = this._photoManagementClientFactory.CreatePhotoClient();
-            var result = await client.GetPhoto(id);
+            var result = await client.GetPhotoAsync(id);
             return result;
         }
 
@@ -58,7 +58,7 @@ namespace PhotoAward.Platform.Controller
         public async Task<byte[]> GetImage(Guid id)
         {
             var client = this._photoManagementClientFactory.CreatePhotoClient();
-            var result = await client.GetPhotoDetail(id);
+            var result = await client.GetPhotoDetailAsync(id);
             return result;
         }
 
@@ -67,7 +67,7 @@ namespace PhotoAward.Platform.Controller
         public async Task<List<PhotoManagementData>> GetThumbnailsOfMember(string email)
         {
             var client = this._photoManagementClientFactory.CreatePhotoClient();
-            var result = await client.GetPhotos(email);
+            var result = await client.GetPhotosAsync(email);
             return result;
         }
 
@@ -76,7 +76,7 @@ namespace PhotoAward.Platform.Controller
         public async Task<IList<PhotoMemberInfo>> GetImagesOfMember()
         {
             var client = this._photoManagementClientFactory.CreatePhotoClient();
-            var result = await client.GetListOfPhotos();
+            var result = await client.GetListOfPhotosAsync();
             return result;
         }
 
@@ -87,7 +87,7 @@ namespace PhotoAward.Platform.Controller
         public async Task<List<CommentData>> GetComments(Guid photoId)
         {
             var client = this._photoManagementClientFactory.CreateCommentsClient();
-            var result = await client.GetComments(photoId);
+            var result = await client.GetCommentsAsync(photoId);
             return result;
         }
 
@@ -96,7 +96,7 @@ namespace PhotoAward.Platform.Controller
         public async Task<CommentData> AddComment(CommentUploadData uploadData)
         {
             var client = this._photoManagementClientFactory.CreateCommentsClient();
-            var result = await client.AddComment(uploadData);
+            var result = await client.AddCommentAsync(uploadData);
             return result;
         }
 
@@ -136,7 +136,7 @@ namespace PhotoAward.Platform.Controller
                     FileName = filename,
                     Title = title
                 };
-                var result = await client.AddPhoto(uploadData);
+                var result = await client.AddPhotoAsync(uploadData);
             }
 
             var task = this.Request.CreateResponse(HttpStatusCode.OK);
@@ -147,7 +147,7 @@ namespace PhotoAward.Platform.Controller
         [Route("Backup")]
         public async Task<string> Backup()
         {
-            await this._photoManagementClientFactory.CreatePhotoClient().BackupPhotos();
+            await this._photoManagementClientFactory.CreatePhotoClient().BackupPhotosAsync();
             return "Backup erfolgt";
         }
 
@@ -155,7 +155,7 @@ namespace PhotoAward.Platform.Controller
         [Route("Restore")]
         public async Task Restore()
         {
-            await this._photoManagementClientFactory.CreatePhotoClient().Restore();
+            await this._photoManagementClientFactory.CreatePhotoClient().RestoreAsync();
         }
     }
 }

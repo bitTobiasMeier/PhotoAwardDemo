@@ -74,7 +74,7 @@ namespace PhotoAward.MemberActor
         }
 
         
-        public async Task<InternalMemberDto> GetMember(CancellationToken cancellationToken)
+        public async Task<InternalMemberDto> GetMemberAsync(CancellationToken cancellationToken)
         {
             var data =  await this.StateManager.GetStateAsync<MemberData>(DataKey, cancellationToken);
             return new InternalMemberDto()
@@ -90,7 +90,7 @@ namespace PhotoAward.MemberActor
             }; 
         }
 
-        public async Task UpdatePassword(byte [] newPasswordHash, byte [] salt,  CancellationToken cancellationToken)
+        public async Task UpdatePasswordAsync(byte [] newPasswordHash, byte [] salt,  CancellationToken cancellationToken)
         {
             var datahelper = await this.StateManager.TryGetStateAsync<MemberData>(DataKey, cancellationToken);
             MemberData data;

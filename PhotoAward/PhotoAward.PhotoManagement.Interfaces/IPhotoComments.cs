@@ -7,7 +7,7 @@ namespace PhotoAward.PhotoManagement.Interfaces
 {
     public interface IPhotoComments : IService
     {
-        Task<List<CommentData>> GetComments(Guid photoId);
-        Task<CommentData> AddComment(CommentUploadData comment);
+        Task<List<CommentData>> GetCommentsAsync(Guid photoId);
+        Task<CommentData> AddCommentAsync(CommentUploadData comment);
     }
 }

@@ -79,43 +79,43 @@ namespace PhotoAward.PhotoActors
         {
             if (reminderName.Equals(CheckMemberReminderName))
             {
-                await ReplaceImage();
+                await ReplaceImageAsync();
             }
             if (reminderName.Equals(CheckPictureAnalysis))
             {
-                await AnalyzePicture();
+                await AnalyzePictureAsync();
                 await this.UnregisterReminderAsync(this._reminderPictureAnalysis);
             }
         }
 
-        private async Task ReplaceImage()
+        private async Task ReplaceImageAsync()
         {
             var thumbnailClient = new ThumbnailClientFactory().CreateThumbnailClient();
             var dir = System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location);
             var filename = System.IO.Path.Combine(dir, "PackageRoot", "Data", "bitLogo.gif");
             var imgdata = System.IO.File.ReadAllBytes(filename);
-            var thumbnail = await thumbnailClient.GetThumbnail(imgdata);
-            var photo = await GetPhoto(CancellationToken.None);
+            var thumbnail = await thumbnailClient.GetThumbnailAsync(imgdata);
+            var photo = await GetPhotoAsync(CancellationToken.None);
             photo.ThumbnailBytes = thumbnail;
             photo.Title = "War nur 5 Minuten sichtbar";
             photo.Filename = "Logo";
-            await this.SetPhoto(photo, CancellationToken.None);
-            await this._photoDbService.ReplacePhoto(photo.Id.Value.ToString(), photo.ThumbnailBytes);
+            await this.SetPhotoAsync(photo, CancellationToken.None);
+            await this._photoDbService.ReplacePhotoAsync(photo.Id.Value.ToString(), photo.ThumbnailBytes);
             System.Console.WriteLine("Bild wurde ersetzt!");
             var reminder = this.GetReminder(CheckMemberReminderName);
             await this.UnregisterReminderAsync(reminder);
         }
 
-        private async Task AnalyzePicture()
+        private async Task AnalyzePictureAsync()
         {
-            var photo = await this.GetPhotoData(CancellationToken.None);
+            var photo = await this.GetPhotoDataAsync(CancellationToken.None);
             var description = await this._analyzeRepository.AnalyzeImageAsync(photo.ThumbnailAsByte);
             photo.Description = description;
             await this.StateManager.SetStateAsync(DataKey, photo, CancellationToken.None);
         }
 
 
-        public async Task<PhotoInfo> SetPhoto(PhotoInfo photo, CancellationToken cancellationToken)
+        public async Task<PhotoInfo> SetPhotoAsync(PhotoInfo photo, CancellationToken cancellationToken)
         {
             var datahelper = await this.StateManager.TryGetStateAsync<PhotoData>(DataKey, cancellationToken);
             PhotoData data;
@@ -137,9 +137,9 @@ namespace PhotoAward.PhotoActors
             return photo;
         }
 
-        public async Task<PhotoInfo> GetPhoto(CancellationToken cancellationToken)
+        public async Task<PhotoInfo> GetPhotoAsync(CancellationToken cancellationToken)
         {
-            var data = await GetPhotoData(cancellationToken);
+            var data = await GetPhotoDataAsync(cancellationToken);
             return new PhotoInfo()
             {
                 Id = data.Id,
@@ -151,13 +151,13 @@ namespace PhotoAward.PhotoActors
             };
         }
 
-        private async Task<PhotoData> GetPhotoData(CancellationToken cancellationToken)
+        private async Task<PhotoData> GetPhotoDataAsync(CancellationToken cancellationToken)
         {
             var data = await this.StateManager.GetStateAsync<PhotoData>(DataKey, cancellationToken);
             return data;
         }
 
-        public async Task<CommentInfo> AddComment(CommentInfo comment, CancellationToken cancellationToken)
+        public async Task<CommentInfo> AddCommentAsync(CommentInfo comment, CancellationToken cancellationToken)
         {
             var data = await this.StateManager.GetStateAsync<PhotoData>(DataKey, cancellationToken);
             if (comment.Id != null) throw new Exception("Kommentar exisitiert bereits");
@@ -174,9 +174,9 @@ namespace PhotoAward.PhotoActors
             return comment;
         }
 
-        public async Task<List<CommentInfo>> GetComments(CancellationToken cancellationToken)
+        public async Task<List<CommentInfo>> GetCommentsAsync(CancellationToken cancellationToken)
         {
-            var photo = await this.GetPhotoData(cancellationToken);
+            var photo = await this.GetPhotoDataAsync(cancellationToken);
             
             return
                 photo.Comments.OrderByDescending(c=>c.CommentDate).Select(
@@ -191,7 +191,7 @@ namespace PhotoAward.PhotoActors
                         }).ToList();
         }
 
-        public async Task Delete(CancellationToken cancellationToken)
+        public async Task DeleteAsync(CancellationToken cancellationToken)
         {
             var svc = (IActorService) this.ActorService;
             await svc.DeleteActorAsync(this.Id, cancellationToken);

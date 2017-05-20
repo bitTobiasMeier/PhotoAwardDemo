@@ -9,16 +9,16 @@ namespace PhotoAward.PhotoManagement.Interfaces
 {
     public interface IPhotoManagement : IService
     {
-        Task<PhotoManagementData> AddPhoto(PhotoUploadData photo);
+        Task<PhotoManagementData> AddPhotoAsync(PhotoUploadData photo);
 
-        Task DeletePhoto(Guid photoId);
+        Task DeletePhotoAsync(Guid photoId);
 
-        Task<PhotoManagementData> GetPhoto(Guid id);
-        Task<byte[]> GetPhotoDetail(Guid id);
-        Task<List<PhotoManagementData>> GetPhotos(string email);
-        Task<List<PhotoMemberInfo>> GetListOfPhotos();
+        Task<PhotoManagementData> GetPhotoAsync(Guid id);
+        Task<byte[]> GetPhotoDetailAsync(Guid id);
+        Task<List<PhotoManagementData>> GetPhotosAsync(string email);
+        Task<List<PhotoMemberInfo>> GetListOfPhotosAsync();
 
-        Task BackupPhotos ();
-        Task Restore();
+        Task BackupPhotosAsync ();
+        Task RestoreAsync();
     }
 }
