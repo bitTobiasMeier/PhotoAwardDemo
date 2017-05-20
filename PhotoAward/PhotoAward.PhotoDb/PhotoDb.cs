@@ -37,7 +37,7 @@ namespace PhotoAward.PhotoDb
             }
             catch (Exception ex)
             {
-                ServiceEventSource.Current.ServiceMessage(this.Context, "PhotoDb Service: {0}", ex.Message);
+                //ServiceEventSource.Current.ServiceMessage(this.Context, "PhotoDb Service: {0}", ex.Message);
             }
         }
 
