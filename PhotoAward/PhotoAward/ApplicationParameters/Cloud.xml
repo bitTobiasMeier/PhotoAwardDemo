@@ -10,5 +10,9 @@
     <Parameter Name="MemberManagement_MinReplicaSetSize" Value="3" />
     <Parameter Name="MemberManagement_TargetReplicaSetSize" Value="3" />
     <Parameter Name="Platform_InstanceCount" Value="-1" />
+    <Parameter Name="PhotoDBConfig_authKey" Value="#{documentdbauthkey}#" />
+    <Parameter Name="PhotoDBConfig_endpoint" Value="#{documentdbaddress}#" />
+    <Parameter Name="PhotoDBConfig_database" Value="PhotoAwardDemo" />
+    <Parameter Name="PhotoDBConfig_collection" Value="Photos" />
   </Parameters>
 </Application>
