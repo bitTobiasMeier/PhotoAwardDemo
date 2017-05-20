@@ -21,13 +21,24 @@ namespace PhotoAward.PhotoDb
         public PhotoDb(StatelessServiceContext context, IPhotoDbRepository<PhotoDocument> photoDbRepository)
             : base(context)
         {
-            var configurationPackage = Context.CodePackageActivationContext.GetConfigurationPackageObject("Config");
-            var databaseParameter = configurationPackage.Settings.Sections["PhotoDbConfigSection"].Parameters["database"].Value;
-            var collectionParameter = configurationPackage.Settings.Sections["PhotoDbConfigSection"].Parameters["collection"].Value;
-            var endpointParameter = configurationPackage.Settings.Sections["PhotoDbConfigSection"].Parameters["endpoint"].Value;
-            var authParameter = configurationPackage.Settings.Sections["PhotoDbConfigSection"].Parameters["authKey"].Value;
-            _photoDbRepository = photoDbRepository;
-            _photoDbRepository.Initialize(databaseParameter, collectionParameter, endpointParameter, authParameter);
+            try
+            {
+                var configurationPackage = Context.CodePackageActivationContext.GetConfigurationPackageObject("Config");
+                var databaseParameter = configurationPackage.Settings.Sections["PhotoDbConfigSection"]
+                    .Parameters["database"].Value;
+                var collectionParameter = configurationPackage.Settings.Sections["PhotoDbConfigSection"]
+                    .Parameters["collection"].Value;
+                var endpointParameter = configurationPackage.Settings.Sections["PhotoDbConfigSection"]
+                    .Parameters["endpoint"].Value;
+                var authParameter = configurationPackage.Settings.Sections["PhotoDbConfigSection"].Parameters["authKey"]
+                    .Value;
+                _photoDbRepository = photoDbRepository;
+                _photoDbRepository.Initialize(databaseParameter, collectionParameter, endpointParameter, authParameter);
+            }
+            catch (Exception ex)
+            {
+                ServiceEventSource.Current.ServiceMessage(this.Context, "PhotoDb Service: {0}", ex.Message);
+            }
         }
 
         public async Task AddPhotoAsync(PhotoDocument document)
