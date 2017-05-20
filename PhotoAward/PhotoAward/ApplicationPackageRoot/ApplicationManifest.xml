@@ -16,13 +16,28 @@
     <Parameter Name="PhotoActorService_PartitionCount" DefaultValue="1" />
     <Parameter Name="PhotoActorService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="PhotoActorService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="PhotoDBConfig_authKey" DefaultValue="C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==" />
+    <Parameter Name="PhotoDBConfig_endpoint" DefaultValue="https://localhost:8081/" />
+    <Parameter Name="PhotoDBConfig_database" DefaultValue="PhotoAwardDemo" />
+    <Parameter Name="PhotoDBConfig_collection" DefaultValue="Photos" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoDbPkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
+    <ConfigOverrides>
+      <ConfigOverride Name="Config">
+        <Settings>
+          <Section Name="PhotoDbConfigSection">
+            <Parameter Name="authKey" Value="[PhotoDBConfig_authKey]" />
+            <Parameter Name="endpoint" Value="[PhotoDBConfig_endpoint]" />
+            <Parameter Name="database" Value="[PhotoDBConfig_database]" />
+            <Parameter Name="collection" Value="[PhotoDBConfig_collection]" />
+          </Section>
+        </Settings>
+      </ConfigOverride>
+    </ConfigOverrides>
   </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="PhotoAward.ThumbnailServicePkg" ServiceManifestVersion="1.0.17" />
@@ -46,7 +61,7 @@
     <ServiceManifestRef ServiceManifestName="PhotoAward.PlatformPkg" ServiceManifestVersion="1.0.17" />
     <ConfigOverrides />
     <Policies>
-      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />
+      <!-- <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />   -->
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>

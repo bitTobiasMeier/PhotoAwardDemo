@@ -41,6 +41,16 @@ namespace PhotoAward.PhotoDb
             return data?.Image;
         }
 
+        public async Task ReplacePhoto(string id, byte[] photoThumbnailBytes)
+        {
+            var doc = new PhotoDocument()
+            {
+                Id = id,
+                Image = photoThumbnailBytes
+            };
+            await this._photoDbRepository.UpdateItemAsync(id, doc);
+        }
+
         /// <summary>
         /// Optional override to create listeners (e.g., TCP, HTTP) for this service replica to handle client or user requests.
         /// </summary>

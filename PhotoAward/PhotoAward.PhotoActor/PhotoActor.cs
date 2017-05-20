@@ -12,6 +12,7 @@ using Microsoft.ServiceFabric.Actors.Runtime;
 using Microsoft.ServiceFabric.Actors.Client;
 using Newtonsoft.Json.Bson;
 using PhotoAward.PhotoActors.Interfaces;
+using PhotoAward.PhotoDb.Interfaces;
 using PhotoAward.ThumbnailService.Interfaces;
 
 namespace PhotoAward.PhotoActors
@@ -33,6 +34,7 @@ namespace PhotoAward.PhotoActors
         private const string CheckPictureAnalysis = "CheckPictureAnalysis";
         private IActorReminder _reminderPictureAnalysis;
         private IAnalyzeRepository _analyzeRepository;
+        private readonly IPhotoDbService _photoDbService;
 
         /// <summary>
         /// Initializes a new instance of PhotoActor
@@ -40,9 +42,10 @@ namespace PhotoAward.PhotoActors
         /// <param name="actorService">The Microsoft.ServiceFabric.Actors.Runtime.ActorService that will host this actor instance.</param>
         /// <param name="actorId">The Microsoft.ServiceFabric.Actors.ActorId for this actor instance.</param>
         /// <param name="analyzeRepository"></param>
-        public PhotoActor(ActorService actorService, ActorId actorId, IAnalyzeRepository analyzeRepository) : base(actorService, actorId)
+        public PhotoActor(ActorService actorService, ActorId actorId, IAnalyzeRepository analyzeRepository, IPhotoDbService photoDbService) : base(actorService, actorId)
         {
             this._analyzeRepository = analyzeRepository;
+            _photoDbService = photoDbService;
         }
 
         /// <summary>
@@ -76,25 +79,31 @@ namespace PhotoAward.PhotoActors
         {
             if (reminderName.Equals(CheckMemberReminderName))
             {
-                var thumbnailClient = new ThumbnailClientFactory().CreateThumbnailClient();
-                var dir =  System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location);
-                var filename = System.IO.Path.Combine(dir,"PackageRoot","Data", "bitLogo.gif");
-                var imgdata = System.IO.File.ReadAllBytes(filename);
-                var thumbnail = await thumbnailClient.GetThumbnail(imgdata);
-                var photo = await GetPhoto(CancellationToken.None);
-                photo.ThumbnailBytes = thumbnail;
-                photo.Title = "War nur 5 Minuten sichtbar";
-                photo.Filename = "Logo";
-                await this.SetPhoto(photo, CancellationToken.None);
-                System.Console.WriteLine("Bild wurde ersetzt!");
-                var reminder = this.GetReminder(CheckMemberReminderName);
-                await this.UnregisterReminderAsync(reminder);
+                await ReplaceImage();
             }
             if (reminderName.Equals(CheckPictureAnalysis))
             {
                 await AnalyzePicture();
                 await this.UnregisterReminderAsync(this._reminderPictureAnalysis);
             }
+        }
+
+        private async Task ReplaceImage()
+        {
+            var thumbnailClient = new ThumbnailClientFactory().CreateThumbnailClient();
+            var dir = System.IO.Path.GetDirectoryName(this.GetType().Assembly.Location);
+            var filename = System.IO.Path.Combine(dir, "PackageRoot", "Data", "bitLogo.gif");
+            var imgdata = System.IO.File.ReadAllBytes(filename);
+            var thumbnail = await thumbnailClient.GetThumbnail(imgdata);
+            var photo = await GetPhoto(CancellationToken.None);
+            photo.ThumbnailBytes = thumbnail;
+            photo.Title = "War nur 5 Minuten sichtbar";
+            photo.Filename = "Logo";
+            await this.SetPhoto(photo, CancellationToken.None);
+            await this._photoDbService.ReplacePhoto(photo.Id.Value.ToString(), photo.ThumbnailBytes);
+            System.Console.WriteLine("Bild wurde ersetzt!");
+            var reminder = this.GetReminder(CheckMemberReminderName);
+            await this.UnregisterReminderAsync(reminder);
         }
 
         private async Task AnalyzePicture()

@@ -4,9 +4,9 @@
     <h4>{{photo.title}}</h4>
 
     <img [src]="'data:image/jpeg;base64,'+photo.thumbnailBytes" width="150px" (click)="displayDetail()"/>Filename: {{photo.fileName}}
-    <div [hidden]="ShowBigImage===false" class="panel panel-default">
-    <img  [src]="'data:image/jpeg;base64,'+ photoData"  />Filename: {{photo.fileName}}
-     <button type="button" class="btn btn-default" (click)="closeImage()">Schließen</button>
+    <div [hidden]="ShowBigImage===false" class="panel panel-default overlay1">
+      <img  [src]="'data:image/jpeg;base64,'+ photoData"  class="photofullsize" (click)="closeImage()"/>
+      <button type="button" class="btn btn-default" (click)="closeImage()">Schließen</button>
     </div>
   </div>
 </div>

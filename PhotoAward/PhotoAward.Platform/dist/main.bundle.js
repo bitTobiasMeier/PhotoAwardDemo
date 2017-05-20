@@ -20,8 +20,8 @@ webpackEmptyContext.id = 157;
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(167);
 
 
@@ -43,7 +43,7 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__photos_upload_photo_component_upload_photo_component_component__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_login_login_component__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_register_member_register_member_component__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -85,8 +85,8 @@ AppRoutingModule = __decorate([
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_uploadService__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Shared_user_service__ = __webpack_require__(33);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -123,7 +123,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_14" /* Component */])({
         selector: 'pac-root',
-        template: __webpack_require__(323),
+        template: __webpack_require__(324),
         providers: [],
         styles: []
     }),
@@ -143,16 +143,17 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__photos_show_photos_component_show_photos_component_component__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__photos_upload_photo_component_upload_photo_component_component__ = __webpack_require__(97);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_register_member_register_member_component__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Shared_Controllers_generated__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Shared_Controllers_generated__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Shared_tokenservice__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Shared_uploadService__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_forms__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_http__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_routing_module__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__login_login_login_component__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__photos_photo_detail_photo_detail_component__ = __webpack_require__(168);
 /* unused harmony export DefaultRequestOptions */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __extends = (this && this.__extends) || (function () {
@@ -174,6 +175,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -238,7 +240,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_3__login_register_member_register_member_component__["a" /* RegisterMemberComponent */],
             __WEBPACK_IMPORTED_MODULE_2__photos_upload_photo_component_upload_photo_component_component__["a" /* UploadPhotoComponentComponent */],
             __WEBPACK_IMPORTED_MODULE_1__photos_show_photos_component_show_photos_component_component__["a" /* ShowPhotosComponentComponent */],
-            __WEBPACK_IMPORTED_MODULE_13__login_login_login_component__["a" /* LoginComponent */]
+            __WEBPACK_IMPORTED_MODULE_13__login_login_login_component__["a" /* LoginComponent */],
+            __WEBPACK_IMPORTED_MODULE_14__photos_photo_detail_photo_detail_component__["a" /* PhotoDetailComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_7__angular_platform_browser__["a" /* BrowserModule */],
@@ -269,6 +272,63 @@ var _a;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotoDetailComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var PhotoDetailComponent = (function () {
+    function PhotoDetailComponent(_photoManagementClient) {
+        this._photoManagementClient = _photoManagementClient;
+        this.ShowBigImage = false;
+    }
+    PhotoDetailComponent.prototype.ngOnInit = function () {
+    };
+    PhotoDetailComponent.prototype.displayDetail = function () {
+        var that = this;
+        this.ShowBigImage = true;
+        if (!this.photoData) {
+            this._photoManagementClient.getImage(this.photo.id).subscribe(function (data) {
+                that.photoData = data;
+            });
+        }
+    };
+    PhotoDetailComponent.prototype.closeImage = function () {
+        this.ShowBigImage = false;
+    };
+    return PhotoDetailComponent;
+}());
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* Input */])(),
+    __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["d" /* PhotoManagementData */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["d" /* PhotoManagementData */]) === "function" && _a || Object)
+], PhotoDetailComponent.prototype, "photo", void 0);
+PhotoDetailComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* Component */])({
+        selector: 'pac-photo-detail',
+        template: __webpack_require__(327),
+        styles: []
+    }),
+    __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["a" /* PhotoManagementClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["a" /* PhotoManagementClient */]) === "function" && _b || Object])
+], PhotoDetailComponent);
+
+var _a, _b;
+//# sourceMappingURL=C:/Projekte/tmbit/photoaward/PhotoAward/PhotoAward.AngularClient/src/photo-detail.component.js.map
+
+/***/ }),
+
+/***/ 169:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
@@ -282,7 +342,7 @@ var environment = {
 
 /***/ }),
 
-/***/ 28:
+/***/ 25:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -302,15 +362,15 @@ var environment = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(61);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return API_BASE_URL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MemberManagementClient; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhotoManagementClient; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MemberDto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return MemberDto; });
 /* unused harmony export ChangePasswordDto */
 /* unused harmony export PhotoUploadData */
-/* unused harmony export PhotoManagementData */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PhotoManagementData; });
 /* unused harmony export PhotoMemberInfo */
 /* unused harmony export CommentData */
 /* unused harmony export CommentUploadData */
@@ -682,6 +742,52 @@ var PhotoManagementClient = (function () {
             var result200 = null;
             var resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
             result200 = resultData200 ? PhotoManagementData.fromJS(resultData200) : null;
+            return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].of(result200);
+        }
+        else if (status !== 200 && status !== 204) {
+            var responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].of(null);
+    };
+    PhotoManagementClient.prototype.getImage = function (id) {
+        var _this = this;
+        var url_ = this.baseUrl + "/api/Photo/GetImage/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+        var content_ = "";
+        var options_ = {
+            body: content_,
+            method: "get",
+            headers: new __WEBPACK_IMPORTED_MODULE_9__angular_http__["a" /* Headers */]({
+                "Content-Type": "application/json; charset=UTF-8",
+                "Accept": "application/json; charset=UTF-8"
+            })
+        };
+        return this.http.request(url_, options_).flatMap(function (response_) {
+            return _this.processGetImage(response_);
+        }).catch(function (response_) {
+            if (response_ instanceof __WEBPACK_IMPORTED_MODULE_9__angular_http__["e" /* Response */]) {
+                try {
+                    return _this.processGetImage(response_);
+                }
+                catch (e) {
+                    return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].throw(e);
+                }
+            }
+            else
+                return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].throw(response_);
+        });
+    };
+    PhotoManagementClient.prototype.processGetImage = function (response) {
+        var status = response.status;
+        if (status === 200) {
+            var responseText = response.text();
+            var result200 = null;
+            var resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : null;
             return __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__["Observable"].of(result200);
         }
         else if (status !== 200 && status !== 204) {
@@ -1287,35 +1393,42 @@ var _a, _b;
 
 /***/ }),
 
-/***/ 323:
+/***/ 324:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"jumbatron titlebar\">\r\n  <div class=\"row\">\r\n     <div class=\"col-xs-10\">\r\n       <h1>Microservices für .Net Entwickler:<br>{{title}}</h1>\r\n     </div>\r\n     <div class=\"col-xs-2 bitlogo\">\r\n       <a href=\"http://www.bridging-it.de/\" class=\"pull-right\">\r\n        <img src=\"assets/bitlogo.png\" width=\"200px\"/>\r\n      </a>\r\n     </div>\r\n   </div>\r\n</div>\r\n\r\n<div id='menubar' >\r\n<ul class=\"nav nav-pills\">\r\n  <li role=\"presentation\" ><a [routerLink]=\"['/gallery']\" *ngIf=\"userservice.user.notMember == false\">Gallerie</a></li>\r\n  <li role=\"presentation\" ><a [routerLink]=\"['/upload']\" *ngIf=\"userservice.user.notMember == false\">Bild hochladen</a></li>\r\n  <li role=\"presentation\"><a [routerLink]=\"['/']\" *ngIf=\"userservice.user.notMember == true\">Login</a></li>\r\n  <li role=\"presentation\" (click)='userservice.logout()'><a (click)='userservice.logout()' *ngIf=\"userservice.user.notMember == false\">Logout</a></li>\r\n  <li role=\"presentation\"><a [routerLink]=\"['/registerMember']\">Registrieren</a></li>\r\n  <li role=\"presentation\"><a href=\"http://blog.bridging-it.de/author/Tobias.Meier\">Weitere Infos: http://blog.bridging-it.de/author/Tobias.Meier</a> </li>\r\n</ul>\r\n\r\n\r\n\r\n<div *ngIf=\"userservice.user.notMember == false\">\r\n  Willkommen {{userservice.user.firstname}} {{userservice.user.surname }}\r\n</div>\r\n\r\n<router-outlet></router-outlet>\r\n\r\n<div [hidden] = 'notMember'>\r\n\r\n<h3>Willkommen\r\n  {{firstname}}\r\n  {{surname}} </h3>\r\n\r\n  <div class=\"ui divider\">\r\n        Upload\r\n  </div>\r\n\r\n\r\n\r\n</div>\r\n\r\n<footer class=\"navbar navbar-fixed-bottom bitfooter\"><a href=\"http://www.bridging-it.de/content/impressum.html\">Impressum</a>  </footer>\r\n"
 
 /***/ }),
 
-/***/ 324:
+/***/ 325:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"panel panel-default\">\n  <h2>Anmelden</h2>\n  <form #form=\"ngForm\" (ngSubmit)=\"login(form.value)\">\n\n    <div class=\"form-group\">\n      <label for=\"email\" class=\"control-label col-xs-1\">Email</label>\n      <div class=\"col-xs-3\"><input type=\"email\" name=\"email\" ngModel [(ngModel)]=\"email\" class=\"form-control\"></div>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\" class=\"control-label col-xs-1\">Passwort</label>\n      <div class=\"col-xs-3\"><input type=\"password\" name=\"password\" ngModel [(ngModel)]=\"password\" class=\"form-control\"></div>\n    </div>\n\n    <button type=\"submit\" class=\"btn btn-default\">Anmelden</button>\n    <br />\n    <p>&nbsp;</p>\n    <span>{{message}}</span>\n  </form>\n  <a [routerLink]=\"['/registerMember']\">Als neuer Benutzer registrieren</a>\n</div>\n"
 
 /***/ }),
 
-/***/ 325:
+/***/ 326:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"panel panel-default\">\r\n  <h2>Registrierung</h2>\r\n  <form #form=\"ngForm\" (ngSubmit)=\"register(form.value)\" class=\"form-horizontal\">\r\n\r\n    <div class=\"form-group\">\r\n      <label for=\"email\" class=\"control-label col-xs-1\">Email</label>\r\n      <div class=\"col-xs-3\"><input type=\"email\" name=\"email\" ngModel [(ngModel)]=\"email\" class=\"form-control\"></div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"password\" class=\"control-label col-xs-1\">Passwort</label>\r\n      <div class=\"col-xs-3\"><input type=\"password\" name=\"password\" ngModel [(ngModel)]=\"password\" class=\"form-control\"></div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"password2\" class=\"control-label col-xs-1\">Wiederholung</label>\r\n      <div class=\"col-xs-3\"><input type=\"password\" name=\"password2\" ngModel [(ngModel)]=\"password2\" class=\"form-control\"></div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"firstname\" class=\"control-label col-xs-1\">Vorname</label>\r\n      <div class=\"col-xs-3\">\r\n        <input type=\"text\" name=\"firstname\" ngModel [(ngModel)]=\"firstname\" class=\"form-control\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label for=\"surname\" class=\"control-label col-xs-1\">Nachname</label>\r\n      <div class=\"col-xs-3\">\r\n        <input type=\"text\" name=\"surname\" ngModel [(ngModel)]=\"surname\" class=\"form-control\">\r\n      </div>\r\n    </div>\r\n\r\n    <div class=\"form-group\">\r\n      <div class=\"col-xs-4\">\r\n        <span>{{message}}</span>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <div class=\"col-xs-4\">\r\n        <button type=\"submit\" class=\"btn btn-default\">Registrieren</button> </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n<a [routerLink]=\"['/']\">Zurück zum Login</a>\r\n"
 
 /***/ }),
 
-/***/ 326:
+/***/ 327:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel panel-default\">\r\n  <h2>Benutzer auswählen</h2>\r\n  <form #form=\"ngForm\" (ngSubmit)=\"loadThumbnails()\" class=\"form-horizontal\">\r\n    <div class=\"form-group\">\r\n      <label for=\"email\" class=\"control-label col-xs-1\">Email</label>\r\n      <div class=\"col-xs-3\">\r\n      <input type=\"text\" name=\"email\" ngModel [(ngModel)]=\"email\" class=\"form-control\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-xs-1\">&nbsp;</label>\r\n      <div class=\"col-xs-3\">\r\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"loadThumbnails()\">Bilder anzeigen  </button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n<div class=\"panel panel-default\">\r\n  <div [hidden]='photos.length == 0'>\r\n    <div>Anzahl Bilder von {{email}} : {{photos.length}}</div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-4 col-md-3\" *ngFor=\"let photo of photos\">\r\n        <div class=\"thumbnail\" >\r\n          <div class=\"caption\">\r\n            <h4>{{photo.title}}</h4>\r\n            <img [src]=\"'data:image/jpeg;base64,'+photo.thumbnailBytes\" width=\"150px\" /> Filename: {{photo.fileName}}\r\n            <br><span><i>{{photo.description}}</i></span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n"
+module.exports = "<div class=\"thumbnail\">\n  <div class=\"caption\" >\n\n    <h4>{{photo.title}}</h4>\n\n    <img [src]=\"'data:image/jpeg;base64,'+photo.thumbnailBytes\" width=\"150px\" (click)=\"displayDetail()\"/>Filename: {{photo.fileName}}\n    <div [hidden]=\"ShowBigImage===false\" class=\"panel panel-default overlay1\">\n      <img  [src]=\"'data:image/jpeg;base64,'+ photoData\"  class=\"photofullsize\" (click)=\"closeImage()\"/>\n      <button type=\"button\" class=\"btn btn-default\" (click)=\"closeImage()\">Schließen</button>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ 327:
+/***/ 328:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"panel panel-default\">\r\n  <h2>Benutzer auswählen</h2>\r\n  <form #form=\"ngForm\" (ngSubmit)=\"loadThumbnails()\" class=\"form-horizontal\">\r\n    <div class=\"form-group\">\r\n      <label for=\"email\" class=\"control-label col-xs-1\">Email</label>\r\n      <div class=\"col-xs-3\">\r\n        <input type=\"text\" name=\"email\" ngModel [(ngModel)]=\"email\" class=\"form-control\">\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"control-label col-xs-1\">&nbsp;</label>\r\n      <div class=\"col-xs-3\">\r\n        <button type=\"button\" class=\"btn btn-default\" (click)=\"loadThumbnails()\">Bilder anzeigen  </button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n\r\n<div class=\"panel panel-default\">\r\n  <div [hidden]='photos.length == 0'>\r\n    <div>Anzahl Bilder von {{email}} : {{photos.length}}</div>\r\n\r\n    <div class=\"row\">\r\n      <div class=\"col-sm-4 col-md-3\" *ngFor=\"let photo of photos\">\r\n\r\n\r\n        <pac-photo-detail [photo]='photo'></pac-photo-detail>\r\n\r\n      </div>\r\n    </div>\r\n\r\n\r\n  </div>\r\n"
+
+/***/ }),
+
+/***/ 329:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"panel panel-default\">\r\n<form #form=\"ngForm\" class=\"form-horizontal\" >\r\n      <h3>Upload Image</h3>\r\n\r\n   <div class=\"form-group\">\r\n    <label for=\"filetitle\" class=\"control-label col-xs-1\">Titel</label>\r\n     <div class=\"col-xs-3\">\r\n      <input type=\"text\" name=\"filetitle\" ngModel [(ngModel)]=\"filetitle\" class=\"form-control\" >\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n    <label  class=\"control-label col-xs-1\">Datei</label>\r\n     <div class=\"col-xs-3\">\r\n      <input type=\"file\" (change)=\"fileChangeEvent($event)\" placeholder=\"Bild auswählen...\"  class=\"form-control btn\"/>\r\n      </div>\r\n    </div>\r\n\r\n\r\n  <div class=\"form-group\">\r\n    <label  class=\"control-label col-xs-1\">&nbsp;</label>\r\n     <div class=\"col-xs-3\">\r\n      <button type=\"button\" (click)=\"upload()\" class=\"btn btn-default\">Bild hinzufügen</button>\r\n      </div>\r\n    </div>\r\n\r\n     <div class=\"form-group\">\r\n    <label  class=\"control-label col-xs-1\">&nbsp;</label>\r\n     <div class=\"col-xs-3\">\r\n{{message}}\r\n      </div>\r\n    </div>\r\n\r\n</form>\r\n</div>\r\n"
@@ -1328,7 +1441,7 @@ module.exports = "<div class=\"panel panel-default\">\r\n<form #form=\"ngForm\" 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_Shared_user_user__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1373,7 +1486,7 @@ var _a;
 
 /***/ }),
 
-/***/ 362:
+/***/ 364:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(158);
@@ -1386,8 +1499,8 @@ module.exports = __webpack_require__(158);
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user_service__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Controllers_generated__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UploadService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1475,7 +1588,7 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_catch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(61);
 /* unused harmony export BearerToken */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return API_BASE_URL; });
@@ -1640,8 +1753,8 @@ user.id = "";
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_tokenservice__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_app_Shared_user_service__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Shared_Controllers_generated__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Shared_Controllers_generated__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_app_Shared_user_user__ = __webpack_require__(93);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1741,7 +1854,7 @@ var LoginComponent = (function () {
 LoginComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_14" /* Component */])({
         selector: 'pac-login',
-        template: __webpack_require__(324),
+        template: __webpack_require__(325),
         providers: [],
         styles: [],
     }),
@@ -1757,8 +1870,8 @@ var _a, _b, _c;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(5);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterMemberComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1825,7 +1938,7 @@ var RegisterMemberComponent = (function () {
                         }
                         this.message = "Die Registrierung wird übermittelt ...";
                         that = this;
-                        dto = new __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["d" /* MemberDto */]();
+                        dto = new __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["e" /* MemberDto */]();
                         dto.firstName = this.firstname;
                         dto.surname = this.surname;
                         dto.email = this.email;
@@ -1850,7 +1963,7 @@ var RegisterMemberComponent = (function () {
 RegisterMemberComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_14" /* Component */])({
         selector: 'pac-register-member',
-        template: __webpack_require__(325),
+        template: __webpack_require__(326),
         styles: []
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["b" /* MemberManagementClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__Shared_Controllers_generated__["b" /* MemberManagementClient */]) === "function" && _a || Object])
@@ -1866,8 +1979,8 @@ var _a;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Shared_user_service__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router___ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowPhotosComponentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1907,12 +2020,6 @@ var ShowPhotosComponentComponent = (function () {
         var that = this;
         console.log("Loading images for user " + email);
         this._photoManagementClient.getThumbnailsOfMember(email).subscribe(function (images) {
-            /*console.log("Bilder ermittelt: ");
-            if (images == null) {
-              console.log("Keine bilder!");
-            } else {
-              console.log("Bilder Anzahl: " + images.length);
-            }*/
             that.photos = images != null ? images : [];
         }, function (error) {
             console.log(error);
@@ -1927,7 +2034,7 @@ __decorate([
 ShowPhotosComponentComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_14" /* Component */])({
         selector: 'pac-show-photos-component',
-        template: __webpack_require__(326),
+        template: __webpack_require__(328),
         styles: []
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__["a" /* PhotoManagementClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__Shared_Controllers_generated__["a" /* PhotoManagementClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__Shared_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router___["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router___["b" /* Router */]) === "function" && _c || Object])
@@ -1944,7 +2051,7 @@ var _a, _b, _c;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router___ = __webpack_require__(46);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UploadPhotoComponentComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2051,7 +2158,7 @@ __decorate([
 UploadPhotoComponentComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["_14" /* Component */])({
         selector: 'pac-upload-photo-component',
-        template: __webpack_require__(327),
+        template: __webpack_require__(329),
         styles: []
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__["a" /* UploadService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__Shared_uploadService__["a" /* UploadService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_app_Shared_user_service__["a" /* UserService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router___["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router___["b" /* Router */]) === "function" && _c || Object])
@@ -2062,5 +2169,5 @@ var _a, _b, _c;
 
 /***/ })
 
-},[362]);
+},[364]);
 //# sourceMappingURL=main.bundle.js.map

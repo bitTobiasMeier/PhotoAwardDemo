@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 using Microsoft.ServiceFabric.Actors.Runtime;
+using PhotoAward.PhotoDb.Interfaces;
 
 namespace PhotoAward.PhotoActors
 {
@@ -20,11 +21,12 @@ namespace PhotoAward.PhotoActors
                 // For more information, see https://aka.ms/servicefabricactorsplatform
 
                 IAnalyzeRepository analyzeRepository = new AnalyzeRepository();
+                IPhotoDbService photoDbService = new PhotoDbClientFactory().CreatePhotoDbClient();
                 
 
                 ActorRuntime.RegisterActorAsync<PhotoActor>(
                    (context, actorType) => new BackupPhotoActorService(context, actorType,
-                   (service, id) => new PhotoActor(service,id, analyzeRepository))).GetAwaiter().GetResult();
+                   (service, id) => new PhotoActor(service,id, analyzeRepository, photoDbService))).GetAwaiter().GetResult();
 
                 Thread.Sleep(Timeout.Infinite);
             }

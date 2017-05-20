@@ -38,4 +38,21 @@ padding-right:20px;
 .bitfooter a:visited { color:white }
 .bitfooter a:hover { color:black }
 
-.imageOverlay { height:100px; position:relative; }
+.overlay1 {
+margin: auto;
+position: fixed;
+top: 80px; left: 5px;
+bottom: 5px; right: 5px;
+background-color: #000;
+color: #FFF;
+z-index:555;
+}
+
+.photofullsize {
+  position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

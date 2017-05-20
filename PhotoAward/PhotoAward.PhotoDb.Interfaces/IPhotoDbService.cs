@@ -10,5 +10,6 @@ namespace PhotoAward.PhotoDb.Interfaces
     {
         Task AddPhoto(PhotoDocument document);
         Task<byte[]> GetPhoto(string id);
+        Task ReplacePhoto(string toString, byte[] photoThumbnailBytes);
     }
 }

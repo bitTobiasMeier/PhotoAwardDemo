@@ -18,6 +18,7 @@ namespace PhotoAward.PhotoDb
         void Initialize(string databaseId, string collectionId, string endpoint, string authKey);
         Task<Document> CreateItemAsync(T item);
         Task<T> GetItemAsync(string id);
+        Task<Document> UpdateItemAsync(string id, T item);
     }
     public class PhotoDbRepository<T> : IPhotoDbRepository<T> where T : PhotoDocument
     {
