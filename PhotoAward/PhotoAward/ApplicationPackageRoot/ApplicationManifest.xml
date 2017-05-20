@@ -62,7 +62,7 @@
     <ConfigOverrides />
     <Policies>
       <!-- ToDo: Für die lokale Entwicklung auskommentieren-->
-      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />   
+   <!--   <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />     -->
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
