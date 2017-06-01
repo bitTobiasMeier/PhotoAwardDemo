@@ -2,8 +2,11 @@
   <div class="caption" >
 
     <h4>{{photo.title}}</h4>
+    <span>{{photo.description}}</span><br>
 
-    <img [src]="'data:image/jpeg;base64,'+photo.thumbnailBytes" width="150px" (click)="displayDetail()"/>Filename: {{photo.fileName}}
+    <img [src]="'data:image/jpeg;base64,'+photo.thumbnailBytes" width="150px" (click)="displayDetail()"/>
+    <br>
+    Filename: {{photo.fileName}}
     <div [hidden]="ShowBigImage===false" class="panel panel-default overlay1">
       <img  [src]="'data:image/jpeg;base64,'+ photoData"  class="photofullsize" (click)="closeImage()"/>
       <button type="button" class="btn btn-default" (click)="closeImage()">Schließen</button>
