@@ -6,12 +6,13 @@ using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using PhotoAward.PhotoManagement.Tests.Mocks;
+
 using PhotoAward.MemberManagement.Interfaces;
 using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoManagement.Interfaces;
 using PhotoAward.ThumbnailService.Interfaces;
 using PhotoAward.PhotoDb.Interfaces;
+using ServiceFabric.Mocks;
 
 namespace PhotoAward.PhotoManagement.Tests
 {
@@ -72,9 +73,10 @@ namespace PhotoAward.PhotoManagement.Tests
 
         private StatefulServiceContext CreateServiceContext()
         {
+         
             return new StatefulServiceContext(
                 new NodeContext(String.Empty, new NodeId(0, 0), 0, String.Empty, String.Empty),
-                new MockCodePackageActivationContext(),
+                new MockCodePackageActivationContext("","","","","","","","","",""),
                 String.Empty,
                 new Uri("fabric:/PhotoManagerMock"),
                 null,
