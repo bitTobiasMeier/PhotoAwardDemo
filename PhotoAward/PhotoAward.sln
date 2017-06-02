@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.12
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "PhotoAward", "PhotoAward\PhotoAward.sfproj", "{2B8D41A5-04F5-4E18-94B7-3713D3963815}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -42,6 +42,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAward.PhotoDb", "PhotoAward.PhotoDb\PhotoAward.PhotoDb.csproj", "{7081DDED-4854-42ED-BC49-4C10763D8F99}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAward.PhotoDb.Interfaces", "PhotoAward.PhotoDb.Interfaces\PhotoAward.PhotoDb.Interfaces.csproj", "{826EBF33-EF58-4414-A956-9FCC1ABF960B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoAward.ReliableServices.Core", "PhotoAward.ReliableServices.Core\PhotoAward.ReliableServices.Core.csproj", "{6B4B8969-09C8-4799-95BD-C998C9B816D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -218,6 +220,18 @@ Global
 		{826EBF33-EF58-4414-A956-9FCC1ABF960B}.Release|x64.ActiveCfg = Release|x64
 		{826EBF33-EF58-4414-A956-9FCC1ABF960B}.Release|x64.Build.0 = Release|x64
 		{826EBF33-EF58-4414-A956-9FCC1ABF960B}.Release|x86.ActiveCfg = Release|x64
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Debug|x64.Build.0 = Debug|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Debug|x86.Build.0 = Debug|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Release|x64.ActiveCfg = Release|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Release|x64.Build.0 = Release|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Release|x86.ActiveCfg = Release|Any CPU
+		{6B4B8969-09C8-4799-95BD-C998C9B816D8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

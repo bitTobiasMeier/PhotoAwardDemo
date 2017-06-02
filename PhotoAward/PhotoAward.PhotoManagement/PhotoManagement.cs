@@ -118,7 +118,8 @@ namespace PhotoAward.PhotoManagement
                         Filename = filename,
                         ThumbnailBytes = thumbnail,
                         Title = photo.Title,
-                        Id = photoId
+                        Id = photoId,
+                        OwnerEmail = photo.Email
                     };
                     var client = this._photoActorClientFactory.CreateActorClient(photoActorId);
                     var result = await client.SetPhotoAsync(data, CancellationToken.None);
@@ -364,6 +365,7 @@ namespace PhotoAward.PhotoManagement
             }
         }
 
+        
         public async Task BackupPhotosAsync()
         {
             var proxy = new PhotoActorServiceProxy().Create(0);
@@ -384,10 +386,7 @@ namespace PhotoAward.PhotoManagement
                 Uri targetServiceName = new Uri("fabric:/PhotoAward/PhotoActorService");
 
                 // The id of the target partition inside the target service
-                /*Guid targetPartitionId = this.Partition.PartitionInfo.Id;
-
-                PartitionSelector partitionSelector = PartitionSelector.PartitionIdOf(targetServiceName,
-                    targetPartitionId);*/
+                
                 PartitionSelector partitionSelector = PartitionSelector.RandomOf(targetServiceName);
 
                 // Start the command.  Retry OperationCanceledException and all FabricTransientException's.  Note when StartPartitionDataLossAsync completes

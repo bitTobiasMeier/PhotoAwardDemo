@@ -12,6 +12,7 @@ namespace PhotoAward.PhotoActors.Interfaces
 
         public Guid ? Id { get; set; }
         public string Description { get; set; }
+        public string OwnerEmail { get; set; }
     }
 
 }

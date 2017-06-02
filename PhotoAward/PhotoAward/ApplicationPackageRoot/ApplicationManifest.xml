@@ -20,6 +20,8 @@
     <Parameter Name="PhotoDBConfig_endpoint" DefaultValue="https://localhost:8081/" />
     <Parameter Name="PhotoDBConfig_database" DefaultValue="PhotoAwardDemo" />
     <Parameter Name="PhotoDBConfig_collection" DefaultValue="Photos" />
+    <Parameter Name="PhotoActorConfig_OcpApimSubscriptionKey" DefaultValue="" />
+    <Parameter Name="PhotoActorConfig_CognitiveServiceUri" DefaultValue="https://westeurope.api.cognitive.microsoft.com/vision/v1.0/describe" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
@@ -49,6 +51,16 @@
   </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="PhotoAward.PhotoActorPkg" ServiceManifestVersion="1.0.17" />
+    <ConfigOverrides>
+      <ConfigOverride Name="Config">
+        <Settings>
+          <Section Name="PhotoActorConfigSection">
+            <Parameter Name="OcpApimSubscriptionKey" Value="[PhotoActorConfig_OcpApimSubscriptionKey]" />
+            <Parameter Name="CognitiveServiceUri" Value="[PhotoActorConfig_CognitiveServiceUri]" />
+          </Section>
+        </Settings>
+      </ConfigOverride>
+    </ConfigOverrides>
   </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="PhotoAward.MemberActorPkg" ServiceManifestVersion="1.0.17" />
@@ -62,7 +74,7 @@
     <ConfigOverrides />
     <Policies>
       <!-- ToDo: Für die lokale Entwicklung auskommentieren-->
-    <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />    
+      <!--   <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />   -->
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>

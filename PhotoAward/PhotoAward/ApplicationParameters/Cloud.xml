@@ -14,5 +14,7 @@
     <Parameter Name="PhotoDBConfig_endpoint" Value="#{documentdbaddress}#" />
     <Parameter Name="PhotoDBConfig_database" Value="PhotoAwardDemo" />
     <Parameter Name="PhotoDBConfig_collection" Value="Photos" />
+    <Parameter Name="PhotoActorConfig_OcpApimSubscriptionKey" Value="#{cognitiveserviceanalysiskey}#" />
+    <Parameter Name="PhotoActorConfig_CognitiveServiceUri" Value="#{cognitiveserviceuri}#" />
   </Parameters>
 </Application>

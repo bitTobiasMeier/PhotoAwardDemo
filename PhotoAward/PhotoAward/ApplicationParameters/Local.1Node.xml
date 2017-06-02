@@ -20,5 +20,6 @@
     <Parameter Name="PhotoDBConfig_endpoint" Value="https://localhost:8081/" />
     <Parameter Name="PhotoDBConfig_database" Value="PhotoAwardDemo" />
     <Parameter Name="PhotoDBConfig_collection" Value="Photos" />
+    <Parameter Name="PhotoActorConfig_OcpApimSubscriptionKey" Value="09d57dec054f438093f7a5c3a6c0db34" />
   </Parameters>
 </Application>

@@ -115,7 +115,13 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mocks\mock.cs" />
+    <Compile Include="Mocks\MockTransaction.cs" />
+    <Compile Include="Mocks\MockAsyncEnumerable.cs" />
+    <Compile Include="Mocks\MockAsyncEnumerator.cs" />
+    <Compile Include="Mocks\MockCodePackageActivationContext.cs" />
+    <Compile Include="Mocks\MockReliableDictionary.cs" />
+    <Compile Include="Mocks\MockReliableQueue.cs" />
+    <Compile Include="Mocks\MockReliableStateManager.cs" />
     <Compile Include="PhotoMamangementTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

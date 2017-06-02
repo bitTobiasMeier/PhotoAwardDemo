@@ -5,6 +5,6 @@ namespace PhotoAward.PhotoActors.Interfaces
 {
     public interface IBackupPhotoActorService : IService
     {
-        Task BackupActorsAsync();
+       Task BackupActorsAsync();
     }
 }

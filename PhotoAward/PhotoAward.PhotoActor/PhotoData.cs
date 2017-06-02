@@ -29,5 +29,8 @@ namespace PhotoAward.PhotoActors
 
         [DataMember]
         public string Description { get; set; }
+
+        [DataMember]
+        public string OwnerEmail { get; set; }
     }
 }

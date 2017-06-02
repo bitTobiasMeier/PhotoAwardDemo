@@ -33,7 +33,7 @@ namespace PhotoAward.PhotoActors
         private const string CheckMemberReminderName = "keinMitglied";
         private const string CheckPictureAnalysis = "CheckPictureAnalysis";
         private IActorReminder _reminderPictureAnalysis;
-        private IAnalyzeRepository _analyzeRepository;
+        private readonly IAnalyzeRepository _analyzeRepository;
         private readonly IPhotoDbService _photoDbService;
 
         /// <summary>
@@ -131,6 +131,7 @@ namespace PhotoAward.PhotoActors
             data.ThumbnailAsByte = photo.ThumbnailBytes;
             data.FileName = photo.Filename;
             data.Title = photo.Title;
+            data.OwnerEmail = photo.OwnerEmail;
             
             await this.StateManager.SetStateAsync(DataKey, data, cancellationToken);
             photo.UploadDate = data.UploadDate;

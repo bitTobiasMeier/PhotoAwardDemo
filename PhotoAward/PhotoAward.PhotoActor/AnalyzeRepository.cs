@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,16 +17,25 @@ namespace PhotoAward.PhotoActors
 
     public class AnalyzeRepository: IAnalyzeRepository
     {
+        private readonly string _ocpApimSubscriptionKey;
+        private readonly string _cognitiveServiceUri;
+
+        public AnalyzeRepository(string ocpApimSubscriptionKey,string cognitiveServiceUri)
+        {
+            _ocpApimSubscriptionKey = ocpApimSubscriptionKey;
+            _cognitiveServiceUri = cognitiveServiceUri;
+        }
         public async Task<string> AnalyzeImageAsync(byte [] imagesBytes)
         {
             var client = new HttpClient();
+            
 
             // Request headers - replace this example key with your valid subscription key.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "09d57dec054f438093f7a5c3a6c0db34");
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", this._ocpApimSubscriptionKey);
 
             // Request parameters. A third optional parameter is "details".
             string requestParameters = "visualFeatures=Categories&language=en";
-            string uri = "https://westeurope.api.cognitive.microsoft.com/vision/v1.0/describe?" + requestParameters;
+            string uri = this._cognitiveServiceUri + "?" + requestParameters;
             Console.WriteLine(uri);
 
      

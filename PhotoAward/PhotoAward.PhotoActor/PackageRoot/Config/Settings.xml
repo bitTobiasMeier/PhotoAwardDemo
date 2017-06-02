@@ -7,5 +7,9 @@
   <Section Name="PhotoActorServiceReplicatorSecurityConfig">
     <Parameter Name="CredentialType" Value="None" />
   </Section>
+  <Section Name="PhotoActorConfigSection">
+    <Parameter Name="OcpApimSubscriptionKey" Value="" />
+    <Parameter Name="CognitiveServiceUri" Value="https://westeurope.api.cognitive.microsoft.com/vision/v1.0/describe" />
+  </Section>
   <!-- The content will be generated during build -->
 </Settings>

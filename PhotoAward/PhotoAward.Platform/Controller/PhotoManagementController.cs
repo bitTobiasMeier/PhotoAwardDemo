@@ -143,6 +143,8 @@ namespace PhotoAward.Platform.Controller
             return task;
         }
 
+
+        [AllowAnonymous]
         [HttpGet]
         [Route("Backup")]
         public async Task<string> Backup()
@@ -151,6 +153,7 @@ namespace PhotoAward.Platform.Controller
             return "Backup erfolgt";
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("Restore")]
         public async Task Restore()

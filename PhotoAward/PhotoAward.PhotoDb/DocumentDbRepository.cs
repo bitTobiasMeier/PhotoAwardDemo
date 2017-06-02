@@ -33,11 +33,6 @@ namespace PhotoAward.PhotoDb
             try
             {
                 Database database = client.CreateDatabaseQuery().Where(db => db.Id == this.DatabaseId).AsEnumerable().FirstOrDefault();
-                //var doc2 = client.CreateDocumentQuery<Document>(database.CollectionsLink).Where(m => m.Id == id).FirstOrDefault();
-
-
-                //var doc =  client.CreateDocumentQuery<T>(database.CollectionsLink).FirstOrDefault(m => m.Id == id);
-                //return doc;
                 var response = await client.ReadDocumentAsync(UriFactory.CreateDocumentUri(DatabaseId, CollectionId,
                     id));
                 var post = JsonConvert.DeserializeObject<T>(response.Resource.ToString());

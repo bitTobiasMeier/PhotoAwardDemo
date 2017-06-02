@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
+using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.PhotoActors
 {
     [EventSource(Name = "BridgingIT-PhotoAward-PhotoAward.PhotoActor")]
-    internal sealed class ActorEventSource : EventSource
+    internal sealed class ActorEventSource : EventSource, IServiceEventSource
     {
         public static readonly ActorEventSource Current = new ActorEventSource();
 

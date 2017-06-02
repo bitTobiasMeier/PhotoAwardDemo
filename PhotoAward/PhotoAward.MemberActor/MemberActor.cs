@@ -134,7 +134,8 @@ namespace PhotoAward.MemberActor
             data.PasswordSalt = member.PasswordSalt;
             
             await this.StateManager.SetStateAsync<MemberData>(DataKey, data, cancellationToken);
-            //Fehler: Diese Daten werden nicht übernommen
+            
+
             member.EntryDate = data.EntryDate;
             member.LastUpdate = data.LastUpdate;
             
