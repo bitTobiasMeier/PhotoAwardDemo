@@ -513,6 +513,9 @@
           "type": "string",
           "format": "guid"
         },
+        "Authorname": {
+          "type": "string"
+        },
         "PhotoId": {
           "type": "string",
           "format": "guid"

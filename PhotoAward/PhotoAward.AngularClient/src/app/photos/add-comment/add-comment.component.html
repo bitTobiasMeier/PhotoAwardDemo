@@ -1,0 +1,31 @@
+<div class="panel">
+<form #form="ngForm" class="form-horizontal" >
+
+   <div class="form-group" >
+      <textarea name="comment" ngModel [(ngModel)]="data.comment" class="form-control commentfullsize"  ></textarea>
+    </div>
+
+
+
+  <div class="form-group">
+    <label  class="control-label col-xs-1">&nbsp;</label>
+     <div class="col-xs-3">
+        <button type="button" (click)="save()" class="btn btn-default">Speichern</button>
+      </div>
+      <div class="col-xs-1">
+
+      </div>
+      <div class="col-xs-3">
+        <button type="button" (click)="cancel()" class="btn btn-default">Abbrechen</button>
+      </div>
+    </div>
+
+     <div class="form-group">
+    <label  class="control-label col-xs-1">&nbsp;</label>
+     <div class="col-xs-3">
+{{message}}
+      </div>
+    </div>
+
+</form>
+</div>

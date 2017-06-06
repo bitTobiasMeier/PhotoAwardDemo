@@ -73,8 +73,8 @@
     <ServiceManifestRef ServiceManifestName="PhotoAward.PlatformPkg" ServiceManifestVersion="1.0.17" />
     <ConfigOverrides />
     <Policies>
-      <!-- ToDo: Für die lokale Entwicklung auskommentieren-->
-      <!--   <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />   -->
+      <!-- ToDo: Für die lokale Entwicklung entfernen-->
+      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />   
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>

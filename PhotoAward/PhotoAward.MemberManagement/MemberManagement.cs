@@ -222,6 +222,24 @@ namespace PhotoAward.MemberManagement
                 return new MemberDto() { Email = result.Email, EntryDate = result.EntryDate, FirstName = result.FirstName, LastUpdate = result.LastUpdate, Surname = result.Surname, Id = result.Id };
             }
         }
+
+        public async Task<List<MemberName>> GetNamesOfMembersAsync(List<Guid?> authorIds)
+        {
+            var tasks = new List<Task<MemberDto>>();
+            foreach (var authorId in authorIds )
+            {
+                 if (authorId == null) continue;
+                var result = this.GetMemberOnMemberId(authorId.Value);
+                tasks.Add(result);
+            }
+            var results = new List<MemberName>();
+            foreach (var task in tasks)
+            {
+                var result = await task;
+                results.Add(new MemberName() {Id = result.Id, Name = result.FirstName +" " + result.Surname});
+            }
+            return results;
+        }
     }
 }
 

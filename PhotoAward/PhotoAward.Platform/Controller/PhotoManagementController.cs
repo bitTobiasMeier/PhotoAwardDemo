@@ -149,8 +149,9 @@ namespace PhotoAward.Platform.Controller
         [Route("Backup")]
         public async Task<string> Backup()
         {
-            await this._photoManagementClientFactory.CreatePhotoClient().BackupPhotosAsync();
-            return "Backup erfolgt";
+            //await this._photoManagementClientFactory.CreatePhotoClient().BackupPhotosAsync();
+            ///return "Backup erfolgt";
+            throw new NotImplementedException();
         }
 
         [AllowAnonymous]
@@ -158,7 +159,8 @@ namespace PhotoAward.Platform.Controller
         [Route("Restore")]
         public async Task Restore()
         {
-            await this._photoManagementClientFactory.CreatePhotoClient().RestoreAsync();
+            //await this._photoManagementClientFactory.CreatePhotoClient().RestoreAsync();
+            throw new NotImplementedException();
         }
     }
 }

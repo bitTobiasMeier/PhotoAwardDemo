@@ -18,6 +18,9 @@ import { AppComponent } from './app.component';
 import { DOCUMENT } from '@angular/platform-browser';
 import { LoginComponent } from './login/login/login.component';
 import { PhotoDetailComponent } from './photos/photo-detail/photo-detail.component';
+import { AddCommentComponent } from './photos/add-comment/add-comment.component';
+import { ShowCommentsComponent } from './photos/show-comments/show-comments.component';
+import { ShowCommentComponent } from './photos/show-comment/show-comment.component';
 
 
 
@@ -64,6 +67,9 @@ export class DefaultRequestOptions extends BaseRequestOptions {
     ShowPhotosComponentComponent,
     LoginComponent,
     PhotoDetailComponent,
+    AddCommentComponent,
+    ShowCommentsComponent,
+    ShowCommentComponent
 
   ],
   imports: [

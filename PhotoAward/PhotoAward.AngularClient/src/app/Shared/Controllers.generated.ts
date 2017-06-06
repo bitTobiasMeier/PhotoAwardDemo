@@ -1019,6 +1019,7 @@ export interface IPhotoMemberInfo {
 export class CommentData implements ICommentData {
     comment?: string | undefined;
     authorId?: string | undefined;
+    authorname?: string | undefined;
     photoId: string;
     commentDate: Date;
     id?: string | undefined;
@@ -1036,6 +1037,7 @@ export class CommentData implements ICommentData {
         if (data) {
             this.comment = data["Comment"];
             this.authorId = data["AuthorId"];
+            this.authorname = data["Authorname"];
             this.photoId = data["PhotoId"];
             this.commentDate = data["CommentDate"] ? new Date(data["CommentDate"].toString()) : <any>undefined;
             this.id = data["Id"];
@@ -1052,6 +1054,7 @@ export class CommentData implements ICommentData {
         data = typeof data === 'object' ? data : {};
         data["Comment"] = this.comment;
         data["AuthorId"] = this.authorId;
+        data["Authorname"] = this.authorname;
         data["PhotoId"] = this.photoId;
         data["CommentDate"] = this.commentDate ? this.commentDate.toISOString() : <any>undefined;
         data["Id"] = this.id;
@@ -1062,6 +1065,7 @@ export class CommentData implements ICommentData {
 export interface ICommentData {
     comment?: string | undefined;
     authorId?: string | undefined;
+    authorname?: string | undefined;
     photoId: string;
     commentDate: Date;
     id?: string | undefined;

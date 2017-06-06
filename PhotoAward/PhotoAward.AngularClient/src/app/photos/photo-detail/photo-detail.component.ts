@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PhotoDetailComponent implements OnInit {
    @Input() photo : PhotoManagementData;
+   //binary data of image
    photoData : any;
 ShowBigImage = false;
   constructor(private _photoManagementClient: PhotoManagementClient) { }

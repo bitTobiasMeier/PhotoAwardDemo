@@ -13,4 +13,10 @@ namespace PhotoAward.MemberManagement.Interfaces
         public Guid Id { get; set; }
         public string Password { get; set; }
     }
+
+    public class MemberName
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+    }
 }

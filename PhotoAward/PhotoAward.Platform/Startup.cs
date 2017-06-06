@@ -22,7 +22,7 @@ namespace PhotoAward.Platform
         {
             formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             formatters.JsonFormatter.SerializerSettings.Converters.Add(
-                new IsoDateTimeConverter() {DateTimeFormat = "yyyy-MM-ddHH:mm:ss"});
+                new IsoDateTimeConverter() {DateTimeFormat = "yyyy-MM-dd HH:mm:ss"});
         }
 
         public static void ConfigureApp(IAppBuilder appBuilder)

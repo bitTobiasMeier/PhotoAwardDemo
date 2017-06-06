@@ -56,3 +56,22 @@ z-index:555;
     right: 0;
     bottom: 0;
 }
+
+.commentfullsize {
+   margin: 10px;
+   width: 95%;
+   min-height:100px;
+   max-height: 200px;
+   height: 50%;
+}
+
+
+.overlaywhite {
+margin: auto;
+position: fixed;
+top: 80px; left: 5px;
+bottom: 5px; right: 5px;
+background-color:rgb(0,92,169);
+color: #000;
+z-index:455;
+}

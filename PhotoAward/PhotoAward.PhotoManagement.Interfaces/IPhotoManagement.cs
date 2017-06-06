@@ -17,8 +17,6 @@ namespace PhotoAward.PhotoManagement.Interfaces
         Task<byte[]> GetPhotoDetailAsync(Guid id);
         Task<List<PhotoManagementData>> GetPhotosAsync(string email);
         Task<List<PhotoMemberInfo>> GetListOfPhotosAsync();
-
-        Task BackupPhotosAsync ();
-        Task RestoreAsync();
+        
     }
 }

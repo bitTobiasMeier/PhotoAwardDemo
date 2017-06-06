@@ -11,5 +11,7 @@
       <img  [src]="'data:image/jpeg;base64,'+ photoData"  class="photofullsize" (click)="closeImage()"/>
       <button type="button" class="btn btn-default" (click)="closeImage()">Schließen</button>
     </div>
+    <br>
+    <pac-show-comments [photoId]="photo.id"></pac-show-comments>
   </div>
 </div>

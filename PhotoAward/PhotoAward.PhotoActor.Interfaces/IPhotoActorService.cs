@@ -3,8 +3,8 @@ using Microsoft.ServiceFabric.Services.Remoting;
 
 namespace PhotoAward.PhotoActors.Interfaces
 {
-    public interface IBackupPhotoActorService : IService
+    public interface IPhotoActorService : IService
     {
-       Task BackupActorsAsync();
+     
     }
 }

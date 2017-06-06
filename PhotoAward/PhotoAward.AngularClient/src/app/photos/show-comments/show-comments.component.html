@@ -1,0 +1,21 @@
+<div class="">
+<button type="button" (click)="newComment()" class="btn btn-default">Neuer Kommentar</button>
+
+  <pac-add-comment [photoId]="photoId" [hidden]="showAddCommentSection===false" (commentAdded)="commentAdded()" (commentCanceled)="commentCanceled()" ></pac-add-comment>
+
+  <div [hidden]='comments && comments.length == 0'>
+
+
+
+<div class="row" *ngFor="let comment of comments">
+
+        <pac-show-comment [comment]='comment' ></pac-show-comment>
+
+      </div>
+
+
+  </div>
+</div>
+
+
+

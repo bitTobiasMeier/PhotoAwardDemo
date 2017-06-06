@@ -70,7 +70,7 @@ namespace PhotoAward.PhotoActors
             this._reminderPictureAnalysis  = await this.RegisterReminderAsync(
                 CheckPictureAnalysis,
                 null,
-                TimeSpan.FromMinutes(0.1),
+                TimeSpan.FromMinutes(0.001),
                 TimeSpan.FromMinutes(0.75));
 
         }

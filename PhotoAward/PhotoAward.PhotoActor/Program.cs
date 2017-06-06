@@ -37,7 +37,7 @@ namespace PhotoAward.PhotoActors
                 
 
                 ActorRuntime.RegisterActorAsync<PhotoActor>(
-                   (context, actorType) => new BackupPhotoActorService(context, actorType,
+                   (context, actorType) => new PhotoActorService(context, actorType,
                    (service, id) => new PhotoActor(service,id, CreateAnalyzeRepository(context), photoDbService))).GetAwaiter().GetResult();
 
                 Thread.Sleep(Timeout.Infinite);
