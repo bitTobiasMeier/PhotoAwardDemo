@@ -1,7 +1,11 @@
-﻿namespace PhotoAward.MemberManagement.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace PhotoAward.MemberManagement.Interfaces
 {
     public interface IMemberManagementClientFactory
     {
-        IMemberManagement CreateMemberManagementClient();
+        Task<IMemberManagement> CreateMemberManagementClientAsync();
+        Task TakeFullBackUpAsync(string nameOfBackupSet);
+        Task RestoreBackupAsync(string nameOfBackupSet);
     }
 }

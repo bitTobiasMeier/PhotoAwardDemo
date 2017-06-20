@@ -105,7 +105,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoAward.MemberActor.Interfaces\PhotoAward.MemberActor.Interfaces.csproj">
+      <Project>{d37a1870-d3e2-4e4c-af4f-8ff20578d175}</Project>
+      <Name>PhotoAward.MemberActor.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.ReliableServices.Core\PhotoAward.ReliableServices.Core.csproj">
+      <Project>{6b4b8969-09c8-4799-95bd-c998c9b816d8}</Project>
+      <Name>PhotoAward.ReliableServices.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

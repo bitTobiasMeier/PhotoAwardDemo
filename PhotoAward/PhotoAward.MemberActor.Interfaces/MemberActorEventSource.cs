@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics.Tracing;
-using System.Fabric;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
+using PhotoAward.ReliableServices.Core;
 
-namespace PhotoAward.MemberActor
+namespace PhotoAward.MemberActor.Interfaces
 {
     [EventSource(Name = "BridgingIT-PhotoAward-PhotoAward.MemberActor")]
-    internal sealed class ActorEventSource : EventSource
+    public sealed class MemberActorEventSource : EventSource, IServiceEventSource
     {
-        public static readonly ActorEventSource Current = new ActorEventSource();
+        public static readonly MemberActorEventSource Current = new MemberActorEventSource();
 
-        static ActorEventSource()
+        static MemberActorEventSource()
         {
             // A workaround for the problem where ETW activities do not get tracked until Tasks infrastructure is initialized.
             // This problem will be fixed in .NET Framework 4.6.2.
@@ -22,7 +19,7 @@ namespace PhotoAward.MemberActor
         }
 
         // Instance constructor is private to enforce singleton semantics
-        private ActorEventSource() : base() { }
+        private MemberActorEventSource() : base() { }
 
         #region Keywords
         // Event keywords can be used to categorize events. 

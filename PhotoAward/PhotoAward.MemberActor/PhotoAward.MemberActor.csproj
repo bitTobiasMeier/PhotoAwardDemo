@@ -68,6 +68,9 @@
     <Reference Include="Microsoft.ServiceFabric.Services.Remoting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
       <HintPath>..\packages\Microsoft.ServiceFabric.Services.Remoting.2.6.210\lib\net45\Microsoft.ServiceFabric.Services.Remoting.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Fabric, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=AMD64">
@@ -88,13 +91,15 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MemberActorService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MemberActor.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ActorEventSource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PackageRoot\ServiceManifest.xml" />
+    <None Include="PackageRoot\ServiceManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="PackageRoot\Config\Settings.xml" />
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -107,6 +112,10 @@
     <ProjectReference Include="..\PhotoAward.MemberManagement.Interfaces\PhotoAward.MemberManagement.Interfaces.csproj">
       <Project>{89CCB99D-C3B4-4065-A0A5-8FAD77D038CE}</Project>
       <Name>PhotoAward.MemberManagement.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.ReliableServices.Core\PhotoAward.ReliableServices.Core.csproj">
+      <Project>{6b4b8969-09c8-4799-95bd-c998c9b816d8}</Project>
+      <Name>PhotoAward.ReliableServices.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

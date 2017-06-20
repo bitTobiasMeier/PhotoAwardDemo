@@ -17,13 +17,14 @@ using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoManagement.Interfaces;
 using PhotoAward.ThumbnailService.Interfaces;
 using PhotoAward.PhotoDb.Interfaces;
+using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.PhotoManagement
 {
     /// <summary>
     /// An instance of this class is created for each service replica by the Service Fabric runtime.
     /// </summary>
-    public sealed class PhotoManagement : TestableStatefullService, IPhotoComments, IPhotoManagement
+    public sealed class PhotoManagement : BackupRestoreStatefulService, IPhotoComments, IPhotoManagement
     {
         private readonly IPhotoManagementStates _photoManagementStates;
         private readonly IMemberManagementClientFactory _memberManagementClientFactory;
@@ -35,8 +36,8 @@ namespace PhotoAward.PhotoManagement
 
         public PhotoManagement(StatefulServiceContext context, IPhotoManagementStates photoManagementStates, IReliableStateManagerReplica stateManager, 
             IMemberManagementClientFactory memberManagementClientFactory, IPhotoActorClientFactory photoActorClientFactory, IThumbnailClientFactory thumbnailClientFactory,
-            IPhotoDbClientFactory photoDbClientFactory)
-            : base(context, stateManager)
+            IPhotoDbClientFactory photoDbClientFactory, IFileStore fileStore, IServiceEventSource serviceEventSource)
+            : base(context, stateManager, fileStore,serviceEventSource)
         {
             _photoManagementStates = photoManagementStates;
             _memberManagementClientFactory = memberManagementClientFactory;
@@ -93,7 +94,7 @@ namespace PhotoAward.PhotoManagement
                     var thumbnailTask = thumbnailClient.GetThumbnailAsync(photo.Data);
                    
                     //Member mit dieser Emailadresse ermitteln
-                    var member = await this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(photo.Email);
+                    var member = await (await this._memberManagementClientFactory.CreateMemberManagementClientAsync()).GetMember(photo.Email);
                     if (member == null) throw new Exception("Member not found");
                     var photoId = Guid.NewGuid();
                     var photoDbClient = this._photoDbClientFactory.CreatePhotoDbClient();
@@ -210,7 +211,7 @@ namespace PhotoAward.PhotoManagement
             using (var tx = _photoManagementStates.CreateTransaction())
             {
                 //Member mit dieser Emailadresse ermitteln
-                var member = this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(email);
+                var member = (await this._memberManagementClientFactory.CreateMemberManagementClientAsync()).GetMember(email);
                 if (member?.Result == null) throw new Exception("Member not found");
 
                 var actorList =  await this._photoManagementStates.GetPhotoActorIdListOfMember(tx, member.Result.Id);
@@ -253,7 +254,7 @@ namespace PhotoAward.PhotoManagement
                         CommentDate = i.CommentDate
                     }).ToList();
                     var authorIds = comments.Select(c => c.AuthorId).Distinct().ToList();
-                    var authors = await  this._memberManagementClientFactory.CreateMemberManagementClient().GetNamesOfMembersAsync(authorIds);
+                    var authors = await (await  this._memberManagementClientFactory.CreateMemberManagementClientAsync()).GetNamesOfMembersAsync(authorIds);
                     foreach (var comment in comments)
                     {
                         comment.Authorname = authors.Where(a => a.Id == comment.AuthorId).Select(c => c.Name)
@@ -280,7 +281,7 @@ namespace PhotoAward.PhotoManagement
                 {
                     
                     //Member mit dieser Emailadresse ermitteln
-                    var memberdto = this._memberManagementClientFactory.CreateMemberManagementClient().GetMember(comment.Email);
+                    var memberdto = (await this._memberManagementClientFactory.CreateMemberManagementClientAsync()).GetMember(comment.Email);
                     if (memberdto?.Result == null) throw new Exception("Member not found");
                     var member = memberdto.Result;
 
@@ -319,7 +320,7 @@ namespace PhotoAward.PhotoManagement
         {
             using (var tx = _photoManagementStates.CreateTransaction())
             {
-                var memberManagementClient = this._memberManagementClientFactory.CreateMemberManagementClient();
+                var memberManagementClient = await this._memberManagementClientFactory.CreateMemberManagementClientAsync();
                 var tuples = await this._photoManagementStates.GetPhotos(tx);
                 var photoList = new List<PhotoMemberInfo>();
                 foreach (var tuple in tuples)

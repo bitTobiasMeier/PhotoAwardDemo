@@ -11,5 +11,12 @@
     <Parameter Name="OcpApimSubscriptionKey" Value="" />
     <Parameter Name="CognitiveServiceUri" Value="https://westeurope.api.cognitive.microsoft.com/vision/v1.0/describe" />
   </Section>
+  <Section Name="ServiceBackupRestore">
+    <Parameter Name="PhotoAwardBackupRestoreFileStoreType" Value="local" />
+    <Parameter Name="PhotoAwardBackupDirectory" Value="None" />
+    <Parameter Name="PhotoAwardAzureBackupAccountName" Value="" />
+    <Parameter Name="PhotoAwardAzureBackupAccessKey" Value="" />
+    <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" Value="" />
+  </Section>
   <!-- The content will be generated during build -->
 </Settings>

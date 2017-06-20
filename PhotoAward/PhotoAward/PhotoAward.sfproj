@@ -32,6 +32,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PhotoAward.AdministrationPlatform\PhotoAward.AdministrationPlatform.csproj" />
     <ProjectReference Include="..\PhotoAward.MemberActor\PhotoAward.MemberActor.csproj" />
     <ProjectReference Include="..\PhotoAward.MemberManagement\PhotoAward.MemberManagement.csproj" />
     <ProjectReference Include="..\PhotoAward.PhotoActor\PhotoAward.PhotoActor.csproj" />

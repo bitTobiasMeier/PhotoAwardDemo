@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Remoting;
+using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.PhotoManagement.Interfaces
 {
-    public interface IPhotoManagement : IService
+    public interface IPhotoManagement : IBackupRestoreStatefulService
     {
         Task<PhotoManagementData> AddPhotoAsync(PhotoUploadData photo);
 

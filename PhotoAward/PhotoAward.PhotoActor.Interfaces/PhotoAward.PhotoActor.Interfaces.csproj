@@ -79,6 +79,7 @@
     <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PhotoActorEventSource.cs" />
     <Compile Include="CommentInfo.cs" />
     <Compile Include="IPhotoActorService.cs" />
     <Compile Include="PhotoActorClientFactory.cs" />
@@ -88,7 +89,14 @@
     <Compile Include="IPhotoActor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoAward.ReliableServices.Core\PhotoAward.ReliableServices.Core.csproj">
+      <Project>{6b4b8969-09c8-4799-95bd-c998c9b816d8}</Project>
+      <Name>PhotoAward.ReliableServices.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.ServiceFabric.Actors.2.6.210\build\Microsoft.ServiceFabric.Actors.targets" Condition="Exists('..\packages\Microsoft.ServiceFabric.Actors.2.6.210\build\Microsoft.ServiceFabric.Actors.targets')" />

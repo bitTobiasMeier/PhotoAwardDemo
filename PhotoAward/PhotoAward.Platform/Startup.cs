@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Http;
 using Microsoft.Owin;
 using Microsoft.Owin.FileSystems;
@@ -38,9 +39,13 @@ namespace PhotoAward.Platform
 
             appBuilder.UseWebApi(config);
             appBuilder.Use(typeof(DoNotCacheMiddleWare));
-            appBuilder.UseFileServer(GetFileServerOptions());
+            var options = GetFileServerOptions();
+            appBuilder.UseFileServer(options);
+            appBuilder.Use<FileRewriterMiddleware>(options);
 
         }
+
+       
 
         private static FileServerOptions GetFileServerOptions()
         {

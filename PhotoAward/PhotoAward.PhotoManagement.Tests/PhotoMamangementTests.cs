@@ -12,6 +12,7 @@ using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoManagement.Interfaces;
 using PhotoAward.ThumbnailService.Interfaces;
 using PhotoAward.PhotoDb.Interfaces;
+using PhotoAward.ReliableServices.Core;
 using ServiceFabric.Mocks;
 
 namespace PhotoAward.PhotoManagement.Tests
@@ -28,7 +29,7 @@ namespace PhotoAward.PhotoManagement.Tests
             clientMock.Setup(r => r.GetMember(It.IsAny<string>())).Returns(
                 Task.FromResult(new MemberDto() {Email = email}));
             var clientFactoryMock = new Mock<IMemberManagementClientFactory>();
-            clientFactoryMock.Setup(m => m.CreateMemberManagementClient()).Returns(clientMock.Object);
+            clientFactoryMock.Setup(m => m.CreateMemberManagementClientAsync()).Returns(Task.FromResult(clientMock.Object));
             var reliableStateManager = new MockReliableStateManager();
             var stateMngrMock = new Mock<IPhotoManagementStates>();
             stateMngrMock.Setup(s => s.GetPhotoActorId(It.IsAny<ITransaction>(), It.IsAny<Guid>()))
@@ -55,10 +56,15 @@ namespace PhotoAward.PhotoManagement.Tests
             var photoDbFactoryMock = new Mock<IPhotoDbClientFactory>();
             photoDbFactoryMock.Setup(m => m.CreatePhotoDbClient()).Returns(photoDbServiceMock.Object);
 
+            var filestoreMock = new Mock<IFileStore>();
+            var eventSourceMock = new Mock<IServiceEventSource>();
+
             var pm = new PhotoManagement(CreateServiceContext(), stateMngrMock.Object, reliableStateManager, 
                 clientFactoryMock.Object,
                 photoActorClientFactoryMock.Object,
-                thumbnailClientFactoryMock.Object, photoDbFactoryMock.Object);
+                thumbnailClientFactoryMock.Object, photoDbFactoryMock.Object,
+                filestoreMock.Object, eventSourceMock.Object
+                );
             var uploadData = new PhotoUploadData()
             {
                 Email = email,

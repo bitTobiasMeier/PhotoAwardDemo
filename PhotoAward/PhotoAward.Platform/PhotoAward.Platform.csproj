@@ -156,6 +156,7 @@
     <Compile Include="Platform.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Security\MemberAuthorizationServerProvider.cs" />
+    <Compile Include="Security\FileRewriterMiddleware.cs" />
     <Compile Include="ServiceEventSource.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -184,6 +185,10 @@
     <ProjectReference Include="..\PhotoAward.PhotoManagement.Interfaces\PhotoAward.PhotoManagement.Interfaces.csproj">
       <Project>{01A6D906-9D97-4C34-9449-223839ED5D7E}</Project>
       <Name>PhotoAward.PhotoManagement.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoAward.ReliableServices.Core\PhotoAward.ReliableServices.Core.csproj">
+      <Project>{6b4b8969-09c8-4799-95bd-c998c9b816d8}</Project>
+      <Name>PhotoAward.ReliableServices.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhotoAward.ThumbnailService.Interfaces\PhotoAward.ThumbnailService.Interfaces.csproj">
       <Project>{b415d8ad-f448-4e97-a7a9-9f7f86ae4ab6}</Project>

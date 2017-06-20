@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Remoting;
+using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.MemberManagement.Interfaces
 {
-    public interface IMemberManagement: IService
+    public interface IMemberManagement: IBackupRestoreStatefulService
     {
         Task<MemberDto> AddMember(MemberDto member);
 
@@ -16,5 +17,5 @@ namespace PhotoAward.MemberManagement.Interfaces
         Task<MemberDto> GetMemberOnMemberId(Guid memberId);
         Task<MemberDto> ChangePassword(ChangePasswordDto dto);
         Task<List<MemberName>> GetNamesOfMembersAsync(List<Guid?> authorIds);
-    }
+       }
 }

@@ -42,6 +42,7 @@ namespace PhotoAward.PhotoActors
         /// <param name="actorService">The Microsoft.ServiceFabric.Actors.Runtime.ActorService that will host this actor instance.</param>
         /// <param name="actorId">The Microsoft.ServiceFabric.Actors.ActorId for this actor instance.</param>
         /// <param name="analyzeRepository"></param>
+        /// <param name="photoDbService"></param>
         public PhotoActor(ActorService actorService, ActorId actorId, IAnalyzeRepository analyzeRepository, IPhotoDbService photoDbService) : base(actorService, actorId)
         {
             this._analyzeRepository = analyzeRepository;
@@ -54,7 +55,7 @@ namespace PhotoAward.PhotoActors
         /// </summary>
         protected override async Task OnActivateAsync()
         {
-            ActorEventSource.Current.ActorMessage(this, "Actor activated.");
+            PhotoActorEventSource.Current.ActorMessage(this, "Actor activated.");
 
             // The StateManager is this actor's private state store.
             // Data stored in the StateManager will be replicated for high-availability for actors that use volatile or persisted state storage.

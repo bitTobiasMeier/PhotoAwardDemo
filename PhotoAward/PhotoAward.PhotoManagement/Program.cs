@@ -8,6 +8,7 @@ using Microsoft.ServiceFabric.Services.Runtime;
 using PhotoAward.MemberManagement.Interfaces;
 using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoDb.Interfaces;
+using PhotoAward.ReliableServices.Core;
 using PhotoAward.ThumbnailService.Interfaces;
 
 namespace PhotoAward.PhotoManagement
@@ -31,11 +32,14 @@ namespace PhotoAward.PhotoManagement
                     delegate(StatefulServiceContext context)
                     {
                         var stateMngr = new ReliableStateManager(context);
+                        var backupStore = new FileStoreCreator().CreateFileStore(context);
                         return new PhotoManagement(context, new PhotoManagementStates(stateMngr), stateMngr,
                             new MemberManagementClientFactory(), 
                             new PhotoActorClientFactory(), 
                             new ThumbnailClientFactory(),
-                            new PhotoDbClientFactory());
+                            new PhotoDbClientFactory(),
+                            backupStore,
+                            ServiceEventSource.Current);
                     }).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(PhotoManagement).Name);

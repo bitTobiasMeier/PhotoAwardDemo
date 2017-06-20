@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Runtime;
+using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.MemberManagement
 {
     [EventSource(Name = "BridgingIT-PhotoAward-MemberManagement")]
-    internal sealed class ServiceEventSource : EventSource
+    internal sealed class ServiceEventSource : EventSource, IServiceEventSource
     {
         public static readonly ServiceEventSource Current = new ServiceEventSource();
 

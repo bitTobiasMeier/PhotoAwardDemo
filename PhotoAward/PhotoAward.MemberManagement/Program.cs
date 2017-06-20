@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Runtime;
+using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.MemberManagement
 {
@@ -20,8 +22,15 @@ namespace PhotoAward.MemberManagement
                 // When Service Fabric creates an instance of this service type,
                 // an instance of the class is created in this host process.
 
+                
+
                 ServiceRuntime.RegisterServiceAsync("MemberManagementType",
-                    context => new MemberManagement(context)).GetAwaiter().GetResult();
+                    context =>
+                    {
+                        var backupStore = new FileStoreCreator().CreateFileStore(context);
+                        return new MemberManagement(context, backupStore,
+                            ServiceEventSource.Current);
+                    }).GetAwaiter().GetResult();
 
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(MemberManagement).Name);
 

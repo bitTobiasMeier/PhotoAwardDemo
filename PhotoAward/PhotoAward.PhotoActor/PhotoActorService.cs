@@ -15,9 +15,11 @@ using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.PhotoActors
 {
-    public class PhotoActorService : ActorService, IPhotoActorService
+    public class PhotoActorService : BackupRestoreActorService, IPhotoActorService
     {
-        public PhotoActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo, Func<ActorService, ActorId, ActorBase> actorFactory = null, Func<ActorBase, IActorStateProvider, IActorStateManager> stateManagerFactory = null, IActorStateProvider stateProvider = null, ActorServiceSettings settings = null) : base(context, actorTypeInfo, actorFactory, stateManagerFactory, stateProvider, settings)
+        public PhotoActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo, IFileStore fileStore, IServiceEventSource serviceEventSource, Func<ActorService, ActorId, ActorBase> actorFactory = null, Func<ActorBase, IActorStateProvider, IActorStateManager> stateManagerFactory = null,
+            IActorStateProvider stateProvider = null, ActorServiceSettings settings = null) 
+            : base(context, actorTypeInfo, fileStore, serviceEventSource, actorFactory, stateManagerFactory, stateProvider, settings)
         {
              
         }

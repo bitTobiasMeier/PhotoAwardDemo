@@ -13,6 +13,7 @@ using Microsoft.ServiceFabric.Services.Remoting.Runtime;
 using Microsoft.ServiceFabric.Services.Remoting;
 using PhotoAward.MemberActor.Interfaces;
 using PhotoAward.MemberManagement.Interfaces;
+using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.MemberManagement
 {
@@ -21,10 +22,10 @@ namespace PhotoAward.MemberManagement
     /// <summary>
     /// An instance of this class is created for each service replica by the Service Fabric runtime.
     /// </summary>
-    internal sealed class MemberManagement : StatefulService, IMemberManagement
+    internal sealed class MemberManagement : BackupRestoreStatefulService, IMemberManagement
     {
-        public MemberManagement(StatefulServiceContext context)
-            : base(context)
+        public MemberManagement(StatefulServiceContext context,IFileStore fileStore, IServiceEventSource serviceEventSource)
+            : base(context,fileStore, serviceEventSource)
         {
         }
 
@@ -87,7 +88,7 @@ namespace PhotoAward.MemberManagement
                     var memberActorId = new ActorId(member.Email);
                     await members.AddAsync(tx, member.Email, memberActorId);
                     
-                    var memberActor = MemberClientFactory.CreateMemberActorClient(memberActorId);
+                    var memberActor = MemberActorClientFactory.CreateMemberActorClient(memberActorId);
                     var internalMember = CreateInternalMemberAndHash(member);
 
                     var result = await memberActor.SetMemberAsync(internalMember, CancellationToken.None);
@@ -139,7 +140,7 @@ namespace PhotoAward.MemberManagement
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
                
-                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMemberAsync(CancellationToken.None);
+                var result = await MemberActorClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMemberAsync(CancellationToken.None);
 
                 return new MemberDto() {Email = result.Email, EntryDate = result.EntryDate,FirstName=result.FirstName, LastUpdate = result.LastUpdate,Surname = result.Surname, Id = result.Id};
             }
@@ -157,7 +158,7 @@ namespace PhotoAward.MemberManagement
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
            
-                var result = await MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMemberAsync(CancellationToken.None);
+                var result = await MemberActorClientFactory.CreateMemberActorClient(existendMemberActorId.Value).GetMemberAsync(CancellationToken.None);
 
                 //Password-Validation
                 if (!PasswordHashCalculator.VerifyPassword(password, result.PasswordSalt, result.PasswordHash))
@@ -179,7 +180,7 @@ namespace PhotoAward.MemberManagement
                     while (await asyncEnumerator.MoveNextAsync(CancellationToken.None))
                     {
                         var actorId = asyncEnumerator.Current.Value;
-                        var member = await MemberClientFactory.CreateMemberActorClient(actorId).GetMemberAsync(CancellationToken.None);
+                        var member = await MemberActorClientFactory.CreateMemberActorClient(actorId).GetMemberAsync(CancellationToken.None);
                         if (member !=null && member.Id == memberId) return new MemberDto()
                         {
                             Id = member.Id,
@@ -207,7 +208,7 @@ namespace PhotoAward.MemberManagement
                     throw new Exception("Mitglied mit dieser Emailadresse existiert nicht.");
                 }
 
-                var actorFactory = MemberClientFactory.CreateMemberActorClient(existendMemberActorId.Result.Value);
+                var actorFactory = MemberActorClientFactory.CreateMemberActorClient(existendMemberActorId.Result.Value);
 
                 var result = await actorFactory.GetMemberAsync(CancellationToken.None);
 
@@ -240,6 +241,8 @@ namespace PhotoAward.MemberManagement
             }
             return results;
         }
+
+    
     }
 }
 

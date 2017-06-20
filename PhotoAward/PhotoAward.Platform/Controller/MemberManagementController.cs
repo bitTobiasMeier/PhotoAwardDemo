@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using PhotoAward.MemberManagement.Interfaces;
 
@@ -20,7 +21,7 @@ namespace PhotoAward.Platform.Controller
         [Route("Add")]
         public async Task<MemberDto> Add(MemberDto member)
         {
-            var client = this._memberManagementClientFactory.CreateMemberManagementClient();
+            var client = await this._memberManagementClientFactory.CreateMemberManagementClientAsync();
             var result = await client.AddMember(member);
             return result;
         }
@@ -29,7 +30,7 @@ namespace PhotoAward.Platform.Controller
         [Route("Get/{email}")]
         public async Task<MemberDto> Get(string email)
         {
-            var client = this._memberManagementClientFactory.CreateMemberManagementClient();
+            var client = await this._memberManagementClientFactory.CreateMemberManagementClientAsync();
             var result = await client.GetMember(email);
             return result;
         }
@@ -38,7 +39,7 @@ namespace PhotoAward.Platform.Controller
         [Route("Login")]
         public async Task<MemberDto> Login(string email, string password)
         {
-            var client = this._memberManagementClientFactory.CreateMemberManagementClient();
+            var client = await this._memberManagementClientFactory.CreateMemberManagementClientAsync();
             var result = await client.LoginMember(email, password);
             return result;
         }
@@ -49,10 +50,32 @@ namespace PhotoAward.Platform.Controller
         public async Task<MemberDto> ChangePassword (ChangePasswordDto dto)
 
         {
-            var client = this._memberManagementClientFactory.CreateMemberManagementClient();
+            var client = await this._memberManagementClientFactory.CreateMemberManagementClientAsync();
             var result = await client.ChangePassword(dto);
             return result;
         }
-        
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("Backup")]
+        public async Task<string> Backup()
+        {
+            var nameOfBackupSet = "test";
+            await this._memberManagementClientFactory.TakeFullBackUpAsync(nameOfBackupSet);
+            return "Backup erfolgt";
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("Restore")]
+        public async Task<string> Restore()
+        {
+            var nameOfBackupSet = "test";
+            await this._memberManagementClientFactory.RestoreBackupAsync(nameOfBackupSet);
+            return "Restore erfolgt";
+            
+        }
+
+      
     }
 }

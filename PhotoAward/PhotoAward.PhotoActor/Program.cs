@@ -6,7 +6,9 @@ using System.Fabric.Description;
 using System.Threading;
 using Microsoft.ServiceFabric.Actors.Runtime;
 using Microsoft.ServiceFabric.Services.Runtime;
+using PhotoAward.PhotoActors.Interfaces;
 using PhotoAward.PhotoDb.Interfaces;
+using PhotoAward.ReliableServices.Core;
 
 namespace PhotoAward.PhotoActors
 {
@@ -37,14 +39,19 @@ namespace PhotoAward.PhotoActors
                 
 
                 ActorRuntime.RegisterActorAsync<PhotoActor>(
-                   (context, actorType) => new PhotoActorService(context, actorType,
-                   (service, id) => new PhotoActor(service,id, CreateAnalyzeRepository(context), photoDbService))).GetAwaiter().GetResult();
+                   (context, actorType) =>
+                   {
+                       var backupStore = new FileStoreCreator().CreateFileStore(context);
+                       return new PhotoActorService(context, actorType, backupStore, PhotoActorEventSource.Current,
+                            (service, id) => new PhotoActor(service, id, CreateAnalyzeRepository(context),
+                                photoDbService));
+                   }).GetAwaiter().GetResult();
 
                 Thread.Sleep(Timeout.Infinite);
             }
             catch (Exception e)
             {
-                ActorEventSource.Current.ActorHostInitializationFailed(e.ToString());
+                PhotoActorEventSource.Current.ActorHostInitializationFailed(e.ToString());
                 throw;
             }
         }

@@ -22,7 +22,7 @@ namespace PhotoAward.Platform.Security
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             //Proxy zum MemberManamgement-Service erzeugen
-            var client= this._memberManagementClientFactory.CreateMemberManagementClient();
+            var client= await this._memberManagementClientFactory.CreateMemberManagementClientAsync();
             //Login durchführen
             var member =  await client.LoginMember(context.UserName, context.Password);
             if (member != null)

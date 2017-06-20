@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Actors.Runtime;
 using Microsoft.ServiceFabric.Actors.Client;
+using Microsoft.ServiceFabric.Data;
 using PhotoAward.MemberActor.Interfaces;
 using PhotoAward.MemberManagement.Interfaces;
 
@@ -24,7 +25,7 @@ namespace PhotoAward.MemberActor
     internal class MemberActor : Actor, IMemberActor
     {
         [DataContract]
-        private class MemberData
+        public class MemberData
         {
             //ToDO: objekte immutable machen
             [DataMember]
@@ -57,37 +58,29 @@ namespace PhotoAward.MemberActor
         {
         }
 
-        /// <summary>
-        /// This method is called whenever an actor is activated.
-        /// An actor is activated the first time any of its methods are invoked.
-        /// </summary>
-        protected override Task OnActivateAsync()
-        {
-            ActorEventSource.Current.ActorMessage(this, "Actor activated.");
-
-            // The StateManager is this actor's private state store.
-            // Data stored in the StateManager will be replicated for high-availability for actors that use volatile or persisted state storage.
-            // Any serializable object can be saved in the StateManager.
-            // For more information, see https://aka.ms/servicefabricactorsstateserialization
-
-            return this.StateManager.TryAddStateAsync("count", 0);
-        }
-
         
         public async Task<InternalMemberDto> GetMemberAsync(CancellationToken cancellationToken)
         {
-            var data =  await this.StateManager.GetStateAsync<MemberData>(DataKey, cancellationToken);
-            return new InternalMemberDto()
+            try
             {
-              Email = data.Email,
-              FirstName = data.FirstName,
-              Surname = data.Surname,
-              LastUpdate = data.LastUpdate,
-              EntryDate = data.EntryDate,
-              Id = data.Id,
-              PasswordHash = data.PasswordHash,
-              PasswordSalt = data.PasswordSalt
-            }; 
+                var data = await this.StateManager.GetStateAsync<MemberData>(DataKey, cancellationToken);
+                return new InternalMemberDto()
+                {
+                    Email = data.Email,
+                    FirstName = data.FirstName,
+                    Surname = data.Surname,
+                    LastUpdate = data.LastUpdate,
+                    EntryDate = data.EntryDate,
+                    Id = data.Id,
+                    PasswordHash = data.PasswordHash,
+                    PasswordSalt = data.PasswordSalt
+                };
+            }
+            catch (Exception ex)
+            {
+                MemberActorEventSource.Current.ActorMessage(this,"GetMemberAsync: Exception: " + ex.Message);
+            }
+            return null;
         }
 
         public async Task UpdatePasswordAsync(byte [] newPasswordHash, byte [] salt,  CancellationToken cancellationToken)
@@ -141,5 +134,9 @@ namespace PhotoAward.MemberActor
             
             return member;
         }
+
+     
+
+        
     }
 }
