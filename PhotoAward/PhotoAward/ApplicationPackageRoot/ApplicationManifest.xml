@@ -128,7 +128,7 @@
     <ConfigOverrides />
     <Policies>
       <!-- ToDo: Für ein Deployment nach Azure darf die folgende Zeile nicht auskommetiert sein:-->
-      <!--<EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />   -->
+      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />   
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
