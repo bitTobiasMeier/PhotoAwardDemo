@@ -17,9 +17,7 @@
     <Parameter Name="PhotoDBConfig_collection" Value="Photos" />
     <Parameter Name="PhotoActorConfig_OcpApimSubscriptionKey" Value="#{cognitiveserviceanalysiskey}#" />
     <Parameter Name="PhotoActorConfig_CognitiveServiceUri" Value="#{cognitiveserviceuri}#" />
-    <Parameter Name="PhotoAwardAzureBackupAccountName" Value="#{photoawardazurebackupaccountname}#" />
-    <Parameter Name="PhotoAwardAzureBackupAccessKey" Value="#{photoawardazurebackupaccesskey}#" />
-    <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" Value="#{photoawardazureblobserviceendpoint}#" />
+    <Parameter Name="PhotoAwardAzureStorageConnectionString" Value="#{photoawardazurestorageconnectionstring}#" />
     <Parameter Name="PhotoAwardBackupRestoreFileStoreType" Value="azureblobstorage" />
   </Parameters>
 </Application>

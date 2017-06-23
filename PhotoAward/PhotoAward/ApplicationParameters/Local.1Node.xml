@@ -22,9 +22,7 @@
     <Parameter Name="PhotoDBConfig_database" Value="PhotoAwardDemo" />
     <Parameter Name="PhotoDBConfig_collection" Value="Photos" />
     <Parameter Name="PhotoAwardBackupDirectory" />
-    <Parameter Name="PhotoAwardAzureBackupAccountName" Value="" />
-    <Parameter Name="PhotoAwardAzureBackupAccessKey" Value="" />
-    <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" Value="" />
+    <Parameter Name="PhotoAwardAzureStorageConnectionString" Value="" />
     <Parameter Name="PhotoAwardBackupRestoreFileStoreType" Value="local" />
   </Parameters>
 </Application>

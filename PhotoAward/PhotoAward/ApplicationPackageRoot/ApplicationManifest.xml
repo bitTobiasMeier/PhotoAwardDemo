@@ -24,9 +24,7 @@
     <Parameter Name="PhotoActorConfig_OcpApimSubscriptionKey" DefaultValue="" />
     <Parameter Name="PhotoActorConfig_CognitiveServiceUri" DefaultValue="https://westeurope.api.cognitive.microsoft.com/vision/v1.0/describe" />
     <Parameter Name="PhotoAwardBackupDirectory" DefaultValue="c:\temp\PhotoAwardBackups\" />
-    <Parameter Name="PhotoAwardAzureBackupAccountName" DefaultValue="" />
-    <Parameter Name="PhotoAwardAzureBackupAccessKey" DefaultValue="" />
-    <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" DefaultValue="" />
+    <Parameter Name="PhotoAwardAzureStorageConnectionString" DefaultValue="" />
     <Parameter Name="PhotoAwardBackupRestoreFileStoreType" DefaultValue="local" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
@@ -62,9 +60,7 @@
         <Settings>
           <Section Name="ServiceBackupRestore">
             <Parameter Name="PhotoAwardBackupDirectory" Value="[PhotoAwardBackupDirectory]" />
-            <Parameter Name="PhotoAwardAzureBackupAccountName" Value="[PhotoAwardAzureBackupAccountName]" />
-            <Parameter Name="PhotoAwardAzureBackupAccessKey" Value="[PhotoAwardAzureBackupAccessKey]" />
-            <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" Value="[PhotoAwardAzureStorageBlobServiceEndpoint]" />
+            <Parameter Name="PhotoAwardAzureStorageConnectionString" Value="[PhotoAwardAzureStorageConnectionString]" />
             <Parameter Name="PhotoAwardBackupRestoreFileStoreType" Value="[PhotoAwardBackupRestoreFileStoreType]" />
           </Section>
         </Settings>
@@ -82,9 +78,7 @@
           </Section>
           <Section Name="ServiceBackupRestore">
             <Parameter Name="PhotoAwardBackupDirectory" Value="[PhotoAwardBackupDirectory]" />
-            <Parameter Name="PhotoAwardAzureBackupAccountName" Value="[PhotoAwardAzureBackupAccountName]" />
-            <Parameter Name="PhotoAwardAzureBackupAccessKey" Value="[PhotoAwardAzureBackupAccessKey]" />
-            <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" Value="[PhotoAwardAzureStorageBlobServiceEndpoint]" />
+            <Parameter Name="PhotoAwardAzureStorageConnectionString" Value="[PhotoAwardAzureStorageConnectionString]" />
             <Parameter Name="PhotoAwardBackupRestoreFileStoreType" Value="[PhotoAwardBackupRestoreFileStoreType]" />
           </Section>
         </Settings>
@@ -98,9 +92,7 @@
         <Settings>
           <Section Name="ServiceBackupRestore">
             <Parameter Name="PhotoAwardBackupDirectory" Value="[PhotoAwardBackupDirectory]" />
-            <Parameter Name="PhotoAwardAzureBackupAccountName" Value="[PhotoAwardAzureBackupAccountName]" />
-            <Parameter Name="PhotoAwardAzureBackupAccessKey" Value="[PhotoAwardAzureBackupAccessKey]" />
-            <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" Value="[PhotoAwardAzureStorageBlobServiceEndpoint]" />
+            <Parameter Name="PhotoAwardAzureStorageConnectionString" Value="[PhotoAwardAzureStorageConnectionString]" />
             <Parameter Name="PhotoAwardBackupRestoreFileStoreType" Value="[PhotoAwardBackupRestoreFileStoreType]" />
           </Section>
         </Settings>
@@ -114,9 +106,7 @@
         <Settings>
           <Section Name="ServiceBackupRestore">
             <Parameter Name="PhotoAwardBackupDirectory" Value="[PhotoAwardBackupDirectory]" />
-            <Parameter Name="PhotoAwardAzureBackupAccountName" Value="[PhotoAwardAzureBackupAccountName]" />
-            <Parameter Name="PhotoAwardAzureBackupAccessKey" Value="[PhotoAwardAzureBackupAccessKey]" />
-            <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" Value="[PhotoAwardAzureStorageBlobServiceEndpoint]" />
+            <Parameter Name="PhotoAwardAzureStorageConnectionString" Value="[PhotoAwardAzureStorageConnectionString]" />
             <Parameter Name="PhotoAwardBackupRestoreFileStoreType" Value="[PhotoAwardBackupRestoreFileStoreType]" />
           </Section>
         </Settings>
@@ -128,7 +118,7 @@
     <ConfigOverrides />
     <Policies>
       <!-- ToDo: Für ein Deployment nach Azure darf die folgende Zeile nicht auskommetiert sein:-->
-      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />   
+      <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />    
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Data;
+using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 
@@ -25,10 +26,14 @@ namespace PhotoAward.ReliableServices.Core
             _systemservicename = systemservicename;
             _partitionName = partitionName;
             _temporaryDirectory = temporaryDirectory;
-            var storageCredentials = new StorageCredentials(_backupRestoreConfiguration.BackupAccountName,
-                _backupRestoreConfiguration.BackupAccountKey);
-            _blobClient = new CloudBlobClient(new Uri(_backupRestoreConfiguration.BlobEndpointAddress),
-                storageCredentials);
+       
+            CloudStorageAccount storageAccount = 
+                 CloudStorageAccount.Parse(_backupRestoreConfiguration.BackupStorageConnectionString);
+
+
+            /*_blobClient = new CloudBlobClient(new Uri(_backupRestoreConfiguration.BlobEndpointAddress),
+                storageCredentials);*/
+            _blobClient = storageAccount.CreateCloudBlobClient();
         }
 
         public async Task<bool> PerformBackupAsync(BackupInfo backupInfo, CancellationToken cancellationToken,
@@ -98,10 +103,19 @@ namespace PhotoAward.ReliableServices.Core
 
         private CloudBlobContainer GetBlobContainer()
         {
-            var container =
-                _blobClient.GetContainerReference(_systemservicename.ToLowerInvariant() + "_" + _partitionName);
-            container.CreateIfNotExists();
-            return container;
+            try
+            {
+                var container =
+                    _blobClient.GetContainerReference((_systemservicename.ToLowerInvariant()).Replace("_","-"));
+                container.CreateIfNotExists();
+
+                return container;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex.Message);
+            }
+            return null;
         }
     }
 }

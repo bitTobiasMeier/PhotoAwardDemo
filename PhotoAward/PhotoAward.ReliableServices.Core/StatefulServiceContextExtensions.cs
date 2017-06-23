@@ -38,9 +38,9 @@ namespace PhotoAward.ReliableServices.Core
             return Path.Combine(dir, serviceName);
         }
 
-        public static string GetAzureBlobStorageEndpoint(this StatefulServiceContext context)
+        public static string GetBackupStorageConnectionString(this StatefulServiceContext context)
         {
-            return GetValueOfServiceBackupRestoreSection(context, "PhotoAwardAzureStorageBlobServiceEndpoint");
+            return GetValueOfServiceBackupRestoreSection(context, "PhotoAwardAzureStorageConnectionString");
         }
 
         public static FileStoreType  GetFileStoreType(this StatefulServiceContext context)

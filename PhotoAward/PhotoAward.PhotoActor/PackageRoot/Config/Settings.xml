@@ -14,9 +14,7 @@
   <Section Name="ServiceBackupRestore">
     <Parameter Name="PhotoAwardBackupRestoreFileStoreType" Value="local" />
     <Parameter Name="PhotoAwardBackupDirectory" Value="None" />
-    <Parameter Name="PhotoAwardAzureBackupAccountName" Value="" />
-    <Parameter Name="PhotoAwardAzureBackupAccessKey" Value="" />
-    <Parameter Name="PhotoAwardAzureStorageBlobServiceEndpoint" Value="" />
+    <Parameter Name="PhotoAwardAzureStorageConnectionString" Value="" />
   </Section>
   <!-- The content will be generated during build -->
 </Settings>
