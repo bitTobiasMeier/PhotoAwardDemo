@@ -37,13 +37,13 @@ Anschließend öffnen Sie bitte Visual Studio und können die Anwendung kompilie
 **3.  Azure**  
 Um das Projekt unter Azure zu testen muss Ihr Cluster mit einem SSL-Zertifikat gesichert sein. Bitte ändern Sie den in der Datei ApplicationManifest aufgeführten 
 Thumbprint auf den Thumbprint ihres SSL-Zertifikats und entfernen Sie die Kommentare in ApplicationManifest.xml im Knoten.  
-<Policies>  
+`<Policies>  
       <!-- <EndpointBindingPolicy EndpointRef="ServiceEndpointssl" CertificateRef="TestCert1" />  -->  
-</Policies>  
+</Policies>`     
 Außerdem muss in der ApplicationManifest der Fingerprint des Zertifikats angepasst werden:  
-<Certificates>  
+`<Certificates>  
     <EndpointCertificate X509StoreName="MY" X509FindValue="2B5C7A6BDFCE84CC7559977375D384494CC3D2A5" Name="TestCert1" />  
-</Certificates>  
+</Certificates>  `    
 Um alle Funktionen testen zu können sind in Cloud.xml, Local.1Node.xml oder Local.5Node.xml noch einige Anpassungen vorgenommen werden:
   
 * Parameter **PhotoDBConfig_authKey**: Authentifizierungsschlüssel für den Zugriff auf die DocumentDb
