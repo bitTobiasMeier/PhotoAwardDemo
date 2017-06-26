@@ -7,8 +7,8 @@ Demo Anwendung für die Service Fabric. Gezeigt werden folgende Punkte:
 3. Zwei Statefull-Services 
 4. Zwei Actor-Services
 5. Web Api-Projekt für die Administration. Diese kann nur lokal aufgerufen werden
-- Backup erzeugen: http://localhost:8208/api/administration/backup/NameOfTheBackup
-- Backup einspielen: http://localhost:8208/api/administration/restore/NameOfTheBackup
+* Backup erzeugen: http://localhost:8208/api/administration/backup/NameOfTheBackup
+* Backup einspielen: http://localhost:8208/api/administration/restore/NameOfTheBackup
 
 Anwendungsfälle:
 1. Benutzer kann sich registrieren
@@ -17,7 +17,7 @@ Anwendungsfälle:
 4. Für jedes Foto können Kommentare eingegeben werden
 5. Alle Kommentare eines Fotos werden angezeigt. 
 6. Aktuell nur Command-Line-Interface:
- - Passwort ändern
+* - Passwort ändern
 
 
 #Hinweis
@@ -45,16 +45,16 @@ Außerdem muss in der ApplicationManifest der Fingerprint des Zertifikats angepa
     <EndpointCertificate X509StoreName="MY" X509FindValue="2B5C7A6BDFCE84CC7559977375D384494CC3D2A5" Name="TestCert1" />
 </Certificates>
 Um alle Funktionen testen zu können sind in Cloud.xml, Local.1Node.xml oder Local.5Node.xml noch einige Anpassungen vorgenommen werden:
-- Parameter PhotoDBConfig_authKey: Authentifizierungsschlüssel für den Zugriff auf die DocumentDb
-- Parameter PhotoDBConfig_endpoint: Adresse unter der die DocumentDB erreicht werden kann, z.B.: https://localhost:8081/
-- Parameter PhotoDBConfig_database: Name der DocumentDB-Datenbank, z.B. "PhotoAwardDemo" 
-- Parameter PhotoDBConfig_collection: Name der DocumentDb collection, z.B. "Photos"
-- Parameter PhotoActorConfig_CognitiveServiceUri: Adresse des Cognitive Services zur Bildanalyse
-- Parameter PhotoActorConfig_OcpApimSubscriptionKey": Zugriffschlüssel zum Zugriff auf die Cognitive Services
-- Parameter PhotoAwardBackupRestoreFileStoreType: Der Wert "local" gibt an dass die Bakcupdateien in das im Parameter "PhotoAwardBackupDirectory" angegebenes Verzeichnis geschrieben werden. Der Wert "azureblobstorage" schreibt die Backupdateien in ein Azure Blob Storage. Vergl. den Parameter PhotoAwardAzureStorageConnectionString .
-- Parameter PhotoAwardBackupDirectory: In welches Verzeichnis soll das Backup geschrieben werden. Steht nur bei eine PhotoAwardBackupRestoreFileStoreType "local" zur Verfügung.
+* Parameter PhotoDBConfig_authKey: Authentifizierungsschlüssel für den Zugriff auf die DocumentDb
+* Parameter PhotoDBConfig_endpoint: Adresse unter der die DocumentDB erreicht werden kann, z.B.: https://localhost:8081/
+* Parameter PhotoDBConfig_database: Name der DocumentDB-Datenbank, z.B. "PhotoAwardDemo" 
+* Parameter PhotoDBConfig_collection: Name der DocumentDb collection, z.B. "Photos"
+* Parameter PhotoActorConfig_CognitiveServiceUri: Adresse des Cognitive Services zur Bildanalyse
+* Parameter PhotoActorConfig_OcpApimSubscriptionKey": Zugriffschlüssel zum Zugriff auf die Cognitive Services
+* Parameter PhotoAwardBackupRestoreFileStoreType: Der Wert "local" gibt an dass die Bakcupdateien in das im Parameter "PhotoAwardBackupDirectory" angegebenes Verzeichnis geschrieben werden. Der Wert "azureblobstorage" schreibt die Backupdateien in ein Azure Blob Storage. Vergl. den Parameter PhotoAwardAzureStorageConnectionString .
+* Parameter PhotoAwardBackupDirectory: In welches Verzeichnis soll das Backup geschrieben werden. Steht nur bei eine PhotoAwardBackupRestoreFileStoreType "local" zur Verfügung.
     <Parameter Name="PhotoAwardAzureStorageConnectionString" Value="" />
-- Parameter PhotoAwardAzureStorageConnectionString": Connection-String zum AzureBlobStorage
+* Parameter PhotoAwardAzureStorageConnectionString": Connection-String zum AzureBlobStorage
 
 #4.Build and Test
 Hinweis: Die Angular4-Unittests sind NICHT lauffähig. Out of Scope für diese Demo 
