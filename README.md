@@ -2,7 +2,7 @@ Photo Award Demo
 ================
 #Introduction
 Demo Anwendung für die Service Fabric. Gezeigt werden folgende Punkte:
-1. Web API-Projekt mit Angular2-Frontend-Anwendung
+1. Web API-Projekt mit Angular-Frontend-Anwendung
 2. Stateless Service zur Thumbnail Generierung
 3. Zwei Statefull-Services 
 4. Zwei Actor-Services
@@ -15,10 +15,8 @@ Anwendungsfälle:
 - Benutzer wählt ein Foto aus und bewertet es..
 - Zusätzlich können auch Kommentare geschrieben werden.
 - Passwort ändern
-5. Angedacht: 
-- Wenn ein Foto im Detail aufgerufen wird, werden alle Kommentare angezeigt.
-- Fotos werden im Original in einer DocumentDb abgelegt werden
-
+5. Für jedes Foto können Kommentare eingegeben werden
+6. Alle Kommentare eines Fotos werden angezeigt. 
 
 #Hinweis
 Dieses Projekt demonstriert die verschiedenen Möglichkeiten der Service Fabric. Für einen produktiven Einsatz ist es nicht geeignet.
