@@ -1,4 +1,4 @@
-Photo Award Demo
+hoto Award Demo
 ================
 #Einführung
 Demo Anwendung für die Service Fabric. Gezeigt werden folgende Punkte:
@@ -16,9 +16,7 @@ Anwendungsfälle:
 3. Fotos können hochgeladen werden.
 4. Für jedes Foto können Kommentare eingegeben werden
 5. Alle Kommentare eines Fotos werden angezeigt. 
-6. Aktuell nur Command-Line-Interface:
-* - Passwort ändern
-
+6. Aktuell nur Command-Line-Interface: Passwort ändern
 
 #Hinweis
 Dieses Projekt demonstriert die verschiedenen Möglichkeiten der Service Fabric. Für einen produktiven Einsatz ist es nicht geeignet.
@@ -45,6 +43,7 @@ Außerdem muss in der ApplicationManifest der Fingerprint des Zertifikats angepa
     <EndpointCertificate X509StoreName="MY" X509FindValue="2B5C7A6BDFCE84CC7559977375D384494CC3D2A5" Name="TestCert1" />
 </Certificates>
 Um alle Funktionen testen zu können sind in Cloud.xml, Local.1Node.xml oder Local.5Node.xml noch einige Anpassungen vorgenommen werden:
+
 * Parameter PhotoDBConfig_authKey: Authentifizierungsschlüssel für den Zugriff auf die DocumentDb
 * Parameter PhotoDBConfig_endpoint: Adresse unter der die DocumentDB erreicht werden kann, z.B.: https://localhost:8081/
 * Parameter PhotoDBConfig_database: Name der DocumentDB-Datenbank, z.B. "PhotoAwardDemo" 
